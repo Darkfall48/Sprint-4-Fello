@@ -23,7 +23,7 @@ export const boardService = {
   getEmptyBoard,
   getDefaultFilter,
   getDefaultSort,
-  getRandomBoard,
+  // getRandomBoard,
 }
 
 function query(filterBy = getDefaultFilter(), sortBy = getDefaultSort()) {
@@ -74,23 +74,28 @@ function _createBoards() {
   let boards = utilService.loadFromStorage(BOARD_KEY)
   if (!boards || !boards.length) {
     boards = []
-    boards.push(_createBoard('board1'))
-    boards.push(_createBoard('board2'))
-    boards.push(_createBoard('board3'))
+    boards.push(_createBoard() )
     utilService.saveToStorage(BOARD_KEY, boards)
   }
 }
 
-function _createBoard(name) {
-  const board = getRandomBoard()
+function _createBoard() {
+  const board = {
+    "title": "Robot dev proj",
+    "createdAt": 1589983468418,
+
+  }
   board._id = utilService.makeId()
-  board.name = name
   console.log('Board Created:', board)
   return board
 }
 
 function getEmptyBoard() {
-  return { name: '', price: '', labels: [], createdAt: null }
+  return {
+    "_id": utilService.makeId(),
+    "title": '',
+    "createdAt": Date.now(),
+  }
 }
 
 function getDefaultFilter() {
@@ -101,12 +106,12 @@ function getDefaultSort() {
   return { name: '' }
 }
 
-function getRandomBoard() {
-  const board = getEmptyBoard()
-  board.name = 'Random ' + utilService.getRandomIntInclusive(4000, 8000)
-  board.price = utilService.getRandomIntInclusive(1, 500)
-  board.labels = labels
-  board.createdAt = Date.now()
-  board.inStock = utilService.getRandomIntInclusive(1, 4) >= 2 ? true : false
-  return board
-}
+// function getRandomBoard() {
+//   const board = getEmptyBoard()
+//   board.name = 'Random ' + utilService.getRandomIntInclusive(4000, 8000)
+//   board.price = utilService.getRandomIntInclusive(1, 500)
+//   board.labels = labels
+//   board.createdAt = Date.now()
+//   board.inStock = utilService.getRandomIntInclusive(1, 4) >= 2 ? true : false
+//   return board
+// }
