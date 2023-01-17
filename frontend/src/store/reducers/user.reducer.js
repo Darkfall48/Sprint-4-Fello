@@ -1,5 +1,6 @@
-import { userService } from '../../services/user.service.js'
-
+//? Services
+import { userService } from '../../services/user/user.service'
+//? Global Variables
 export const INCREMENT = 'INCREMENT'
 export const DECREMENT = 'DECREMENT'
 export const CHANGE_COUNT = 'CHANGE_COUNT'

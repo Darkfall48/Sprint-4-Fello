@@ -1,5 +1,7 @@
+//? Libraries
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+//? Store
 import { loadUsers, removeUser } from '../../store/actions/user.actions'
 
 export function AdminIndex() {

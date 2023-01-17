@@ -1,8 +1,8 @@
-import { userService } from '../../services/user.service.js'
-import { store } from '../store.js'
+import { userService } from '../../services/user/user.service'
+import { store } from '../store'
 
-import { showErrorMsg } from '../../services/event-bus.service.js'
-import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer.js'
+import { showErrorMsg } from '../../services/connection/event-bus.service'
+import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
 import {
   REMOVE_USER,
   SET_USER,

@@ -1,5 +1,5 @@
 {
-  "name": "my-react-starter",
+  "name": "Frontend - Sprint 4 - Trello",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,6 +7,8 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.4",
+    "formik": "^2.2.9",
+    "google-map-react": "^2.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
@@ -28,7 +30,8 @@
     "workbox-range-requests": "^6.5.4",
     "workbox-routing": "^6.5.4",
     "workbox-strategies": "^6.5.4",
-    "workbox-streams": "^6.5.4"
+    "workbox-streams": "^6.5.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

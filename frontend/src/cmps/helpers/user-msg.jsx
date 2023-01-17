@@ -1,16 +1,23 @@
-import { eventBus, showSuccessMsg } from "../services/event-bus.service.js"
+//? Libraries
 import { useState, useEffect, useRef } from 'react'
-import { socketService, SOCKET_EVENT_REVIEW_ABOUT_YOU } from "../services/socket.service.js"
+//? Services
+import {
+  eventBus,
+  showSuccessMsg,
+} from '../../services/connection/event-bus.service'
+import {
+  socketService,
+  SOCKET_EVENT_REVIEW_ABOUT_YOU,
+} from '../../services/connection/socket.service'
 
 export function UserMsg() {
-
   const [msg, setMsg] = useState(null)
   const timeoutIdRef = useRef()
 
   useEffect(() => {
     const unsubscribe = eventBus.on('show-msg', (msg) => {
       setMsg(msg)
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' })
       if (timeoutIdRef.current) {
         timeoutIdRef.current = null
         clearTimeout(timeoutIdRef.current)

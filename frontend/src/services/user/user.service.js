@@ -1,5 +1,5 @@
-import { storageService } from '../storage/async-storage.service'
-import { httpService } from '../storage/http.service'
+import { storageService } from '../connection/async-storage.service'
+import { httpService } from '../connection/http.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 

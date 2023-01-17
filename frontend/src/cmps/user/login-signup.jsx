@@ -1,5 +1,7 @@
+//? Libraries
 import { useState, useEffect } from 'react'
-import { userService } from '../services/user.service'
+//? Services
+import { userService } from '../../services/user/user.service'
 import { ImgUploader } from '../helpers/img-uploader'
 
 export function LoginSignup(props) {

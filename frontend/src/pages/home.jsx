@@ -1,7 +1,10 @@
+//? Libraries
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import logo from '../assets/img/logo.png'
+//? Store
 import { CHANGE_COUNT } from '../store/reducers/user.reducer'
+//? Imports
+// import logo from '../assets/img/logo.png'
 
 export function Home() {
   const dispatch = useDispatch()
@@ -14,7 +17,7 @@ export function Home() {
 
   return (
     <section className="home-section">
-      <img src={logo} alt="Logo" style={{ maxWidth: '300px' }} />
+      <img src={''} alt="Logo" style={{ maxWidth: '300px' }} />
       <h2>
         Count {count}
         <button

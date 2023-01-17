@@ -1,6 +1,6 @@
 // import { storageService } from './async-storage.service.js'
-import { httpService } from '../storage/http.service.js'
-import { utilService } from '../util.service.js'
+import { httpService } from '../connection/http.service'
+import { utilService } from '../util.service'
 import { userService } from '../user/user.service.js'
 
 const STORAGE_KEY = 'car'

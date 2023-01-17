@@ -1,9 +1,9 @@
 //? Pages
-import { Home } from './pages/home.jsx'
-import { BoardIndex } from './pages/board/board-index.jsx'
-import { Workspace } from './pages/workspace.jsx'
-import { UserDetails } from './pages/user/user-details.jsx'
-import { AdminIndex } from './pages/user/admin-index.jsx'
+import { Home } from './pages/home'
+import { BoardIndex } from './pages/board/board-index'
+import { Workspace } from './pages/workspace'
+import { UserDetails } from './pages/user/user-details'
+import { AdminIndex } from './pages/user/admin-index'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [

@@ -1,10 +1,10 @@
-import { carService } from '../../services/car.service.local.js'
-import { userService } from '../../services/user.service.js'
+import { carService } from '../../services/board/car.service.local'
+import { userService } from '../../services/user/user.service'
 import { store } from '../store.js'
 import {
   showSuccessMsg,
   showErrorMsg,
-} from '../../services/event-bus.service.js'
+} from '../../services/connection/event-bus.service'
 import {
   ADD_CAR,
   ADD_TO_CART,

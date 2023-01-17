@@ -1,3 +1,4 @@
+//? Global Variables
 export const SET_REVIEWS = 'SET_REVIEWS'
 export const ADD_REVIEW = 'ADD_REVIEW'
 export const REMOVE_REVIEW = 'REMOVE_REVIEW'
@@ -14,13 +15,19 @@ export function reviewReducer(state = initialState, action = {}) {
     case ADD_REVIEW:
       return { ...state, reviews: [...state.reviews, action.review] }
     case REMOVE_REVIEW:
-      return { ...state, reviews: state.reviews.filter(review => review._id !== action.reviewId) }
+      return {
+        ...state,
+        reviews: state.reviews.filter(
+          (review) => review._id !== action.reviewId
+        ),
+      }
     case UPDATE_REVIEW:
       return {
         ...state,
-        reviews: state.reviews.map(review =>
+        reviews: state.reviews.map((review) =>
           review._id === action.review._id ? action.review : review
-        )}
+        ),
+      }
     default:
       return state
   }

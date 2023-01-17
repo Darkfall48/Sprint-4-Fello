@@ -1,5 +1,6 @@
+//? Libraries
 import { createStore, combineReducers } from 'redux'
-
+//? Store
 import { carReducer } from './reducers/car.reducer.js'
 import { userReducer } from './reducers/user.reducer.js'
 import { reviewReducer } from './reducers/review.reducer'

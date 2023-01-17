@@ -1,5 +1,13 @@
+//? Libraries
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+//? Services
+import {
+  showSuccessMsg,
+  showErrorMsg,
+} from '../../services/connection/event-bus.service'
+import { carService } from '../../services/board/car.service'
+//? Store
 import {
   loadCars,
   addCar,
@@ -7,9 +15,6 @@ import {
   removeCar,
   addToCart,
 } from '../../store/actions/car.actions.js'
-
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { carService } from '../services/car.service.js'
 
 export function BoardIndex() {
   const cars = useSelector((storeState) => storeState.carModule.cars)
@@ -61,7 +66,7 @@ export function BoardIndex() {
 
   return (
     <section className="board-index-section">
-      <h3>Cars App</h3>
+      <h3>Board Index</h3>
       <main>
         <button onClick={onAddCar}>Add Car ⛐</button>
         <ul className="car-list">
