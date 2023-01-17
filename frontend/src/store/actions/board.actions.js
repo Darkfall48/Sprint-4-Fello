@@ -9,10 +9,7 @@ import {
 import { store } from '../store.js'
 import {
   ADD_BOARD,
-  ADD_TO_CART,
-  CLEAR_CART,
   REMOVE_BOARD,
-  REMOVE_FROM_CART,
   SET_BOARDS,
   UNDO_REMOVE_BOARD,
   UPDATE_BOARD,
@@ -89,25 +86,11 @@ export function updateBoard(board) {
     })
 }
 
-export function addToCart(board) {
-  store.dispatch({
-    type: ADD_TO_CART,
-    board,
-  })
-}
-
-export function removeFromCart(boardId) {
-  store.dispatch({
-    type: REMOVE_FROM_CART,
-    boardId,
-  })
-}
 
 export async function checkout(total) {
   try {
     const score = await userService.changeScore(-total)
     store.dispatch({ type: SET_SCORE, score })
-    store.dispatch({ type: CLEAR_CART })
     return score
   } catch (err) {
     console.log('BoardActions: err in checkout', err)

@@ -13,7 +13,6 @@ import {
   addBoard,
   updateBoard,
   removeBoard,
-  addToCart,
 } from '../../store/actions/board.actions.js'
 
 export function BoardIndex() {
@@ -52,12 +51,6 @@ export function BoardIndex() {
     } catch (err) {
       showErrorMsg('Cannot update board')
     }
-  }
-
-  function onAddToCart(board) {
-    console.log(`Adding ${board.vendor} to Cart`)
-    addToCart(board)
-    showSuccessMsg('Added to Cart')
   }
 
   function onAddBoardMsg(board) {
@@ -103,14 +96,6 @@ export function BoardIndex() {
                 }}
               >
                 Add board msg
-              </button>
-              <button
-                className="buy"
-                onClick={() => {
-                  onAddToCart(board)
-                }}
-              >
-                Add to boardt
               </button>
             </li>
           ))}
