@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    body {
+      background-color: #222;
+      color: whitesmoke;
+    }
+    pre {
+      background-color: ghostwhite;
+      border: 1px solid silver;
+      padding: 10px 20px;
+      margin: 20px;
+      color: #111;
+    }
+
+    .json-key {
+      color: brown;
+    }
+
+    .json-value {
+      color: navy;
+    }
+
+    .json-string {
+      color: olive;
+    }
+  </style>
+  <title>Simple Frontend to Test the API</title>
+</head>
+
+<body>
+  <h1>mister-backend API Testing</h1>
+  <button onclick="onLoadCars()">Load cars</button>
+  <button onclick="onLoadUsers()">Load users</button>
+  <button onclick="onAddCar()">Login and add car</button>
+  <button onclick="onGetCarById()">Get car by id</button>
+  <button onclick="onRemoveCar()">Remove car</button>
+  <button onclick="onAddCarMsg()">Add car msg</button>
+
+  <h2></h2>
+  <pre></pre>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.0/axios.min.js"></script>
+  <script type="module" src="main.js"></script>
+
+</body>
+
+</html>
