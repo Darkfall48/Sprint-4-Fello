@@ -3,7 +3,6 @@ export const utilService = {
   makeId,
   makeLorem,
   getRandomIntInclusive,
-  getFromSearchParams,
   getDate,
   debounce,
   randomPastTime,
@@ -64,23 +63,6 @@ function makeLorem(size = 100) {
     txt += words[Math.floor(Math.random() * words.length)] + ' '
   }
   return txt
-}
-
-function getFromSearchParams(searchParams) {
-  const filter = { ...getDefaultFilter() }
-  const sort = { ...getDefaultSort() }
-  const page = { ...getDefaultPage() }
-
-  for (const field in filter) {
-    filter[field] = searchParams.get(field) || ''
-  }
-  for (const field in sort) {
-    sort[field] = searchParams.get(field) || ''
-  }
-  for (const field in page) {
-    page[field] = searchParams.get(field) || ''
-  }
-  return { filter, sort, page }
 }
 
 function getRandomIntInclusive(min, max) {
