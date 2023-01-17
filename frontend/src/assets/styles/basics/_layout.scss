@@ -1,6 +1,8 @@
 .main-container {
     display: grid;
-    grid-template-columns: 20px 1fr 20px;
+    grid-template-columns: $layoutPadding 1fr $layoutPadding;
+    padding: 0 $layoutPadding;
+    // background-color: $clr1bg ;
 
     > * {
         grid-column: 2;
@@ -10,29 +12,31 @@
         }
     }
 
+    >*:not(.full) {
+        display: grid;
+        grid-auto-flow: dense;
+    }
+
     @include for-narrow-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $mobile-breakpoint)
-            minmax(20px, 1fr);
+        @include layoutGTC($break-narrow);
     }
+
     @include for-normal-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $narrow-breakpoint)
-            minmax(20px, 1fr);
+        @include layoutGTC($break-normal);
     }
+
     @include for-wide-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $normal-breakpoint)
-            minmax(20px, 1fr);
+        @include layoutGTC($break-wide);
+    }
+    
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    & main {
+        flex-grow: 1;
     }
 }
-
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
-}
-

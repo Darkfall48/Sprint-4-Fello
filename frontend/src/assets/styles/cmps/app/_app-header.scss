@@ -1,17 +1,14 @@
-.app-header {
-    background-color: $clr4;
+.app-header-section {
     padding: 10px;
-
+    background-color: $clr1;
+    color: $clr-white;
 
     .user-info {
-        // background-color: $clr2;
-        // padding: 2px 8px;
+
         padding-left: 100px;
-        color: $clr1;
+
 
         .score {
-            background-color: $clr2;
-            color: $clr6;
             padding: 8px;
             margin: 10px;
             border-radius: 50%;
@@ -25,13 +22,9 @@
         }
     }
 
-    .user-info .btn-link {
-        color: $clr2;
-    }
 
     nav {
         font-size: .8em;
-        background-color: $clr5;
         padding: 5px;
 
     }
@@ -41,13 +34,9 @@
     }
 
     nav a:not(:first-child) {
-        border-top: 1px solid $clr1;
         padding: 0 5px;
         margin: 10px;
     }
 
-    nav .active {
-        color: $clr1;
-    }
 
 }

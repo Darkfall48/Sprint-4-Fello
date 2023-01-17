@@ -1,27 +1,34 @@
 /* Breakpoint mixins */
 
 @mixin for-mobile-layout {
-    @media (max-width: calc($mobile-breakpoint + 40px)) {
-        @content;
+    @media (max-width: $break-narrow) {
+      @content;
     }
-}
+  }
+  
+  @mixin for-narrow-layout {
+    @media (min-width: $break-narrow) {
+      @content;
+    }
+  }
+  
+  @mixin for-normal-layout {
+    @media (min-width: $break-normal) {
+      @content;
+    }
+  }
+  
+  @mixin for-wide-layout {
+    @media (min-width: $break-wide) {
+      @content;
+    }
+  }
 
-@mixin for-narrow-layout {
-    @media (min-width: calc($mobile-breakpoint + 40px)) {
-        @content;
-    }
-}
-
-@mixin for-normal-layout {
-    @media (min-width: calc($narrow-breakpoint + 40px)) {
-        @content;
-    }
-}
-
-@mixin for-wide-layout {
-    @media (min-width: calc($normal-breakpoint + 40px)) {
-        @content;
-    }
+@mixin layoutGTC($max) {
+    grid-template-columns:
+        minmax($layoutPadding, 1fr) 
+        minmax(auto, $max) 
+        minmax($layoutPadding, 1fr);
 }
 
 /* Media  Mixins */
@@ -61,7 +68,7 @@
 
 // Buttons
 
-@mixin btn($type: regular, $bg: $clr1, $clr: $clr3, $padding: em(10px) em(20px), $hover: darken($bg, 8%)) {
+@mixin btn($type: regular, $bg: $clr1, $padding: em(10px) em(20px), $hover: darken($bg, 8%)) {
     display: inline-flex;
     align-items: center;
     text-decoration: none;
@@ -79,32 +86,32 @@
 
     @if $type ==regular {
         background-color: $bg;
-        color: $clr;
+        color: $clr1;
 
         &:hover {
             background-color: $hover;
         }
     }
 
-    @else if $type ==dark {
-        background-color: $clr2;
-        color: $clr3;
+    // @else if $type ==dark {
+    //     background-color: $clr2;
+    //     color: $clr3;
 
-        &:hover {
-            background-color: $clr1;
-            color: $clr3;
-        }
-    }
+    //     &:hover {
+    //         background-color: $clr1;
+    //         color: $clr3;
+    //     }
+    // }
 
-    @else if $type ==light {
-        background-color: $clr3;
-        color: $clr2;
+    // @else if $type ==light {
+    //     background-color: $clr3;
+    //     color: $clr2;
 
-        &:hover {
-            background-color: $clr1;
-            color: $clr3;
-        }
-    }
+    //     &:hover {
+    //         background-color: $clr1;
+    //         color: $clr3;
+    //     }
+    // }
 }
 
 // Type
