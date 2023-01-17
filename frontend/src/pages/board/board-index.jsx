@@ -2,18 +2,10 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 //? Services
-import {
-  showSuccessMsg,
-  showErrorMsg,
-} from '../../services/connection/event-bus.service'
-import { boardService } from '../../services/board/board.service'
+import { showSuccessMsg, showErrorMsg } from '../../services/connection/event-bus.service'
+import { boardService } from '../../services/board/board.service.local'
 //? Store
-import {
-  loadBoards,
-  addBoard,
-  updateBoard,
-  removeBoard,
-} from '../../store/actions/board.actions.js'
+import { loadBoards, addBoard, updateBoard, removeBoard } from '../../store/actions/board.actions.js'
 
 export function BoardIndex() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -59,7 +51,6 @@ export function BoardIndex() {
 
   return (
     <section className="board-index-section">
-      <h3>Board Index</h3>
       <main>
         <button onClick={onAddBoard}>Add Board ⛐</button>
         <ul className="board-list">
