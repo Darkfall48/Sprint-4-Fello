@@ -3,8 +3,7 @@ import { createStore, combineReducers } from 'redux'
 //? Store
 // Board
 import { boardReducer } from './reducers/board.reducer.js'
-import { groupReducer } from './reducers/group.reducer.js'
-import { taskReducer } from './reducers/task.reducer.js'
+
 // User
 import { userReducer } from './reducers/user.reducer.js'
 import { reviewReducer } from './reducers/review.reducer'
@@ -13,8 +12,6 @@ import { systemReducer } from './reducers/system.reducer'
 
 const rootReducer = combineReducers({
   boardModule: boardReducer,
-  groupModule: groupReducer,
-  taskModule: taskReducer,
   userModule: userReducer,
   systemModule: systemReducer,
   reviewModule: reviewReducer,
