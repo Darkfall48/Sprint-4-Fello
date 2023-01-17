@@ -50,6 +50,7 @@ export async function loadBoards() {
   }
 }
 
+
 export async function removeBoard(boardId) {
   try {
     await boardService.remove(boardId)
@@ -120,3 +121,23 @@ export function onRemoveBoardOptimistic(boardId) {
       })
     })
 }
+
+
+
+
+
+
+
+// export async function loadBoard(boardId) {
+//   try {
+//     const board = await boardService.get(boardId)
+//     console.log('Boards from DB:', boards)
+//     store.dispatch({
+//       type: SET_BOARD,
+//       board,
+//     })
+//   } catch (err) {
+//     console.log('Cannot load boards', err)
+//     throw err
+//   }
+// }
