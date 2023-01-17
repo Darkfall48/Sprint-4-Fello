@@ -1,6 +1,7 @@
 //? Libraries
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { TaskList } from '../cmps/board/group/task/task-list'
 //? Store
 import { CHANGE_COUNT } from '../store/reducers/user.reducer'
 //? Imports
@@ -19,6 +20,7 @@ export function Home() {
     <section className="home-section">
       <img src={''} alt="Logo" style={{ maxWidth: '300px' }} />
       <h2>
+        <TaskList />
         Count {count}
         <button
           onClick={() => {
@@ -27,7 +29,8 @@ export function Home() {
         >
           +
         </button>
-        <button className="btn"
+        <button
+          className="btn"
           onClick={() => {
             changeCount(10)
           }}

@@ -5,7 +5,7 @@ import { Workspace } from './pages/workspace'
 import { UserDetails } from './pages/user/user-details'
 import { AdminIndex } from './pages/user/admin-index'
 
-// Routes accesible from the main navigation (in AppHeader)
+// Routes accessible from the main navigation (in AppHeader)
 const routes = [
   {
     path: '/',
