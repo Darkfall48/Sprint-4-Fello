@@ -1,9 +1,13 @@
 //? Libraries
 import { createStore, combineReducers } from 'redux'
 //? Store
+// Board
 import { boardReducer } from './reducers/board.reducer.js'
+
+// User
 import { userReducer } from './reducers/user.reducer.js'
 import { reviewReducer } from './reducers/review.reducer'
+// App
 import { systemReducer } from './reducers/system.reducer'
 
 const rootReducer = combineReducers({

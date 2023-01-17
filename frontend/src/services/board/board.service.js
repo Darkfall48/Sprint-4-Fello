@@ -1,112 +1,124 @@
-import { utilService } from '../util.service'
-import { storageService } from '../connection/async-storage.service'
+import { userService } from '../user/user.service'
+import { httpService } from '../connection/http.service'
 
-const pageSize = 5
-const BOARD_KEY = 'boardDB'
-const labels = [
-  'On wheels',
-  'Box game',
-  'Art',
-  'Baby',
-  'Doll',
-  'Puzzle',
-  'Outdoor',
-  'Battery Powered',
-]
-_createBoards()
+const BASE_URL = 'toy/'
 
 export const boardService = {
   query,
   get,
-  remove,
   save,
-  getEmptyBoard,
+  remove,
+  getEmptyToy,
+  getRandomToy,
   getDefaultFilter,
   getDefaultSort,
-  getRandomBoard,
+  getDefaultPage,
+  getFromSearchParams,
+  getLabels,
 }
 
-function query(filterBy = getDefaultFilter(), sortBy = getDefaultSort()) {
-  console.log(filterBy)
-  return storageService.query(BOARD_KEY).then((boards) => {
-    let filteredBoards = boards
-    if (filterBy.name) {
-      const regex = new RegExp(filterBy.name, 'i')
-      filteredBoards = filteredBoards.filter((board) => regex.test(board.name))
-    }
-    if (sortBy.name > 0) {
-      filteredBoards = filteredBoards.sort((a, b) =>
-        a.name.localeCompare(b.name)
-      )
-    }
-    if (sortBy.name < 0) {
-      filteredBoards = filteredBoards.sort((a, b) =>
-        a.name.localeCompare(b.name)
-      )
-    }
-    // Paging
-    // const totalPages = Math.ceil(boards.length / pageSize)
-    if (filterBy.pageIdx !== undefined) {
-      const startIdx = filterBy.pageIdx * pageSize
-      filteredBoards = filteredBoards.slice(startIdx, pageSize + startIdx)
-    }
-    return Promise.resolve(filteredBoards)
-  })
-}
+async function query({
+  filter = getDefaultFilter(),
+  sort = getDefaultSort(),
+  page = getDefaultPage(),
+} = {}) {
+  // console.log('Filter:', filter)
+  // console.log('Sort:', sort)
+  // console.log('Page', page)
+  // Getting the values
+  const { name, maxPrice, inStock, labels } = filter
+  const { sortBy, sortValue } = sort
+  const { pageSize, pageIdx } = page
 
-function get(boardId) {
-  return storageService.get(BOARD_KEY, boardId)
-}
+  // Preparing the query params string
+  const filterParams = `name=${name}&maxPrice=${maxPrice}&inStock=${inStock}&labels=${labels}`
+  const sortParams = `sortBy=${sortBy}&sortValue=${sortValue}`
+  const pageParams = `pageSize=${pageSize}&pageIdx=${pageIdx}`
 
-function remove(boardId) {
-  return storageService.remove(BOARD_KEY, boardId)
-}
-
-function save(board) {
-  if (board._id) {
-    return storageService.put(BOARD_KEY, board)
-  } else {
-    return storageService.post(BOARD_KEY, board)
+  const queryParams = '?' + filterParams + '&' + sortParams + '&' + pageParams
+  try {
+    return await httpService.get(BASE_URL + queryParams).then((res) => res)
+  } catch (err) {
+    throw err
   }
 }
 
-function _createBoards() {
-  let boards = utilService.loadFromStorage(BOARD_KEY)
-  if (!boards || !boards.length) {
-    boards = []
-    boards.push(_createBoard('board1'))
-    boards.push(_createBoard('board2'))
-    boards.push(_createBoard('board3'))
-    utilService.saveToStorage(BOARD_KEY, boards)
+async function get(toyId) {
+  try {
+    return await httpService.get(BASE_URL + toyId)
+  } catch (err) {
+    throw err
   }
 }
 
-function _createBoard(name) {
-  const board = getRandomBoard()
-  board._id = utilService.makeId()
-  board.name = name
-  console.log('Board Created:', board)
-  return board
+async function getRandomToy() {
+  try {
+    return await httpService.post(BASE_URL)
+  } catch (err) {
+    throw err
+  }
 }
 
-function getEmptyBoard() {
-  return { name: '', price: '', labels: [], createdAt: null }
+async function remove(toyId) {
+  try {
+    return await httpService.delete(BASE_URL + toyId)
+  } catch (err) {
+    throw err
+  }
+}
+
+async function save(toy) {
+  const { _id: toyId } = toy
+  try {
+    if (toyId) return await httpService.put(BASE_URL + toyId, toy)
+    return await httpService.post(BASE_URL, toy)
+  } catch (err) {
+    throw err
+  }
 }
 
 function getDefaultFilter() {
-  return { name: '', price: '', pageIdx: '' }
+  return { name: '', maxPrice: '', inStock: '', labels: '' }
 }
 
 function getDefaultSort() {
-  return { name: '' }
+  return { sortBy: '', sortValue: '' }
 }
 
-function getRandomBoard() {
-  const board = getEmptyBoard()
-  board.name = 'Random ' + utilService.getRandomIntInclusive(4000, 8000)
-  board.price = utilService.getRandomIntInclusive(1, 500)
-  board.labels = labels
-  board.createdAt = Date.now()
-  board.inStock = utilService.getRandomIntInclusive(1, 4) >= 2 ? true : false
-  return board
+function getDefaultPage() {
+  return { pageSize: '', pageIdx: '' }
+}
+
+function getEmptyToy() {
+  return { name: '', price: '', labels: [], createdAt: null }
+}
+
+function getFromSearchParams(searchParams) {
+  const filter = { ...getDefaultFilter() }
+  const sort = { ...getDefaultSort() }
+  const page = { ...getDefaultPage() }
+
+  for (const field in filter) {
+    filter[field] = searchParams.get(field) || ''
+  }
+  for (const field in sort) {
+    sort[field] = searchParams.get(field) || ''
+  }
+  for (const field in page) {
+    page[field] = searchParams.get(field) || ''
+  }
+  return { filter, sort, page }
+}
+
+function getLabels() {
+  return [
+    'On wheels',
+    'Box game',
+    'Art',
+    'Baby',
+    'Doll',
+    'Puzzle',
+    'Outdoor',
+    'Battery Powered',
+  ]
 }
