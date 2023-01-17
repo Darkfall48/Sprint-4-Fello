@@ -8,3 +8,8 @@
 @function em($pixels, $context: 16px) {
     @return calc(($pixels/$context) * 1em);
 }
+
+//Line-height Function
+@function lh($pixels, $context: 16px) {
+    @return ($pixels/$context);
+}

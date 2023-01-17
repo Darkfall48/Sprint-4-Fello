@@ -27,7 +27,7 @@ export function Home() {
         >
           +
         </button>
-        <button
+        <button className="btn"
           onClick={() => {
             changeCount(10)
           }}
