@@ -1,7 +1,9 @@
-export function TaskPreview() {
+export function TaskPreview({ task }) {
   return (
-    <section className="task-preview-section">
-      <h1>Hello from Task Preview</h1>
-    </section>
+    <article className="task-preview-article">
+      <h2>{task.title}</h2>
+      {/* <NavLink to={`/toy/${toy._id}`}>Details</NavLink> |
+      <NavLink to={`/toy/edit/${toy._id}`}>Edit</NavLink> */}
+    </article>
   )
 }
