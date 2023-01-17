@@ -6,91 +6,91 @@ import {
   showSuccessMsg,
   showErrorMsg,
 } from '../../services/connection/event-bus.service'
-import { carService } from '../../services/board/car.service'
+import { boardService } from '../../services/board/board.service'
 //? Store
 import {
-  loadCars,
-  addCar,
-  updateCar,
-  removeCar,
+  loadBoards,
+  addBoard,
+  updateBoard,
+  removeBoard,
   addToCart,
-} from '../../store/actions/car.actions.js'
+} from '../../store/actions/board.actions.js'
 
 export function BoardIndex() {
-  const cars = useSelector((storeState) => storeState.carModule.cars)
+  const boards = useSelector((storeState) => storeState.boardModule.boards)
 
   useEffect(() => {
-    loadCars()
+    loadBoards()
   }, [])
 
-  async function onRemoveCar(carId) {
+  async function onRemoveBoard(boardId) {
     try {
-      await removeCar(carId)
-      showSuccessMsg('Car removed')
+      await removeBoard(boardId)
+      showSuccessMsg('Board removed')
     } catch (err) {
-      showErrorMsg('Cannot remove car')
+      showErrorMsg('Cannot remove board')
     }
   }
 
-  async function onAddCar() {
-    const car = carService.getEmptyCar()
-    car.vendor = prompt('Vendor?')
+  async function onAddBoard() {
+    const board = boardService.getEmptyBoard()
+    board.vendor = prompt('Vendor?')
     try {
-      const savedCar = await addCar(car)
-      showSuccessMsg(`Car added (id: ${savedCar._id})`)
+      const savedBoard = await addBoard(board)
+      showSuccessMsg(`Board added (id: ${savedBoard._id})`)
     } catch (err) {
-      showErrorMsg('Cannot add car')
+      showErrorMsg('Cannot add board')
     }
   }
 
-  async function onUpdateCar(car) {
+  async function onUpdateBoard(board) {
     const price = +prompt('New price?')
-    const carToSave = { ...car, price }
+    const boardToSave = { ...board, price }
     try {
-      const savedCar = await updateCar(carToSave)
-      showSuccessMsg(`Car updated, new price: ${savedCar.price}`)
+      const savedBoard = await updateBoard(boardToSave)
+      showSuccessMsg(`Board updated, new price: ${savedBoard.price}`)
     } catch (err) {
-      showErrorMsg('Cannot update car')
+      showErrorMsg('Cannot update board')
     }
   }
 
-  function onAddToCart(car) {
-    console.log(`Adding ${car.vendor} to Cart`)
-    addToCart(car)
+  function onAddToCart(board) {
+    console.log(`Adding ${board.vendor} to Cart`)
+    addToCart(board)
     showSuccessMsg('Added to Cart')
   }
 
-  function onAddCarMsg(car) {
-    console.log(`TODO Adding msg to car`)
+  function onAddBoardMsg(board) {
+    console.log(`TODO Adding msg to board`)
   }
 
   return (
     <section className="board-index-section">
       <h3>Board Index</h3>
       <main>
-        <button onClick={onAddCar}>Add Car ⛐</button>
-        <ul className="car-list">
-          {cars.map((car) => (
-            <li className="car-preview" key={car._id}>
-              <h4>{car.vendor}</h4>
+        <button onClick={onAddBoard}>Add Board ⛐</button>
+        <ul className="board-list">
+          {boards.map((board) => (
+            <li className="board-preview" key={board._id}>
+              <h4>{board.vendor}</h4>
               <h1>⛐</h1>
               <p>
-                Price: <span>${car.price.toLocaleString()}</span>
+                Price: <span>${board.price.toLocaleString()}</span>
               </p>
               <p>
-                Owner: <span>{car.owner && car.owner.fullname}</span>
+                Owner: <span>{board.owner && board.owner.fullname}</span>
               </p>
               <div>
                 <button
                   onClick={() => {
-                    onRemoveCar(car._id)
+                    onRemoveBoard(board._id)
                   }}
                 >
                   x
                 </button>
                 <button
                   onClick={() => {
-                    onUpdateCar(car)
+                    onUpdateBoard(board)
                   }}
                 >
                   Edit
@@ -99,18 +99,18 @@ export function BoardIndex() {
 
               <button
                 onClick={() => {
-                  onAddCarMsg(car)
+                  onAddBoardMsg(board)
                 }}
               >
-                Add car msg
+                Add board msg
               </button>
               <button
                 className="buy"
                 onClick={() => {
-                  onAddToCart(car)
+                  onAddToCart(board)
                 }}
               >
-                Add to cart
+                Add to boardt
               </button>
             </li>
           ))}

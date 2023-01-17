@@ -3,7 +3,7 @@ import { httpService } from '../connection/http.service'
 
 const BASE_URL = 'toy/'
 
-export const toyService = {
+export const boardService = {
   query,
   get,
   save,

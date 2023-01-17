@@ -2,7 +2,7 @@ import { utilService } from '../util.service'
 import { storageService } from '../connection/async-storage.service'
 
 const pageSize = 5
-const TOY_KEY = 'toyDB'
+const BOARD_KEY = 'boardDB'
 const labels = [
   'On wheels',
   'Box game',
@@ -13,79 +13,83 @@ const labels = [
   'Outdoor',
   'Battery Powered',
 ]
-_createToys()
+_createBoards()
 
-export const toyService = {
+export const boardService = {
   query,
   get,
   remove,
   save,
-  getEmptyToy,
+  getEmptyBoard,
   getDefaultFilter,
   getDefaultSort,
-  getRandomToy,
+  getRandomBoard,
 }
 
 function query(filterBy = getDefaultFilter(), sortBy = getDefaultSort()) {
   console.log(filterBy)
-  return storageService.query(TOY_KEY).then((toys) => {
-    let filteredToys = toys
+  return storageService.query(BOARD_KEY).then((boards) => {
+    let filteredBoards = boards
     if (filterBy.name) {
       const regex = new RegExp(filterBy.name, 'i')
-      filteredToys = filteredToys.filter((toy) => regex.test(toy.name))
+      filteredBoards = filteredBoards.filter((board) => regex.test(board.name))
     }
     if (sortBy.name > 0) {
-      filteredToys = filteredToys.sort((a, b) => a.name.localeCompare(b.name))
+      filteredBoards = filteredBoards.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      )
     }
     if (sortBy.name < 0) {
-      filteredToys = filteredToys.sort((a, b) => a.name.localeCompare(b.name))
+      filteredBoards = filteredBoards.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      )
     }
     // Paging
-    // const totalPages = Math.ceil(toys.length / pageSize)
+    // const totalPages = Math.ceil(boards.length / pageSize)
     if (filterBy.pageIdx !== undefined) {
       const startIdx = filterBy.pageIdx * pageSize
-      filteredToys = filteredToys.slice(startIdx, pageSize + startIdx)
+      filteredBoards = filteredBoards.slice(startIdx, pageSize + startIdx)
     }
-    return Promise.resolve(filteredToys)
+    return Promise.resolve(filteredBoards)
   })
 }
 
-function get(toyId) {
-  return storageService.get(TOY_KEY, toyId)
+function get(boardId) {
+  return storageService.get(BOARD_KEY, boardId)
 }
 
-function remove(toyId) {
-  return storageService.remove(TOY_KEY, toyId)
+function remove(boardId) {
+  return storageService.remove(BOARD_KEY, boardId)
 }
 
-function save(toy) {
-  if (toy._id) {
-    return storageService.put(TOY_KEY, toy)
+function save(board) {
+  if (board._id) {
+    return storageService.put(BOARD_KEY, board)
   } else {
-    return storageService.post(TOY_KEY, toy)
+    return storageService.post(BOARD_KEY, board)
   }
 }
 
-function _createToys() {
-  let toys = utilService.loadFromStorage(TOY_KEY)
-  if (!toys || !toys.length) {
-    toys = []
-    toys.push(_createToy('toy1'))
-    toys.push(_createToy('toy2'))
-    toys.push(_createToy('toy3'))
-    utilService.saveToStorage(TOY_KEY, toys)
+function _createBoards() {
+  let boards = utilService.loadFromStorage(BOARD_KEY)
+  if (!boards || !boards.length) {
+    boards = []
+    boards.push(_createBoard('board1'))
+    boards.push(_createBoard('board2'))
+    boards.push(_createBoard('board3'))
+    utilService.saveToStorage(BOARD_KEY, boards)
   }
 }
 
-function _createToy(name) {
-  const toy = getRandomToy()
-  toy._id = utilService.makeId()
-  toy.name = name
-  console.log('Toy Created:', toy)
-  return toy
+function _createBoard(name) {
+  const board = getRandomBoard()
+  board._id = utilService.makeId()
+  board.name = name
+  console.log('Board Created:', board)
+  return board
 }
 
-function getEmptyToy() {
+function getEmptyBoard() {
   return { name: '', price: '', labels: [], createdAt: null }
 }
 
@@ -97,12 +101,12 @@ function getDefaultSort() {
   return { name: '' }
 }
 
-function getRandomToy() {
-  const toy = getEmptyToy()
-  toy.name = 'Random ' + utilService.getRandomIntInclusive(4000, 8000)
-  toy.price = utilService.getRandomIntInclusive(1, 500)
-  toy.labels = labels
-  toy.createdAt = Date.now()
-  toy.inStock = utilService.getRandomIntInclusive(1, 4) >= 2 ? true : false
-  return toy
+function getRandomBoard() {
+  const board = getEmptyBoard()
+  board.name = 'Random ' + utilService.getRandomIntInclusive(4000, 8000)
+  board.price = utilService.getRandomIntInclusive(1, 500)
+  board.labels = labels
+  board.createdAt = Date.now()
+  board.inStock = utilService.getRandomIntInclusive(1, 4) >= 2 ? true : false
+  return board
 }

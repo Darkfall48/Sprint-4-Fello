@@ -7,7 +7,7 @@ import {
   showSuccessMsg,
 } from '../../services/connection/event-bus.service'
 //? Store
-import { removeFromCart, checkout } from '../../store/actions/car.actions'
+import { removeFromCart, checkout } from '../../store/actions/board.actions'
 //? Components
 import { UserMsg } from '../helpers/user-msg'
 
