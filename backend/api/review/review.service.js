@@ -61,7 +61,7 @@ async function remove(reviewId) {
         // remove only if user is owner/admin
         const criteria = { _id: ObjectId(reviewId) }
         if (!loggedinUser.isAdmin) criteria.byUserId = ObjectId(loggedinUser._id)
-        const { deletedCount } = await collection.deleteOne(criteria)
+        const {deletedCount} = await collection.deleteOne(criteria)
         return deletedCount
     } catch (err) {
         logger.error(`cannot remove review ${reviewId}`, err)

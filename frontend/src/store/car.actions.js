@@ -2,23 +2,25 @@ import { carService } from "../services/car.service.local.js";
 import { userService } from "../services/user.service.js";
 import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+import { ADD_CAR, ADD_TO_CART, CLEAR_CART, REMOVE_CAR, REMOVE_FROM_CART, SET_CARS, UNDO_REMOVE_CAR, UPDATE_CAR } from "./car.reducer.js";
+import { SET_SCORE } from "./user.reducer.js";
 
 // Action Creators:
 export function getActionRemoveCar(carId) {
     return {
-        type: 'REMOVE_CAR',
+        type: REMOVE_CAR,
         carId
     }
 }
 export function getActionAddCar(car) {
     return {
-        type: 'ADD_CAR',
+        type: ADD_CAR,
         car
     }
 }
 export function getActionUpdateCar(car) {
     return {
-        type: 'UPDATE_CAR',
+        type: UPDATE_CAR,
         car
     }
 }
@@ -28,7 +30,7 @@ export async function loadCars() {
         const cars = await carService.query()
         console.log('Cars from DB:', cars)
         store.dispatch({
-            type: 'SET_CARS',
+            type: SET_CARS,
             cars
         })
 
@@ -76,14 +78,14 @@ export function updateCar(car) {
 
 export function addToCart(car) {
     store.dispatch({
-        type: 'ADD_TO_CART',
+        type: ADD_TO_CART,
         car
     })
 }
 
 export function removeFromCart(carId) {
     store.dispatch({
-        type: 'REMOVE_FROM_CART',
+        type: REMOVE_FROM_CART,
         carId
     })
 }
@@ -91,8 +93,8 @@ export function removeFromCart(carId) {
 export async function checkout(total) {
     try {
         const score = await userService.changeScore(-total)
-        store.dispatch({ type: 'SET_SCORE', score })
-        store.dispatch({ type: 'CLEAR_CART' })
+        store.dispatch({ type: SET_SCORE, score })
+        store.dispatch({ type: CLEAR_CART })
         return score
     } catch (err) {
         console.log('CarActions: err in checkout', err)
@@ -105,7 +107,7 @@ export async function checkout(total) {
 // (IOW - Assuming the server call will work, so updating the UI first)
 export function onRemoveCarOptimistic(carId) {
     store.dispatch({
-        type: 'REMOVE_CAR',
+        type: REMOVE_CAR,
         carId
     })
     showSuccessMsg('Car removed')
@@ -118,7 +120,7 @@ export function onRemoveCarOptimistic(carId) {
             showErrorMsg('Cannot remove car')
             console.log('Cannot load cars', err)
             store.dispatch({
-                type: 'UNDO_REMOVE_CAR',
+                type: UNDO_REMOVE_CAR,
             })
         })
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
 import { socketService, SOCKET_EMIT_SEND_MSG, SOCKET_EVENT_ADD_MSG, SOCKET_EMIT_SET_TOPIC } from '../services/socket.service'
@@ -11,13 +11,13 @@ export function ChatApp() {
 
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
 
-    let botTimeout
+    const botTimeoutRef = useRef()
 
     useEffect(() => {
         socketService.on(SOCKET_EVENT_ADD_MSG, addMsg)
         return () => {
             socketService.off(SOCKET_EVENT_ADD_MSG, addMsg)
-            botTimeout && clearTimeout(botTimeout)
+            botTimeoutRef.current && clearTimeout(botTimeoutRef.current)
         }
     }, [])
 
@@ -31,8 +31,8 @@ export function ChatApp() {
 
     function sendBotResponse() {
         // Handle case: send single bot response (debounce).
-        botTimeout && clearTimeout(botTimeout)
-        botTimeout = setTimeout(() => {
+        botTimeoutRef.current && clearTimeout(botTimeoutRef.current)
+        botTimeoutRef.current = setTimeout(() => {
             setMsgs(prevMsgs => ([...prevMsgs, { from: 'Bot', txt: 'You are amazing!' }]))
         }, 1250)
     }

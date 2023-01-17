@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { CSSTransitionGroup } from 'react-transition-group'
 
 function FancyBox(props) {
     return <div className="fancy-box">
@@ -16,6 +15,7 @@ FancyBox.propTypes = {
 function Contacts() {
     return <section style={{ height: '50vh', backgroundColor: 'pink' }}>
         <h2>Contacts</h2>
+        <p>Click me</p>
     </section>
 }
 
@@ -29,12 +29,9 @@ function Projects() {
             {proj}
         </article>
     ))
-    return <section style={{ height: '50vh', backgroundColor: 'lightblue' }}>
+    return <section style={{ minHeight: '50vh', backgroundColor: 'lightblue' }}>
         <h2>Projects</h2>
-        <CSSTransitionGroup transitionName="example" transitionEnterTimeout={500}
-            transitionLeaveTimeout={300}>
-            {projList}
-        </CSSTransitionGroup>
+        {projList}
         <button onClick={ev => {
             ev.stopPropagation();
             setProjs([...projs, 'Babu Proj' + Date.now() % 100])

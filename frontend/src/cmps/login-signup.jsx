@@ -7,43 +7,48 @@ export function LoginSignup(props) {
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
 
-    useEffect(async () => {
-        const users = await userService.getUsers()
-        setUsers(users)
+    useEffect(() => {
+        loadUsers()
     }, [])
 
-    const clearState = () => {
+    async function loadUsers() {
+        const users = await userService.getUsers()
+        setUsers(users)
+    }
+
+    function clearState() {
         setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
         setIsSignup(false)
     }
 
-    const handleChange = ev => {
+    function handleChange(ev) {
         const field = ev.target.name
         const value = ev.target.value
         setCredentials({ ...credentials, [field]: value })
     }
 
-    const onLogin = (ev = null) => {
+    function onLogin(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username) return
         props.onLogin(credentials)
         clearState()
     }
 
-    const onSignup = (ev = null) => {
+    function onSignup(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username || !credentials.password || !credentials.fullname) return
         props.onSignup(credentials)
         clearState()
     }
 
-    const toggleSignup = () => {
+    function toggleSignup() {
         setIsSignup(!isSignup)
     }
-    const onUploaded = (imgUrl) => {
+
+    function onUploaded(imgUrl) {
         setCredentials({ ...credentials, imgUrl })
     }
-    
+
     return (
         <div className="login-page">
             <p>
@@ -103,7 +108,7 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     />
-                    <ImgUploader onUploaded={onUploaded}/>                    
+                    <ImgUploader onUploaded={onUploaded} />
                     <button >Signup!</button>
                 </form>}
             </div>
