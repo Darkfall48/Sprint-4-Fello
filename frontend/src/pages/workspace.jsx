@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom"
+import { BoardList } from "../cmps/workspace/board-list";
 import { showErrorMsg, showSuccessMsg } from "../services/connection/event-bus.service";
 import { loadBoards, removeBoard } from "../store/actions/board.actions";
 
@@ -17,6 +18,7 @@ export function Workspace() {
   async function onLoadBoards() {
     try {
       await loadBoards()
+      console.log('loaded boards');
       showSuccessMsg('Boards loaded')
     } catch (err) {
       showErrorMsg('Cannot load boards')
@@ -45,9 +47,9 @@ export function Workspace() {
       </Link>
     </div>
 
-    {/* <BoardList
+    <BoardList
             boards={boards}
             onRemoveBoard={onRemoveBoard}
-        /> */}
+        />
   </section>
 }
