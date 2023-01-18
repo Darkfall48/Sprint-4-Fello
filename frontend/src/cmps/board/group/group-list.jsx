@@ -2,6 +2,8 @@
 
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+
 //? Services
 import { showSuccessMsg, showErrorMsg } from '../../../services/connection/event-bus.service'
 import { boardService } from '../../../services/board/board.service.local'
@@ -11,6 +13,8 @@ import { GroupPreview } from './group-preview.jsx'
 
 export function GroupList() {
   // const [board, setBoard] = useState()
+  const params = useParams()
+  console.log('paramssssss', params)
   
   const [groups, setGroups] = useState(boardService.getDemoGroups())
   
