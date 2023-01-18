@@ -1,7 +1,15 @@
 .app-header-section {
     padding: 10px;
-    background-color: $clr1;
+    background-color: $clr3;
     color: $clr-white;
+    display: flex;
+    .logo {
+        background-image: url("https://a.trellocdn.com/prgb/dist/images/header-logo-spirit-loading.87e1af770a49ce8e84e3.gif");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width:75px;
+        height: 15px;
+    }
 
     .user-info {
 
@@ -26,7 +34,12 @@
     nav {
         font-size: .8em;
         padding: 5px;
-
+        a{
+            text-decoration: none;
+            font-family: inherit;
+            color: white;
+            line-height: 32px;
+        }
     }
 
     nav a:first-child {
