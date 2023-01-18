@@ -7,18 +7,22 @@ import { TbTemplate } from 'react-icons/tb'
 export function GroupPreview({ group }) {
   const [editMode, setEditMode] = useState(false)
 
-  useEffect(()=>{
+  useEffect(() => {
 
-  },[])
+  }, [])
   // console.log('group.id', group.id)
-  function onAddList(ev){
+  function onAddList(ev) {
     // ev.stopPropogation()
+    setEditMode(true)
     console.log('editMode', editMode)
-    toggleEditMode()
-  }
 
-  function toggleEditMode(){
-    setEditMode(!editMode)
+  }
+  
+  function exitEditMode(ev) {
+    // ev.stopPropogation()
+    setEditMode(false)
+    console.log('editMode', editMode)
+
   }
 
   return (
@@ -39,9 +43,20 @@ export function GroupPreview({ group }) {
         </div>
       )}
       {!group && (
-        
-        <button className='add-group-btn' onClick={onAddList}><BsPlus className="plus" />
-        <span> Add another list </span></button>
+        <div>
+          {!editMode && (
+          <div className="add-new-list">
+            <button className='add-group-btn' onClick={onAddList}><BsPlus className="plus" />
+              <span> Add another list </span></button>
+          </div>
+          )}
+          {editMode && (
+            <div>
+            <input type="new list name" />
+            <button onClick={exitEditMode}>X</button>
+          </div>
+            )}
+        </div>
       )}
     </section>
   )

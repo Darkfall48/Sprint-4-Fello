@@ -14,7 +14,7 @@ import { loadBoards } from '../../../store/actions/board.actions'
 import { GroupPreview } from './group-preview.jsx'
 
 export function GroupList({board}) {
-  const [groups, setGroups] = useState(boardService.getDemoGroups())
+  const [groups, setGroups] = useState(null)
 
   // const boards = useSelector((storeState) => storeState.boardModule.boards)
 
