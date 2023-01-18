@@ -1,18 +1,44 @@
 .task-preview-section {
-  border-radius: $border-radius;
-  display: grid;
+  border-radius: 8px;
   background-color: #fff;
-  padding: 6px 8px 2px;
+  padding: 0;
+  display: grid;
+  grid-template-areas:
+    'background background'
+    'label      label'
+    'title      edit'
+    'info       member';
   .task-preview {
     &-background {
+      border-radius: $border-radius;
+      border-radius: 8px 8px 0px 0px;
+      //   background-color: red;
+
+      color: whitesmoke;
+      height: 32px;
+      grid-area: background;
     }
     &-label {
+      grid-area: label;
     }
     &-title {
+      grid-area: title;
+    }
+    &-edit {
+      grid-area: edit;
+      justify-self: end;
     }
     &-info {
+      grid-area: info;
+      justify-self: start;
     }
     &-member {
+      grid-area: member;
+      justify-self: end;
     }
   }
 }
+
+// @mixin random-bgr() {
+//   background: rgb(random(255), random(255), random(255));
+// }
