@@ -9,10 +9,10 @@ a {
     }
 
     & .board-preview {
-        background-color: $default-board-bg-clr;
+        background: $default-board-bg-clr;
         color: $clr-white ;
         padding: 10px;
-
+        // background-size: cover;
 
         border-radius: 3px;
         color: #fff;
@@ -30,18 +30,10 @@ a {
         }
 
         &:hover {
-            background-color: rgba(0, 121, 191, 0.808)
+            background-color: rgba(158, 176, 187, 0.425);
         }
 
-        & .board-hover {
-            background-color: rgba(0, 0, 0, .27);
-            border-radius: 3px;
-            bottom: 0;
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
+
 
         & .board-preview-details {
             position: relative;

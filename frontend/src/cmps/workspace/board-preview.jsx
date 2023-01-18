@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export function BoardPreview({ board, onEditBoard, onRemoveBoard }) {
 
   return <Link to={`/board/${board._id}`}>
-    <section className="board-preview skeleton">
+    <section className="board-preview skeleton" style={board?.style?.backgroundImg ? {background: `url(${board.style.backgroundImg}) center center / cover`}: {background: '#0079bf'} || board?.style?.bgColor ?{background:board.style.bgColor} : {background: '#0079bf'}}>
 
       <div className="board-preview-details">
         <h4>{board.title}</h4>

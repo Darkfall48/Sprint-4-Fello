@@ -83,6 +83,10 @@ function getEmptyBoard() {
     // _id: utilService.makeId(),
     title: '',
     createdAt: Date.now(),
+    style: {
+      bgColor: '#0079bf',
+      backgroundImg: ''
+    },
     groups: [],
   }
 }
@@ -128,6 +132,10 @@ function _createBoard(title) {
       _id: 'u101',
       fullname: 'Abi Abambi',
       imgUrl: 'http://some-img',
+    },
+    style: {
+      bgColor: '#ff0000',
+      backgroundImg: "https://images.unsplash.com/photo-1673768501816-6a565f620309?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjc0MDQ4NDQw&ixlib=rb-4.0.3&q=80&w=400"
     },
     labels: [
       {
