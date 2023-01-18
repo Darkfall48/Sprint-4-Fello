@@ -14,6 +14,8 @@
         margin: 10px;
     }
 
+
+
     .group-preview-section {
         background-color: $group-bg-clr;
         color: $clr-txt;
@@ -22,6 +24,7 @@
         border-radius: $border-radius;
         padding: 6px 8px 2px;
         box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
+
         
         .group-title {}
         
@@ -45,5 +48,29 @@
                 }
             }
         }
+    }
+}
+
+.add-group-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+    // grid-template-areas:
+    // "a1 a1"
+    // "a2 a3" ;
+    .new-group-name{
+        // grid-area: 'a1';
+        grid-column: span(-1);
+    }
+    .new-group-add-btn{
+        grid-column: 1;
+        grid-row: 2;
+        
+        // grid-area: 'a2';
+    }
+    .close-add-group{
+        grid-column: 2;
+        grid-row: 2;
+        // grid-area: 'a3';
     }
 }

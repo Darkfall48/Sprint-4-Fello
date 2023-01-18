@@ -10,7 +10,6 @@ import { boardService } from '../../services/board/board.service.local.js'
 import { loadGroups, addGroup } from '../../store/actions/board.actions.js'
 // import { loadGroups, addGroup, updateGroup, removeGroup } from '../../store/actions/board.actions.js'
 //? Cmps
-import {GroupList} from '../../cmps/board/group/group-list.jsx'
 import {BoardDetails} from '../../cmps/board/board-details.jsx'
 
 export function BoardIndex() {
@@ -36,8 +35,7 @@ export function BoardIndex() {
   if (!board) return <p>loading...</p>
   return (
     <section className="group-index-section">
-        <BoardDetails/>
-        <GroupList board={board}/>
+        <BoardDetails board={board}/>
     </section>
   )
 }

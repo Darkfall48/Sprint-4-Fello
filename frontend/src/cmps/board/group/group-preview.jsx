@@ -43,17 +43,18 @@ export function GroupPreview({ group }) {
         </div>
       )}
       {!group && (
-        <div>
+        <div className='new-group-wrapper'>
           {!editMode && (
-          <div className="add-new-list">
+          <div className="add-new-group">
             <button className='add-group-btn' onClick={onAddList}><BsPlus className="plus" />
               <span> Add another list </span></button>
           </div>
           )}
           {editMode && (
-            <div>
-            <input type="new list name" />
-            <button onClick={exitEditMode}>X</button>
+            <div className='add-group-container'>
+            <input type="new-group-name" placeholder='new list'/>
+            <button className='new-group-add-btn' onClick="submit-new-group">Add list</button>
+            <button className="close-add-group" onClick={exitEditMode}>X</button>
           </div>
             )}
         </div>
