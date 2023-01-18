@@ -7,30 +7,28 @@ import { useParams } from 'react-router-dom'
 //? Services
 import { showSuccessMsg, showErrorMsg } from '../../../services/connection/event-bus.service'
 import { boardService } from '../../../services/board/board.service.local'
-import { loadBoards} from "../../../store/actions/board.actions";
+import { loadBoards } from "../../../store/actions/board.actions";
 //? Cmps
 import { GroupPreview } from './group-preview.jsx'
 
 export function GroupList() {
-  // const [board, setBoard] = useState()
   const params = useParams()
-  console.log('paramssssss', params)
-  
+
   const [groups, setGroups] = useState(boardService.getDemoGroups())
-  
-  const boards = useSelector((storeState) => storeState.boardModule.boards)
-  console.log('boards', boards);
+
+  // const boards = useSelector((storeState) => storeState.boardModule.boards)
+  // console.log('boards', boards);
 
   useEffect(() => {
-    onLoadBoards()
+    loadGroups()
   }, [])
 
 
-  async function onLoadBoards() {
+  async function loadGroups() {
     try {
-      await loadBoards()
-      console.log('loaded boards');
-      showSuccessMsg('Boards loaded')
+      const board = await boardService.get(params.boardId)
+      setGroups(board.groups)      
+      showSuccessMsg('Groups loaded')
     } catch (err) {
       showErrorMsg('Cannot load boards')
     }
@@ -79,11 +77,10 @@ export function GroupList() {
   // }
   return (
     <section className="group-list-section">
-      <h1>Hello from Group List</h1>
       <ul className="group-list">
         {groups.map((group) => (
           <li className="group-preview" key={group.id}>
-            <div>
+            <div className="group-preview-wrapper">
               <GroupPreview group={group} />
               {/* <button onClick={() => { onRemoveGroup(group._id)}}> x </button> */}
               {/* <button onClick={() => { onUpdateGroup(group) }}> Edit </button> */}
@@ -93,7 +90,6 @@ export function GroupList() {
         ))}
       </ul>
       {/* <button onClick={onAddGroup}>+ Add another list</button> */}
-
     </section >
   )
 }

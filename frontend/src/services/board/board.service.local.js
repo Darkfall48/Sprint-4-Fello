@@ -11,6 +11,7 @@ const labels = [
   'label5',
   'label6',
 ]
+
 _createBoards()
 
 export const boardService = {
@@ -24,6 +25,7 @@ export const boardService = {
   // getRandomBoard,
   getDemoGroups
 }
+
 
 function query() {
   return Promise.resolve(storageService.query(BOARD_KEY))
@@ -109,7 +111,7 @@ function _createBoards() {
         "groups": [
           {
             "id": "g101",
-            "title": "Group 1",
+            "title": "To do",
             "archivedAt": 1589983468418,
             "tasks": [
               {
@@ -125,7 +127,7 @@ function _createBoards() {
           },
           {
             "id": "g102",
-            "title": "Group 2",
+            "title": "Done",
             "tasks": [
               {
                 "id": "c103",
