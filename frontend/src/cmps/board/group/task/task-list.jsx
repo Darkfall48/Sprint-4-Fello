@@ -1,30 +1,14 @@
 //? Components
 import { useState } from 'react'
 import { TaskPreview } from './task-preview'
+import { FaAccusoft } from 'react-icons/fa'
 
-export function TaskList({groupId, tasks}) {
-
-  console.log('tasks', tasks)
-  console.log('groupId', groupId)
-  const [tsks, setTasks] = useState([
-    {
-      id: 'c103',
-      title: 'Do that',
-      archivedAt: 1589983468418,
-    },
-    // add more tasks here
-  ])
-
+export function TaskList({ groupId, tasks }) {
   return (
     <section className="task-list-section">
-      <h1>Hello from Task List</h1>
-      <ul className="task-list-container">
-        {tsks.map((task) => (
-          <li className="task-preview" key={task.id}>
-            <TaskPreview task={task} />
-          </li>
-        ))}
-      </ul>
+      {tasks.map((task) => (
+        <TaskPreview key={task.id} task={task} />
+      ))}
     </section>
   )
 }

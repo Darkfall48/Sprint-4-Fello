@@ -1,12 +1,10 @@
 .task-list-section {
-    text-align: center;
-
-    .task-list-container {
-        background-color: #fff;
-        list-style: none;
-        padding: 6px 8px 2px;
-        overflow: hidden;
-        border-radius: $border-radius;
-        box-shadow: 0 1px 0 #091e4240;
-    }
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .task-preview-article {
+    background-color: #fff;
+    padding: 6px 8px 2px;
+  }
 }

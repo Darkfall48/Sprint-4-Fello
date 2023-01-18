@@ -1,50 +1,43 @@
-// Setup
-@import "setup/variables";
-@import "setup/functions";
-@import "setup/mixins";
-@import "setup/typography";
+//* Setup
+@import 'setup/variables';
+@import 'setup/functions';
+@import 'setup/mixins';
+@import 'setup/typography';
 
-// Basics
-@import "basics/helpers";
-@import "basics/layout";
-@import "basics/base";
-@import "basics/links";
-@import "basics/forms";
+//* Basics
+@import 'basics/normalize';
+@import 'basics/helpers';
+@import 'basics/layout';
+@import 'basics/base';
+@import 'basics/links';
+@import 'basics/forms';
 
+//* Views
+@import 'views/about-us';
+@import 'views/home';
+@import 'views/admin-index';
+@import 'views/board-index';
+@import 'views/user-details';
+@import 'views/workspace';
 
-// Views
-@import "views/about-us";
-@import "views/home";
-@import "views/admin-index";
-@import "views/board-index";
-@import "views/user-details";
-@import "views/workspace";
-
-
-// Components
-@import "cmps/app/app-header";
-@import "cmps/app/user-msg";
+//* Components
+@import 'cmps/app/app-header';
+@import 'cmps/app/user-msg';
 // Board
-@import "cmps/board/board-details";
-@import "cmps/board/board-filter";
-@import "cmps/board/board-list";
-@import "cmps/board/board-preview";
+@import 'cmps/board/board-details';
+@import 'cmps/board/board-filter';
+@import 'cmps/board/board-list';
+@import 'cmps/board/board-preview';
 // Group
-@import "cmps/group/group-filter";
-@import "cmps/group/group-list";
-@import "cmps/group/group-preview";
+@import 'cmps/group/group-filter';
+@import 'cmps/group/group-list';
+@import 'cmps/group/group-preview';
 // Task
-@import "cmps/task/task-details";
-@import "cmps/task/task-list";
-@import "cmps/task/task-preview";
+@import 'cmps/task/task-details';
+@import 'cmps/task/task-list';
+@import 'cmps/task/task-preview';
 // User
-@import "cmps/user/admin-view";
-@import "cmps/user/login-form";
-@import "cmps/user/login-signup";
-@import "cmps/user/user-preview";
-
-
-
-
-
-
+@import 'cmps/user/admin-view';
+@import 'cmps/user/login-form';
+@import 'cmps/user/login-signup';
+@import 'cmps/user/user-preview';
