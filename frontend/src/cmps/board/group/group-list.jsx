@@ -13,7 +13,7 @@ import { loadBoards } from '../../../store/actions/board.actions'
 //? Cmps
 import { GroupPreview } from './group-preview.jsx'
 
-export function GroupList({board}) {
+export function GroupList({ board }) {
   const [groups, setGroups] = useState(null)
 
   // const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -31,7 +31,7 @@ export function GroupList({board}) {
       //   title: '',
       //   tasks: [],
       // }))
-      
+
       // setGroups(board.groups.push(boardService.getEmptyGroup()))
       showSuccessMsg('Groups loaded')
     } catch (err) {
@@ -79,10 +79,10 @@ export function GroupList({board}) {
   // function onAddGroupMsg(group) {
   //   console.log(`TODO Adding msg to group`)
   // }
-  async function onAddGroup(groupToAddTitle){
+  function onAddGroup(groupToAddTitle) {
     console.log('groupToAdd', groupToAddTitle)
-        // try {
-    //  const newGroup=  await setNewGroup(groupToAddTitle)
+    // try {
+    console.log('board', board)
     //   showSuccessMsg('Toy saved!')
     //   navigate('/toy')
     // } catch (err) {
@@ -94,16 +94,16 @@ export function GroupList({board}) {
   if (!groups) return <p>loading...</p>
   return (
     <section className="group-list-section">
-        {groups.map((group) => (
-          <article key={group.id} className="group-preview">
-            <div className="group-preview-wrapper">
-              <GroupPreview group={group} onAddGroup={onAddGroup}/>
-              {/* <button onClick={() => { onRemoveGroup(group._id)}}> x </button> */}
-              {/* <button onClick={() => { onUpdateGroup(group) }}> Edit </button> */}
-            </div>
-            {/* <button onClick={() => { onAddGroupMsg(group) }} > Add group msg </button> */}
-          </article>
-        ))}
+      {groups.map((group) => (
+        <article key={group.id} className="group-preview">
+          <div className="group-preview-wrapper">
+            <GroupPreview group={group} onAddGroup={onAddGroup} />
+            {/* <button onClick={() => { onRemoveGroup(group._id)}}> x </button> */}
+            {/* <button onClick={() => { onUpdateGroup(group) }}> Edit </button> */}
+          </div>
+          {/* <button onClick={() => { onAddGroupMsg(group) }} > Add group msg </button> */}
+        </article>
+      ))}
       <GroupPreview group={null} />
       {/* <button onClick={onAddGroup}>+ Add another list</button> */}
     </section>
@@ -112,7 +112,7 @@ export function GroupList({board}) {
 
 function getEmptyGroup() {
   return {
-    id:9999,
+    id: 9999,
     title: '',
     tasks: [],
   }
