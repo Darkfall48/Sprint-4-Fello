@@ -20,15 +20,17 @@ export function BoardAdd({onCloseModal}) {
 
     async function onSaveBoard(ev) {
         ev.preventDefault()
+        onCloseModal()
         try {
             await addBoard(boardToAdd)
             console.log('board saved', boardToAdd);
             showSuccessMsg('Board saved!')
-            // navigate(`/board/${boardToAdd._id}`)
+
         } catch (err) {
             console.log('err', err)
             showErrorMsg('Cannot save board')
         }
+        navigate(`/board/${boardToAdd._id}`)
 
     }
 
@@ -37,11 +39,17 @@ export function BoardAdd({onCloseModal}) {
         <div onClick={() => navigate('/')} className="black-screen"></div>
 
         <section className="todo-add">
-            <div onClick={onCloseModal} className="modal">
+            <div className="modal">
                 <div className="modal-content">
                     <div className="form-container">
 
                         <h2>Create board</h2>
+
+                        <div className="board-preview">
+                            <div className="img-container">
+                                <img src="https://a.trellocdn.com/prgb/dist/images/board-preview-skeleton.14cda5dc635d1f13bc48.svg" alt="" />
+                            </div>
+                        </div>
 
                         <p>Background</p>
 
@@ -61,6 +69,8 @@ export function BoardAdd({onCloseModal}) {
                             </div>
 
                         </form>
+
+                        <button onClick={onCloseModal}>X</button>
 
                     </div>
                 </div>

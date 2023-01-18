@@ -37,7 +37,7 @@ export function Workspace() {
   }
 
   if (!boards) return <div>Loading...</div>
-  return <section className="board-index">
+  return <section className="workspace-section">
 
     <BoardList
             boards={boards}
