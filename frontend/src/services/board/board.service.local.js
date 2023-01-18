@@ -225,6 +225,7 @@ function getEmptyBoard() {
     "_id": utilService.makeId(),
     "title": '',
     "createdAt": Date.now(),
+    "groups": [],
   }
 }
 

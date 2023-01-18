@@ -4,6 +4,7 @@ import { BoardIndex } from './pages/board/board-index'
 import { Workspace } from './pages/workspace'
 import { UserDetails } from './pages/user/user-details'
 import { AdminIndex } from './pages/user/admin-index'
+import { AboutUs } from './pages/about-us'
 
 // Routes accessible from the main navigation (in AppHeader)
 const routes = [
@@ -48,11 +49,11 @@ const routes = [
   //     component: <ChatApp />,
   //     label: 'Chat',
   //   },
-  //   {
-  //     path: 'about',
-  //     component: <AboutUs />,
-  //     label: 'About us',
-  //   },
+    {
+      path: 'about',
+      component: <AboutUs />,
+      label: 'About us',
+    },
 ]
 
 export default routes
