@@ -34,7 +34,7 @@ export function BoardIndex() {
   }
   if (!board) return <p>loading...</p>
   return (
-    <section className="group-index-section">
+    <section className="group-index-section" style={board?.style?.backgroundImg ? {background: `url(${board.style.backgroundImg}) center center / cover`}: {background: '#0079bf'} || board?.style?.bgColor ?{background:board.style.bgColor} : {background: '#0079bf'}}>
         <BoardDetails board={board}/>
     </section>
   )

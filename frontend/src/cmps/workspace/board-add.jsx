@@ -29,7 +29,7 @@ export function BoardAdd({ onCloseModal }) {
             console.log('err', err)
             showErrorMsg('Cannot save board')
         }
-        navigate(`/board/${boardToAdd._id}`)
+        // navigate(`/board/${boardToAdd._id}`)
 
     }
 
@@ -74,10 +74,10 @@ export function BoardAdd({ onCloseModal }) {
 
                         <p>Background</p>
                         <div className="btns-cover-img">
-                            <button onClick={() => changeBoard('https://images.unsplash.com/photo-1673768501816-6a565f620309?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjc0MDQ4NDQw&ixlib=rb-4.0.3&q=80&w=400', '')} className="btn-cover-img" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1673768501816-6a565f620309?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjc0MDQ4NDQw&ixlib=rb-4.0.3&q=80&w=400")' }}></button>
-                            <button onClick={() => changeBoard('https://images.unsplash.com/photo-1673605124954-132c332de83f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjc0MDU1NjQw&ixlib=rb-4.0.3&q=80&w=400', '')} className="btn-cover-img" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1673605124954-132c332de83f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjc0MDU1NjQw&ixlib=rb-4.0.3&q=80&w=400")' }}></button>
-                            <button onClick={() => changeBoard('https://images.unsplash.com/photo-1673660199123-b793cdee4980?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDJ8MzE3MDk5fHx8fHwyfHwxNjc0MDU1NjQw&ixlib=rb-4.0.3&q=80&w=400', '')} className="btn-cover-img" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1673660199123-b793cdee4980?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDJ8MzE3MDk5fHx8fHwyfHwxNjc0MDU1NjQw&ixlib=rb-4.0.3&q=80&w=400")' }}></button>
-                            <button onClick={() => changeBoard('https://images.unsplash.com/photo-1673715852601-987ac8f3b9ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDR8MzE3MDk5fHx8fHwyfHwxNjc0MDU1NjQw&ixlib=rb-4.0.3&q=80&w=400', '')} className="btn-cover-img" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1673715852601-987ac8f3b9ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDR8MzE3MDk5fHx8fHwyfHwxNjc0MDU1NjQw&ixlib=rb-4.0.3&q=80&w=400")' }}></button>
+                            <button onClick={() => changeBoard('https://images.unsplash.com/photo-1673768501816-6a565f620309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80', '')} className="btn-cover-img" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1673768501816-6a565f620309?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjc0MDQ4NDQw&ixlib=rb-4.0.3&q=80&w=400")' }}></button>
+                            <button onClick={() => changeBoard('https://images.unsplash.com/photo-1673605124954-132c332de83f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80', '')} className="btn-cover-img" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1673605124954-132c332de83f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjc0MDU1NjQw&ixlib=rb-4.0.3&q=80&w=400")' }}></button>
+                            <button onClick={() => changeBoard('https://images.unsplash.com/photo-1673660199123-b793cdee4980?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80', '')} className="btn-cover-img" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1673660199123-b793cdee4980?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDJ8MzE3MDk5fHx8fHwyfHwxNjc0MDU1NjQw&ixlib=rb-4.0.3&q=80&w=400")' }}></button>
+                            <button onClick={() => changeBoard('https://images.unsplash.com/photo-1673715852601-987ac8f3b9ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80', '')} className="btn-cover-img" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1673715852601-987ac8f3b9ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDR8MzE3MDk5fHx8fHwyfHwxNjc0MDU1NjQw&ixlib=rb-4.0.3&q=80&w=400")' }}></button>
                         </div>
 
                         <div className="btns-cover-color">
