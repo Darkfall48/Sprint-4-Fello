@@ -5,9 +5,12 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 //? Services
-import { showSuccessMsg, showErrorMsg } from '../../../services/connection/event-bus.service'
+import {
+  showSuccessMsg,
+  showErrorMsg,
+} from '../../../services/connection/event-bus.service'
 import { boardService } from '../../../services/board/board.service.local'
-import { loadBoards } from "../../../store/actions/board.actions";
+import { loadBoards } from '../../../store/actions/board.actions'
 //? Cmps
 import { GroupPreview } from './group-preview.jsx'
 
@@ -23,22 +26,20 @@ export function GroupList() {
     loadGroups()
   }, [])
 
-
   async function loadGroups() {
     try {
       const board = await boardService.get(params.boardId)
-      setGroups(board.groups)      
+      setGroups(board.groups)
       showSuccessMsg('Groups loaded')
     } catch (err) {
       showErrorMsg('Cannot load boards')
     }
   }
 
-
   // async function loadBoard(){
   //  try{
-  //   boards = 
-  //  } 
+  //   boards =
+  //  }
   // }
 
   // async function onRemoveGroup(groupId) {
@@ -79,7 +80,7 @@ export function GroupList() {
     <section className="group-list-section">
       <ul className="group-list">
         {groups.map((group) => (
-          <li className="group-preview" key={group.id}>
+          <li key={group.id} className="group-preview">
             <div className="group-preview-wrapper">
               <GroupPreview group={group} />
               {/* <button onClick={() => { onRemoveGroup(group._id)}}> x </button> */}
@@ -90,8 +91,6 @@ export function GroupList() {
         ))}
       </ul>
       {/* <button onClick={onAddGroup}>+ Add another list</button> */}
-    </section >
+    </section>
   )
 }
-
-
