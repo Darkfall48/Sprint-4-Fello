@@ -62,6 +62,7 @@ function save(board) {
   if (board._id) {
     return storageService.put(BOARD_KEY, board)
   } else {
+    board._id = utilService.makeId()
     return storageService.post(BOARD_KEY, board)
   }
 }
@@ -79,7 +80,7 @@ function save(board) {
 
 function getEmptyBoard() {
   return {
-    _id: utilService.makeId(),
+    // _id: utilService.makeId(),
     title: '',
     createdAt: Date.now(),
     groups: [],

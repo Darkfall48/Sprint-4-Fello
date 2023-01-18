@@ -46,12 +46,12 @@ export function BoardAdd() {
                         <p>Background</p>
 
                         <form onSubmit={onSaveBoard}>
-                            <label htmlFor="name">Board title</label>
+                            <label htmlFor="title">Board title</label>
                             <input type="text"
-                                name="name"
-                                id="name"
-                                placeholder="Enter name..."
-                                value={boardToAdd.name}
+                                name="title"
+                                id="title"
+                                placeholder="Enter title..."
+                                value={boardToAdd.title}
                                 onChange={handleChange}
                                 required
                             />
