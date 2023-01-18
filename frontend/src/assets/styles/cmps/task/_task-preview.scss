@@ -1,4 +1,5 @@
 .task-preview-section {
+  width: 256px;
   border-radius: $clr-task-preview-section-border-radius;
   box-shadow: var(--ds-shadow-raised, 0 1px 0 #091e4240);
   background-color: #fff;
@@ -13,7 +14,6 @@
   .task-preview {
     &-background {
       border-radius: $clr-task-preview-border-radius;
-      //   background-color: red;
       height: 32px;
       grid-area: background;
       margin-bottom: 6px;
@@ -39,6 +39,8 @@
       margin-bottom: 4px;
     }
     &-edit {
+      height: 32px;
+      width: 32px;
       position: absolute;
       grid-area: edit;
       align-self: baseline;

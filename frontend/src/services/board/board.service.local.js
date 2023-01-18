@@ -84,7 +84,7 @@ function getEmptyBoard() {
     createdAt: Date.now(),
     style: {
       bgColor: '#0079bf',
-      backgroundImg: ''
+      backgroundImg: '',
     },
     groups: [],
   }
@@ -134,7 +134,8 @@ function _createBoard(title) {
     },
     style: {
       bgColor: '#ff0000',
-      backgroundImg: "https://images.unsplash.com/photo-1673768501816-6a565f620309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+      backgroundImg:
+        'https://images.unsplash.com/photo-1673768501816-6a565f620309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
     },
     labels: [
       {
@@ -145,14 +146,34 @@ function _createBoard(title) {
       {
         id: 'l102',
         title: 'Progress',
-        color: '#61bd33',
+        color: '#fffc60',
+      },
+      {
+        id: 'l103',
+        title: 'To Do!',
+        color: '#5d2c80',
+      },
+      {
+        id: 'l104',
+        title: 'Later',
+        color: '#9e0150',
       },
     ],
     members: [
       {
         _id: 'u101',
         fullname: 'Tal Tarablus',
-        imgUrl: 'https://www.google.com',
+        imgUrl: 'https://robohash.org/',
+      },
+      {
+        _id: 'u102',
+        fullname: 'Kar Karamba',
+        imgUrl: 'https://robohash.org/',
+      },
+      {
+        _id: 'u103',
+        fullname: 'Sid Sidonis',
+        imgUrl: 'https://robohash.org/',
       },
     ],
     groups: _createGroups(),
@@ -164,7 +185,7 @@ function _createBoard(title) {
         byMember: {
           _id: 'u101',
           fullname: 'Abi Abambi',
-          imgUrl: 'http://some-img',
+          imgUrl: 'https://robohash.org/',
         },
         task: {
           id: 'c101',
@@ -236,8 +257,8 @@ function _createTask(title) {
         ],
       },
     ],
-    memberIds: ['u101'],
-    labelIds: ['l101', 'l102'],
+    memberIds: ['u101', 'u102', 'u103'],
+    labelIds: ['l101', 'l102', 'l103', 'l104'],
     dueDate: 16156215211,
     byMember: {
       _id: 'u101',
