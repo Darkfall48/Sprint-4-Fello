@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom"
 
 import { BoardAdd } from "./board-add";
@@ -12,11 +13,12 @@ export function BoardList({ boards, onEditBoard, onRemoveBoard }) {
     }
 
     return <section className="board-list">
-        <Link to={`/board/add`}>
+        {/* <Link to={`/board/add`}>
             <button className="board-add">
                 Add Board
             </button>
-        </Link>
+        </Link> */}
+        boa
         <ul>
             {boards.map((board, index) =>
                 <li
