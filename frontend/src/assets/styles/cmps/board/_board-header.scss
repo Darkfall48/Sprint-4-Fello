@@ -1,0 +1,67 @@
+.board-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    // mix-blend-mode:exclusion;
+
+    & .title-container {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+
+
+    }
+
+    & h1 {
+        font-size: rem(18px);
+        font-weight: 700;
+        line-height: 32px;
+        padding: 0 12px;
+        margin: 0;
+        color: $clr-white ;
+
+    }
+
+
+
+
+    & button {
+        background-color: rgba(255, 255, 255, 0.164);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        display: inline-flex;
+        border-radius: rem(3px);
+        cursor: pointer;
+        padding: 6px 12px;
+        // content: attr(data-content);
+        // filter: hue-rotate(60deg);
+
+        transition-property: background-color, border-color, box-shadow;
+        transition-duration: 85ms;
+        transition-timing-function: ease;
+
+
+
+        &:hover {
+            background-color: var(--ds-background-neutral, rgba(9, 30, 66, 0.04));
+
+            & .star{
+                fill: yellow;
+                font-size: rem(20px);
+
+            }
+        }
+
+        & .star {
+            width: 20px;
+            height: 20px;
+
+        }
+    }
+
+
+
+}

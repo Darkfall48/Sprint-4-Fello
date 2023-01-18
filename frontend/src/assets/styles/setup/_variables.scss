@@ -57,3 +57,34 @@ $break-wide: 1920px;
 $padded-break-narrow: $break-narrow + $layoutPadding * 2;
 $padded-break-normal: $break-normal + $layoutPadding * 2;
 $padded-break-wide: $break-wide + $layoutPadding * 2;
+
+
+
+//Trying something
+//     /* theme color variables to use in RGB declarations */
+//     $red: 200;
+//     $green: 60;
+//     $blue: 255;
+//     /* the threshold at which colors are considered "light". 
+//     Range: decimals from 0 to 1, recommended 0.5 - 0.6 */
+//     $threshold: 0.5;
+//     /* the threshold at which a darker border will be applied.
+//     Range: decimals from 0 to 1, recommended 0.8+ */
+//     $border-threshold: 0.8;
+  
+  
+//   .btn-color {
+//     /* sets the background for the base class */
+//     background: rgb($red, $green, $blue);
+  
+//     /* calculates perceived lightness using the sRGB Luma method 
+//     Luma = (red * 0.2126 + green * 0.7152 + blue * 0.0722) / 255 */
+//     $r: calc(var($red) * 0.2126);
+//     $g: calc(var($green) * 0.7152);
+//     $b: calc(var($blue) * 0.0722);
+//     $sum: calc($r + $g + $b);
+//     $perceived-lightness: calc($sum / 255);
+    
+//     /* shows either white or black color depending on perceived darkness */
+//     color: hsl(0, 0%, calc(($perceived-lightness - $threshold) * -10000000%)); 
+//   }
