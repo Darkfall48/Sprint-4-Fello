@@ -79,13 +79,25 @@ export function GroupList({board}) {
   // function onAddGroupMsg(group) {
   //   console.log(`TODO Adding msg to group`)
   // }
+  async function onAddGroup(groupToAddTitle){
+    console.log('groupToAdd', groupToAddTitle)
+        // try {
+    //  const newGroup=  await setNewGroup(groupToAddTitle)
+    //   showSuccessMsg('Toy saved!')
+    //   navigate('/toy')
+    // } catch (err) {
+    //   console.log('err', err)
+    //   showErrorMsg('Cannot save toy')
+    // }
+  }
+
   if (!groups) return <p>loading...</p>
   return (
     <section className="group-list-section">
         {groups.map((group) => (
           <article key={group.id} className="group-preview">
             <div className="group-preview-wrapper">
-              <GroupPreview group={group} />
+              <GroupPreview group={group} onAddGroup={onAddGroup}/>
               {/* <button onClick={() => { onRemoveGroup(group._id)}}> x </button> */}
               {/* <button onClick={() => { onUpdateGroup(group) }}> Edit </button> */}
             </div>

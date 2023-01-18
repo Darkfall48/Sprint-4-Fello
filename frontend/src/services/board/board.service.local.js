@@ -3,7 +3,6 @@ import { storageService } from '../connection/async-storage.service'
 
 const pageSize = 5
 const BOARD_KEY = 'boardDB'
-const labels = ['label1', 'label2', 'label3', 'label4', 'label5', 'label6']
 
 _createBoards()
 

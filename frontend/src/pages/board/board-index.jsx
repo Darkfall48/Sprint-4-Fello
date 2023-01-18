@@ -7,25 +7,25 @@ import { useSelector } from 'react-redux'
 import { showSuccessMsg, showErrorMsg } from '../../services/connection/event-bus.service'
 import { boardService } from '../../services/board/board.service.local.js'
 //? Store
-import { loadGroups, addGroup } from '../../store/actions/board.actions.js'
+import { loadGroups, addGroup, loadBoard, loadBoards } from '../../store/actions/board.actions.js'
 // import { loadGroups, addGroup, updateGroup, removeGroup } from '../../store/actions/board.actions.js'
 //? Cmps
-import {BoardDetails} from '../../cmps/board/board-details.jsx'
+import { BoardDetails } from '../../cmps/board/board-details.jsx'
 
 export function BoardIndex() {
   const [board, setBoard] = useState(null)
-  const params = useParams()
-  console.log('params', params)
-  // const boards = useSelector((storeState) => storeState.boardModule.boards)
+  const { boardId } = useParams()
+  const boards = useSelector((storeState) => storeState.boardModule.boards)
   // console.log('boards', boards);
 
   useEffect(() => {
-    loadBoard()
+    onLoadBoard()
   }, [])
 
-  async function loadBoard() {
+  async function onLoadBoard() {
     try {
-      const board = await boardService.get(params.boardId)
+      await loadBoards()
+      const board = await boardService.get(boardId)
       setBoard(board)
       showSuccessMsg('Groups loaded')
     } catch (err) {
@@ -34,8 +34,8 @@ export function BoardIndex() {
   }
   if (!board) return <p>loading...</p>
   return (
-    <section className="group-index-section" style={board?.style?.backgroundImg ? {background: `url(${board.style.backgroundImg}) center center / cover`}: {background: '#0079bf'} || board?.style?.bgColor ?{background:board.style.bgColor} : {background: '#0079bf'}}>
-        <BoardDetails board={board}/>
+    <section className="group-index-section" style={board?.style?.backgroundImg ? { background: `url(${board.style.backgroundImg}) center center / cover` } : { background: '#0079bf' } || board?.style?.bgColor ? { background: board.style.bgColor } : { background: '#0079bf' }}>
+      <BoardDetails board={board} />
     </section>
   )
 }
