@@ -57,39 +57,49 @@
 }
 
 
-.add-group-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    background-color: $group-bg-clr;
-    border-radius: $border-radius;
+.add-group-container{
     padding: 6px 8px 2px;
     box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
     font-size: 1em;
     margin-top: 0;
-
-    .new-group-input {
-        font-size: 1em;
-        grid-column: 1/-1;
-        padding: 8px 12px;
+    border-radius: $border-radius;
+    background-color: $group-bg-clr;
+    
+    form {
+        display: flex;
+        flex-direction: row;
+        align-content: flex-start;
+        flex-wrap: wrap;
         width: 264px;
-    }
-
-    .new-group-add-btn {
-        grid-column: 1;
-        grid-row: 2;
-        background-color: $clr4;
-        border-radius: $border-radius;
-        font-family: inherit;
-        font-size: 1em;
-    }
-
-    .close-add-group {
-        grid-column: 2;
-        grid-row: 2;
-        background-color: transparent;
-        color: $clr-txt-btn;
-        font-size: 1.4em;
-        text-align: left;
-    }
+        
+        .new-group-input {
+            font-size: 1em;
+            padding: 8px 12px;
+            border-radius: $border-radius;
+            border: none;
+            box-shadow: inset 0 0 0 2px var(--ds-border-focused,#0079bf);
+            width: 264px;
+            margin:0;
+        }
+    
+        .new-group-add-btn {
+            display: flex;
+            background-color: $clr4;
+            border-radius: $border-radius;
+            font-family: inherit;
+            font-size: 1em;
+            margin-left: 0;
+            width: fit-content;
+        }
+        
+        .close-add-group {
+            display: inline-block;
+            background-color: transparent;
+            color: $clr-txt-btn;
+            font-size: 1.4em;
+            text-align: left;
+            padding: 4px 12px;
+            width: fit-content;
+        }
+} 
 }
