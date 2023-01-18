@@ -1,8 +1,12 @@
 .task-list-section {
-    background-color: #fff;
     text-align: center;
 
-    .task-preview {
+    .task-list-container {
+        background-color: #fff;
         list-style: none;
+        padding: 6px 8px 2px;
+        overflow: hidden;
+        border-radius: $border-radius;
+        box-shadow: 0 1px 0 #091e4240;
     }
 }

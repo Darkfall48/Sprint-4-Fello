@@ -5,15 +5,39 @@ import { useEffect, useState } from 'react'
 //? Services
 import { showSuccessMsg, showErrorMsg } from '../../../services/connection/event-bus.service'
 import { boardService } from '../../../services/board/board.service.local'
+import { loadBoards} from "../../../store/actions/board.actions";
 //? Cmps
 import { GroupPreview } from './group-preview.jsx'
 
 export function GroupList() {
-  const [board, setBoard] = useState()
+  // const [board, setBoard] = useState()
+  
   const [groups, setGroups] = useState(boardService.getDemoGroups())
-  // useEffect(() => {
-  //   loadBoard()
-  // }, [])
+  
+  const boards = useSelector((storeState) => storeState.boardModule.boards)
+  console.log('boards', boards);
+
+  useEffect(() => {
+    onLoadBoards()
+  }, [])
+
+
+  async function onLoadBoards() {
+    try {
+      await loadBoards()
+      console.log('loaded boards');
+      showSuccessMsg('Boards loaded')
+    } catch (err) {
+      showErrorMsg('Cannot load boards')
+    }
+  }
+
+
+  // async function loadBoard(){
+  //  try{
+  //   boards = 
+  //  } 
+  // }
 
   // async function onRemoveGroup(groupId) {
   //   try {
