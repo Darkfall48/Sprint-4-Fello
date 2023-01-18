@@ -13,6 +13,7 @@ export function GroupPreview({ group }) {
   // console.log('group.id', group.id)
   function onAddList(ev){
     // ev.stopPropogation()
+    console.log('editMode', editMode)
     toggleEditMode()
   }
 

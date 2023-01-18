@@ -33,7 +33,7 @@ export function BoardIndex() {
       showErrorMsg('Cannot load boards')
     }
   }
-
+  if (!board) return <p>loading...</p>
   return (
     <section className="group-index-section">
         <BoardDetails/>
