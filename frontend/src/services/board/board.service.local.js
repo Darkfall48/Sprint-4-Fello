@@ -79,10 +79,10 @@ function save(board) {
 
 function getEmptyBoard() {
   return {
-    "_id": utilService.makeId(),
-    "title": '',
-    "createdAt": Date.now(),
-    "groups": [],
+    _id: utilService.makeId(),
+    title: '',
+    createdAt: Date.now(),
+    groups: [],
   }
 }
 
@@ -118,56 +118,54 @@ function _createBoards() {
 }
 
 function _createBoard(title) {
-  return [
-    {
-      _id: 'b' + utilService.getRandomIntInclusive(100, 900),
-      title,
-      isStarred: utilService.getRandomIntInclusive(1, 4) >= 2 ? true : false,
-      archivedAt: Date.now(),
-      createdBy: {
-        _id: 'u101',
-        fullname: 'Abi Abambi',
-        imgUrl: 'http://some-img',
-      },
-      labels: [
-        {
-          id: 'l101',
-          title: 'Done',
-          color: '#61bd4f',
-        },
-        {
-          id: 'l102',
-          title: 'Progress',
-          color: '#61bd33',
-        },
-      ],
-      members: [
-        {
-          _id: 'u101',
-          fullname: 'Tal Tarablus',
-          imgUrl: 'https://www.google.com',
-        },
-      ],
-      groups: _createGroups(),
-      activities: [
-        {
-          id: 'a101',
-          txt: 'Changed Color',
-          createdAt: 154514,
-          byMember: {
-            _id: 'u101',
-            fullname: 'Abi Abambi',
-            imgUrl: 'http://some-img',
-          },
-          task: {
-            id: 'c101',
-            title: 'Replace Logo',
-          },
-        },
-      ],
-      cmpsOrder: ['status-picker', 'member-picker', 'date-picker'],
+  return {
+    _id: 'b' + utilService.getRandomIntInclusive(100, 900),
+    title,
+    isStarred: utilService.getRandomIntInclusive(1, 4) >= 2 ? true : false,
+    archivedAt: Date.now(),
+    createdBy: {
+      _id: 'u101',
+      fullname: 'Abi Abambi',
+      imgUrl: 'http://some-img',
     },
-  ]
+    labels: [
+      {
+        id: 'l101',
+        title: 'Done',
+        color: '#61bd4f',
+      },
+      {
+        id: 'l102',
+        title: 'Progress',
+        color: '#61bd33',
+      },
+    ],
+    members: [
+      {
+        _id: 'u101',
+        fullname: 'Tal Tarablus',
+        imgUrl: 'https://www.google.com',
+      },
+    ],
+    groups: _createGroups(),
+    activities: [
+      {
+        id: 'a101',
+        txt: 'Changed Color',
+        createdAt: 154514,
+        byMember: {
+          _id: 'u101',
+          fullname: 'Abi Abambi',
+          imgUrl: 'http://some-img',
+        },
+        task: {
+          id: 'c101',
+          title: 'Replace Logo',
+        },
+      },
+    ],
+    cmpsOrder: ['status-picker', 'member-picker', 'date-picker'],
+  }
 }
 
 function _createGroups() {
@@ -180,15 +178,13 @@ function _createGroups() {
 }
 
 function _createGroup(title) {
-  return [
-    {
-      id: 'g' + utilService.getRandomIntInclusive(100, 900),
-      title,
-      archivedAt: 1589983468418,
-      tasks: _createTasks(),
-      style: {},
-    },
-  ]
+  return {
+    id: 'g' + utilService.getRandomIntInclusive(100, 900),
+    title,
+    archivedAt: 1589983468418,
+    tasks: _createTasks(),
+    style: {},
+  }
 }
 
 function _createTasks() {
@@ -201,12 +197,10 @@ function _createTasks() {
 }
 
 function _createTask(title) {
-  return [
-    {
-      id: 'c' + utilService.getRandomIntInclusive(100, 900),
-      title,
-    },
-  ]
+  return {
+    id: 'c' + utilService.getRandomIntInclusive(100, 900),
+    title,
+  }
 }
 
 function getDemoGroups() {
