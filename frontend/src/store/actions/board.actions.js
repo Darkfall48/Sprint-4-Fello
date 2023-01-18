@@ -11,6 +11,7 @@ import {
   ADD_BOARD,
   REMOVE_BOARD,
   SET_BOARDS,
+  SET_BOARD,
   UNDO_REMOVE_BOARD,
   UPDATE_BOARD,
 } from '../reducers/board.reducer.js'
@@ -50,6 +51,19 @@ export async function loadBoards() {
   }
 }
 
+export async function loadBoard(boardId) {
+  try {
+    const board = await boardService.get(boardId)
+    console.log('Board from DB:', board)
+    store.dispatch({
+      type: SET_BOARD,
+      board,
+    })
+  } catch (err) {
+    console.log('Cannot load board', err)
+    throw err
+  }
+}
 
 export async function removeBoard(boardId) {
   try {
@@ -85,19 +99,20 @@ export function updateBoard(board) {
       console.log('Cannot save board', err)
       throw err
     })
-}
-
-
-export async function checkout(total) {
-  try {
-    const score = await userService.changeScore(-total)
-    store.dispatch({ type: SET_SCORE, score })
-    return score
-  } catch (err) {
-    console.log('BoardActions: err in checkout', err)
-    throw err
   }
-}
+  
+
+
+// export async function checkout(total) {
+//   try {
+//     const score = await userService.changeScore(-total)
+//     store.dispatch({ type: SET_SCORE, score })
+//     return score
+//   } catch (err) {
+//     console.log('BoardActions: err in checkout', err)
+//     throw err
+//   }
+// }
 
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
@@ -127,17 +142,3 @@ export function onRemoveBoardOptimistic(boardId) {
 
 
 
-
-// export async function loadBoard(boardId) {
-//   try {
-//     const board = await boardService.get(boardId)
-//     console.log('Boards from DB:', boards)
-//     store.dispatch({
-//       type: SET_BOARD,
-//       board,
-//     })
-//   } catch (err) {
-//     console.log('Cannot load boards', err)
-//     throw err
-//   }
-// }

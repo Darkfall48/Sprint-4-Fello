@@ -1,7 +1,7 @@
 //? Global Variables
 // Board
 export const SET_BOARDS = 'SET_BOARDS'
-// export const SET_BOARD = 'SET_BOARD'
+export const SET_BOARD = 'SET_BOARD'
 export const ADD_BOARD = 'ADD_BOARD'
 export const UPDATE_BOARD = 'UPDATE_BOARD'
 export const REMOVE_BOARD = 'REMOVE_BOARD'
@@ -10,15 +10,23 @@ export const UNDO_REMOVE_BOARD = 'UNDO_REMOVE_BOARD'
 
 const initialState = {
   boards: [],
+  currBoard:[],
   lastRemovedBoard: null,
 }
 
 export function boardReducer(state = initialState, action) {
   var newState = state
   var boards
+  let currBoard
   switch (action.type) {
     case SET_BOARDS:
       newState = { ...state, boards: action.boards }
+      break
+    case SET_BOARD:
+      newState = {
+        ...state,
+        board: state.boards.filter((board) => board._id === action.boardId)
+      }
       break
     case REMOVE_BOARD:
       const lastRemovedBoard = state.boards.find(
@@ -55,9 +63,3 @@ export function boardReducer(state = initialState, action) {
 }
 
 
-// case SET_BOARD:
-//   newState = {
-//     ...state,
-//     board:  state.boards.filter((board) => board._id === action.boardId)
-//   }
-//   break

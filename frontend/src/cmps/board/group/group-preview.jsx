@@ -5,13 +5,11 @@ import { BsPlus } from 'react-icons/bs'
 import { TbTemplate } from 'react-icons/tb'
 import { CgClose } from 'react-icons/cg'
 
-export function GroupPreview({ group }) {
+export function GroupPreview({ group, onAddGroup }) {
   const [editMode, setEditMode] = useState(false)
   const [groupToAdd, setGroupToAdd] = useState({ title: '' })
 
-  useEffect(() => {
 
-  }, [])
   // console.log('group.id', group.id)
   function onNewGroupSelect(ev) {
     setEditMode(true)
@@ -33,16 +31,10 @@ export function GroupPreview({ group }) {
     setGroupToAdd((prevGroup) => ({ ...prevGroup, [field]: value }))
   }
 
-  async function onAddGroup(ev) {
-    ev.preventDefault()
-    // try {
-    //  const groupAdded=  await saveToy(groupToAdd)
-    //   showSuccessMsg('Toy saved!')
-    //   navigate('/toy')
-    // } catch (err) {
-    //   console.log('err', err)
-    //   showErrorMsg('Cannot save toy')
-    // }
+  function addGroup(groupToAddTitle) {
+    // ev.preventDefault()
+    console.log('groupToAddTitle', groupToAddTitle)
+    onAddGroup(groupToAddTitle)
   }
 
   return (
@@ -72,11 +64,11 @@ export function GroupPreview({ group }) {
           )}
           {editMode && (
             <div className='add-group-container'>
-              <form action="submit" onSubmit={onAddGroup}>
+              {/* <form action="submit" onSubmit={() => onAddGroup(groupToAdd.title)}> */}
                 <input type="text" name="title" id="title" className='new-group-input' placeholder='Enter list title...' value={groupToAdd.title} onChange={handleChange} />
-                <button className='new-group-add-btn'>Add list</button>
+                <button className='new-group-add-btn' onClick={() => addGroup(groupToAdd.title)}>Add list</button>
                 <button className="close-add-group" onClick={exitEditMode}><CgClose /></button>
-              </form>
+              {/* </form> */}
             </div>
           )}
         </div>

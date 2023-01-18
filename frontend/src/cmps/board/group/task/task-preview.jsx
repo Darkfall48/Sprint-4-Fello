@@ -6,7 +6,7 @@ import { VscEdit } from 'react-icons/vsc'
 import { utilService } from '../../../../services/util.service'
 
 export function TaskPreview({ task }) {
-  console.log('Task:', task)
+  // console.log('Task:', task)
   //? Private Components
   function SetBackground() {
     const { style } = task
