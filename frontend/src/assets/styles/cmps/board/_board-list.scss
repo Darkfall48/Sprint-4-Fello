@@ -1,11 +1,28 @@
 .board-list {
 
+    & .board-list-btn {
+        background-color: $default-board-bg-clr;
+        color: $clr2;
+        padding: 20px;
+        border-radius: 3px;
+        font-size: 0.8547em;
+        height: 96px;
+        width: 194px;
+        margin: 0;
+        font-weight: 400;
+
+        &:hover {
+            background-color: rgba(0, 121, 191, 0.808)
+        }
+    }
+
     & ul {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
         list-style: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 17px;
+        padding: 0 0 11px;
 
     }
 

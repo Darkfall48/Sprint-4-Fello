@@ -1,6 +1,52 @@
-.board-preview{
-    background-color: $default-board-bg-clr;
-    color:$clr-white ;
-    padding: 20px;
+a {
 
+    list-style: none;
+    text-decoration: none;
+    line-height: 1;
+
+    &:hover{
+        text-decoration: none;
+    }
+
+    & .board-preview {
+        background-color: $default-board-bg-clr;
+        color: $clr-white ;
+        padding: 10px;
+
+
+        border-radius: 3px;
+        color: #fff;
+        font-size: .8547em;
+        height: 96px;
+        width: 194px;
+
+
+        h4 {
+            text-align: left;
+            word-wrap: break-word;
+            font-size: rem(16px);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        &:hover {
+            background-color: rgba(0, 121, 191, 0.808)
+        }
+
+        & .board-hover {
+            background-color: rgba(0, 0, 0, .27);
+            border-radius: 3px;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        & .board-preview-details {
+            position: relative;
+        }
+
+
+    }
 }

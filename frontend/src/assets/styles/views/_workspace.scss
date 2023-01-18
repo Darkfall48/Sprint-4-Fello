@@ -1,0 +1,10 @@
+.board-index{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: auto;
+    //change max-width
+    max-width: 1038px;
+    min-height: calc(100vh - 44px);
+    padding: 47px 0 40px;
+}

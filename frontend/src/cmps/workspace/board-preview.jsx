@@ -3,17 +3,21 @@ import { Link } from 'react-router-dom'
 
 export function BoardPreview({ board, onEditBoard, onRemoveBoard }) {
 
-  return <section className="board-preview skeleton">
-    <Link to={`/board/${board._id}`}>
-      <h4>{board.title}</h4>
+  return <Link to={`/board/${board._id}`}>
+    <section className="board-preview skeleton">
 
-      <div className="hidden-btns">
-        {/* {<button onClick={() => { onRemoveBoard(board._id) }}>x</button>} */}
-        {/* {<Link to={`/board/${board._id}`}>edit</Link>} */}
-        {/* <button onClick={() => { onEditBoard(board) }}>Change price</button> */}
-        {/* <Link to={`/board/${board._id}`}>Details</Link> */}
+      <div className="board-preview-details">
+        <h4>{board.title}</h4>
+
+        <div className="hidden-btns">
+          {/* {<button onClick={() => { onRemoveBoard(board._id) }}>x</button>} */}
+          {/* {<Link to={`/board/${board._id}`}>edit</Link>} */}
+          {/* <button onClick={() => { onEditBoard(board) }}>Change price</button> */}
+          {/* <Link to={`/board/${board._id}`}>Details</Link> */}
+        </div>
       </div>
-    </Link>
-  </section>
+
+    </section>
+  </Link>
 
 }

@@ -7,10 +7,10 @@ import { boardService } from "../../services/board/board.service.local"
 import { addBoard } from "../../store/actions/board.actions"
 
 
-export function BoardAdd() {
+export function BoardAdd({onCloseModal}) {
 
     const [boardToAdd, setBoardToAdd] = useState(boardService.getEmptyBoard())
-    console.log('boardToAdd', boardToAdd);
+
     const navigate = useNavigate()
 
     function handleChange({ target }) {
@@ -24,7 +24,7 @@ export function BoardAdd() {
             await addBoard(boardToAdd)
             console.log('board saved', boardToAdd);
             showSuccessMsg('Board saved!')
-            navigate('/board/:id')
+            // navigate(`/board/${boardToAdd._id}`)
         } catch (err) {
             console.log('err', err)
             showErrorMsg('Cannot save board')
@@ -34,10 +34,10 @@ export function BoardAdd() {
 
     return <section className="board-add">
 
-        <div onClick={() => navigate('/board')} className="black-screen"></div>
+        <div onClick={() => navigate('/')} className="black-screen"></div>
 
         <section className="todo-add">
-            <div className="modal">
+            <div onClick={onCloseModal} className="modal">
                 <div className="modal-content">
                     <div className="form-container">
 
@@ -57,12 +57,11 @@ export function BoardAdd() {
                             />
 
                             <div className="add-save-btns">
-                                <button className="btn"> Create </button>
+                                <button className=""> Create </button>
                             </div>
 
                         </form>
 
-                        {/* <button className="modal-button-close" onClick={onCloseModal}>Close</button> */}
                     </div>
                 </div>
             </div>
