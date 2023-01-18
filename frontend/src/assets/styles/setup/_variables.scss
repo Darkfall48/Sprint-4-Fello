@@ -1,4 +1,4 @@
-// Colors
+//* Colors
 $clr1: #026aa7;
 $clr2: #172b4d;
 $clr3: #0366a1;
@@ -7,12 +7,12 @@ $group-bg-clr: #ebecf0;
 $default-board-bg-clr: #0079bf;
 
 //labels
-$label-clr-green: #7BC86C;
-$label-clr-yellow: #F5DD29;
-$label-clr-orange: #FFAF3F;
-$label-clr-red: #EF7564;
-$label-clr-purple: #CD8DE5;
-$label-clr-blue: #5BA4CF;
+$label-clr-green: #7bc86c;
+$label-clr-yellow: #f5dd29;
+$label-clr-orange: #ffaf3f;
+$label-clr-red: #ef7564;
+$label-clr-purple: #cd8de5;
+$label-clr-blue: #5ba4cf;
 //light
 $label-clr-green-light: #d6ecd2;
 $label-clr-yellow-light: #faf3c0;
@@ -42,7 +42,11 @@ $border-radius: 3px;
 //background
 $main-bg-color: #fafbfc;
 
-// LAYOUT
+// Task
+$clr-task-preview-section-border-radius: $border-radius;
+$clr-task-preview-border-radius: 3px 3px 0px 0px;
+
+//* LAYOUT
 $layoutPadding: 20px;
 
 // LAYOUT BREAKPOINTS
