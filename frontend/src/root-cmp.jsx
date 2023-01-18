@@ -4,6 +4,8 @@ import { Routes, Route } from 'react-router'
 //? Components
 import { AppHeader } from './cmps/app/app-header'
 import { UserDetails } from './pages/user/user-details'
+import { BoardIndex } from './pages/board/board-index'
+
 //? Routes
 import routes from './routes'
 
@@ -22,6 +24,8 @@ export function RootCmp() {
             />
           ))}
           <Route path="user/:id" element={<UserDetails />} />
+          <Route path="board/:boardId" element={<BoardIndex />} />
+          
         </Routes>
       </main>
     </div>
