@@ -3,8 +3,6 @@ import { Link } from "react-router-dom"
 
 export function BoardPreview({ board, onEditBoard, onRemoveBoard }) {
 
-  console.log('board', board);
-
   return <section className="board-preview skeleton">
     <Link to={`/board/${board._id}`}>
     <h4>{board.title}</h4>
