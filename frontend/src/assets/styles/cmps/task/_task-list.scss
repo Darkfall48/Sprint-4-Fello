@@ -1,10 +1,5 @@
 .task-list-section {
-  border-radius: $border-radius;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  .task-preview-article {
-    background-color: #fff;
-    padding: 6px 8px 2px;
-  }
 }
