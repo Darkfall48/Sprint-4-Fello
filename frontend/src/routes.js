@@ -7,15 +7,15 @@ import { AboutUs } from './pages/about-us'
 
 // Routes accessible from the main navigation (in AppHeader)
 const routes = [
-  {
-    path: '/',
-    component: <Home />,
-    label: 'Home',
-  },
+
   {
     path: '/board',
     component: <Workspace />,
-    label: 'Workspace',
+    label: 'Workspaces',
+  },{
+    path: '/',
+    component: <Home />,
+    label: 'Home',
   }, {
     path: '/user/',
     component: <UserDetails />,

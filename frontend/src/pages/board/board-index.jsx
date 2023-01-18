@@ -1,5 +1,7 @@
 //? Libraries
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+
 import { useSelector } from 'react-redux'
 //? Services
 import { showSuccessMsg, showErrorMsg } from '../../services/connection/event-bus.service'
@@ -12,13 +14,30 @@ import {GroupList} from '../../cmps/board/group/group-list.jsx'
 import {BoardDetails} from '../../cmps/board/board-details.jsx'
 
 export function BoardIndex() {
+  const [board, setBoard] = useState(null)
+  const params = useParams()
+  console.log('params', params)
+  // const boards = useSelector((storeState) => storeState.boardModule.boards)
+  // console.log('boards', boards);
+
+  useEffect(() => {
+    loadBoard()
+  }, [])
+
+  async function loadBoard() {
+    try {
+      const board = await boardService.get(params.boardId)
+      setBoard(board)
+      showSuccessMsg('Groups loaded')
+    } catch (err) {
+      showErrorMsg('Cannot load boards')
+    }
+  }
 
   return (
     <section className="group-index-section">
-      <main>
         <BoardDetails/>
-        <GroupList />
-      </main>
+        <GroupList board={board}/>
     </section>
   )
 }

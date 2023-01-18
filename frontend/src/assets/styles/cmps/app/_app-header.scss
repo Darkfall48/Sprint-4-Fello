@@ -1,14 +1,16 @@
 .app-header-section {
-    padding: 10px;
+    padding: 6px 4px;
     background-color: $clr3;
     color: $clr-white;
     display: flex;
+    
     .logo {
         background-image: url("https://a.trellocdn.com/prgb/dist/images/header-logo-spirit-loading.87e1af770a49ce8e84e3.gif");
         background-size: cover;
         background-repeat: no-repeat;
         width:75px;
         height: 15px;
+        margin: 10px;
     }
 
     .user-info {
@@ -32,7 +34,7 @@
 
 
     nav {
-        font-size: .8em;
+        font-size: .875em;
         padding: 5px;
         a{
             text-decoration: none;

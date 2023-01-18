@@ -2,7 +2,6 @@
 
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 
 //? Services
 import {
@@ -14,13 +13,10 @@ import { loadBoards } from '../../../store/actions/board.actions'
 //? Cmps
 import { GroupPreview } from './group-preview.jsx'
 
-export function GroupList() {
-  const params = useParams()
-
+export function GroupList({board}) {
   const [groups, setGroups] = useState(boardService.getDemoGroups())
 
   // const boards = useSelector((storeState) => storeState.boardModule.boards)
-  // console.log('boards', boards);
 
   useEffect(() => {
     loadGroups()
@@ -28,8 +24,15 @@ export function GroupList() {
 
   async function loadGroups() {
     try {
-      const board = await boardService.get(params.boardId)
+      // const board = await boardService.get(params.boardId)
       setGroups(board.groups)
+      // .push({
+      //   id:9999,
+      //   title: '',
+      //   tasks: [],
+      // }))
+      
+      // setGroups(board.groups.push(boardService.getEmptyGroup()))
       showSuccessMsg('Groups loaded')
     } catch (err) {
       showErrorMsg('Cannot load boards')
@@ -76,21 +79,29 @@ export function GroupList() {
   // function onAddGroupMsg(group) {
   //   console.log(`TODO Adding msg to group`)
   // }
+  if (!groups) return <p>loading...</p>
   return (
     <section className="group-list-section">
-      <ul className="group-list">
         {groups.map((group) => (
-          <li key={group.id} className="group-preview">
+          <article key={group.id} className="group-preview">
             <div className="group-preview-wrapper">
               <GroupPreview group={group} />
               {/* <button onClick={() => { onRemoveGroup(group._id)}}> x </button> */}
               {/* <button onClick={() => { onUpdateGroup(group) }}> Edit </button> */}
             </div>
             {/* <button onClick={() => { onAddGroupMsg(group) }} > Add group msg </button> */}
-          </li>
+          </article>
         ))}
-      </ul>
+      <GroupPreview group={null} />
       {/* <button onClick={onAddGroup}>+ Add another list</button> */}
     </section>
   )
+}
+
+function getEmptyGroup() {
+  return {
+    id:9999,
+    title: '',
+    tasks: [],
+  }
 }
