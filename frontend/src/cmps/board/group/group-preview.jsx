@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { TaskList } from './task/task-list'
 import { BsPlus } from 'react-icons/bs'
 import { TbTemplate } from 'react-icons/tb'
+import { CgClose } from 'react-icons/cg'
 
 export function GroupPreview({ group }) {
   const [editMode, setEditMode] = useState(false)
@@ -52,9 +53,9 @@ export function GroupPreview({ group }) {
           )}
           {editMode && (
             <div className='add-group-container'>
-            <input type="new-group-name" placeholder='new list'/>
+            <input type="new-group-name" className='new-group-input' placeholder='new list'/>
             <button className='new-group-add-btn' onClick="submit-new-group">Add list</button>
-            <button className="close-add-group" onClick={exitEditMode}>X</button>
+            <button className="close-add-group" onClick={exitEditMode}><CgClose/></button>
           </div>
             )}
         </div>

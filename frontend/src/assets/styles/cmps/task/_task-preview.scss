@@ -1,40 +1,73 @@
 .task-preview-section {
-  border-radius: 8px;
+  border-radius: $clr-task-preview-section-border-radius;
+  box-shadow: var(--ds-shadow-raised, 0 1px 0 #091e4240);
   background-color: #fff;
   padding: 0;
+  align-items: center;
   display: grid;
   grid-template-areas:
     'background background'
     'label      label'
-    'title      edit'
+    'title      title'
     'info       member';
   .task-preview {
     &-background {
-      border-radius: $border-radius;
-      border-radius: 8px 8px 0px 0px;
+      border-radius: $clr-task-preview-border-radius;
       //   background-color: red;
-
-      color: whitesmoke;
       height: 32px;
       grid-area: background;
+      margin-bottom: 6px;
     }
-    &-label {
+    &-labels {
+      display: flex;
+      gap: 4px;
       grid-area: label;
+      padding-left: 8px;
+      padding-right: 8px;
+      margin-bottom: 4px;
+      .task-preview-label {
+        border-radius: 4px;
+        height: 8px;
+        width: 40px;
+      }
     }
     &-title {
       grid-area: title;
+      text-align: start;
+      padding-left: 8px;
+      padding-right: 8px;
+      margin-bottom: 4px;
     }
     &-edit {
+      position: absolute;
       grid-area: edit;
+      align-self: baseline;
       justify-self: end;
+      display: none;
+      transition: all ease-in-out 0.3s;
     }
     &-info {
       grid-area: info;
       justify-self: start;
+      padding-left: 8px;
+      margin-bottom: 4px;
     }
     &-member {
       grid-area: member;
       justify-self: end;
+      padding-right: 8px;
+      margin-bottom: 4px;
+      .task-preview-img {
+        height: 28px;
+        width: 28px;
+        border-radius: 50%;
+      }
+    }
+  }
+  &:hover {
+    background-color: rgb(236, 234, 234);
+    .task-preview-edit {
+      display: block;
     }
   }
 }

@@ -2,12 +2,13 @@
     height: 100%;
     margin: 0 4px;
     width: 272px;
+    padding-top:5px;
 
     .plus {
         font-size: 2em;
         margin-right: 10px;
     }
-    
+
     .template-btn {
         font-size: 1.3em;
         color: $clr-txt-btn;
@@ -25,14 +26,18 @@
         padding: 6px 8px 2px;
         box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
 
-        
-        .group-title {}
-        
+
+        .group-title {
+            font-size: 1em;
+            font-weight: 600;
+            line-height: 20px;
+        }
+
         .group-bottom-control-btns {
             display: flex;
             min-height: 38px;
             justify-content: space-between;
-            
+
             .add-task-btn {
                 display: flex;
                 align-items: center;
@@ -42,7 +47,7 @@
                 width: 85%;
                 border-radius: $border-radius;
                 text-align: left;
-                
+
                 &:hover {
                     background-color: #091e4214;
                 }
@@ -51,26 +56,40 @@
     }
 }
 
-.add-group-container{
+
+.add-group-container {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-rows: repeat(2,1fr);
-    // grid-template-areas:
-    // "a1 a1"
-    // "a2 a3" ;
-    .new-group-name{
-        // grid-area: 'a1';
-        grid-column: span(-1);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    background-color: $group-bg-clr;
+    border-radius: $border-radius;
+    padding: 6px 8px 2px;
+    box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
+    font-size: 1em;
+    margin-top: 0;
+
+    .new-group-input {
+        font-size: 1em;
+        grid-column: 1/-1;
+        padding: 8px 12px;
+        width: 264px;
     }
-    .new-group-add-btn{
+
+    .new-group-add-btn {
         grid-column: 1;
         grid-row: 2;
-        
-        // grid-area: 'a2';
+        background-color: $clr4;
+        border-radius: $border-radius;
+        font-family: inherit;
+        font-size: 1em;
     }
-    .close-add-group{
+
+    .close-add-group {
         grid-column: 2;
         grid-row: 2;
-        // grid-area: 'a3';
+        background-color: transparent;
+        color: $clr-txt-btn;
+        font-size: 1.4em;
+        text-align: left;
     }
 }

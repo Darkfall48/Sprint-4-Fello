@@ -14,7 +14,6 @@ export const boardService = {
   getDefaultSort,
   getDefaultPage,
   getFromSearchParams,
-  getLabels,
 }
 
 async function query({
@@ -108,17 +107,4 @@ function getFromSearchParams(searchParams) {
     page[field] = searchParams.get(field) || ''
   }
   return { filter, sort, page }
-}
-
-function getLabels() {
-  return [
-    'On wheels',
-    'Box game',
-    'Art',
-    'Baby',
-    'Doll',
-    'Puzzle',
-    'Outdoor',
-    'Battery Powered',
-  ]
 }
