@@ -12,9 +12,9 @@ export function AppHeader() {
 
   return (
     <header className="app-header-section full">
-      <div className='logo'>
+      <Link to="/board" className='logo'>
         {/* <FaTrello/> */}
-        </div>
+        </Link>
       <nav>
         {routes.map((route) => (
           <NavLink key={route.path} to={route.path}>
