@@ -1,0 +1,12 @@
+.group-preview-section{
+    background-color: $group-bg-clr;
+    color: $clr-txt;
+    display: flex;
+    flex-direction: column;
+    border-radius: $border-radius;
+    padding: 6px 8px 2px;
+    box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
+
+    .group-title{
+    }
+}

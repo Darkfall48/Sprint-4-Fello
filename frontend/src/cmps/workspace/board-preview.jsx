@@ -11,7 +11,7 @@ export function BoardPreview({ board, onEditBoard, onRemoveBoard }) {
 
     <div className="hidden-btns">
       {<button onClick={() => { onRemoveBoard(board._id) }}>x</button>}
-      {<Link to={`/board/edit/${board._id}`}>edit</Link>}
+      {<Link to={`/board/${board._id}`}>edit</Link>}
       {/* <button onClick={() => { onEditBoard(board) }}>Change price</button> */}
       {/* <Link to={`/board/${board._id}`}>Details</Link> */}
     </div>

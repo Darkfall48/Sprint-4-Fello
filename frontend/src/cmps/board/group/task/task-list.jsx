@@ -2,7 +2,10 @@
 import { useState } from 'react'
 import { TaskPreview } from './task-preview'
 
-export function TaskList() {
+export function TaskList({groupId, tasks}) {
+
+  console.log('tasks', tasks)
+  console.log('groupId', groupId)
   const [tsks, setTasks] = useState([
     {
       id: 'c103',
