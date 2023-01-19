@@ -21,8 +21,9 @@ export function BoardHeader() {
             updateBoard(board)
             contentRef.current.contentEditable = false
         }
+        contentRef.current.contentEditable = true
     }
-    contentRef.current.contentEditable = true
+
 
 
 
