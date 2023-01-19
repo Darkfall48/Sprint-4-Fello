@@ -11,12 +11,15 @@
     }
 
     .logo {
-        background-image: url("https://a.trellocdn.com/prgb/dist/images/header-logo-spirit-loading.87e1af770a49ce8e84e3.gif");
+        background-image: url("https://a.trellocdn.com/prgb/dist/images/header-logo-spirit.d947df93bc055849898e.gif");
         background-size: cover;
         background-repeat: no-repeat;
         width: 75px;
         height: 15px;
         margin: 12px 30px 10px 10px;
+        &:hover{
+            background-image: url("https://a.trellocdn.com/prgb/dist/images/header-logo-spirit-loading.87e1af770a49ce8e84e3.gif");
+        }
     }
 
     .user-info {

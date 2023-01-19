@@ -16,6 +16,7 @@ export const boardService = {
   getDefaultSort,
   // getRandomBoard,
   getDemoGroups,
+  getEmptyGroup
 }
 
 function query() {
@@ -87,6 +88,14 @@ function getEmptyBoard() {
       backgroundImg: '',
     },
     groups: [],
+  }
+}
+
+function getEmptyGroup(groupTitle) {
+  return {
+    id: utilService.makeId(),
+    title: groupTitle,
+    tasks: [],
   }
 }
 

@@ -1,22 +1,39 @@
-//TODO load all groups
-
+//? Libraries
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-
+import { CgClose } from 'react-icons/cg'
+import { BsPlus } from 'react-icons/bs'
 //? Services
-import {
-  showSuccessMsg,
-  showErrorMsg,
-} from '../../../services/connection/event-bus.service'
+import { showSuccessMsg, showErrorMsg, } from '../../../services/connection/event-bus.service'
 import { boardService } from '../../../services/board/board.service.local'
-import { loadBoards } from '../../../store/actions/board.actions'
+import { loadBoards, updateBoard } from '../../../store/actions/board.actions'
 //? Cmps
 import { GroupPreview } from './group-preview.jsx'
 
 export function GroupList({ board }) {
-  const [groups, setGroups] = useState(null)
+  // const [board, setBoard] = useState(board)
+  const [updatedGroups, setUpdatedGroups] = useState(null)
+  const [editMode, setEditMode] = useState(false)
+  const [groupToAdd, setGroupToAdd] = useState({ title: '' })
 
-  // const boards = useSelector((storeState) => storeState.boardModule.boards)
+  function onNewGroupSelect(ev) {
+    setEditMode(true)
+    console.log('editMode', editMode)
+  }
+
+  function exitEditMode(ev) {
+    ev.stopPropogation()
+    setEditMode(false)
+    console.log('editMode', editMode)
+
+  }
+
+  function handleChange({ target }) {
+    let { value, type, name: field, } = target
+    console.log(value);
+    value = type === 'number' ? +value : value
+    setGroupToAdd((prevGroup) => ({ ...prevGroup, [field]: value }))
+  }
 
   useEffect(() => {
     loadGroups()
@@ -25,7 +42,7 @@ export function GroupList({ board }) {
   async function loadGroups() {
     try {
       // const board = await boardService.get(params.boardId)
-      setGroups(board.groups)
+      setUpdatedGroups(board.groups)
       // .push({
       //   id:9999,
       //   title: '',
@@ -79,41 +96,53 @@ export function GroupList({ board }) {
   // function onAddGroupMsg(group) {
   //   console.log(`TODO Adding msg to group`)
   // }
-  function onAddGroup(groupToAddTitle) {
-    console.log('groupToAdd', groupToAddTitle)
-    // try {
-    console.log('board', board)
-    //   showSuccessMsg('Toy saved!')
-    //   navigate('/toy')
-    // } catch (err) {
-    //   console.log('err', err)
-    //   showErrorMsg('Cannot save toy')
-    // }
+  async function onAddGroup(groupToAddTitle) {
+    console.log('groupToAddTitle', groupToAddTitle)
+    try {
+      const newGroup = boardService.getEmptyGroup(groupToAddTitle)
+      setUpdatedGroups(updatedGroups.push(newGroup))
+      console.log('updatedGroups', updatedGroups)
+      const updatedBoard = { ...board, groups: updatedGroups }
+      updateBoard(updatedBoard)
+      showSuccessMsg('Group saved!')
+    } catch (err) {
+      console.log('err', err)
+      showErrorMsg('Cannot save toy')
+    }
   }
 
-  if (!groups) return <p>loading...</p>
+
+  if (!updatedGroups) return <p>loading...</p>
   return (
     <section className="group-list-section">
-      {groups.map((group) => (
-        <article key={group.id} className="group-preview">
+      {updatedGroups.map((updatedGroup) => (
+        <article key={updatedGroup.id} className="group-preview">
           <div className="group-preview-wrapper">
-            <GroupPreview group={group} onAddGroup={onAddGroup} />
+            <GroupPreview updatedGroup={updatedGroup} />
             {/* <button onClick={() => { onRemoveGroup(group._id)}}> x </button> */}
             {/* <button onClick={() => { onUpdateGroup(group) }}> Edit </button> */}
           </div>
-          {/* <button onClick={() => { onAddGroupMsg(group) }} > Add group msg </button> */}
         </article>
       ))}
-      <GroupPreview group={null} />
-      {/* <button onClick={onAddGroup}>+ Add another list</button> */}
+      <div className='new-group-wrapper'>
+        {!editMode && (
+          <div className="add-new-group">
+            <button className='add-group-btn' onClick={onNewGroupSelect}><BsPlus className="plus" />
+              <span> Add another list </span></button>
+          </div>
+        )}
+        {editMode && (
+          <div className='add-group-container'>
+            {/* <form action="submit" onSubmit={() => onAddGroup(groupToAdd.title)}> */}
+            <input type="text" name="title" id="title" className='new-group-input' placeholder='Enter list title...' value={groupToAdd.title} onChange={handleChange} />
+            <button className='new-group-add-btn' onClick={() => onAddGroup(groupToAdd.title)}>Add list</button>
+            <button className="close-add-group" onClick={exitEditMode}><CgClose /></button>
+            {/* </form> */}
+          </div>
+        )}
+      </div>
+      {/* <GroupPreview group={null} /> */}
     </section>
   )
 }
 
-function getEmptyGroup() {
-  return {
-    id: 9999,
-    title: '',
-    tasks: [],
-  }
-}

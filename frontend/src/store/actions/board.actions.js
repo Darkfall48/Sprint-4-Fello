@@ -88,6 +88,7 @@ export async function addBoard(board) {
 }
 
 export function updateBoard(board) {
+  console.log('board', board)
   return boardService
     .save(board)
     .then((savedBoard) => {

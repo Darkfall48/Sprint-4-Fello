@@ -2,18 +2,29 @@
     height: 100%;
     margin: 0 4px;
     width: 272px;
-    padding-top:5px;
+    padding-top: 5px;
+
+    .group-header {
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            background-color: rgba(255, 255, 255, 0);
+            color: $clr-txt;
+        }
+    }
+
+    #template {
+        font-size: 1.3em;
+        color: $clr-txt-btn;
+        margin: 10px 7px 0 0;
+    }
 
     .plus {
         font-size: 2em;
         margin-right: 10px;
     }
 
-    .template-btn {
-        font-size: 1.3em;
-        color: $clr-txt-btn;
-        margin: 10px;
-    }
 
 
 
@@ -57,48 +68,48 @@
 }
 
 
-.add-group-container{
+.add-group-container {
     padding: 6px 8px 2px;
     box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
     font-size: 1em;
     margin-top: 0;
     border-radius: $border-radius;
     background-color: $group-bg-clr;
-    
-    
-        display: flex;
-        flex-direction: row;
-        align-content: flex-start;
-        flex-wrap: wrap;
+
+
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    width: 264px;
+
+    .new-group-input {
+        font-size: 1em;
+        padding: 8px 12px;
+        border-radius: $border-radius;
+        border: none;
+        box-shadow: inset 0 0 0 2px var(--ds-border-focused, #0079bf);
         width: 264px;
-        
-        .new-group-input {
-            font-size: 1em;
-            padding: 8px 12px;
-            border-radius: $border-radius;
-            border: none;
-            box-shadow: inset 0 0 0 2px var(--ds-border-focused,#0079bf);
-            width: 264px;
-            margin:0;
-        }
-    
-        .new-group-add-btn {
-            display: flex;
-            background-color: $clr4;
-            border-radius: $border-radius;
-            font-family: inherit;
-            font-size: 1em;
-            margin-left: 0;
-            width: fit-content;
-        }
-        
-        .close-add-group {
-            display: inline-block;
-            background-color: transparent;
-            color: $clr-txt-btn;
-            font-size: 1.4em;
-            text-align: left;
-            padding: 4px 12px;
-            width: fit-content;
-        }
-} 
+        margin: 0;
+    }
+
+    .new-group-add-btn {
+        display: flex;
+        background-color: $clr4;
+        border-radius: $border-radius;
+        font-family: inherit;
+        font-size: 1em;
+        margin-left: 0;
+        width: fit-content;
+    }
+
+    .close-add-group {
+        display: inline-block;
+        background-color: transparent;
+        color: $clr-txt-btn;
+        font-size: 1.4em;
+        text-align: left;
+        padding: 4px 12px;
+        width: fit-content;
+    }
+}
