@@ -13,16 +13,23 @@
             color: $clr-txt;
         }
     }
-
-    #template {
+    
+    .template-btn {
         font-size: 1.3em;
         color: $clr-txt-btn;
-        margin: 10px 7px 0 0;
+        background-color: rgba(255, 255, 255, 0);
+        margin: 5px 0 2px 0;
+        border-radius: $border-radius;
+        &:hover {
+            background-color: #091e4214;
+        }
     }
 
     .plus {
+        position: relative;
+        top:-1px;
         font-size: 2em;
-        margin-right: 10px;
+        margin:0;
     }
 
 
@@ -42,6 +49,8 @@
             font-size: 1em;
             font-weight: 600;
             line-height: 20px;
+            margin-left: 8px;
+            margin-top: 5px;
         }
 
         .group-bottom-control-btns {
@@ -58,6 +67,7 @@
                 width: 85%;
                 border-radius: $border-radius;
                 text-align: left;
+                margin-left: 0;
 
                 &:hover {
                     background-color: #091e4214;
@@ -72,16 +82,15 @@
     padding: 6px 8px 2px;
     box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
     font-size: 1em;
-    margin-top: 0;
+    margin-top: 4px;
     border-radius: $border-radius;
     background-color: $group-bg-clr;
-
-
     display: flex;
     flex-direction: row;
     align-content: flex-start;
     flex-wrap: wrap;
     width: 264px;
+    height: fit-content;
 
     .new-group-input {
         font-size: 1em;

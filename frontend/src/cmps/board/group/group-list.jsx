@@ -7,20 +7,18 @@ import { BsPlus } from 'react-icons/bs'
 //? Services
 import { showSuccessMsg, showErrorMsg, } from '../../../services/connection/event-bus.service'
 import { boardService } from '../../../services/board/board.service.local'
-import { updateBoard } from '../../../store/actions/board.actions'
+import { loadBoard, updateBoard } from '../../../store/actions/board.actions'
+import { store } from '../../../store/store'
+
 //? Cmps
 import { GroupPreview } from './group-preview.jsx'
 import { Loader } from '../../helpers/loader'
 
-export function GroupList({board}) {
+export function GroupList({ board, onLoadBoard }) {
 
-  // const board = useSelector((storeState) => storeState.boardModule.board)
-  
   const [updatedGroups, setUpdatedGroups] = useState(null)
   const [editMode, setEditMode] = useState(false)
-  const [groupToAdd, setGroupToAdd] = useState({ title: '' })
-
-  console.log('board', board)
+  const [newGroupTitle, setNewGroupTitle] = useState('')
 
   function onNewGroupSelect(ev) {
     setEditMode(true)
@@ -34,28 +32,42 @@ export function GroupList({board}) {
   }
 
   function handleChange({ target }) {
-    let { value, type, name: field, } = target
-    console.log(value);
-    value = type === 'number' ? +value : value
-    setGroupToAdd((prevGroup) => ({ ...prevGroup, [field]: value }))
+    let { value } = target
+    setNewGroupTitle(value)
   }
 
-
-  async function onAddGroup(groupToAddTitle) {
-    console.log('groupToAddTitle', groupToAddTitle)
+  async function onAddGroup(newGroupTitle) {
+    const newGroup = boardService.getEmptyGroup(newGroupTitle)
+    const groups = board.groups.concat(newGroup)
+    const updatedBoard = { ...board, groups }
     try {
-      const newGroup = boardService.getEmptyGroup(groupToAddTitle)
-      setUpdatedGroups(updatedGroups.push(newGroup))
-      console.log('updatedGroups', updatedGroups)
-      const updatedBoard = { ...board, groups: updatedGroups }
-      updateBoard(updatedBoard)
+      await updateBoard(updatedBoard)
+      loadBoard()
+      setNewGroupTitle('')
       showSuccessMsg('Group saved!')
     } catch (err) {
       console.log('err', err)
-      showErrorMsg('Cannot save toy')
+      showErrorMsg('Cannot save group')
     }
   }
 
+  async function onRemoveGroup(groupId) {
+    const updatedGroups = board.groups.filter((group) => group.id !== groupId)
+    const updatedBoard = { ...board, groups: updatedGroups }
+    console.log('newBoard', updatedBoard)
+    try {
+      await updateBoard(updatedBoard)
+      loadBoard()
+      showSuccessMsg('Group removed')
+    } catch (err) {
+      showErrorMsg('Cannot remove group')
+    }
+  }
+
+  function loadBoard() {
+    onLoadBoard()
+    store.dispatch({ type: 'CLEAN_STORE' })
+  }
 
 
   if (!board.groups) return <Loader />
@@ -64,8 +76,7 @@ export function GroupList({board}) {
     {board.groups.map((group) => {
       return <article key={group.id} className="group-preview">
         <div className="group-preview-wrapper">
-          <GroupPreview group={group} />
-
+          <GroupPreview group={group} onRemoveGroup={onRemoveGroup} />
         </div>
       </article>
     })}
@@ -81,9 +92,9 @@ export function GroupList({board}) {
     {editMode && (
       <div className='add-group-container'>
         {/* <form action="submit" onSubmit={() => onAddGroup(groupToAdd.title)}> */}
-          <input type="text" name="title" id="title" className='new-group-input' placeholder='Enter list title...' value={groupToAdd.title} onChange={handleChange} />
-          <button className='new-group-add-btn' onClick={() => onAddGroup(groupToAdd.title)}>Add list</button>
-          <button className="close-add-group" onClick={exitEditMode}><CgClose /></button>
+        <input type="text" name="title" id="title" className='new-group-input' placeholder='Enter list title...' value={newGroupTitle} onChange={handleChange} />
+        <button className='new-group-add-btn' onClick={() => onAddGroup(newGroupTitle)}>Add list</button>
+        <button className="close-add-group" onClick={exitEditMode}><CgClose /></button>
         {/* </form> */}
       </div>
     )}
@@ -94,26 +105,6 @@ export function GroupList({board}) {
 
 {/* <button onClick={() => { onRemoveGroup(group._id)}}> x </button> 
 <button onClick={() => { onUpdateGroup(group) }}> Edit </button>   */}
-
-// async function onRemoveGroup(groupId) {
-    //   try {
-    //     await removeGroup(groupId)
-    //     showSuccessMsg('Group removed')
-    //   } catch (err) {
-    //     showErrorMsg('Cannot remove group')
-    //   }
-    // }
-
-    // async function onAddGroup() {
-    //   const group = boardService.getEmptyGroup()
-    //   group.vendor = prompt('Vendor?')
-    //   try {
-    //     const savedGroup = await addGroup(group)
-    //     showSuccessMsg(`Group added (id: ${savedGroup._id})`)
-    //   } catch (err) {
-    //     showErrorMsg('Cannot add group')
-    //   }
-    // }
 
     // async function onUpdateGroup(group) {
     //   const price = +prompt('New price?')
