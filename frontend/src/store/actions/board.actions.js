@@ -40,7 +40,6 @@ export function getActionUpdateBoard(board) {
 export async function loadBoards() {
   try {
     const boards = await boardService.query()
-    console.log('Boards from DB:', boards)
     store.dispatch({
       type: SET_BOARDS,
       boards,
@@ -90,8 +89,7 @@ export async function addBoard(board) {
 
 export function updateBoard(board) {
   console.log('board', board)
-  return boardService
-    .save(board)
+  return boardService.save(board)
     .then((savedBoard) => {
       console.log('Updated Board:', savedBoard)
       store.dispatch(getActionUpdateBoard(savedBoard))

@@ -8,7 +8,6 @@ import { updateBoard } from "../../store/actions/board.actions";
 import { useSelector } from 'react-redux'
 export function BoardHeader() {
     const board = useSelector((storeState) => storeState.boardModule.board)
-    console.log('board', board);
 
     const contentRef = useRef(null)
 
@@ -28,7 +27,6 @@ export function BoardHeader() {
     function onStarredBoard() {
         board.isStarred = !board.isStarred
         updateBoard(board)
-        console.log('board', board);
     }
 
     return <section className="board-header">

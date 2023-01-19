@@ -96,7 +96,9 @@ function getEmptyGroup(groupTitle) {
   return {
     id: utilService.makeId(),
     title: groupTitle,
+    archivedAt: Date.now(),
     tasks: [],
+    style:{},
   }
 }
 

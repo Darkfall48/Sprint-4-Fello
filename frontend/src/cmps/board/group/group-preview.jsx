@@ -4,12 +4,12 @@ import { TaskList } from './task/task-list'
 import { BsPlus } from 'react-icons/bs'
 import { TbTemplate } from 'react-icons/tb'
 import { BsThreeDots } from 'react-icons/bs'
+import { CgClose } from 'react-icons/cg'
 import { useSelector } from 'react-redux'
-export function GroupPreview({group}) {
+export function GroupPreview({group, onRemoveGroup}) {
  
   const board = useSelector((storeState) => storeState.boardModule.board)
 
-  console.log('group from preview', group)
   if(!group) return <p>WHERE IS MY GROUP??</p>
   return (
     <section className="group-preview-section">
@@ -17,7 +17,7 @@ export function GroupPreview({group}) {
         <div>
           <div className='group-header'>
             <h1 className="group-title">{`${group.title}`}</h1>
-            <button><BsThreeDots/></button>
+            <button onClick={()=>onRemoveGroup(group.id)}><CgClose/></button>
           </div>
           <TaskList groupId={group.id} tasks={group.tasks} />
           <div className="group-bottom-control-btns">
@@ -25,9 +25,9 @@ export function GroupPreview({group}) {
               <BsPlus className="plus" />
               <span>Add a card</span>
             </button>
-            <a name="template" id="template">
-              <TbTemplate className="template-btn" />
-            </a>
+            <button name="template" id="template"  className="template-btn">
+              <TbTemplate />
+            </button>
           </div>
         </div>
       {/* )} */}

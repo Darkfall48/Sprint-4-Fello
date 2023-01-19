@@ -12,8 +12,6 @@ export function AppHeader() {
  
   const board = useSelector((storeState) => storeState.boardModule.board)
 
-  console.log('board', board);
-
   return (
     <header className="app-header-section full" style={board?.style?.backgroundImg && { background: `url(${board.style.backgroundImg}) center center / cover` } || board?.style?.bgColor && { background: board.style.bgColor }}>
     {/* <header className="app-header-section full"> */}

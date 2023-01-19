@@ -23,11 +23,9 @@ import { Loader } from '../../cmps/helpers/loader'
 import { store } from '../../store/store'
 
 export function BoardIndex() {
-  // const [board, setBoard] = useState({})
   const board = useSelector((storeState) => storeState.boardModule.board)
 
   const { boardId } = useParams()
-  console.log('New Boarddd', board)
   useEffect(() => {
     onLoadBoard()
     return () => {
@@ -39,9 +37,7 @@ export function BoardIndex() {
     try {
       await loadBoards()
       await loadBoard(boardId)
-      // const board = await boardService.get(boardId)
-      // setBoard(board)
-      showSuccessMsg('Groups loaded')
+      showSuccessMsg('Boards loaded')
     } catch (err) {
       showErrorMsg('Cannot load boards')
     }
@@ -52,7 +48,7 @@ export function BoardIndex() {
     <section
       className="group-index-section" style={board?.style?.backgroundImg && { background: `url(${board.style.backgroundImg}) center center / cover` } || board?.style?.bgColor && { background: board.style.bgColor }}>
       {/* {!board ? <Loader /> : <BoardDetails board={board} />} */}
-      <BoardDetails board={board} />
+      <BoardDetails onLoadBoard={onLoadBoard} board={board} />
     </section>
   )
 }
