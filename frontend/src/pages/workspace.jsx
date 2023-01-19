@@ -60,5 +60,6 @@ export function Workspace() {
         onRemoveBoard={onRemoveBoard}
       />
     </div>
+
   </section>
 }

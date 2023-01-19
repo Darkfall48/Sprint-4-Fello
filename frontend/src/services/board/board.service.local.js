@@ -1,5 +1,6 @@
 import { utilService } from '../util.service'
 import { storageService } from '../connection/async-storage.service'
+import imgUrlMember from '../../assets/img/members/member1.png'
 
 const pageSize = 5
 const BOARD_KEY = 'boardDB'
@@ -172,18 +173,18 @@ function _createBoard(title) {
     members: [
       {
         _id: 'u101',
-        fullname: 'Tal Tarablus',
-        imgUrl: 'https://robohash.org/',
+        fullname: 'Yael Tal',
+        imgUrl: `${imgUrlMember}`,
       },
       {
         _id: 'u102',
         fullname: 'Kar Karamba',
-        imgUrl: 'https://robohash.org/',
+        imgUrl: `${imgUrlMember}`,
       },
       {
         _id: 'u103',
         fullname: 'Sid Sidonis',
-        imgUrl: 'https://robohash.org/',
+        imgUrl: `${imgUrlMember}`,
       },
     ],
     groups: _createGroups(),
