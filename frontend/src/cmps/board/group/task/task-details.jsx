@@ -1,6 +1,6 @@
-export function TaskDetails() {
+export function TaskDetails({ isModalOpen, setIsModalOpen }) {
   // const [task, setTask] = useState(null)
-  const { taskId } = useParams()
+  // const { taskId } = useParams()
   // const navigate = useNavigate()
 
   // useEffect(() => {
@@ -19,8 +19,17 @@ export function TaskDetails() {
   // }
 
   return (
-    <section className="task-details-section">
-      <h1>Hello from Task Details</h1>
-    </section>
+    <main
+      className="task-details-modal-overlay"
+      onClick={() => setIsModalOpen(false)}
+    >
+      <section
+        className="task-details-section"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button onClick={() => setIsModalOpen(!isModalOpen)}>Close</button>
+        <h1 className="task-details-section-title">Modal Content</h1>
+      </section>
+    </main>
   )
 }
