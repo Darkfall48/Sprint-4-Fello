@@ -50,18 +50,7 @@ export function BoardIndex() {
   if (!board) return <Loader />
   return (
     <section
-      className="group-index-section"
-      //? If not board, Loader component, so do not need for double check!
-      style={
-        board?.style?.backgroundImg
-          ? {
-              background: `url(${board.style.backgroundImg}) center center / cover`,
-            }
-          : { background: '#0079bf' } || board?.style?.bgColor
-        // ? { background: board.style.bgColor }
-        // : { background: '#0079bf' }
-      }
-    >
+      className="group-index-section" style={board?.style?.backgroundImg && { background: `url(${board.style.backgroundImg}) center center / cover` } || board?.style?.bgColor && { background: board.style.bgColor }}>
       {/* {!board ? <Loader /> : <BoardDetails board={board} />} */}
       <BoardDetails board={board} />
     </section>
