@@ -202,7 +202,7 @@ function _createGroups() {
     _createGroup('Group 1'),
     _createGroup('Group 2'),
     _createGroup('Group 3'),
-    _createGroup('Group 4'),
+    // _createGroup('Group 4'),
   ]
 }
 
@@ -221,7 +221,7 @@ function _createTasks() {
     _createTask(utilService.makeLorem(6)),
     _createTask(utilService.makeLorem(8)),
     _createTask(utilService.makeLorem(4)),
-    _createTask(utilService.makeLorem(10)),
+    // _createTask(utilService.makeLorem(10)),
   ]
 }
 
