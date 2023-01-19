@@ -15,6 +15,9 @@ import { BoardDetails } from '../../cmps/board/board-details.jsx'
 export function BoardIndex() {
   // const [board, setBoard] = useState(null)
   const board = useSelector((storeState) => storeState.boardModule.board)
+
+  // const board = boards.filter((board) => board._id === boardId)
+
   const { boardId } = useParams()
   
   useEffect(() => {
@@ -33,9 +36,10 @@ export function BoardIndex() {
     }
   }
   
-  // if (!board) return <p>loading...</p>
+  if (!board) return <p>loading...</p>
   return (
-    <section className="group-index-section" style={board?.style?.backgroundImg ? { background: `url(${board.style.backgroundImg}) center center / cover` } : { background: '#0079bf' } || board?.style?.bgColor ? { background: board.style.bgColor } : { background: '#0079bf' }}>
+    // <section className="group-index-section" style={ board?.style?.backgroundImg ? { background: `url(${board.style.backgroundImg}) center center / cover` } : { background: '#0079bf' } || board?.style?.bgColor ? { background: board.style.bgColor } : { background: '#0079bf' }}>
+    <section className="group-index-section">
       <BoardDetails />
     </section>
   )

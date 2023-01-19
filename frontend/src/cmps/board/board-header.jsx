@@ -8,6 +8,7 @@ import { updateBoard } from "../../store/actions/board.actions";
 import { useSelector } from 'react-redux'
 export function BoardHeader() {
     const board = useSelector((storeState) => storeState.boardModule.board)
+    console.log('board', board);
 
     const contentRef = useRef(null)
 
@@ -40,7 +41,6 @@ export function BoardHeader() {
         <div className="btns-container">
             <button><BsFilter /> Filter</button>
             <img src={board.members?.imgUrl} alt="" />
-            <button><RiUserSharedLine /> Share</button>
             <button><RiUserSharedLine /> Share</button>
         </div>
 
