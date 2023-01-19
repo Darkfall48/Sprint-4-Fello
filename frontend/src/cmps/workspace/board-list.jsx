@@ -14,7 +14,7 @@ export function BoardList({ boards, onEditBoard, onRemoveBoard }) {
     return <section className="board-list">
 
         <ul>
-        {<button className="board-list-btn" onClick={() => { setIsModalOpen(!isModalOpen) }}>Create new board</button>}
+        {!boards.isStarred && <button className="board-list-btn" onClick={() => { setIsModalOpen(!isModalOpen) }}>Create new board</button>}
             {boards.map((board, index) =>
                 <li
                     key={index}

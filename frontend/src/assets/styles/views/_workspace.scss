@@ -1,12 +1,22 @@
-.workspace-section{
+.workspace-section {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
+    gap: 50px;
     margin: auto;
     //change max-width
     max-width: 1038px;
     min-height: calc(100vh - 44px);
     padding: 47px 0 40px;
 
-}
+    & h1 {
+        color: #172b4d;
+        text-align: left;
+        font-size: rem(16px);
+        font-weight: 700;
+        line-height: rem(24px);
 
+    }
+
+
+}

@@ -4,9 +4,13 @@ a {
     text-decoration: none;
     line-height: 1;
 
-    &:hover{
+
+    &:hover {
         text-decoration: none;
     }
+
+
+
 
     & .board-preview {
         background: $default-board-bg-clr;
@@ -21,24 +25,104 @@ a {
         width: 194px;
 
 
-        h4 {
-            text-align: left;
-            word-wrap: break-word;
-            font-size: rem(16px);
-            font-weight: 700;
-            text-decoration: none;
-        }
+        // & .board-fade {
+        //     background-color: #00000026;
+        //     bottom: 0;
+        //     left: 0;
+        //     position: absolute;
+        //     right: 0;
+        //     top: 0;
+
+        // }
+
+
 
         &:hover {
             background-color: rgba(158, 176, 187, 0.425);
+            background-color: #0000004d;
+
+
+            & button {
+
+                display: block;
+
+            }
+
+            & .hidden-btns {
+                & .star {
+                    opacity: 1;
+                    transition: 0.5s;
+
+                }
+
+            }
+
+            & .board-tile-fade {
+                border-radius: 3px;
+                display: block;
+
+            }
         }
 
 
 
         & .board-preview-details {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 80px;
+            justify-content: space-between;
+            position: relative;
+
+            & h4 {
+                text-align: left;
+                word-wrap: break-word;
+                font-size: rem(16px);
+                font-weight: 700;
+                text-decoration: none;
+
+                // position: relative;
+                // z-index: 10;
+            }
+
+
+
+
+
+        }
+
+        & .hidden-btns {
+            display: flex;
+            flex-direction: row-reverse;
+
+            //try to fix z-index
+            & button {
+                background-color: transparent;
+                margin: 0;
+                padding: 0;
+                display: block;
+
+            }
+
+            & .star {
+                opacity: 0;
+                width: 15px;
+                height: 15px;
+
+            }
+
+            & .starred {
+                width: 15px;
+                height: 15px;
+                fill: yellow;
+
+            }
         }
 
 
+
+
     }
+
+
 }

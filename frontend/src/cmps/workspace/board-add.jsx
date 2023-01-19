@@ -37,7 +37,7 @@ export function BoardAdd({ onCloseModal }) {
 
         boardToAdd.style.backgroundImg = imgUrl
         boardToAdd.style.bgColor = color
-        console.log('boardToAdd', boardToAdd);
+
         if (!boardToAdd.style.bgColor) {
             boardToAdd.style.backgroundImg = imgUrl
             setBoardToAdd((prevBoard) => ({ ...prevBoard, style: { backgroundImg: imgUrl, bgColor: '' } }))

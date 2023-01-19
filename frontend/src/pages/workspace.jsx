@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { BoardList } from "../cmps/workspace/board-list";
 import { showErrorMsg, showSuccessMsg } from "../services/connection/event-bus.service";
+import { AiOutlineStar } from "react-icons/ai";
+import { AiOutlineClockCircle } from "react-icons/ai";
 
 import { loadBoards, removeBoard } from "../store/actions/board.actions";
 
@@ -36,12 +38,27 @@ export function Workspace() {
 
   }
 
+  const starredBoard = boards.filter((board) => board.isStarred)
+
   if (!boards) return <div>Loading...</div>
   return <section className="workspace-section">
 
-    <BoardList
-            boards={boards}
-            onRemoveBoard={onRemoveBoard}
-        />
+    <div className="starred-boards-container">
+      <h1><AiOutlineStar /> Starred boards</h1>
+      {boards.map(board => {
+        console.log('board.isStarred', board.isStarred);
+        return board.isStarred
+      }) && <BoardList
+          boards={starredBoard}
+          onRemoveBoard={onRemoveBoard}
+        />}
+    </div>
+    <div className="starred-boards-container">
+      <h1><AiOutlineClockCircle /> Recently viewed</h1>
+      <BoardList
+        boards={boards}
+        onRemoveBoard={onRemoveBoard}
+      />
+    </div>
   </section>
 }
