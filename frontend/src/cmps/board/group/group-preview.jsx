@@ -3,45 +3,22 @@ import { useEffect, useState } from 'react'
 import { TaskList } from './task/task-list'
 import { BsPlus } from 'react-icons/bs'
 import { TbTemplate } from 'react-icons/tb'
-import { CgClose } from 'react-icons/cg'
+import { BsThreeDots } from 'react-icons/bs'
+import { useSelector } from 'react-redux'
+export function GroupPreview({group}) {
+ 
+  const board = useSelector((storeState) => storeState.boardModule.board)
 
-export function GroupPreview({ group, onAddGroup }) {
-  const [editMode, setEditMode] = useState(false)
-  const [groupToAdd, setGroupToAdd] = useState({ title: '' })
-
-
-  // console.log('group.id', group.id)
-  function onNewGroupSelect(ev) {
-    setEditMode(true)
-    console.log('editMode', editMode)
-
-  }
-
-  function exitEditMode(ev) {
-    // ev.stopPropogation()
-    setEditMode(false)
-    console.log('editMode', editMode)
-
-  }
-
-  function handleChange({ target }) {
-    let { value, type, name: field, } = target
-    console.log(value);
-    value = type === 'number' ? +value : value
-    setGroupToAdd((prevGroup) => ({ ...prevGroup, [field]: value }))
-  }
-
-  function addGroup(groupToAddTitle) {
-    // ev.preventDefault()
-    console.log('groupToAddTitle', groupToAddTitle)
-    onAddGroup(groupToAddTitle)
-  }
-
+  console.log('group from preview', group)
+  if(!group) return <p>WHERE IS MY GROUP??</p>
   return (
     <section className="group-preview-section">
-      {group && (
+      {/* {group && ( */}
         <div>
-          <h1 className="group-title">{`${group.title}`}</h1>
+          <div className='group-header'>
+            <h1 className="group-title">{`${group.title}`}</h1>
+            <button><BsThreeDots/></button>
+          </div>
           <TaskList groupId={group.id} tasks={group.tasks} />
           <div className="group-bottom-control-btns">
             <button className="add-task-btn">
@@ -53,26 +30,7 @@ export function GroupPreview({ group, onAddGroup }) {
             </a>
           </div>
         </div>
-      )}
-      {!group && (
-        <div className='new-group-wrapper'>
-          {!editMode && (
-            <div className="add-new-group">
-              <button className='add-group-btn' onClick={onNewGroupSelect}><BsPlus className="plus" />
-                <span> Add another list </span></button>
-            </div>
-          )}
-          {editMode && (
-            <div className='add-group-container'>
-              {/* <form action="submit" onSubmit={() => onAddGroup(groupToAdd.title)}> */}
-                <input type="text" name="title" id="title" className='new-group-input' placeholder='Enter list title...' value={groupToAdd.title} onChange={handleChange} />
-                <button className='new-group-add-btn' onClick={() => addGroup(groupToAdd.title)}>Add list</button>
-                <button className="close-add-group" onClick={exitEditMode}><CgClose /></button>
-              {/* </form> */}
-            </div>
-          )}
-        </div>
-      )}
+      {/* )} */}
     </section>
   )
 }

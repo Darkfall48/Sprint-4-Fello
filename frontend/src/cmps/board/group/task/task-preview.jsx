@@ -1,14 +1,17 @@
 //? Libraries
 import { useEffect, useRef, useState } from 'react'
+import { useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import { AiOutlineEye } from 'react-icons/ai'
 import { BsCheck2Square } from 'react-icons/bs'
 import { VscEdit } from 'react-icons/vsc'
+//? Services
 import { utilService } from '../../../../services/util.service'
-import { useParams } from 'react-router'
+import { TaskDetails } from './task-details'
 
 export function TaskPreview({ task }) {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const { boardId } = useParams()
   const board = useRef(boards.filter((board) => board._id === boardId))
 
@@ -27,9 +30,8 @@ export function TaskPreview({ task }) {
 
   function SetLabels() {
     const labels = board.current[0].labels
-    console.log('Labels', labels)
     const { labelIds } = task
-    // const labelIds = null
+
     if (!labelIds) return <article className="task-preview-labels"></article>
     return (
       <article className="task-preview-labels">
@@ -59,7 +61,7 @@ export function TaskPreview({ task }) {
   function SetEditBtn() {
     return (
       <article className="task-preview-edit">
-        <button>
+        <button className="task-preview-edit-btn">
           <VscEdit />
         </button>
       </article>
@@ -75,9 +77,7 @@ export function TaskPreview({ task }) {
   }
 
   function SetMembers() {
-    // TODO: Get members as props
     const members = board.current[0].members
-
     const { memberIds } = task
 
     return (
@@ -98,14 +98,24 @@ export function TaskPreview({ task }) {
       </article>
     )
   }
+
   return (
-    <section className="task-preview-section">
+    <section
+      className="task-preview-section"
+      onClick={() => setIsModalOpen(!isModalOpen)}
+    >
       <SetBackground />
       <SetLabels />
       <SetTitle />
       <SetEditBtn />
       <SetInfos />
       <SetMembers />
+      {isModalOpen && (
+        <TaskDetails
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
     </section>
   )
 }

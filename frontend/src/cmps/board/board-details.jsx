@@ -2,13 +2,20 @@
 //TODO: board starred
 //TODO: board change status visability - SELECT
 //TODO: Filter
-import {GroupList} from '../../cmps/board/group/group-list.jsx'
-import {BoardHeader} from './board-header'
+import { useSelector } from 'react-redux'
 
-export function BoardDetails({board}) {
+import { GroupList } from '../../cmps/board/group/group-list.jsx'
+import { Loader } from '../helpers/loader.jsx'
+import { BoardHeader } from './board-header'
+
+export function BoardDetails() {
+  const board = useSelector((storeState) => storeState.boardModule.board)
+  // console.log('boardddddd', board)
+
+  // if (!board) return <Loader />
+
   return (
     <section className="board-details-section">
-
       <BoardHeader board={board}/>
       <GroupList board={board}/>
     </section>

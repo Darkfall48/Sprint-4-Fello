@@ -53,8 +53,9 @@ export async function loadBoards() {
 
 export async function loadBoard(boardId) {
   try {
+    // console.log('boardId', boardId)
     const board = await boardService.get(boardId)
-    console.log('Board from DB:', board)
+    // console.log('Board from DB:', board)
     store.dispatch({
       type: SET_BOARD,
       board,
@@ -88,6 +89,7 @@ export async function addBoard(board) {
 }
 
 export function updateBoard(board) {
+  console.log('board', board)
   return boardService
     .save(board)
     .then((savedBoard) => {

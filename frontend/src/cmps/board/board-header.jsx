@@ -5,8 +5,9 @@ import { AiFillStar } from "react-icons/ai";
 import { BsFilter } from "react-icons/bs";
 import { RiUserSharedLine } from "react-icons/ri";
 import { updateBoard } from "../../store/actions/board.actions";
-
-export function BoardHeader({ board }) {
+import { useSelector } from 'react-redux'
+export function BoardHeader() {
+    const board = useSelector((storeState) => storeState.boardModule.board)
 
     const contentRef = useRef(null)
 
@@ -19,6 +20,7 @@ export function BoardHeader({ board }) {
             ev.preventDefault()
             updateBoard(board)
             contentRef.current.contentEditable = false
+        }
         }
         contentRef.current.contentEditable = true
 
@@ -41,6 +43,7 @@ export function BoardHeader({ board }) {
         <div className="btns-container">
             <button><BsFilter /> Filter</button>
             <img src={board.members?.imgUrl} alt="" />
+            <button><RiUserSharedLine /> Share</button>
             <button><RiUserSharedLine /> Share</button>
         </div>
 
