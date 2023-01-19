@@ -13,29 +13,30 @@ import { loadGroups, addGroup, loadBoard, loadBoards } from '../../store/actions
 import { BoardDetails } from '../../cmps/board/board-details.jsx'
 
 export function BoardIndex() {
-  const [board, setBoard] = useState(null)
+  // const [board, setBoard] = useState(null)
   const { boardId } = useParams()
-  const boards = useSelector((storeState) => storeState.boardModule.boards)
-  // console.log('boards', boards);
-
+  
   useEffect(() => {
     onLoadBoard()
   }, [])
-
+  
   async function onLoadBoard() {
     try {
       await loadBoards()
-      const board = await boardService.get(boardId)
-      setBoard(board)
+      await loadBoard(boardId)
+      // const board = await boardService.get(boardId)
+      // setBoard(board)
       showSuccessMsg('Groups loaded')
     } catch (err) {
       showErrorMsg('Cannot load boards')
     }
   }
-  if (!board) return <p>loading...</p>
+  
+  // if (!board) return <p>loading...</p>
   return (
-    <section className="group-index-section" style={board?.style?.backgroundImg ? { background: `url(${board.style.backgroundImg}) center center / cover` } : { background: '#0079bf' } || board?.style?.bgColor ? { background: board.style.bgColor } : { background: '#0079bf' }}>
-      <BoardDetails board={board} />
+    // <section className="group-index-section" style={board?.style?.backgroundImg ? { background: `url(${board.style.backgroundImg}) center center / cover` } : { background: '#0079bf' } || board?.style?.bgColor ? { background: board.style.bgColor } : { background: '#0079bf' }}>
+    <section className="group-index-section" >
+      <BoardDetails />
     </section>
   )
 }
