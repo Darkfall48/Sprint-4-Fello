@@ -8,16 +8,16 @@ import { GroupList } from '../../cmps/board/group/group-list.jsx'
 import { Loader } from '../helpers/loader.jsx'
 import { BoardHeader } from './board-header'
 
-export function BoardDetails() {
-  const board = useSelector((storeState) => storeState.boardModule.board)
-  // console.log('boardddddd', board)
+export function BoardDetails({ board }) {
+  // const board = useSelector((storeState) => storeState.boardModule.board)
+  console.log('boardddddd', board)
 
-  // if (!board) return <Loader />
-
+  if (!board) return <Loader />
+  // if (board) setBoard(board)
   return (
-    <section className="board-details-section" >
-      <BoardHeader board={board}/>
-      <GroupList board={board}/>
+    <section className="board-details-section">
+      <BoardHeader board={board} />
+      <GroupList board={board} />
     </section>
   )
 }

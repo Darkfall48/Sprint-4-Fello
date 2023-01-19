@@ -6,11 +6,11 @@ export const ADD_BOARD = 'ADD_BOARD'
 export const UPDATE_BOARD = 'UPDATE_BOARD'
 export const REMOVE_BOARD = 'REMOVE_BOARD'
 export const UNDO_REMOVE_BOARD = 'UNDO_REMOVE_BOARD'
-
+export const CLEAN_STORE = 'CLEAN_STORE'
 
 const initialState = {
   boards: [],
-  board:{},
+  board: {},
   lastRemovedBoard: null,
 }
 
@@ -25,7 +25,9 @@ export function boardReducer(state = initialState, action) {
     case SET_BOARD:
       newState = {
         ...state,
-        board: state.boards.filter((board) => board._id === action.board._id)[0]
+        board: state.boards.filter(
+          (board) => board._id === action.board._id
+        )[0],
       }
       break
     case REMOVE_BOARD:
@@ -57,9 +59,9 @@ export function boardReducer(state = initialState, action) {
         }
       }
       break
+    case CLEAN_STORE:
+      return initialState
     default:
   }
   return newState
 }
-
-
