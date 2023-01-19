@@ -1,11 +1,12 @@
 //? Pages
 import { Home } from './pages/home'
 import { Workspace } from './pages/workspace'
-import { AdminIndex } from './pages/user/admin-index'
+import { BoardIndex } from './pages/board/board-index'
+import { TaskDetails } from './cmps/board/group/task/task-details'
 import { UserDetails } from './pages/user/user-details'
+import { AdminIndex } from './pages/user/admin-index'
 import { AboutUs } from './pages/about-us'
 
-// Routes accessible from the main navigation (in AppHeader)
 const routes = [
   {
     path: '/',
@@ -17,6 +18,16 @@ const routes = [
     component: <Workspace />,
     label: 'Workspaces',
   },
+  {
+    path: '/board/:boardId',
+    component: <BoardIndex />,
+    label: 'Board Index',
+  },
+  // {
+  //   path: '/board/:boardId/group/:groupId/task/taskId',
+  //   component: <TaskDetails />,
+  //   label: 'Task Details',
+  // },
   {
     path: '/user/',
     component: <UserDetails />,
@@ -44,7 +55,7 @@ const routes = [
   //     label: 'Chat',
   //   },
   {
-    path: 'about',
+    path: '/about',
     component: <AboutUs />,
     label: 'About us',
   },

@@ -9,7 +9,7 @@
   & .task-details-section {
     cursor: auto;
     background-color: #fff;
-    height: 100px;
+    height: fit-content;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -17,8 +17,48 @@
     padding: 20px;
     border-radius: 10px;
     z-index: 1;
+
+    &-header {
+    }
+
     &-title {
       font-size: 25px;
+
+      &-icon {
+      }
+
+      &-description {
+      }
+
+      &-link {
+      }
+    }
+
+    &-labels {
+      &-title {
+      }
+
+      &-container {
+        display: flex;
+        gap: 4px;
+        grid-area: label;
+        padding-left: 8px;
+        padding-right: 8px;
+        margin-bottom: 4px;
+        &-label {
+          border-radius: 4px;
+          height: 8px;
+          width: 40px;
+        }
+      }
+    }
+
+    &-members {
+      &-img {
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+      }
     }
   }
 }

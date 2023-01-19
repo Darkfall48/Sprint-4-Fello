@@ -9,15 +9,17 @@ import { VscEdit } from 'react-icons/vsc'
 import { utilService } from '../../../../services/util.service'
 import { TaskDetails } from './task-details'
 
-export function TaskPreview({ task }) {
-  const boards = useSelector((storeState) => storeState.boardModule.boards)
+export function TaskPreview({ groupId, task }) {
+  // const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const { boardId } = useParams()
-  const board = useRef(boards.filter((board) => board._id === boardId))
+  // const { boardId } = useParams()
+  // const board = useRef(boards.filter((board) => board._id === boardId))
+  const board = useSelector((storeState) => storeState.boardModule.board)
 
   //? Private Components
   function SetBackground() {
     const { style } = task
+    if (!style.bgColor) return <div className="task-preview-background"></div>
     return (
       <article
         className="task-preview-background"
@@ -29,7 +31,7 @@ export function TaskPreview({ task }) {
   }
 
   function SetLabels() {
-    const labels = board.current[0].labels
+    const labels = board.labels
     const { labelIds } = task
 
     if (!labelIds) return <article className="task-preview-labels"></article>
@@ -77,9 +79,10 @@ export function TaskPreview({ task }) {
   }
 
   function SetMembers() {
-    const members = board.current[0].members
+    const members = board.members
     const { memberIds } = task
 
+    if (!members) return <article className="task-preview-member"></article>
     return (
       <article className="task-preview-member">
         {memberIds.map((memberId) => {
@@ -114,6 +117,8 @@ export function TaskPreview({ task }) {
         <TaskDetails
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
+          groupId={groupId}
+          task={task}
         />
       )}
     </section>

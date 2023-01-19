@@ -23,9 +23,6 @@ export function RootCmp() {
               path={route.path}
             />
           ))}
-          <Route path="user/:id" element={<UserDetails />} />
-          <Route path="board/:boardId" element={<BoardIndex />} />
-          
         </Routes>
       </main>
     </div>

@@ -7,7 +7,7 @@ export function TaskList({ groupId, tasks }) {
   return (
     <section className="task-list-section">
       {tasks.map((task) => (
-        <TaskPreview key={task.id} task={task} />
+        <TaskPreview key={task.id} groupId={groupId} task={task} />
       ))}
     </section>
   )
