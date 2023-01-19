@@ -1,5 +1,4 @@
 //? Pages
-import { Home } from './pages/home'
 import { Workspace } from './pages/workspace'
 import { UserDetails } from './pages/user/user-details'
 import { AdminIndex } from './pages/user/admin-index'
@@ -12,10 +11,6 @@ const routes = [
     path: '/board',
     component: <Workspace />,
     label: 'Workspaces',
-  },{
-    path: '/',
-    component: <Home />,
-    label: 'Home',
   }, {
     path: '/user/',
     component: <UserDetails />,

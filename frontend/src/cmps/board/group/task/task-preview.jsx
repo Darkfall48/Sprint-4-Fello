@@ -1,12 +1,17 @@
 //? Libraries
 import { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { AiOutlineEye } from 'react-icons/ai'
 import { BsCheck2Square } from 'react-icons/bs'
 import { VscEdit } from 'react-icons/vsc'
 import { utilService } from '../../../../services/util.service'
+import { useParams } from 'react-router'
 
 export function TaskPreview({ task }) {
-  // console.log('Task:', task)
+  const boards = useSelector((storeState) => storeState.boardModule.boards)
+  const { boardId } = useParams()
+  const board = useRef(boards.filter((board) => board._id === boardId))
+
   //? Private Components
   function SetBackground() {
     const { style } = task
@@ -21,24 +26,8 @@ export function TaskPreview({ task }) {
   }
 
   function SetLabels() {
-    // TODO: Get labels as props
-    const labels = [
-      {
-        id: 'l101',
-        title: 'Done',
-        color: 'lightblue',
-      },
-      {
-        id: 'l102',
-        title: 'Progress',
-        color: 'orangered',
-      },
-      {
-        id: 'l103',
-        title: 'Todo',
-        color: 'orange',
-      },
-    ]
+    const labels = board.current[0].labels
+    console.log('Labels', labels)
     const { labelIds } = task
     // const labelIds = null
     if (!labelIds) return <article className="task-preview-labels"></article>
@@ -87,13 +76,7 @@ export function TaskPreview({ task }) {
 
   function SetMembers() {
     // TODO: Get members as props
-    const members = [
-      {
-        _id: 'u101',
-        fullname: 'Tal Tarablus',
-        imgUrl: 'https://robohash.org/',
-      },
-    ]
+    const members = board.current[0].members
 
     const { memberIds } = task
 

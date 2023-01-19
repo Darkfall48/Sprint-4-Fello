@@ -4,13 +4,19 @@
     color: $clr-white;
     display: flex;
 
+    .header-links {
+        color: white;
+        font-size: 1.5em;
+        margin: 10px 0 10px 10px;
+    }
+
     .logo {
         background-image: url("https://a.trellocdn.com/prgb/dist/images/header-logo-spirit-loading.87e1af770a49ce8e84e3.gif");
         background-size: cover;
         background-repeat: no-repeat;
         width: 75px;
         height: 15px;
-        margin: 12px 30px 10px 30px;
+        margin: 12px 30px 10px 10px;
     }
 
     .user-info {
@@ -42,6 +48,13 @@
             font-family: inherit;
             color: white;
             line-height: 32px;
+        }
+
+        .down-arrow-nav {
+            font-size: 1.7em;
+            margin-left: 5px;
+            position: relative;
+            top: 6px;
         }
     }
 
