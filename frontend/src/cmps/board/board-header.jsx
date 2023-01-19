@@ -10,17 +10,16 @@ export function BoardHeader({ board }) {
     const contentRef = useRef(null)
 
     function changeContent(ev) {
-        ev.preventDefault()
-        board.title = contentRef.current.innerText
-        updateBoard(board)
 
-        //try to fix enter 
-        // if(ev.key === 'Enter'){
-        //     ev.preventDefault()
-        //     updateBoard(board)
-        //     contentRef.current.contentEditable = false
-        // }
-        // contentRef.current.contentEditable = true
+        board.title = contentRef.current.innerText
+
+        // try to fix enter 
+        if(ev.key === 'Enter' || contentRef.current.onblur()){
+            ev.preventDefault()
+            updateBoard(board)
+            contentRef.current.contentEditable = false
+        } 
+        contentRef.current.contentEditable = true
 
     }
 
