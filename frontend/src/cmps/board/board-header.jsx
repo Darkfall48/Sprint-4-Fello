@@ -10,10 +10,10 @@ export function BoardHeader({ board }) {
     const contentRef = useRef(null)
 
     function changeContent(ev) {
-
+        ev.preventDefault()
         board.title = contentRef.current.innerText
         updateBoard(board)
-        
+
         //try to fix enter 
         // if(ev.key === 'Enter'){
         //     ev.preventDefault()
@@ -26,7 +26,7 @@ export function BoardHeader({ board }) {
 
     return <section className="board-header">
         <div className="title-container btn-color">
-            <h1 style={{whiteSpace: 'nowrap'}} ref={contentRef} onKeyUp={(ev) => changeContent(ev)} contentEditable={true} suppressContentEditableWarning={true}>{board.title}</h1>
+            <h1 ref={contentRef} onKeyUp={(ev) => changeContent(ev)} contentEditable={true} suppressContentEditableWarning={true}>{board.title}</h1>
             <button><AiOutlineStar className="star"/></button>
         </div>
 
