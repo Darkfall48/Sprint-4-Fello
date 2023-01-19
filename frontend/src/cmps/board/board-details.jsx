@@ -15,7 +15,7 @@ export function BoardDetails() {
   // if (!board) return <Loader />
 
   return (
-    <section className="board-details-section">
+    <section className="board-details-section" >
       <BoardHeader board={board}/>
       <GroupList board={board}/>
     </section>

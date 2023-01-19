@@ -24,15 +24,11 @@ export function BoardHeader() {
         contentRef.current.contentEditable = true
     }
 
-
-
-
     function onStarredBoard() {
         board.isStarred = !board.isStarred
         updateBoard(board)
         console.log('board', board);
     }
-    console.log('board.isStarred', board.isStarred);
 
     return <section className="board-header">
         <div className="title-container btn-color">

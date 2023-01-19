@@ -41,7 +41,7 @@ export function Workspace() {
   const starredBoard = boards.filter((board) => board.isStarred)
 
   if (!boards) return <div>Loading...</div>
-  return <section className="workspace-section">
+  return <section className="workspace-section" >
 
     <div className="starred-boards-container">
       <h1><AiOutlineStar /> Starred boards</h1>
