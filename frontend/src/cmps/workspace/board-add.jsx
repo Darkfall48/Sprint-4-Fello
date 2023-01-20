@@ -50,14 +50,11 @@ export function BoardAdd({ onCloseModal }) {
 
     }
 
-
     return <section className="board-add">
 
-        {/* <div onClick={() => navigate('/')} className="black-screen"></div> */}
-
         <section className="todo-add">
-            <div className="modal">
-                <div className="modal-content">
+            <div className="modal" onClick={onCloseModal}>
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                     <div className="form-container">
 
                         <div className="modal-header">
@@ -74,20 +71,16 @@ export function BoardAdd({ onCloseModal }) {
 
                         <p>Background</p>
                         <div className="btns-cover-img">
-                            <button onClick={() => changeBoard('https://images.unsplash.com/photo-1673768501816-6a565f620309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80', '')} className="btn-cover-img" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1673768501816-6a565f620309?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjc0MDQ4NDQw&ixlib=rb-4.0.3&q=80&w=400")' }}></button>
-                            <button onClick={() => changeBoard('https://images.unsplash.com/photo-1673605124954-132c332de83f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80', '')} className="btn-cover-img" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1673605124954-132c332de83f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjc0MDU1NjQw&ixlib=rb-4.0.3&q=80&w=400")' }}></button>
-                            <button onClick={() => changeBoard('https://images.unsplash.com/photo-1673660199123-b793cdee4980?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80', '')} className="btn-cover-img" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1673660199123-b793cdee4980?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDJ8MzE3MDk5fHx8fHwyfHwxNjc0MDU1NjQw&ixlib=rb-4.0.3&q=80&w=400")' }}></button>
-                            <button onClick={() => changeBoard('https://images.unsplash.com/photo-1673715852601-987ac8f3b9ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80', '')} className="btn-cover-img" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1673715852601-987ac8f3b9ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDR8MzE3MDk5fHx8fHwyfHwxNjc0MDU1NjQw&ixlib=rb-4.0.3&q=80&w=400")' }}></button>
+                            {boardService.getImages().map(image => {
+                                return <button onClick={() => changeBoard(image, '')} className="btn-cover-img" style={{ backgroundImage: `url(${image})` }}></button>
+                            })}
                         </div>
 
                         <div className="btns-cover-color">
-                            <button onClick={() => changeBoard('', '#5ba4cf')} className="btn-cover-color" style={{ backgroundColor: '#5ba4cf' }}></button>
-                            <button onClick={() => changeBoard('', '#f5dd29')} className="btn-cover-color" style={{ backgroundColor: '#f5dd29' }}></button>
-                            <button onClick={() => changeBoard('', '#7bc86c')} className="btn-cover-color" style={{ backgroundColor: '#7bc86c' }}></button>
-                            <button onClick={() => changeBoard('', '#ef7564')} className="btn-cover-color" style={{ backgroundColor: '#ef7564' }}></button>
-                            <button onClick={() => changeBoard('', '#cd8de5')} className="btn-cover-color" style={{ backgroundColor: '#cd8de5' }}></button>
+                            {boardService.getColors().map(color => {
+                                return <button onClick={() => changeBoard('', color)} className="btn-cover-color" style={{ backgroundColor: color }}></button>
+                            })}
                         </div>
-
 
                         <form onSubmit={onSaveBoard}>
                             <label htmlFor="title">Board title<span> *</span></label>

@@ -1,8 +1,10 @@
 .app-header-section {
     padding: 0 4px;
     background-color: $clr3;
+    // background-color: $dynamic-background;
     color: $clr-white;
     display: flex;
+
 
     .header-links {
         color: white;
@@ -75,6 +77,15 @@
 
     }
 
+    & .dropdown-content {
+        position:absolute;
+    
+        & .modal-content{
+            position:absolute;
+            top: 50px;
+            left: 1000px;
+        }
+    }
 
     // & .dropdown-content {
     // display: block;

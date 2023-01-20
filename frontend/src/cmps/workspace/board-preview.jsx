@@ -21,8 +21,10 @@ export function BoardPreview({ board, onEditBoard, onRemoveBoard }) {
         <h4>{board.title}</h4>
 
         <div className="hidden-btns">
-          {!board.isStarred && <button onClick={onStarredBoard}><AiOutlineStar className="star" /></button>}
-          {board.isStarred && <button onClick={onStarredBoard}><AiFillStar className="starred" /></button>}
+          {!board.isStarred && <div onClick={onStarredBoard}><AiOutlineStar className="star"/></div>}
+          {board.isStarred && <div onClick={onStarredBoard}><AiFillStar className="starred"/></div>}
+          {/* {!board.isStarred && <div style={{position:'relative', zIndex: 5}} onClick={onStarredBoard}><AiOutlineStar className="star" style={{position:'relative', zIndex: 5}}/></div>}
+          {board.isStarred && <div style={{position:'relative', zIndex: 5}} onClick={onStarredBoard}><AiFillStar className="starred" style={{position:'relative', zIndex: 5}}/></div>} */}
           {/* {<button onClick={() => { onRemoveBoard(board._id) }}>x</button>} */}
           {/* <button onClick={() => { onEditBoard(board) }}>Change</button> */}
 
