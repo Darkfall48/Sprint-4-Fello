@@ -271,8 +271,14 @@ function _createTask(title) {
         ],
       },
     ],
-    memberIds: ['u101', 'u102', 'u103'],
-    labelIds: ['l101', 'l102', 'l103', 'l104'],
+    memberIds:
+      utilService.getRandomIntInclusive(1, 4) <= 2
+        ? ['u101', 'u102', 'u103']
+        : [],
+    labelIds:
+      utilService.getRandomIntInclusive(1, 4) <= 2
+        ? ['l101', 'l102', 'l103', 'l104']
+        : [],
     dueDate: 16156215211,
     byMember: {
       _id: 'u101',
@@ -281,7 +287,10 @@ function _createTask(title) {
       imgUrl: { imgUrlMember1 },
     },
     style: {
-      bgColor: utilService.getRandomColor(),
+      bgColor:
+        utilService.getRandomIntInclusive(1, 4) <= 2
+          ? utilService.getRandomColor()
+          : '',
     },
   }
 }
@@ -317,7 +326,7 @@ function getDemoGroups() {
           id: 'c104',
           title: 'Help me',
           status: 'in-progress',
-          description: 'description',
+          description: 'I am a description..',
           comments: [
             {
               id: 'ZdPnm',

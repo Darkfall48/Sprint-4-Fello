@@ -1,10 +1,11 @@
 //? Libraries
 import { useRef } from 'react'
 import { useSelector } from 'react-redux'
+//? Icons
 import { AiOutlineEye } from 'react-icons/ai'
 import { BsReverseLayoutTextWindowReverse } from 'react-icons/bs'
+import { GrTextAlignFull } from 'react-icons/gr'
 import { VscClose } from 'react-icons/vsc'
-import { func } from 'prop-types'
 
 export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -19,13 +20,18 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
   function SetHeader() {
     const { style } = task
     if (!style.bgColor)
-      return <div className="task-details-section-header"></div>
+      return (
+        <div className="task-details-section-header">
+          <SetCloseBtn />
+        </div>
+      )
     return (
       <div
         className="task-details-section-header"
         style={{ backgroundColor: style.bgColor }}
       >
         I'm a colored Header
+        <SetCloseBtn />
       </div>
     )
   }
@@ -41,9 +47,9 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
   function SetTitle() {
     return (
       <article className="task-details-section-title">
-        <BsReverseLayoutTextWindowReverse />
+        <BsReverseLayoutTextWindowReverse className="task-details-section-title-icon" />
         <input
-          className="task-details-section-title-icon"
+          className="task-details-section-title-input"
           type="text"
           name="task-title"
           id="task-title"
@@ -82,6 +88,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
             )
           })}
         </div>
+        <button className="task-details-section-labels-add-btn">Add</button>
       </article>
     )
   }
@@ -111,6 +118,29 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
     )
   }
 
+  function SetDescription() {
+    const { description } = task
+
+    if (!description)
+      return <section className="task-details-section-description"></section>
+    return (
+      <section className="task-details-section-description">
+        <GrTextAlignFull className="task-details-section-description-icon" />
+        <h2 className="task-details-section-description-title">Description</h2>
+        <button className="task-details-section-description-edit-btn">
+          Edit
+        </button>
+        <input
+          className="task-details-section-description-input"
+          type="text"
+          name="task-description"
+          id="task-description"
+          defaultValue={description}
+        />
+      </section>
+    )
+  }
+
   return (
     <main
       className="task-details-modal-overlay"
@@ -125,6 +155,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
         <SetTitle />
         <SetLabels />
         <SetMembers />
+        <SetDescription />
       </section>
     </main>
   )
