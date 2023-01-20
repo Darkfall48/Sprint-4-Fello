@@ -19,7 +19,8 @@ export function TaskPreview({ groupId, task }) {
   //? Private Components
   function SetBackground() {
     const { style } = task
-    if (!style.bgColor) return <div className="task-preview-background"></div>
+    if (!style.bgColor)
+      return <div className="task-preview-no-background"></div>
     return (
       <article
         className="task-preview-background"
@@ -34,7 +35,8 @@ export function TaskPreview({ groupId, task }) {
     const labels = board.labels
     const { labelIds } = task
 
-    if (!labelIds) return <article className="task-preview-labels"></article>
+    if (!labelIds || !labelIds.length)
+      return <article className="task-preview-no-labels"></article>
     return (
       <article className="task-preview-labels">
         {labelIds.map((labelId) => {
@@ -107,9 +109,9 @@ export function TaskPreview({ groupId, task }) {
       className="task-preview-section"
       onClick={() => setIsModalOpen(!isModalOpen)}
     >
-      <SetBackground />
-      <SetLabels />
-      <SetTitle />
+      {task.style && <SetBackground />}
+      {task.labelIds && <SetLabels />}
+      {task.title && <SetTitle />}
       <SetEditBtn />
       <SetInfos />
       <SetMembers />

@@ -19,12 +19,16 @@
       grid-area: background;
       margin-bottom: 6px;
     }
+    &-no-background {
+      margin-bottom: 6px;
+    }
     &-labels {
       display: flex;
       gap: 4px;
       grid-area: label;
       padding-left: 8px;
       padding-right: 8px;
+      margin-top: 4px;
       margin-bottom: 4px;
       .task-preview-label {
         border-radius: 4px;
@@ -32,12 +36,21 @@
         width: 40px;
       }
     }
+    &-no-labels {
+      grid-area: labels;
+      display: none;
+    }
     &-title {
       grid-area: title;
       text-align: start;
       padding-left: 8px;
       padding-right: 8px;
+      margin-top: 4px;
       margin-bottom: 4px;
+      height: fit-content;
+      & p {
+        margin: 0;
+      }
     }
     &-edit {
       height: 32px;
@@ -72,13 +85,15 @@
       grid-area: info;
       justify-self: start;
       padding-left: 8px;
-      margin-bottom: 4px;
+      margin-top: 4px;
+      margin-bottom: 6px;
     }
     &-member {
       grid-area: member;
       justify-self: end;
       padding-right: 8px;
-      margin-bottom: 4px;
+      margin-top: 2px;
+      margin-bottom: 6px;
       display: flex;
       gap: 4px;
       .task-preview-img {
