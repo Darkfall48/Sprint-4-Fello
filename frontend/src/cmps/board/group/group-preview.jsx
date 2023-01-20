@@ -9,46 +9,47 @@ import { useSelector } from 'react-redux'
 //?Services
 import {boardService} from '../../../services/board/board.service.local'
 import { loadBoard, updateBoard } from '../../../store/actions/board.actions'
+import { store } from '../../../store/store'
 
-export function GroupPreview({group, onRemoveGroup, }) {
+
+export function GroupPreview({group, onRemoveGroup, onLoadBoard}) {
  
   const board = useSelector((storeState) => storeState.boardModule.board)
   const [editMode, setEditMode] = useState(false)
   const [newTask, setNewTask] = useState(boardService.getEmptyTask(''))
-  
+
   function onAddTask(){
     setEditMode(true)
   }
 
   function handleChange({ target }) {
-    let { value } = target
-    setNewTask((prevTask)=>({...prevTask,title:value}))
+    let { name,value } = target
+    setNewTask((prevTask)=>({...prevTask,[name]:value}))
     console.log('newTask', newTask)
   }
 
   async function onSubmitTask(e){
     e.preventDefault()
-    e.stopPropagation()
-    // if (e.key !== 'Enter' || e.keyCode !== 13) return
-    console.log('submitted!')
     const tasks = group.tasks.concat(newTask)
-    console.log('group.tasks', tasks)
     const updatedGroup = { ...group, tasks }
     const groupChangedIdx = board.groups.findIndex(group=>group.id===updatedGroup.id)
-    console.log('groupChangedIdx', groupChangedIdx)
-    const groups = board.groups.splice(groupChangedIdx,1,updatedGroup)
-    console.log('groups', groups)
-    const updatedBoard = { ...board, groups}
-    console.log('updatedBoard', updatedBoard)
+    let updatedGroups = board.groups
+    updatedGroups.splice(groupChangedIdx,1,updatedGroup)
+    const updatedBoard = { ...board, groups: updatedGroups}
     try {
-      // await updateBoard(updatedBoard)
-      // loadBoard()
-    //   setNewTask('')
+      await updateBoard(updatedBoard)
+      loadBoard()
+      setNewTask(boardService.getEmptyTask(''))
       // showSuccessMsg('Task saved!')
     } catch (err) {
       console.log('err', err)
       // showErrorMsg('Cannot save task')
     }  
+  }
+
+  function loadBoard() {
+    onLoadBoard()
+    store.dispatch({ type: 'CLEAN_STORE' })
   }
 
   return (
@@ -61,10 +62,15 @@ export function GroupPreview({group, onRemoveGroup, }) {
           </div>
           <TaskList groupId={group.id} tasks={group.tasks} />
           {editMode && (
-          <article className="task-preview-section add-tesk-edit"  onKeyUp={onSubmitTask}>
-            <input type="text" className='add-task-textarea' placeholder='Enter a title for this card...' onChange={handleChange} />
-            {/* <button onClick={onSubmitTask}></button> */}
-          </article>
+          <form className="task-preview-section add-tesk-edit"  onSubmit={onSubmitTask}>
+            <input type="text" 
+            name='title'
+            className='add-task-textarea' 
+            placeholder='Enter a title for this card...' 
+            value={newTask.title} 
+            onChange={handleChange} 
+            />
+          </form>
           )}
           <div className="group-bottom-control-btns">
             <button onClick={onAddTask} className="add-task-btn">

@@ -77,7 +77,7 @@ export function GroupList({ board, onLoadBoard }) {
     {board.groups.map((group) => {
       return <article key={group.id} className="group-preview">
         <div className="group-preview-wrapper">
-          <GroupPreview group={group} onRemoveGroup={onRemoveGroup}/>
+          <GroupPreview group={group} onRemoveGroup={onRemoveGroup} onLoadBoard={onLoadBoard}/>
         </div>
       </article>
     })}
