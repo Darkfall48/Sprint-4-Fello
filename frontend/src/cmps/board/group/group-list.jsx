@@ -92,7 +92,7 @@ export function GroupList({ board, onLoadBoard }) {
     {editMode && (
       <div className='add-group-container'>
         {/* <form action="submit" onSubmit={() => onAddGroup(groupToAdd.title)}> */}
-        <input type="text" name="title" id="title" className='new-group-input' placeholder='Enter list title...' value={newGroupTitle} onChange={handleChange} />
+        <input type="text" name="title" id="title" className='new-group-input' placeholder='Enter list title...' value={newGroupTitle} onChange={handleChange}/>
         <button className='new-group-add-btn' onClick={() => onAddGroup(newGroupTitle)}>Add list</button>
         <button className="close-add-group" onClick={exitEditMode}><CgClose /></button>
         {/* </form> */}
