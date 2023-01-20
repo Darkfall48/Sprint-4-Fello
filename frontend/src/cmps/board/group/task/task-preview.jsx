@@ -92,7 +92,7 @@ export function TaskPreview({ groupId, task }) {
             <img
               key={_id}
               className="task-preview-img"
-              src={imgUrl + fullname}
+              src={imgUrl}
               alt={fullname}
               title={fullname}
             />

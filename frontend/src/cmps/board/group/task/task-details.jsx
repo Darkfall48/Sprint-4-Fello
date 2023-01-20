@@ -101,7 +101,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
             <img
               key={_id}
               className="task-details-section-members-img"
-              src={imgUrl + fullname}
+              src={imgUrl}
               alt={fullname}
               title={fullname}
             />

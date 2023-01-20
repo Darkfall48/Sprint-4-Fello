@@ -143,9 +143,9 @@ function _createBoard(title) {
     isStarred: utilService.getRandomIntInclusive(1, 4) >= 2 ? true : false,
     archivedAt: Date.now(),
     createdBy: {
-      _id: 'u101',
-      fullname: 'Abi Abambi',
-      imgUrl: 'http://some-img',
+      _id: 'u103',
+      fullname: 'Keren Siebner',
+      imgUrl: { imgUrlMember3 },
     },
     style: {
       bgColor: '#ff0000',
@@ -198,9 +198,9 @@ function _createBoard(title) {
         txt: 'Changed Color',
         createdAt: 154514,
         byMember: {
-          _id: 'u101',
-          fullname: 'Abi Abambi',
-          imgUrl: 'https://robohash.org/',
+          _id: 'u102',
+          fullname: 'Sidney Sebban',
+          imgUrl: { imgUrlMember2 },
         },
         task: {
           id: 'c101',
@@ -252,10 +252,9 @@ function _createTask(title) {
         txt: 'also @yaronb please CR this',
         createdAt: 1590999817436,
         byMember: {
-          _id: 'u101',
-          fullname: 'Tal Tarablus',
-          imgUrl:
-            'http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg',
+          _id: 'u102',
+          fullname: 'Sidney Sebban',
+          imgUrl: { imgUrlMember2 },
         },
       },
     ],
@@ -277,10 +276,9 @@ function _createTask(title) {
     dueDate: 16156215211,
     byMember: {
       _id: 'u101',
-      username: 'Tal',
-      fullname: 'Tal Tarablus',
-      imgUrl:
-        'http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg',
+      username: 'Tal123',
+      fullname: 'Yael Tal',
+      imgUrl: { imgUrlMember1 },
     },
     style: {
       bgColor: utilService.getRandomColor(),
@@ -327,9 +325,8 @@ function getDemoGroups() {
               createdAt: 1590999817436.0,
               byMember: {
                 _id: 'u101',
-                fullname: 'Tal Tarablus',
-                imgUrl:
-                  'http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg',
+                fullname: 'Yael Tal',
+                imgUrl: { imgUrlMember1 },
               },
             },
           ],
@@ -352,10 +349,9 @@ function getDemoGroups() {
           dueDate: 16156215211,
           byMember: {
             _id: 'u101',
-            username: 'Tal',
-            fullname: 'Tal Tarablus',
-            imgUrl:
-              'http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg',
+            username: 'Tal123',
+            fullname: 'Yael Tal',
+            imgUrl: { imgUrlMember1 },
           },
           style: {
             bgColor: '#26de81',
