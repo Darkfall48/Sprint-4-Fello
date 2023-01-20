@@ -2,7 +2,7 @@
 import { useRef } from 'react'
 import { useSelector } from 'react-redux'
 //? Icons
-import { AiOutlineEye } from 'react-icons/ai'
+import { AiOutlineEye, AiOutlinePlus } from 'react-icons/ai'
 import { BsReverseLayoutTextWindowReverse } from 'react-icons/bs'
 import { GrTextAlignFull } from 'react-icons/gr'
 import { VscClose } from 'react-icons/vsc'
@@ -12,10 +12,10 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
   const { current: group } = useRef(
     board.groups.filter((group) => group.id === groupId)[0]
   )
+  console.log('Taskkyyyy', task)
+  console.log('GroupIddddd', groupId)
   console.log('Grouppyyyy', group)
   console.log('Boardyyyy', board)
-  console.log('GroupIddddd', groupId)
-  console.log('Taskkkk', task)
 
   function SetHeader() {
     const { style } = task
@@ -29,16 +29,16 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
       <div
         className="task-details-section-header"
         style={{ backgroundColor: style.bgColor }}
-      >
-        I'm a colored Header
-        <SetCloseBtn />
-      </div>
+      ></div>
     )
   }
 
   function SetCloseBtn() {
     return (
-      <button onClick={() => setIsModalOpen(!isModalOpen)}>
+      <button
+        className="task-details-section-close-btn"
+        onClick={() => setIsModalOpen(!isModalOpen)}
+      >
         <VscClose />
       </button>
     )
@@ -70,7 +70,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
     const labels = board.labels
     const { labelIds } = task
 
-    if (!labelIds)
+    if (!labelIds || !labelIds.length)
       return <article className="task-details-section-labels"></article>
     return (
       <article className="task-details-section-labels">
@@ -82,13 +82,26 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
               <span
                 className="task-details-section-labels-container-label"
                 key={label.id}
-                style={{ backgroundColor: label.color }}
-                title={label.title ? label.title : 'None'}
-              ></span>
+                style={{ backgroundColor: label.color + '66' }}
+                title={label.title ? label.title : ''}
+              >
+                <div
+                  className="task-details-section-labels-container-circle"
+                  style={{ backgroundColor: label.color }}
+                ></div>
+                <span className="task-details-section-labels-container-title">
+                  {label.title ? label.title : 'None'}
+                </span>
+              </span>
             )
           })}
+          <button
+            className="task-details-section-labels-add-btn"
+            title="Add Label"
+          >
+            <AiOutlinePlus />
+          </button>
         </div>
-        <button className="task-details-section-labels-add-btn">Add</button>
       </article>
     )
   }
@@ -97,7 +110,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
     const members = board.members
     const { memberIds } = task
 
-    if (!members)
+    if (!memberIds || !memberIds.length)
       return <article className="task-details-section-members"></article>
     return (
       <article className="task-details-section-members">
@@ -150,11 +163,11 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
         className="task-details-section"
         onClick={(e) => e.stopPropagation()}
       >
-        <SetHeader />
         <SetCloseBtn />
+        {task.style.bgColor && <SetHeader />}
         <SetTitle />
-        <SetLabels />
-        <SetMembers />
+        {task.labelIds && <SetLabels />}
+        {task.memberIds && <SetMembers />}
         <SetDescription />
       </section>
     </main>
