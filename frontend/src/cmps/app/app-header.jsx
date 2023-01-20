@@ -15,9 +15,9 @@ export function AppHeader() {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  console.log('isModalOpen', isModalOpen);
+  // console.log('isModalOpen', isModalOpen);
 
-  console.log('board', board);
+  // console.log('board', board);
 
   function onCloseModal() {
     setIsModalOpen(!isModalOpen)

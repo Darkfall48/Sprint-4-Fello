@@ -15,11 +15,12 @@ export const boardService = {
   remove,
   save,
   getEmptyBoard,
+  getEmptyGroup,
+  getEmptyTask,
   getDefaultFilter,
   getDefaultSort,
   // getRandomBoard,
   getDemoGroups,
-  getEmptyGroup,
 }
 
 function query() {
@@ -104,6 +105,25 @@ function getEmptyGroup(groupTitle) {
     style: {},
   }
 }
+
+function getEmptyTask(taskTitle) {
+  return {
+    id: utilService.makeId(),
+    title: taskTitle,
+    archivedAt: Date.now(),
+    style: {},
+    priority: 'low',
+    description: '',
+    comments: [],
+    checklists: [],
+    memberIds: [],
+    labelIds: [],
+    dueDate: null,
+    byMember: {},
+    style: {},
+  }
+}
+
 
 function getDefaultFilter() {
   return { name: '', price: '', pageIdx: '' }

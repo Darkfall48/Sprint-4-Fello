@@ -44,6 +44,7 @@ export function GroupList({ board, onLoadBoard }) {
       await updateBoard(updatedBoard)
       loadBoard()
       setNewGroupTitle('')
+      setEditMode(false)
       showSuccessMsg('Group saved!')
     } catch (err) {
       console.log('err', err)
@@ -76,7 +77,7 @@ export function GroupList({ board, onLoadBoard }) {
     {board.groups.map((group) => {
       return <article key={group.id} className="group-preview">
         <div className="group-preview-wrapper">
-          <GroupPreview group={group} onRemoveGroup={onRemoveGroup} />
+          <GroupPreview group={group} onRemoveGroup={onRemoveGroup}/>
         </div>
       </article>
     })}

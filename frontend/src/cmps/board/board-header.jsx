@@ -10,7 +10,7 @@ export function BoardHeader() {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const contentRef = useRef(null)
 
-  console.log('board from board header', board)
+  // console.log('board from board header', board)
 
   useEffect(() => {}, [board.isStarred])
 

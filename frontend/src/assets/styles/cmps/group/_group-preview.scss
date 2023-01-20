@@ -13,13 +13,14 @@
             color: $clr-txt;
         }
     }
-    
+
     .template-btn {
         font-size: 1.3em;
         color: $clr-txt-btn;
         background-color: rgba(255, 255, 255, 0);
         margin: 5px 0 2px 0;
         border-radius: $border-radius;
+
         &:hover {
             background-color: #091e4214;
         }
@@ -27,9 +28,9 @@
 
     .plus {
         position: relative;
-        top:-1px;
+        top: -1px;
         font-size: 2em;
-        margin:0;
+        margin: 0;
     }
 
 
@@ -43,7 +44,27 @@
         border-radius: $border-radius;
         padding: 6px 8px 2px;
         box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
-
+        .add-tesk-edit{
+            padding: 6px 8px 2px 8px;
+            margin-top:10px;
+            &:hover{
+                background-color: #fff;
+            }
+            .add-task-textarea {
+                border:none ;
+                max-height: 162px;
+                min-height: 54px;
+                width:100%;
+                border-radius: $border-radius;
+                outline:none;
+                font-family: inherit;
+                resize:none;
+                overflow: hidden;
+                overflow-wrap: break-word;
+                padding: 0 5px 30px 0;
+                margin-top:0;
+            }
+        }
 
         .group-title {
             font-size: 1em;
