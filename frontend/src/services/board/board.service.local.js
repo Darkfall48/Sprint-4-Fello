@@ -2,7 +2,7 @@ import { utilService } from '../util.service'
 import { storageService } from '../connection/async-storage.service'
 import imgUrlMember1 from '../../assets/img/members/member1.png'
 import imgUrlMember2 from '../../assets/img/members/member2.png'
-import imgUrlMember3 from '../../assets/img/members/member2.png'
+import imgUrlMember3 from '../../assets/img/members/member3.jpg'
 
 const pageSize = 5
 const BOARD_KEY = 'boardDB'
