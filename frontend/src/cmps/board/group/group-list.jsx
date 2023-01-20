@@ -1,13 +1,12 @@
 //? Libraries
-import { useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { CgClose } from 'react-icons/cg'
 import { BsPlus } from 'react-icons/bs'
 
 //? Services
 import { showSuccessMsg, showErrorMsg, } from '../../../services/connection/event-bus.service'
 import { boardService } from '../../../services/board/board.service.local'
-import { loadBoard, updateBoard } from '../../../store/actions/board.actions'
+import { updateBoard } from '../../../store/actions/board.actions'
 import { store } from '../../../store/store'
 
 //? Cmps
@@ -16,7 +15,6 @@ import { Loader } from '../../helpers/loader'
 
 export function GroupList({ board, onLoadBoard }) {
 
-  const [updatedGroups, setUpdatedGroups] = useState(null)
   const [editMode, setEditMode] = useState(false)
   const [newGroupTitle, setNewGroupTitle] = useState('')
 
@@ -77,7 +75,7 @@ export function GroupList({ board, onLoadBoard }) {
     {board.groups.map((group) => {
       return <article key={group.id} className="group-preview">
         <div className="group-preview-wrapper">
-          <GroupPreview group={group} onRemoveGroup={onRemoveGroup} onLoadBoard={onLoadBoard}/>
+          <GroupPreview group={group} onRemoveGroup={onRemoveGroup} />
         </div>
       </article>
     })}
@@ -91,9 +89,16 @@ export function GroupList({ board, onLoadBoard }) {
     </div>
 
     {editMode && (
-      <div className='add-group-container'>
+      <div className='add-group-container' >
         {/* <form action="submit" onSubmit={() => onAddGroup(groupToAdd.title)}> */}
-        <input type="text" name="title" id="title" className='new-group-input' placeholder='Enter list title...' value={newGroupTitle} onChange={handleChange}/>
+        <input type="text"
+          name="title"
+          id="title"
+          className='new-group-input'
+          placeholder='Enter list title...'
+          value={newGroupTitle}
+          onChange={handleChange}
+        />
         <button className='new-group-add-btn' onClick={() => onAddGroup(newGroupTitle)}>Add list</button>
         <button className="close-add-group" onClick={exitEditMode}><CgClose /></button>
         {/* </form> */}
@@ -104,8 +109,6 @@ export function GroupList({ board, onLoadBoard }) {
   )
 }
 
-{/* <button onClick={() => { onRemoveGroup(group._id)}}> x </button> 
-<button onClick={() => { onUpdateGroup(group) }}> Edit </button>   */}
 
     // async function onUpdateGroup(group) {
     //   const price = +prompt('New price?')
@@ -116,8 +119,4 @@ export function GroupList({ board, onLoadBoard }) {
     //   } catch (err) {
     //     showErrorMsg('Cannot update group')
     //   }
-    // }
-
-    // function onAddGroupMsg(group) {
-    //   console.log(`TODO Adding msg to group`)
     // }

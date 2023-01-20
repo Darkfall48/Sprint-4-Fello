@@ -4,12 +4,13 @@
     // background-color: $dynamic-background;
     color: $clr-white;
     display: flex;
+    padding: 6px 4px 0 4px;
 
 
     .header-links {
         color: white;
         font-size: 1.5em;
-        margin: 13px 0 10px 10px;
+        margin: 9px 0 10px 10px;
     }
 
     .logo {
@@ -18,7 +19,7 @@
         background-repeat: no-repeat;
         width: 75px;
         height: 15px;
-        margin: 15px 30px 10px 10px;
+        margin: 12px 30px 10px 10px;
 
         &:hover {
             background-image: url("https://a.trellocdn.com/prgb/dist/images/header-logo-spirit-loading.87e1af770a49ce8e84e3.gif");
@@ -48,6 +49,8 @@
     nav {
         font-size: 1em;
         padding: 5px;
+        // display: flex;
+        // justify-content: space-between;
 
         a {
             text-decoration: none;
@@ -57,10 +60,10 @@
         }
 
         .down-arrow-nav {
-            font-size: 1.7em;
+            font-size: 1.2em;
             margin-left: 5px;
             position: relative;
-            top: 6px;
+            top: 4px;
         }
     }
 
@@ -73,8 +76,6 @@
         position: relative;
         display: inline-block;
         align-self: center;
-
-
     }
 
     & .dropdown-content {
