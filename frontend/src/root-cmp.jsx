@@ -11,7 +11,7 @@ import routes from './routes'
 
 export function RootCmp() {
   return (
-    <div>
+    <div className="main-layout app">
       <AppHeader />
       <main>
         <Routes>

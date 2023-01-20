@@ -29,9 +29,9 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
     color: #6e6e6e;
     font-weight: 400;
-    background-color: var(--ds-surface-overlay, #ffffff);
+    background-color: white;
     border-radius: rem(3px);
-    box-shadow: var(--ds-shadow-overlay, 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08));
+    box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
     box-sizing: border-box;
     outline: 0;
     overflow: hidden;
@@ -41,13 +41,8 @@
     will-change: top, left;
     top: 114px;
     left: 771px;
-
-    position: fixed;
     z-index: 100;
-
-    // position: fixed;
-    // z-index: 1;
-   
+    // transform: translate(0, -10%);
 
 
     & h1 {
@@ -83,12 +78,6 @@
             color: gray;
         }
 
-    }
-
-    & .modal {
-        &.open {
-            display: block;
-        }
     }
 
 

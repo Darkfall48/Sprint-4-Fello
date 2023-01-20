@@ -7,9 +7,8 @@ a {
 
     &:hover {
         text-decoration: none;
+        // background-color: rgba(0, 0, 0, 0.302);
     }
-
-
 
 
     & .board-preview {
@@ -24,7 +23,10 @@ a {
         height: 96px;
         width: 194px;
 
+        // position: relative;
 
+        // position: relative;
+        // z-index: 1;
         // & .board-fade {
         //     background-color: #00000026;
         //     bottom: 0;
@@ -35,16 +37,33 @@ a {
 
         // }
 
+        & .board-tile-fade {
+            border-radius: 3px;
+            display: block;
 
+        }
 
         &:hover {
             background-color: rgba(158, 176, 187, 0.425);
             background-color: #0000004d;
 
 
+            // & .board-tile-fade {
+            //     background-color: #00000026;
+            //     bottom: 0;
+            //     left: 0;
+            //     position: absolute;
+            //     right: 0;
+            //     top: 0;
+            // }
+
+
+
             & button {
 
                 display: block;
+                // position: relative;
+                // z-index: 100;
 
             }
 
@@ -52,6 +71,8 @@ a {
                 & .star {
                     opacity: 1;
                     transition: 0.5s;
+                    // position: relative;
+                    // z-index: 100;
 
                 }
 
@@ -95,12 +116,17 @@ a {
             display: flex;
             flex-direction: row-reverse;
 
+            // position: relative;
+            // z-index: 100;
+
             //try to fix z-index
             & button {
                 background-color: transparent;
                 margin: 0;
                 padding: 0;
                 display: block;
+                // position: relative;
+                // z-index: 100;
 
             }
 
@@ -108,6 +134,9 @@ a {
                 opacity: 0;
                 width: 15px;
                 height: 15px;
+                display: block;
+                // position: relative;
+                // z-index: 100;
 
             }
 
@@ -115,6 +144,9 @@ a {
                 width: 15px;
                 height: 15px;
                 fill: yellow;
+                display: block;
+                // position: relative;
+                // z-index: 5;
 
             }
         }
@@ -123,6 +155,11 @@ a {
 
 
     }
+
+
+
+
+
 
 
 }

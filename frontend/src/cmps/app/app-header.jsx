@@ -39,7 +39,7 @@ export function AppHeader() {
       <div className='dropdown'>
         <button onClick={() => { setIsModalOpen(!isModalOpen) }}>Create</button>
         {isModalOpen && <div className='dropdown-content'>
-          <BoardAdd onCloseModal={onCloseModal} />
+         {isModalOpen && <BoardAdd onCloseModal={onCloseModal} />}
         </div>}
       </div>
 

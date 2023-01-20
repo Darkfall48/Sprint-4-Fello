@@ -78,7 +78,13 @@
 
         &:hover {
             cursor: pointer;
+            background-color: rgba(226, 226, 226, 0.538);
+            border-radius: 0.15625rem;
 
+        }
+
+        &:focus{
+            background-color: transparent;
         }
 
     }
@@ -102,7 +108,7 @@
         transition-timing-function: ease;
 
         &:hover {
-            background-color: rgba(89, 89, 89, 0.538);
+            background-color: rgba(226, 226, 226, 0.538);
 
             & .star {
                 fill: yellow;

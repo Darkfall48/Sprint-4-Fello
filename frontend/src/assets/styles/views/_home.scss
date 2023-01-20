@@ -91,6 +91,8 @@
     font-size: 1rem;
     padding: 0.7rem 3rem 0.8rem;
     margin: 0;
+    position: relative;
+    z-index: 5;
 
 
     &:hover {

@@ -19,7 +19,7 @@ import svg from '../assets/img/home-page.svg'
 export function Home() {
   return <section className="home-section">
 
-    <div class="wave-container">
+    <div className="wave-container">
       <div className="content-container">
         <div className="txt-container">
           <h1>Trello brings all your tasks, teammates, and tools together

@@ -1,5 +1,7 @@
 .group-list-section {
     display: flex;
+    height: 85vh;
+
 
     .plus {
         margin-top: 5px;
@@ -24,4 +26,28 @@
     .new-group-wrapper {
         margin-top: 4px;
     }
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+
+    &::-webkit-scrollbar {
+        height: 12px;
+        width: 12px;
+      }
+    
+      &::-webkit-scrollbar-thumb {
+        background-color: rgba(235, 229, 229, 0.456);
+        height: 12px;
+        border-radius: 0.2rem;
+      }
+    
+      &::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.2);
+        margin: 50px;
+        height: 12px;
+        border-bottom: 10px solid transparent;
+        border-radius: 0.2rem;
+      }
+    
 }
