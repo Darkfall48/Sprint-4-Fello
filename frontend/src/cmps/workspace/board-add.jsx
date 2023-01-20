@@ -24,12 +24,14 @@ export function BoardAdd({ onCloseModal }) {
             await addBoard(boardToAdd)
             console.log('board saved', boardToAdd);
             showSuccessMsg('Board saved!')
+            // navigate(`/board/${boardToAdd._id}`)
 
         } catch (err) {
             console.log('err', err)
             showErrorMsg('Cannot save board')
         }
         // navigate(`/board/${boardToAdd._id}`)
+        navigate(`/board`)
 
     }
 
@@ -71,14 +73,14 @@ export function BoardAdd({ onCloseModal }) {
 
                         <p>Background</p>
                         <div className="btns-cover-img">
-                            {boardService.getImages().map(image => {
-                                return <button onClick={() => changeBoard(image, '')} className="btn-cover-img" style={{ backgroundImage: `url(${image})` }}></button>
+                            {boardService.getImages().map((image, idx) => {
+                                return <button key={idx} onClick={() => changeBoard(image, '')} className="btn-cover-img" style={{ backgroundImage: `url(${image})` }}></button>
                             })}
                         </div>
 
                         <div className="btns-cover-color">
-                            {boardService.getColors().map(color => {
-                                return <button onClick={() => changeBoard('', color)} className="btn-cover-color" style={{ backgroundColor: color }}></button>
+                            {boardService.getColors().map((color, idx) => {
+                                return <button key={idx} onClick={() => changeBoard('', color)} className="btn-cover-color" style={{ backgroundColor: color }}></button>
                             })}
                         </div>
 

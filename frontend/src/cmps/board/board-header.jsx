@@ -1,20 +1,27 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AiOutlineStar } from 'react-icons/ai'
 import { AiFillStar } from 'react-icons/ai'
 import { BsFilter } from 'react-icons/bs'
 import { RiUserSharedLine } from 'react-icons/ri'
+import { BsThreeDots } from 'react-icons/bs'
 import { loadBoard, updateBoard } from '../../store/actions/board.actions'
 import { useSelector } from 'react-redux'
+import { BoardMenu } from './board-menu'
 
 export function BoardHeader() {
     const board = useSelector((storeState) => storeState.boardModule.board)
     const contentRef = useRef(null)
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     // console.log('board from board header', board)
 
     useEffect(() => {
-        
+
     }, [board.isStarred])
+
+    function onCloseModal() {
+        setIsModalOpen(!isModalOpen)
+    }
 
     function changeContent(ev) {
         board.title = contentRef.current.innerText
@@ -78,9 +85,10 @@ export function BoardHeader() {
                     })}
                 </div>
 
-                <button className="share-btn">
-                    <RiUserSharedLine /> Share
-                </button>
+                <button className="share-btn"><RiUserSharedLine /> Share </button>
+                <span className="board-header-btn-divider"></span>
+                <button onClick={() => { setIsModalOpen(!isModalOpen)}}><BsThreeDots /></button>
+                {isModalOpen && <BoardMenu board={board} onCloseModal={onCloseModal} />}
             </div>
         </section>
     )

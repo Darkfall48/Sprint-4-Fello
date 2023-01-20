@@ -1,0 +1,92 @@
+.board-menu-section {
+
+    background-color: white;
+    box-sizing: border-box;
+    flex: 1 auto;
+    padding: 12px 6px 8px 12px;
+    transform: translateX(0);
+    transition-duration: .12s;
+    transition-property: transform, opacity;
+    transition-timing-function: ease-in;
+    width: 100%;
+
+
+    // &-open{
+    //     transform: translateX(0);
+    
+    //     background-color: white;
+    //     box-sizing: border-box;
+    //     flex: 1 auto;
+    //     padding: 12px 6px 8px 12px;
+    //     transform: translateX(0);
+    //     transition-duration: .12s;
+    //     transition-property: transform, opacity;
+    //     transition-timing-function: ease-in;
+    //     width: 100%;
+    
+    // }
+
+    & .board-menu-header-content {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        height: 48px;
+        // opacity: 0;
+        overflow: hidden;
+        padding: 0 6px 0 12px;
+        position: relative;
+        transition: opacity .2s ease-in;
+        width: 100%;
+
+        & h3 {
+            flex: 1;
+            line-height: 20px;
+            margin: 14px 32px;
+            overflow: hidden;
+            text-align: center;
+            text-overflow: ellipsis;
+            transition: margin .12s ease-in;
+            white-space: nowrap;
+        }
+
+        & button{
+            color: black;
+        }
+    }
+
+    & .btns-container {
+        grid-gap: 8px;
+        display: grid;
+        gap: 8px;
+        grid-template-columns: 1fr 1fr;
+        height: 124px;
+        padding-left: 16px;
+        padding-right: 10px;
+        padding-top: 12px;
+        width: 100%;
+    }
+
+    & .colors-btn {
+        background-image: url(../../../img/colors-btn.jpg);
+        background-color: var(--ds-background-neutral, #dfe1e6);
+        background-size: cover;
+        border-radius: 8px;
+        height: 96px;
+        margin-bottom: 8px;
+        width: 100%;
+    }
+
+    & .imgs-btn {
+        background-image: url(../../../img/imgs-btn.jpg);
+        background-color: var(--ds-background-neutral, #dfe1e6);
+        background-size: cover;
+        border-radius: 8px;
+        height: 96px;
+        margin-bottom: 8px;
+        width: 100%;
+
+    }
+
+}
+
