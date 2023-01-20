@@ -1,6 +1,8 @@
 import { utilService } from '../util.service'
 import { storageService } from '../connection/async-storage.service'
-import imgUrlMember from '../../assets/img/members/member1.png'
+import imgUrlMember1 from '../../assets/img/members/member1.png'
+import imgUrlMember2 from '../../assets/img/members/member2.png'
+import imgUrlMember3 from '../../assets/img/members/member2.png'
 
 const pageSize = 5
 const BOARD_KEY = 'boardDB'
@@ -17,7 +19,7 @@ export const boardService = {
   getDefaultSort,
   // getRandomBoard,
   getDemoGroups,
-  getEmptyGroup
+  getEmptyGroup,
 }
 
 function query() {
@@ -99,7 +101,7 @@ function getEmptyGroup(groupTitle) {
     title: groupTitle,
     archivedAt: Date.now(),
     tasks: [],
-    style:{},
+    style: {},
   }
 }
 
@@ -176,17 +178,17 @@ function _createBoard(title) {
       {
         _id: 'u101',
         fullname: 'Yael Tal',
-        imgUrl: `${imgUrlMember}`,
+        imgUrl: `${imgUrlMember1}`,
       },
       {
         _id: 'u102',
-        fullname: 'Kar Karamba',
-        imgUrl: `${imgUrlMember}`,
+        fullname: 'Sidney Sebban',
+        imgUrl: `${imgUrlMember2}`,
       },
       {
         _id: 'u103',
-        fullname: 'Sid Sidonis',
-        imgUrl: `${imgUrlMember}`,
+        fullname: 'Keren Siebner',
+        imgUrl: `${imgUrlMember3}`,
       },
     ],
     groups: _createGroups(),
