@@ -1,8 +1,6 @@
 //? Libraries
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { AiOutlineEye } from 'react-icons/ai'
-import { BsCheck2Square } from 'react-icons/bs'
 //? Services
 import { utilService } from '../../../../services/util.service'
 //? Components
@@ -11,6 +9,7 @@ import { SetEditBtn } from './cmps/set-edit-btn'
 import { SetTitle } from './cmps/set-title'
 import { SetMembers } from './cmps/set-members'
 import { SetLabels } from './cmps/set-labels'
+import { SetInfos } from './cmps/set-infos'
 
 export function TaskPreview({ groupId, task, onArchiveTask }) {
   // const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -35,14 +34,6 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
     )
   }
 
-  function SetInfos() {
-    return (
-      <article className="task-preview-info">
-        <AiOutlineEye /> <BsCheck2Square /> 0/5
-      </article>
-    )
-  }
-
   return (
     <section
       className="task-preview-section"
@@ -54,7 +45,7 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
       )}
       {task.title && <SetTitle type="preview" task={task} />}
       <SetEditBtn onArchiveTask={onArchiveTask} task={task} />
-      <SetInfos />
+      <SetInfos task={task} />
       <SetMembers type={'preview'} board={board} task={task} />
       {isModalOpen && (
         <TaskDetails
