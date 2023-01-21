@@ -195,22 +195,32 @@ function _createBoard(title, backgroundImg) {
       {
         id: 'l101',
         title: 'Done',
-        color: '#61bd4f',
+        color: '#7bc86c',
       },
       {
         id: 'l102',
         title: 'Progress',
-        color: '#fffc60',
+        color: '#f5dd29',
       },
       {
         id: 'l103',
         title: 'To Do!',
-        color: '#5d2c80',
+        color: '#ffaf3f',
       },
       {
         id: 'l104',
         title: 'Later',
-        color: '#9e0150',
+        color: '#ef7564',
+      },
+      {
+        id: 'l105',
+        title: 'Reported',
+        color: '#cd8de5',
+      },
+      {
+        id: 'l106',
+        title: 'Abandoned',
+        color: '#5ba4cf',
       },
     ],
     members: [
@@ -303,21 +313,41 @@ function _createTask(title) {
         title: 'Checklist',
         todos: [
           {
-            id: '212jX',
+            id: utilService.makeId(5),
             title: 'To Do 1',
+            isDone: false,
+          },
+          {
+            id: utilService.makeId(5),
+            title: 'To Do 2',
+            isDone: true,
+          },
+          {
+            id: utilService.makeId(5),
+            title: 'To Do 3',
+            isDone: true,
+          },
+        ],
+      },
+      {
+        id: 'YEhmE',
+        title: 'Another Checklist',
+        todos: [
+          {
+            id: utilService.makeId(5),
+            title: 'To Do 1',
+            isDone: false,
+          },
+          {
+            id: utilService.makeId(5),
+            title: 'To Do 2',
             isDone: false,
           },
         ],
       },
     ],
-    memberIds:
-      utilService.getRandomIntInclusive(1, 4) <= 2
-        ? ['u101', 'u102', 'u103']
-        : [],
-    labelIds:
-      utilService.getRandomIntInclusive(1, 4) <= 2
-        ? ['l101', 'l102', 'l103', 'l104']
-        : [],
+    memberIds: utilService.getRandomMembers(),
+    labelIds: utilService.getRandomLabels(),
     dueDate: 16156215211,
     byMember: {
       _id: 'u101',
@@ -328,7 +358,7 @@ function _createTask(title) {
     style: {
       bgColor:
         utilService.getRandomIntInclusive(1, 4) <= 2
-          ? utilService.getRandomColor()
+          ? utilService.getRandomChosenColor()
           : '',
     },
   }

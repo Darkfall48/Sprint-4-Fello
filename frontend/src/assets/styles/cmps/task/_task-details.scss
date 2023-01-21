@@ -67,6 +67,9 @@
         font-weight: 600;
         color: #172b4d;
         border: none;
+        overflow: hidden;
+        overflow-wrap: break-word;
+        resize: none;
       }
       &-description {
         padding-left: 8px;
@@ -112,6 +115,7 @@
       &-container {
         justify-self: flex-start;
         display: flex;
+        flex-wrap: wrap;
         gap: 4px;
         grid-area: label;
         padding-left: 8px;
@@ -129,15 +133,21 @@
           gap: 8px;
           padding-left: 8px;
           padding-right: 8px;
+          &:hover {
+            filter: saturate(85%) brightness(85%);
+          }
         }
         &-circle {
           border-radius: 50%;
-          width: 16px;
-          height: 16px;
+          min-width: 16px;
+          max-width: 16px;
+          min-height: 16px;
+          max-height: 16px;
         }
         &-title {
           color: #172b4d;
           font-size: 14px;
+          width: max-content;
         }
       }
       &-add-btn {
@@ -152,6 +162,8 @@
         font-size: 16px;
         background-color: #f0f0f0;
         color: #172b4d;
+        &:hover {
+        }
       }
     }
     //* Members
@@ -172,6 +184,7 @@
         align-items: flex-start;
         padding-left: 8px;
         display: flex;
+        flex-wrap: wrap;
         gap: 4px;
         &-img {
           cursor: pointer;

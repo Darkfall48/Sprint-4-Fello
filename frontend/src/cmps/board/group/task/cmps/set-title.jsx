@@ -27,7 +27,11 @@ export function SetTitle({ type, group, task }) {
             <h2 className="task-details-section-title-description-title">
               In the list
             </h2>
-            <a className="task-details-section-title-description-link" href="#">
+            <a
+              className="task-details-section-title-description-link"
+              title={group.title}
+              href="#"
+            >
               {' ' + group.title}
             </a>
             <AiOutlineEye

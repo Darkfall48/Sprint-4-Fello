@@ -2,7 +2,11 @@ export const utilService = {
   animateCSS,
   makeId,
   makeLorem,
+  getRandomMembers,
+  getRandomLabels,
   getRandomColor,
+  getRandomChosenColor,
+  getRandomChosenColors,
   getRandomIntInclusive,
   getDate,
   debounce,
@@ -66,6 +70,19 @@ function makeLorem(size = 100) {
   return txt
 }
 
+function getRandomMembers() {
+  const Members = ['u101', 'u102', 'u103']
+
+  const num = getRandomIntInclusive(1, Members.length)
+  return Members.slice(0, num)
+}
+function getRandomLabels() {
+  const labels = ['l101', 'l102', 'l103', 'l104', 'l105', 'l106']
+
+  const num = getRandomIntInclusive(1, labels.length)
+  return labels.slice(0, num)
+}
+
 function getRandomColor() {
   const hexArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
   let code = ''
@@ -73,6 +90,48 @@ function getRandomColor() {
     code += hexArray[Math.floor(Math.random() * 15)]
   }
   return `#${code}`
+}
+
+function getRandomChosenColor() {
+  const colorArray = [
+    '#cd8de5',
+    '#ff8ed4',
+    '#ef7564',
+    '#ffaf3f',
+    '#f5dd29',
+    '#6deca9',
+    '#7bc86c',
+    '#29cce5',
+    '#5ba4cf',
+    '#172b4d',
+  ]
+
+  const randomIndex = getRandomIntInclusive(0, colorArray.length - 1)
+  return colorArray[randomIndex]
+}
+
+function getRandomChosenColors() {
+  const colorArray = [
+    '#cd8de5',
+    '#ff8ed4',
+    '#ef7564',
+    '#ffaf3f',
+    '#f5dd29',
+    '#6deca9',
+    '#7bc86c',
+    '#29cce5',
+    '#5ba4cf',
+    '#172b4d',
+  ]
+  const randomLength = getRandomIntInclusive(0, colorArray.length - 1)
+  const randomColors = []
+
+  for (let i = 0; i < randomLength; i++) {
+    const randomIndex = Math.floor(Math.random() * colorArray.length)
+    randomColors.push(colorArray[randomIndex])
+  }
+
+  return randomColors
 }
 
 function getRandomIntInclusive(min, max) {

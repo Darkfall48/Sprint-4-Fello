@@ -1,9 +1,20 @@
-import { boardService } from './board.service.local'
-
-export const boardService = {
-  getLabel,
+export const taskService = {
+  countTodos,
+  countIsDone,
 }
 
-function getLabels(boardId) {
-  // boardService.get(boardId)
+function countTodos(task) {
+  const { checklists } = task
+  return checklists.reduce(
+    (count, checklist) => count + checklist.todos.length,
+    0
+  )
+}
+
+function countIsDone(task) {
+  let count = task.checklists
+    .map((checklist) => checklist.todos)
+    .flat()
+    .filter((todo) => todo.isDone).length
+  return count
 }
