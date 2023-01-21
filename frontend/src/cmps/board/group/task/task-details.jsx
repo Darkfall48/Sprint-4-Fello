@@ -64,7 +64,9 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
         <SetTitle group={group} task={task} />
         {task.labelIds && <SetLabels board={board} task={task} />}
         {task.memberIds && <SetMembers board={board} task={task} />}
-        <GrTextAlignFull className="task-details-section-description-icon" />
+        {task.description && (
+          <GrTextAlignFull className="task-details-section-description-icon" />
+        )}
         <SetDescription task={task} />
       </section>
     </main>
