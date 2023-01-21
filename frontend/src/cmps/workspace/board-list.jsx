@@ -29,6 +29,6 @@ export function BoardList({ boards, onEditBoard, onRemoveBoard }) {
         </ul>
 
         {isModalOpen &&  <Modal type={'add-board'} modalTitle={'Create board'} onCloseModal={onCloseModal}/> }
-
+        {/* {isModalOpen && <BoardAdd onCloseModal={onCloseModal} />} */}
     </section>
 }
