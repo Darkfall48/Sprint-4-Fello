@@ -13,6 +13,7 @@ export const utilService = {
   randomPastTime,
   saveToStorage,
   loadFromStorage,
+  getRandomChosenImg,
 }
 
 function makeId(length = 6) {
@@ -104,6 +105,18 @@ function getRandomChosenColor() {
     '#29cce5',
     '#5ba4cf',
     '#172b4d',
+  ]
+
+  const randomIndex = getRandomIntInclusive(0, colorArray.length - 1)
+  return colorArray[randomIndex]
+}
+function getRandomChosenImg() {
+  const imgs = [
+    'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/256x171/315d250bcd06a5f6dd93dae1bd19318f/photo-1461896836934-ffe607ba8211.jpg',
+    'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/256x171/129d40831a510981958f7d9a775f8180/photo-1564341505027-b410c159e1b6.jpg',
+    'https://images.unsplash.com/photo-1662125208190-b21030e953ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1857&q=80',
+    'https://images.unsplash.com/photo-1610886420404-7f72bc3d57d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80',
+    'https://images.unsplash.com/photo-1660578570016-d1ad0176e24f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80',
   ]
 
   const randomIndex = getRandomIntInclusive(0, colorArray.length - 1)

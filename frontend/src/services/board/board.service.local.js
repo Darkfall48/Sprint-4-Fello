@@ -360,6 +360,10 @@ function _createTask(title) {
         utilService.getRandomIntInclusive(1, 4) <= 2
           ? utilService.getRandomChosenColor()
           : '',
+      bgImg:
+        utilService.getRandomIntInclusive(1, 4) <= 2
+          ? utilService.getRandomChosenImg()
+          : '',
     },
   }
 }
