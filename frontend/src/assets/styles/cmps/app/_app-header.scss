@@ -4,7 +4,11 @@
     // background-color: $dynamic-background;
     color: $clr-white;
     display: flex;
-    padding: 6px 4px 0 4px;
+    // padding: 6px 4px 0 4px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
 
 
     .header-links {
@@ -116,7 +120,7 @@
         & .modal-content {
             position: relative;
             top: 50px;
-            left: 1000px;
+            left: 580px;
 
         }
     }
