@@ -66,7 +66,6 @@ function remove(boardId) {
 
 function save(board) {
   if (board._id) {
-    console.log('board', board)
     return storageService.put(BOARD_KEY, board)
   } else {
     board._id = utilService.makeId()

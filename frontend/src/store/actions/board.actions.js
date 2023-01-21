@@ -92,7 +92,6 @@ export async function addBoard(board) {
 }
 
 export async function updateBoard(board) {
-  console.log('board', board)
   try {
     const savedBoard = await boardService.save(board)
     console.log('Updated Board:', savedBoard)
@@ -136,12 +135,9 @@ export async function addTask(group, task) {
 }
 
 export async function removeTask(group, taskId) {
-  console.log('group', group, 'taskId', taskId)
   try {
     const upatedTasks = group.tasks.filter(task => task.id !== taskId)
-    // console.log('updatedTasks', upatedTasks)
-    const updatedGroup = { ...group, task: upatedTasks }
-    // console.log('updatedGroup', updatedGroup)
+    const updatedGroup = { ...group, tasks: upatedTasks }
     saveGroup(updatedGroup)
   } catch (err) {
     console.log('Cannot remove task', err)
