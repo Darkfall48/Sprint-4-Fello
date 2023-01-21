@@ -376,5 +376,6 @@ function getImages() {
 }
 
 function getColors() {
-  return ['#5ba4cf', '#f5dd29', '#7bc86c', '#ef7564', '#cd8de5']
+  return ['#0079bf', '#d29034', '#519839', '#b04632', '#89609e']
+  // return ['#5ba4cf', '#f5dd29', '#7bc86c', '#ef7564', '#cd8de5']
 }
