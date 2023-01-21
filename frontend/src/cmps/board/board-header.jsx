@@ -6,6 +6,7 @@ import { RiUserSharedLine } from 'react-icons/ri'
 import { BsThreeDots } from 'react-icons/bs'
 import { loadBoard, updateBoard } from '../../store/actions/board.actions'
 import { BoardMenu } from './board-menu'
+import { Loader } from '../helpers/loader'
 
 export function BoardHeader({board}) {
 
@@ -82,10 +83,10 @@ export function BoardHeader({board}) {
                     })}
                 </div>
 
-                <button className="share-btn"><RiUserSharedLine /> Share </button>
+                <button className="share"><RiUserSharedLine /> Share </button>
                 <span className="board-header-btn-divider"></span>
                 <button onClick={() => { setIsModalOpen(!isModalOpen)}}><BsThreeDots /></button>
-                {isModalOpen && <BoardMenu board={board} onCloseModal={onCloseModal} isModalOpen={isModalOpen}/>}
+                {/* {isModalOpen && <BoardMenu board={board} onCloseModal={onCloseModal} isModalOpen={isModalOpen}/>} */}
             </div>
         </section>
     )

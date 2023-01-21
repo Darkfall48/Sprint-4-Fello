@@ -11,7 +11,7 @@ a {
         // background-color: rgba(0, 0, 0, 0.302);
         filter: contrast(80%);
 
-        & button {
+        button {
 
             display: block;
             // position: relative;
@@ -19,8 +19,8 @@ a {
 
         }
 
-        & .hidden-btns {
-            & .star {
+        .hidden-btns {
+            .star {
                 opacity: 1;
                 transition: 0.5s;
                 // position: relative;
@@ -34,7 +34,7 @@ a {
     }
 
 
-    & .board-preview {
+    .board-preview {
         background: $default-board-bg-clr;
         color: $clr-white ;
         padding: 10px;
@@ -60,7 +60,7 @@ a {
 
         // }
 
-        & .board-tile-fade {
+        .board-tile-fade {
             border-radius: 3px;
             display: block;
 
@@ -82,15 +82,15 @@ a {
 
 
 
-            & button {
+            button {
                 display: block;
                 position: relative;
                 z-index: 100;
 
             }
 
-            & .hidden-btns {
-                & .star {
+            .hidden-btns {
+                .star {
                     opacity: 1;
                     transition: 0.5s;
                     position: relative;
@@ -99,7 +99,7 @@ a {
 
             }
 
-            & .board-tile-fade {
+            .board-tile-fade {
                 border-radius: 3px;
                 display: block;
 
@@ -108,7 +108,7 @@ a {
 
 
 
-        & .board-preview-details {
+        .board-preview-details {
             position: relative;
             display: flex;
             flex-direction: column;
@@ -116,7 +116,7 @@ a {
             justify-content: space-between;
             position: relative;
 
-            & h4 {
+            h4 {
                 text-align: left;
                 word-wrap: break-word;
                 font-size: rem(16px);
@@ -194,7 +194,7 @@ a {
     // z-index: 100;
 
     //try to fix z-index
-    & button {
+    button {
         background-color: transparent;
         margin: 0;
         padding: 0;
@@ -203,7 +203,7 @@ a {
 
     }
 
-    & .star {
+    .star {
         // opacity: 0;
         color: $clr-white;
         width: 15px;
@@ -219,7 +219,7 @@ a {
 
     }
 
-    & .starred {
+    .starred {
         width: 15px;
         height: 15px;
         fill: yellow;

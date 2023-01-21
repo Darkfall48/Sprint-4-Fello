@@ -29,11 +29,11 @@
 
     // }
 
-    & button {
+    button {
         color: black;
     }
 
-    & .board-menu-header-content {
+    .board-menu-header-content {
         display: flex;
         align-items: center;
         box-sizing: border-box;
@@ -46,7 +46,7 @@
         transition: opacity .2s ease-in;
         width: 100%;
 
-        & h3 {
+        h3 {
             flex: 1;
             line-height: 20px;
             margin: 14px 32px;
@@ -57,12 +57,12 @@
             white-space: nowrap;
         }
 
-        & button {
+        button {
             color: black;
         }
     }
 
-    & .btns-container {
+    .btns-container {
         grid-gap: 8px;
         display: grid;
         gap: 8px;
@@ -74,7 +74,7 @@
         width: 100%;
     }
 
-    & .colors-btn {
+    .colors-btn {
         background-image: url(../../../img/colors-btn.jpg);
         background-color: #dfe1e6;
         background-size: cover;
@@ -84,7 +84,7 @@
         width: 100%;
     }
 
-    & .imgs-btn {
+    .imgs-btn {
         background-image: url(../../../img/imgs-btn.jpg);
         background-color: #dfe1e6;
         background-size: cover;

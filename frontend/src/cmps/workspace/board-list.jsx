@@ -29,7 +29,7 @@ export function BoardList({ boards, onEditBoard, onRemoveBoard }) {
                 </li>)}
         </ul>
 
-       
         {isModalOpen && <BoardAdd onCloseModal={onCloseModal} />}
+       
     </section>
 }

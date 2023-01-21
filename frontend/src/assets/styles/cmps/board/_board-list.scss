@@ -1,7 +1,7 @@
 .board-list {
     padding: 0;
 
-    & .board-list-btn {
+    .board-list-btn {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         background-color: $board-list-btn;
         color: $clr2;
@@ -18,7 +18,7 @@
         }
     }
 
-    & ul {
+    ul {
         list-style: none;
         display: flex;
         flex-direction: row;
@@ -30,11 +30,11 @@
     }
 
     
-    & .board-add{
+    .board-add{
         position: absolute;
     }
 
-    // & .modal-content{
+    // .modal-content{
     //     position:absolute;
     //     top: 315px;
     //     left: 350px;
