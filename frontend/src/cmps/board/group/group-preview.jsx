@@ -16,7 +16,7 @@ import {
 import { store } from '../../../store/store'
 import { Modal } from '../../app/modal'
 
-export function GroupPreview({ group, onRemoveGroup }) {
+export function GroupPreview({ group }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
 
   const contentRef = useRef(null)
@@ -72,7 +72,6 @@ export function GroupPreview({ group, onRemoveGroup }) {
 
   return (
     <section className="group-preview-section">
-      {/* {group && ( */}
       <div>
         <div className="group-header">
           <h1
@@ -86,19 +85,17 @@ export function GroupPreview({ group, onRemoveGroup }) {
           >
             {`${group.title}`}
           </h1>
-          <button onClick={() => onRemoveGroup(group.id)}>
-            <CgClose />
-          </button>
           <button onClick={() => onGroupMenuOpen(group.id)}>
             <BsThreeDots />
           </button>
           {isGroupMenuOpen && (
-            <Modal
-              type="group-actions"
-              modalTitle="List Actions"
-              onCloseModal={onCloseModal}
-              group={group}
-            />
+              <Modal
+                type="group-actions"
+                modalTitle="List Actions"
+                onCloseModal={onCloseModal}
+                group={group}
+                
+              />
           )}
         </div>
         <TaskList
@@ -132,7 +129,6 @@ export function GroupPreview({ group, onRemoveGroup }) {
           </button>
         </div>
       </div>
-      {/* )} */}
     </section>
   )
 }

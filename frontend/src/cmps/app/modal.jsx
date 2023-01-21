@@ -7,10 +7,10 @@ import { GroupActionsModal } from './modal/group-actions-modal';
 
 export function Modal({ type, modalTitle, onCloseModal, group }) {
 
-    return <div className={`modal-content`} id={`modal-${type}`} onClick={(e) => e.stopPropagation()}>
-            <div className="form-container">
+    return <div className={`modal-content modal-${type}`} onClick={(e) => e.stopPropagation()}>
+            <div className="form-container" id="modal-form-container">
 
-                <div className="modal-header">
+                <div className="modal-header" id={`modal-header-${type}`}>
                     <h2>{modalTitle}</h2>
                     <button onClick={onCloseModal}><CgClose/></button>
                 </div>

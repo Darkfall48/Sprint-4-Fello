@@ -50,19 +50,6 @@ export function GroupList({ board }) {
     }
   }
 
-  async function onRemoveGroup(groupId) {
-    const updatedGroups = board.groups.filter((group) => group.id !== groupId)
-    const updatedBoard = { ...board, groups: updatedGroups }
-    console.log('newBoard', updatedBoard)
-    try {
-      await updateBoard(updatedBoard)
-      onLoadBoard()
-      showSuccessMsg('Group removed')
-    } catch (err) {
-      showErrorMsg('Cannot remove group')
-    }
-  }
-
   async function onLoadBoard() {
     try {
       await loadBoard(board._id)
@@ -80,7 +67,7 @@ export function GroupList({ board }) {
     {board.groups.map((group) => {
       return <article key={group.id} className="group-preview">
         <div className="group-preview-wrapper">
-          <GroupPreview group={group} onRemoveGroup={onRemoveGroup} />
+          <GroupPreview group={group} />
         </div>
       </article>
     })}
