@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Modal } from "../app/modal";
+import { BoardAdd } from "./board-add";
 
 import { BoardPreview } from "./board-preview";
 
@@ -28,7 +29,7 @@ export function BoardList({ boards, onEditBoard, onRemoveBoard }) {
                 </li>)}
         </ul>
 
-        {isModalOpen &&  <Modal type={'add-board'} modalTitle={'Create board'} onCloseModal={onCloseModal}/> }
-        {/* {isModalOpen && <BoardAdd onCloseModal={onCloseModal} />} */}
+        {/* {isModalOpen &&  <Modal type={'add-board'} modalTitle={'Create board'} onCloseModal={onCloseModal}/> } */}
+        {isModalOpen && <BoardAdd onCloseModal={onCloseModal} />}
     </section>
 }
