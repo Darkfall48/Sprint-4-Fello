@@ -10,7 +10,6 @@ import { loadBoards, removeBoard } from "../store/actions/board.actions";
 export function Workspace() {
 
   const boards = useSelector((storeState) => storeState.boardModule.boards)
-  console.log('boards', boards);
 
   useEffect(() => {
     onLoadBoards()
@@ -35,7 +34,6 @@ export function Workspace() {
     } catch (err) {
       showErrorMsg('Cannot remove board')
     }
-
   }
 
   const starredBoard = boards.filter((board) => board.isStarred)
@@ -46,7 +44,7 @@ export function Workspace() {
     <div className="starred-boards-container">
       <h1><AiOutlineStar className="workspace-icons"/> Starred boards</h1>
       {boards.map(board => {
-        console.log('board.isStarred', board.isStarred);
+        // console.log('board.isStarred', board.isStarred);
         return board.isStarred
       }) && <BoardList
           boards={starredBoard}

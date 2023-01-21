@@ -93,9 +93,10 @@ export function GroupPreview({ group, onRemoveGroup }) {
           </button>
           {isGroupMenuOpen && (
             <Modal
-              type="group-preview"
+              type="group-actions"
               modalTitle="List Actions"
               onCloseModal={onCloseModal}
+              group={group}
             />
           )}
         </div>
@@ -106,7 +107,7 @@ export function GroupPreview({ group, onRemoveGroup }) {
         />
         {editMode && (
           <form
-            className="task-preview-section add-tesk-edit"
+            className="task-preview-section add-task-edit"
             onSubmit={onSubmitTask}
             onBlur={(ev) => onSubmitTask(ev)}
           >

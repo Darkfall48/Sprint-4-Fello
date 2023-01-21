@@ -2,33 +2,31 @@
 
 @mixin for-mobile-layout {
     @media (max-width: $break-narrow) {
-      @content;
+        @content;
     }
-  }
-  
-  @mixin for-narrow-layout {
+}
+
+@mixin for-narrow-layout {
     @media (min-width: $break-narrow) {
-      @content;
+        @content;
     }
-  }
-  
-  @mixin for-normal-layout {
+}
+
+@mixin for-normal-layout {
     @media (min-width: $break-normal) {
-      @content;
+        @content;
     }
-  }
-  
-  @mixin for-wide-layout {
+}
+
+@mixin for-wide-layout {
     @media (min-width: $break-wide) {
-      @content;
+        @content;
     }
-  }
+}
 
 @mixin layoutGTC($max) {
     grid-template-columns:
-        minmax($layoutPadding, 1fr) 
-        minmax(auto, $max) 
-        minmax($layoutPadding, 1fr);
+        minmax($layoutPadding, 1fr) minmax(auto, $max) minmax($layoutPadding, 1fr);
 }
 
 /* Media  Mixins */
@@ -72,16 +70,14 @@
     display: inline-flex;
     align-items: center;
     text-decoration: none;
-    text-transform: uppercase;
     padding: $padding;
     line-height: 1.25;
-    font-size: em(14px);
+    font-size: 1em;
     font-variation-settings: "wght" 430;
     border: none;
     cursor: pointer;
     border-radius: 0.5rem;
     font-weight: 700;
-
     transition: background-color 0.2s;
 
     @if $type ==regular {
@@ -92,6 +88,19 @@
             background-color: $hover;
         }
     }
+
+    @else if $type ==modal-full {
+        font-family: inherit;
+        color: $clr1;
+        text-align: left;
+        width: 100%;
+
+        &:hover {
+            background-color: $board-list-btn-hover;
+        }
+
+    }
+
 
     // @else if $type ==dark {
     //     background-color: $clr2;
