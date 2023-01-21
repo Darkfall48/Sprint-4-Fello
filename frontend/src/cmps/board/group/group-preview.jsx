@@ -8,18 +8,22 @@ import { CgClose } from 'react-icons/cg'
 import { useSelector } from 'react-redux'
 //?Services
 import { boardService } from '../../../services/board/board.service.local'
-import { removeTask, addTask, updateBoard } from '../../../store/actions/board.actions'
+import {
+  removeTask,
+  addTask,
+  updateBoard,
+} from '../../../store/actions/board.actions'
 import { store } from '../../../store/store'
-
+import { Modal } from '../../app/modal'
 
 export function GroupPreview({ group, onRemoveGroup }) {
-
   const board = useSelector((storeState) => storeState.boardModule.board)
 
   const contentRef = useRef(null)
 
   const [editMode, setEditMode] = useState(false)
   const [newTask, setNewTask] = useState(boardService.getEmptyTask(''))
+  const [isGroupMenuOpen, setIsGroupMenuOpen] = useState(false)
 
   function onAddTask() {
     setEditMode(true)
@@ -57,13 +61,21 @@ export function GroupPreview({ group, onRemoveGroup }) {
     contentRef.current.contentEditable = true
   }
 
+  function onGroupMenuOpen() {
+    setIsGroupMenuOpen(true)
+  }
+
+  function onCloseModal() {
+    setIsGroupMenuOpen(false)
+  }
 
   return (
     <section className="group-preview-section">
       {/* {group && ( */}
       <div>
-        <div className='group-header'>
-          <h1 className="group-title"
+        <div className="group-header">
+          <h1
+            className="group-title"
             ref={contentRef}
             style={{ wordBreak: 'keep-all' }}
             onKeyDown={(ev) => changeContent(ev)}
@@ -73,33 +85,49 @@ export function GroupPreview({ group, onRemoveGroup }) {
           >
             {`${group.title}`}
           </h1>
-          <button onClick={() => onRemoveGroup(group.id)}><CgClose /></button>
-        </div>
-        <div className='group-section'>
-          <TaskList groupId={group.id} tasks={group.tasks} onArchiveTask={onArchiveTask} />
-          {editMode && (
-            <form className="task-preview-section add-tesk-edit"
-              onSubmit={onSubmitTask}
-              onBlur={(ev) => onSubmitTask(ev)}
-            >
-              <input type="text"
-                name='title'
-                className='add-task-textarea'
-                placeholder='Enter a title for this card...'
-                value={newTask.title}
-                onChange={handleChange}
-              />
-            </form>
+          <button onClick={() => onRemoveGroup(group.id)}>
+            <CgClose />
+          </button>
+          <button onClick={() => onGroupMenuOpen(group.id)}>
+            <BsThreeDots />
+          </button>
+          {isGroupMenuOpen && (
+            <Modal
+              type="group-preview"
+              modalTitle="List Actions"
+              onCloseModal={onCloseModal}
+            />
           )}
-          <div className="group-bottom-control-btns">
-            <button onClick={onAddTask} className="add-task-btn">
-              <BsPlus className="plus" />
-              <span>Add a card</span>
-            </button>
-            <button name="template" id="template" className="template-btn">
-              <TbTemplate />
-            </button>
-          </div>
+        </div>
+        <TaskList
+          groupId={group.id}
+          tasks={group.tasks}
+          onArchiveTask={onArchiveTask}
+        />
+        {editMode && (
+          <form
+            className="task-preview-section add-tesk-edit"
+            onSubmit={onSubmitTask}
+            onBlur={(ev) => onSubmitTask(ev)}
+          >
+            <input
+              type="text"
+              name="title"
+              className="add-task-textarea"
+              placeholder="Enter a title for this card..."
+              value={newTask.title}
+              onChange={handleChange}
+            />
+          </form>
+        )}
+        <div className="group-bottom-control-btns">
+          <button onClick={onAddTask} className="add-task-btn">
+            <BsPlus className="plus" />
+            <span>Add a card</span>
+          </button>
+          <button name="template" id="template" className="template-btn">
+            <TbTemplate />
+          </button>
         </div>
       </div>
       {/* )} */}
