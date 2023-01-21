@@ -16,6 +16,7 @@
     & .content-container {
       display: flex;
       justify-content: space-around;
+      margin: 0 100px;
 
       & .txt-container {
         text-align: left;
@@ -53,10 +54,15 @@
     // height: 100vh;
     text-align: center;
     padding: 100px;
+    padding-top: 0;
     margin-top: -20px;
 
+    & .txt-content{
+      padding: 60px 30px;
+    }
+
     & h1 {
-      font-size: 2rem;
+      font-size: 3rem;
       font-weight: 900;
       letter-spacing: 0.35px;
       line-height: 48px;
@@ -68,6 +74,11 @@
       line-height: 30px;
       margin: 0;
       margin-bottom: 24px;
+      padding: 0 200px;
+    }
+
+    & img{
+      width: 900px;
     }
   }
 }

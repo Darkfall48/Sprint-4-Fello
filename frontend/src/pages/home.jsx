@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 //? Assets
 import svg from '../assets/img/home-page.svg'
+import boardSvg from '../assets/img/TrelloImage-1.webp'
 
 export function Home() {
   return (
@@ -27,6 +28,7 @@ export function Home() {
         <img src={svg} alt="Wave" />
       </div>
       <div className="secondary-content-container">
+        <div className="txt-content">
         <h1>A productivity powerhouse</h1>
         <p>
           Simple, flexible, and powerful. All it takes are boards, lists, and
@@ -36,6 +38,8 @@ export function Home() {
         <Link className="home-btn" to={'/board'}>
           Start
         </Link>
+        </div>
+        <img src={boardSvg} alt="boardSvg" />
       </div>
     </section>
   )
