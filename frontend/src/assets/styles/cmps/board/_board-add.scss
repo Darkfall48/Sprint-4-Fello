@@ -17,11 +17,10 @@
     box-sizing: border-box;
     outline: 0;
     overflow: hidden;
-
-    position: sticky;
+    position: fixed;
     width: 304px;
     will-change: top, left;
-    top: 0;
+    top: 114px;
     left: 771px;
     z-index: 100;
     // transform: translate(0, -10%);

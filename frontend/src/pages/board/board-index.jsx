@@ -18,9 +18,9 @@ export function BoardIndex() {
   const { boardId } = useParams()
   useEffect(() => {
     loadBoard(boardId)
-    // return () => {
-    //   store.dispatch({ type: 'CLEAN_STORE' })
-    // }
+    return () => {
+      store.dispatch({ type: 'CLEAN_STORE' })
+    }
   }, [])
 
 
