@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux'
 import { boardService } from '../../../services/board/board.service.local'
 import { removeTask, addTask, updateBoard } from '../../../store/actions/board.actions'
 import { store } from '../../../store/store'
+import { Modal } from '../../app/modal'
 
 
 export function GroupPreview({ group, onRemoveGroup }) {
@@ -20,6 +21,8 @@ export function GroupPreview({ group, onRemoveGroup }) {
 
   const [editMode, setEditMode] = useState(false)
   const [newTask, setNewTask] = useState(boardService.getEmptyTask(''))
+  const [isGroupMenuOpen, setIsGroupMenuOpen] = useState(false)
+
 
   function onAddTask() {
     setEditMode(true)
@@ -57,6 +60,13 @@ export function GroupPreview({ group, onRemoveGroup }) {
     contentRef.current.contentEditable = true
   }
 
+  function onGroupMenuOpen() {
+    setIsGroupMenuOpen(true)
+  }
+
+  function onCloseModal() {
+    setIsGroupMenuOpen(false)
+  }
 
   return (
     <section className="group-preview-section">
@@ -74,7 +84,10 @@ export function GroupPreview({ group, onRemoveGroup }) {
             {`${group.title}`}
           </h1>
           <button onClick={() => onRemoveGroup(group.id)}><CgClose /></button>
+          <button onClick={() => onGroupMenuOpen(group.id)}><BsThreeDots /></button>
+          {isGroupMenuOpen && <Modal type="group-preview" modalTitle="List Actions" onCloseModal={onCloseModal} />}
         </div>
+<<<<<<< Updated upstream
         <div className='group-section'>
           <TaskList groupId={group.id} tasks={group.tasks} onArchiveTask={onArchiveTask} />
           {editMode && (
@@ -100,6 +113,31 @@ export function GroupPreview({ group, onRemoveGroup }) {
               <TbTemplate />
             </button>
           </div>
+=======
+        <TaskList groupId={group.id} tasks={group.tasks} onArchiveTask={onArchiveTask} />
+        {editMode && (
+          <form className="task-preview-section add-tesk-edit"
+            onSubmit={onSubmitTask}
+            onBlur={(ev) => onSubmitTask(ev)}
+          >
+            <input type="text"
+              name='title'
+              className='add-task-textarea'
+              placeholder='Enter a title for this card...'
+              value={newTask.title}
+              onChange={handleChange}
+            />
+          </form>
+        )}
+        <div className="group-bottom-control-btns">
+          <button onClick={onAddTask} className="add-task-btn">
+            <BsPlus className="plus" />
+            <span>Add a card</span>
+          </button>
+          <button name="template" id="template" className="template-btn">
+            <TbTemplate />
+          </button>
+>>>>>>> Stashed changes
         </div>
       </div>
       {/* )} */}
