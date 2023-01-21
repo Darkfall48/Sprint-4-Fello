@@ -1,6 +1,6 @@
 //? Libraries
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
 //? Services
@@ -24,6 +24,7 @@ import { store } from '../../store/store'
 
 export function BoardIndex() {
   const board = useSelector((storeState) => storeState.boardModule.board)
+  const navigate = useNavigate()
 
   const { boardId } = useParams()
   useEffect(() => {
@@ -40,14 +41,23 @@ export function BoardIndex() {
       await loadBoard(boardId)
       showSuccessMsg('Boards loaded')
     } catch (err) {
-      showErrorMsg('Cannot load boards')
+      navigate('/board') //TODO: Ask Roi why it's not working
+      console.log('My error', err)
+      // showErrorMsg('Cannot load boards')
     }
   }
 
   if (!board) return <Loader />
   return (
     <section
-      className="group-index-section" style={board?.style?.backgroundImg && { background: `url(${board.style.backgroundImg}) center center / cover` } || board?.style?.bgColor && { background: board.style.bgColor }}>
+      className="group-index-section"
+      style={
+        (board?.style?.backgroundImg && {
+          background: `url(${board.style.backgroundImg}) center center / cover`,
+        }) ||
+        (board?.style?.bgColor && { background: board.style.bgColor })
+      }
+    >
       {/* {!board ? <Loader /> : <BoardDetails board={board} />} */}
       <BoardDetails onLoadBoard={onLoadBoard} board={board} />
     </section>

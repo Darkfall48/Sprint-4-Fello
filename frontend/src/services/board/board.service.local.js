@@ -20,13 +20,17 @@ export const boardService = {
   getDefaultFilter,
   getDefaultSort,
   // getRandomBoard,
-  getDemoGroups,
   getImages,
-  getColors
+  getColors,
 }
 
-function query() {
-  return Promise.resolve(storageService.query(BOARD_KEY))
+async function query() {
+  try {
+    return await storageService.query(BOARD_KEY)
+  } catch (err) {
+    console.log('Cannot load boards', err)
+    throw err
+  }
   // function query(filterBy = getDefaultFilter(), sortBy = getDefaultSort()) {
   //   console.log(filterBy)
   // return storageService.query(BOARD_KEY)
@@ -56,20 +60,35 @@ function query() {
   // return Promise.resolve(filteredBoards)
 }
 
-function get(boardId) {
-  return storageService.get(BOARD_KEY, boardId)
+async function get(boardId) {
+  try {
+    return await storageService.get(BOARD_KEY, boardId)
+  } catch (err) {
+    console.log('Cannot get board:', boardId, err)
+    throw err
+  }
 }
 
-function remove(boardId) {
-  return storageService.remove(BOARD_KEY, boardId)
+async function remove(boardId) {
+  try {
+    return await storageService.remove(BOARD_KEY, boardId)
+  } catch (err) {
+    console.log('Cannot remove board:', boardId, err)
+    throw err
+  }
 }
 
-function save(board) {
-  if (board._id) {
-    return storageService.put(BOARD_KEY, board)
-  } else {
-    board._id = utilService.makeId()
-    return storageService.post(BOARD_KEY, board)
+async function save(board) {
+  try {
+    if (board._id) {
+      return await storageService.put(BOARD_KEY, board)
+    } else {
+      board._id = utilService.makeId()
+      return await storageService.post(BOARD_KEY, board)
+    }
+  } catch (err) {
+    console.log('Cannot save board', err)
+    throw err
   }
 }
 
@@ -125,7 +144,6 @@ function getEmptyTask(taskTitle) {
     style: {},
   }
 }
-
 
 function getDefaultFilter() {
   return { name: '', price: '', pageIdx: '' }
@@ -317,84 +335,7 @@ function _createTask(title) {
   }
 }
 
-function getDemoGroups() {
-  return [
-    {
-      id: 'g101',
-      title: 'To do',
-      archivedAt: 1589983468418,
-      tasks: [
-        {
-          id: 'c101',
-          title: 'Replace logo',
-        },
-        {
-          id: 'c102',
-          title: 'Add Samples',
-        },
-      ],
-      style: {},
-    },
-    {
-      id: 'g102',
-      title: 'Done',
-      tasks: [
-        {
-          id: 'c103',
-          title: 'Do that',
-          archivedAt: 1589983468418,
-        },
-        {
-          id: 'c104',
-          title: 'Help me',
-          status: 'in-progress',
-          description: 'I am a description..',
-          comments: [
-            {
-              id: 'ZdPnm',
-              txt: 'also @yaronb please CR this',
-              createdAt: 1590999817436.0,
-              byMember: {
-                _id: 'u101',
-                fullname: 'Yael Tal',
-                imgUrl: { imgUrlMember1 },
-              },
-            },
-          ],
-          checklists: [
-            {
-              id: 'YEhmF',
-              title: 'Checklist',
-              todos: [
-                {
-                  id: '212jX',
-                  title: 'To Do 1',
-                  isDone: false,
-                },
-              ],
-            },
-          ],
-          memberIds: ['u101'],
-          labelIds: ['l101', 'l102'],
-          createdAt: 1590999730348,
-          dueDate: 16156215211,
-          byMember: {
-            _id: 'u101',
-            username: 'Tal123',
-            fullname: 'Yael Tal',
-            imgUrl: { imgUrlMember1 },
-          },
-          style: {
-            bgColor: '#26de81',
-          },
-        },
-      ],
-      style: {},
-    },
-  ]
-}
-
-function getImages(){
+function getImages() {
   return [
     'https://images.unsplash.com/photo-1671894618012-b1f9d305a97f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80',
     'https://images.unsplash.com/photo-1673768501816-6a565f620309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
@@ -403,15 +344,8 @@ function getImages(){
     'https://images.unsplash.com/photo-1539807134273-f97ed182b488?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2115&q=80',
     // 'https://images.unsplash.com/photo-1673715852601-987ac8f3b9ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
   ]
-  
 }
 
-function getColors(){
-  return [
-    '#5ba4cf',
-    '#f5dd29',
-    '#7bc86c',
-    '#ef7564',
-    '#cd8de5'
-  ]
+function getColors() {
+  return ['#5ba4cf', '#f5dd29', '#7bc86c', '#ef7564', '#cd8de5']
 }
