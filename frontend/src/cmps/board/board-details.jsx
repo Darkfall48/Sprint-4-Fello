@@ -10,12 +10,11 @@ import { BoardHeader } from './board-header'
 
 export function BoardDetails({ board }) {
 
-  // if (!board) return <Loader />
+  if (!board) return <Loader />
   return (
     <section className="board-details-section">
       <BoardHeader board={board} />
-      {board &&<GroupList  board={board} />}
-      {!board && <Loader />}
+      <GroupList  board={board} />
     </section>
   )
 }

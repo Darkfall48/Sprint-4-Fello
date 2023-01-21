@@ -22,7 +22,10 @@ export function GroupActionsModal({group}) {
         }
       }
 
-    return <section>
+    return <section className='group-actions-modal-list-container'>
+        <button className='modal-btn-full' onClick={() => onRemoveGroup(group.id)}>
+            Add card...
+        </button>
         <button className='modal-btn-full' onClick={() => onRemoveGroup(group.id)}>
             Archive this list
         </button>
