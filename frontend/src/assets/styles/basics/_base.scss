@@ -1,33 +1,36 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    line-height: lh(20px);
-    background-color: $main-bg-color;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: lh(20px);
+  background-color: $main-bg-color;
 
-    // @media (max-width: 1300px) {
-    //     font-size: 14px;
-    // }
+  // @media (max-width: 1300px) {
+  //     font-size: 14px;
+  // }
 }
 
 body {
-    font-size: rem(14px);
-    margin: 0;
-    text-align: center;
-
+  font-size: rem(14px);
+  margin: 0;
+  text-align: center;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 0.6em;
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 0.6em;
 }
-
 
 section {
-    padding: 5px;
-    max-width: -webkit-fill-available;
+  padding: 5px;
+  max-width: -webkit-fill-available;
 }
 
 /* Dont stretch my Media */
@@ -35,37 +38,41 @@ img,
 embed,
 video,
 object {
-    max-width: 100%
+  max-width: 100%;
 }
 
 /* Simple and useful CSS Debugging Technique */
 .debug * {
-    outline: 1px solid gold
+  outline: 1px solid gold;
 }
 
 p {
-    margin: 0 0 1em;
+  margin: 0 0 1em;
 }
 
 a {
-    // text-decoration: none;
-    line-height: lh(32px);
+  // text-decoration: none;
+  line-height: lh(32px);
 
-    &:hover {
-        text-decoration: underline;
-        color: black;
-    }
-
+  &:hover {
+    text-decoration: underline;
+    color: black;
+  }
 }
 
 .btn {
-    @include btn;
+  @include btn;
 
-    &-dark {
-        @include btn($type: dark);
-    }
+  &-dark {
+    @include btn($type: dark);
+  }
 
-    &-light {
-        @include btn($type: light);
-    }
+  &-light {
+    @include btn($type: light);
+  }
+}
+
+textarea {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }

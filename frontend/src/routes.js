@@ -28,21 +28,21 @@ const routes = [
   //   component: <TaskDetails />,
   //   label: 'Task Details',
   // },
-  {
-    path: '/user/',
-    component: <UserDetails />,
-    label: 'User Page',
-  },
-  {
-    path: '/user/:userId',
-    component: <UserDetails />,
-    label: 'User Details',
-  },
-  {
-    path: '/admin',
-    component: <AdminIndex />,
-    label: 'Admin Only',
-  },
+  // {
+  //   path: '/user/',
+  //   component: <UserDetails />,
+  //   label: 'User Page',
+  // },
+  // {
+  //   path: '/user/:userId',
+  //   component: <UserDetails />,
+  //   label: 'User Details',
+  // },
+  // {
+  //   path: '/admin',
+  //   component: <AdminIndex />,
+  //   label: 'Admin Only',
+  // },
 
   //   {
   //     path: 'review',

@@ -2,7 +2,7 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { CgMenuGridR } from 'react-icons/cg';
-import { BiChevronDown } from 'react-icons/bi';
+import { FiChevronDown } from 'react-icons/fi';
 
 //? Routes
 import routes from '../../routes'
@@ -35,7 +35,7 @@ export function AppHeader() {
         {routes.map((route) => (
           <NavLink key={route.path} to={route.path}>
             {route.label}
-            <BiChevronDown className='down-arrow-nav' />
+            <FiChevronDown className='down-arrow-nav' />
           </NavLink>
         ))}
       </nav>

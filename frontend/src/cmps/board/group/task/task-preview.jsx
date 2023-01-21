@@ -1,17 +1,21 @@
 //? Libraries
 import { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import { AiOutlineEye } from 'react-icons/ai'
 import { BsCheck2Square } from 'react-icons/bs'
-import { VscEdit } from 'react-icons/vsc'
 //? Services
 import { utilService } from '../../../../services/util.service'
+//? Components
 import { TaskDetails } from './task-details'
+import { SetEditBtn } from './cmps/set-edit-btn'
+import { SetTitle } from './cmps/set-title'
+import { SetMembers } from './cmps/set-members'
+import { SetLabels } from './cmps/set-labels'
 
-export function TaskPreview({ groupId, task }) {
+export function TaskPreview({ groupId, task, onArchiveTask }) {
   // const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  console.log('Is modal open?', isModalOpen)
   // const { boardId } = useParams()
   // const board = useRef(boards.filter((board) => board._id === boardId))
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -31,75 +35,10 @@ export function TaskPreview({ groupId, task }) {
     )
   }
 
-  function SetLabels() {
-    const labels = board.labels
-    const { labelIds } = task
-
-    if (!labelIds || !labelIds.length)
-      return <article className="task-preview-no-labels"></article>
-    return (
-      <article className="task-preview-labels">
-        {labelIds.map((labelId) => {
-          const label = labels.find((label) => label.id === labelId)
-          return (
-            <span
-              className="task-preview-label"
-              key={label.id}
-              style={{ backgroundColor: label.color }}
-              title={label.title ? label.title : 'None'}
-            ></span>
-          )
-        })}
-      </article>
-    )
-  }
-
-  function SetTitle() {
-    return (
-      <article className="task-preview-title">
-        <p>{task.title}</p>
-      </article>
-    )
-  }
-
-  function SetEditBtn() {
-    return (
-      <article className="task-preview-edit">
-        <button className="task-preview-edit-btn">
-          <VscEdit />
-        </button>
-      </article>
-    )
-  }
-
   function SetInfos() {
     return (
       <article className="task-preview-info">
         <AiOutlineEye /> <BsCheck2Square /> 0/5
-      </article>
-    )
-  }
-
-  function SetMembers() {
-    const members = board.members
-    const { memberIds } = task
-
-    if (!members) return <article className="task-preview-member"></article>
-    return (
-      <article className="task-preview-member">
-        {memberIds.map((memberId) => {
-          const member = members.find((member) => member._id === memberId)
-          const { _id, imgUrl, fullname } = member
-          return (
-            <img
-              key={_id}
-              className="task-preview-img"
-              src={imgUrl}
-              alt={fullname}
-              title={fullname}
-            />
-          )
-        })}
       </article>
     )
   }
@@ -110,11 +49,13 @@ export function TaskPreview({ groupId, task }) {
       onClick={() => setIsModalOpen(!isModalOpen)}
     >
       {task.style && <SetBackground />}
-      {task.labelIds && <SetLabels />}
-      {task.title && <SetTitle />}
-      <SetEditBtn />
+      {task.labelIds && (
+        <SetLabels type={'preview'} board={board} task={task} />
+      )}
+      {task.title && <SetTitle type="preview" task={task} />}
+      <SetEditBtn onArchiveTask={onArchiveTask} task={task} />
       <SetInfos />
-      <SetMembers />
+      <SetMembers type={'preview'} board={board} task={task} />
       {isModalOpen && (
         <TaskDetails
           isModalOpen={isModalOpen}

@@ -37,6 +37,9 @@ export function getActionUpdateBoard(board) {
   }
 }
 
+
+//? Board Actions: 
+
 export async function loadBoards() {
   try {
     const boards = await boardService.query()
@@ -88,21 +91,59 @@ export async function addBoard(board) {
   }
 }
 
-export function updateBoard(board) {
-  console.log('board', board)
-  return boardService.save(board)
-    .then((savedBoard) => {
-      console.log('Updated Board:', savedBoard)
-      store.dispatch(getActionUpdateBoard(savedBoard))
-      return savedBoard
-    })
-    .catch((err) => {
-      console.log('Cannot save board', err)
-      throw err
-    })
+export async function updateBoard(board) {
+  try {
+    const savedBoard = await boardService.save(board)
+    console.log('Updated Board:', savedBoard)
+    store.dispatch(getActionUpdateBoard(savedBoard))
+    return savedBoard
+  } catch (err) {
+    console.log('Cannot save board', err)
+    throw err
   }
-  
+}
 
+//? Group Actions:
+
+export async function saveGroup(group) {
+  const { board } = store.getState().boardModule
+  const { groups } = board
+  const groupIdx = groups.findIndex(grp => grp.id === group.id)
+  groups.splice(groupIdx, 1, group)
+  const updatedBoard = { ...board, groups: groups }
+  try {
+    await updateBoard(updatedBoard)
+    loadBoard(board._id)
+    store.dispatch({ type: 'CLEAN_STORE' })
+  } catch (err) {
+    console.log(`Cannot save group id ${group.id}`, err)
+    throw err
+  }
+}
+
+//? Task Actions: 
+
+export async function addTask(group, task) {
+  const updatedTasks = group.tasks.concat(task)
+  const updatedGroup = { ...group, tasks: updatedTasks }
+  try {
+    await saveGroup(updatedGroup)
+  } catch (err) {
+    console.log(`Cannot add task id ${task.id}`, err)
+    throw err
+  }
+}
+
+export async function removeTask(group, taskId) {
+  try {
+    const upatedTasks = group.tasks.filter(task => task.id !== taskId)
+    const updatedGroup = { ...group, tasks: upatedTasks }
+    saveGroup(updatedGroup)
+  } catch (err) {
+    console.log('Cannot remove task', err)
+    throw err
+  }
+}
 
 // export async function checkout(total) {
 //   try {
