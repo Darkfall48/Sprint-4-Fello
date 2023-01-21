@@ -5,21 +5,24 @@ import { BsFilter } from 'react-icons/bs'
 import { RiUserSharedLine } from 'react-icons/ri'
 import { BsThreeDots } from 'react-icons/bs'
 import { loadBoard, updateBoard } from '../../store/actions/board.actions'
-import { useSelector } from 'react-redux'
 import { BoardMenu } from './board-menu'
 
-export function BoardHeader() {
-    const board = useSelector((storeState) => storeState.boardModule.board)
+export function BoardHeader({board}) {
+
     const contentRef = useRef(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isStarred, setIsStarred] = useState(board.isStarred)
 
-    // console.log('board from board header', board)
 
     useEffect(() => {
 
-    }, [board.isStarred])
+    }, [board.isStarred, isStarred])
 
     function onCloseModal() {
+        setIsModalOpen(!isModalOpen)
+    }
+
+    function onOpenModal(){
         setIsModalOpen(!isModalOpen)
     }
 
@@ -37,8 +40,10 @@ export function BoardHeader() {
 
     function onStarredBoard() {
         board.isStarred = !board.isStarred
+        setIsStarred(!board.isStarred)
+        // console.log('board.isStarred', board.isStarred);
         updateBoard(board)
-        console.log('board from board-header', board)
+        // console.log('board from board-header', board)
     }
 
     return (
@@ -54,15 +59,7 @@ export function BoardHeader() {
                 >
                     {board.title}
                 </h1>
-                {/* {board.isStarred ? (
-          <button onClick={onStarredBoard}>
-            <AiFillStar className="starred" />
-          </button>
-        ) : (
-          <button onClick={onStarredBoard}>
-            <AiOutlineStar className="star" />
-          </button>
-        )} */}
+
                 {<button onClick={onStarredBoard}>{board.isStarred ? <AiFillStar className="starred" /> : <AiOutlineStar className="star" />}</button>}
             </div>
 
@@ -88,7 +85,7 @@ export function BoardHeader() {
                 <button className="share-btn"><RiUserSharedLine /> Share </button>
                 <span className="board-header-btn-divider"></span>
                 <button onClick={() => { setIsModalOpen(!isModalOpen)}}><BsThreeDots /></button>
-                {isModalOpen && <BoardMenu board={board} onCloseModal={onCloseModal} />}
+                {isModalOpen && <BoardMenu board={board} onCloseModal={onCloseModal} isModalOpen={isModalOpen}/>}
             </div>
         </section>
     )

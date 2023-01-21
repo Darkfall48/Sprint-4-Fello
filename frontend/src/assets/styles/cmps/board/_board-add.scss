@@ -191,6 +191,8 @@
         margin: 0;
         width: 100%;
 
+
+
         & .allowed {
             background-color: $allowed-btn-bg-clr;
             color: $clr-white;
@@ -212,6 +214,10 @@
             line-height: 20px;
             padding: 6px 12px;
             margin: 0;
+
+            &:hover{
+                background-color: $disabled-btn-bg-clr;
+            }
 
         }
 
