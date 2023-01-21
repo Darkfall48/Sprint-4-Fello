@@ -33,7 +33,8 @@ export function GroupList({ board }) {
     setNewGroupTitle(value)
   }
 
-  async function onAddGroup(newGroupTitle) {
+  async function onAddGroup(ev,newGroupTitle) {
+    if (ev.key!=='Enter')return
     const newGroup = boardService.getEmptyGroup(newGroupTitle)
     const groups = board.groups.concat(newGroup)
     const updatedBoard = { ...board, groups }
@@ -102,6 +103,7 @@ export function GroupList({ board }) {
           placeholder='Enter list title...'
           value={newGroupTitle}
           onChange={handleChange}
+          onKeyUp={(ev) => onAddGroup(ev,newGroupTitle)}
         />
         <button className='new-group-add-btn' onClick={() => onAddGroup(newGroupTitle)}>Add list</button>
         <button className="close-add-group" onClick={exitEditMode}><CgClose /></button>

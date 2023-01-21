@@ -42,15 +42,16 @@ export function GroupPreview({ group, onRemoveGroup }) {
     setEditMode(false)
   }
 
-  function onArchiveTask(taskId, ev) {
+  function onArchiveTask(ev,taskId) {
+    console.log('ev', ev)
     // ev.preventDefault()
-    // ev.stopPropogation()
+    // ev.stopImmediatePropagation()
     console.log('taskId', taskId)
     removeTask(group, taskId)
   }
 
   function changeContent(ev) {
-    board.title = contentRef.current.innerText
+    group.title = contentRef.current.innerText
 
     if (ev.key === 'Enter' && !ev.shiftKey) ev.target.blur()
     if (ev.key === 'Enter' || ev.type === 'blur') {

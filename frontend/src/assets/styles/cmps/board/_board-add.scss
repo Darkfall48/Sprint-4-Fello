@@ -18,10 +18,10 @@
     outline: 0;
     overflow: hidden;
 
-    position: fixed;
+    position: sticky;
     width: 304px;
     will-change: top, left;
-    top: 114px;
+    top: 0;
     left: 771px;
     z-index: 100;
     // transform: translate(0, -10%);
