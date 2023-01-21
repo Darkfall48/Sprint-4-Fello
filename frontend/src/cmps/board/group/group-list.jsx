@@ -2,31 +2,30 @@
 import { useState } from 'react'
 import { CgClose } from 'react-icons/cg'
 import { BsPlus } from 'react-icons/bs'
-
+import { useNavigate } from 'react-router-dom'
 //? Services
 import { showSuccessMsg, showErrorMsg, } from '../../../services/connection/event-bus.service'
 import { boardService } from '../../../services/board/board.service.local'
-import { updateBoard } from '../../../store/actions/board.actions'
-import { store } from '../../../store/store'
-
+import { updateBoard, loadBoard } from '../../../store/actions/board.actions'
 //? Cmps
 import { GroupPreview } from './group-preview.jsx'
 import { Loader } from '../../helpers/loader'
 
-export function GroupList({ board, onLoadBoard }) {
+
+export function GroupList({ board }) {
 
   const [editMode, setEditMode] = useState(false)
   const [newGroupTitle, setNewGroupTitle] = useState('')
 
+  const navigate = useNavigate()
+
   function onNewGroupSelect(ev) {
     setEditMode(true)
-    console.log('editMode', editMode)
   }
 
   function exitEditMode() {
     // ev.stopPropogation()
     setEditMode(false)
-    console.log('editMode', editMode)
   }
 
   function handleChange({ target }) {
@@ -40,7 +39,7 @@ export function GroupList({ board, onLoadBoard }) {
     const updatedBoard = { ...board, groups }
     try {
       await updateBoard(updatedBoard)
-      loadBoard()
+      onLoadBoard()
       setNewGroupTitle('')
       setEditMode(false)
       showSuccessMsg('Group saved!')
@@ -56,18 +55,23 @@ export function GroupList({ board, onLoadBoard }) {
     console.log('newBoard', updatedBoard)
     try {
       await updateBoard(updatedBoard)
-      loadBoard()
+      onLoadBoard()
       showSuccessMsg('Group removed')
     } catch (err) {
       showErrorMsg('Cannot remove group')
     }
   }
 
-  function loadBoard() {
-    onLoadBoard()
-    store.dispatch({ type: 'CLEAN_STORE' })
+  async function onLoadBoard() {
+    try {
+      await loadBoard(board._id)
+      showSuccessMsg('Boards loaded')
+    } catch (err) {
+      navigate('/board') //TODO: Ask Roi why it's not working
+      console.log('My error', err)
+      showErrorMsg('Cannot load boards')
+    }
   }
-
 
   if (!board.groups) return <Loader />
   return (<section className="group-list-section">
@@ -109,14 +113,3 @@ export function GroupList({ board, onLoadBoard }) {
   )
 }
 
-
-    // async function onUpdateGroup(group) {
-    //   const price = +prompt('New price?')
-    //   const groupToSave = { ...group, price }
-    //   try {
-    //     const savedGroup = await updateGroup(groupToSave)
-    //     showSuccessMsg(`Group updated, new price: ${savedGroup.price}`)
-    //   } catch (err) {
-    //     showErrorMsg('Cannot update group')
-    //   }
-    // }
