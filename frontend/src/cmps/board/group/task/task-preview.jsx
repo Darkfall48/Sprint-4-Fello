@@ -8,11 +8,14 @@ import { VscEdit } from 'react-icons/vsc'
 import { HiOutlineArchive } from 'react-icons/hi'
 //? Services
 import { utilService } from '../../../../services/util.service'
+//? Components
 import { TaskDetails } from './task-details'
+import { SetEditBtn } from './cmps/set-edit-btn'
 
 export function TaskPreview({ groupId, task, onArchiveTask }) {
   // const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  console.log('Is modal open?', isModalOpen)
   // const { boardId } = useParams()
   // const board = useRef(boards.filter((board) => board._id === boardId))
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -63,38 +66,6 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
     )
   }
 
-  function SetEditBtn({ onArchiveTask }) {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-    function closeMenu(ev) {
-      ev.preventDefault()
-      setIsMenuOpen(false)
-    }
-
-    function onTaskPreviewEdit(ev) {
-      ev.stopPropagation()
-      ev.preventDefault()
-      setIsMenuOpen(!isMenuOpen)
-    }
-
-    return (
-      <article className="task-preview-edit">
-        <button className="task-preview-edit-btn" onClick={onTaskPreviewEdit}>
-          <VscEdit />
-        </button>
-        {isMenuOpen &&
-          <div className='task-preview-edit-menu' onBlur={(ev) => (closeMenu(ev))}>
-            <button className='task-preview-edit-menu-btn'
-              onClick={(ev) => onArchiveTask(task.id, ev)}>
-              <HiOutlineArchive />
-              <span>Archive</span>
-            </button>
-          </div>
-        }
-      </article>
-    )
-  }
-
   function SetInfos() {
     return (
       <article className="task-preview-info">
@@ -135,7 +106,7 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
       {task.style && <SetBackground />}
       {task.labelIds && <SetLabels />}
       {task.title && <SetTitle />}
-      <SetEditBtn onArchiveTask={onArchiveTask} />
+      <SetEditBtn onArchiveTask={onArchiveTask} task={task} />
       <SetInfos />
       <SetMembers />
       {isModalOpen && (
