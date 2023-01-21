@@ -5,11 +5,12 @@ import { useSelector } from 'react-redux'
 import { AiOutlineEye } from 'react-icons/ai'
 import { BsCheck2Square } from 'react-icons/bs'
 import { VscEdit } from 'react-icons/vsc'
+import { HiOutlineArchive } from 'react-icons/hi'
 //? Services
 import { utilService } from '../../../../services/util.service'
 import { TaskDetails } from './task-details'
 
-export function TaskPreview({ groupId, task }) {
+export function TaskPreview({ groupId, task, onArchiveTask }) {
   // const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [isModalOpen, setIsModalOpen] = useState(false)
   // const { boardId } = useParams()
@@ -62,12 +63,34 @@ export function TaskPreview({ groupId, task }) {
     )
   }
 
-  function SetEditBtn() {
+  function SetEditBtn({ onArchiveTask }) {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+    function closeMenu(ev) {
+      ev.preventDefault()
+      setIsMenuOpen(false)
+    }
+
+    function onTaskPreviewEdit(ev) {
+      ev.stopPropagation()
+      ev.preventDefault()
+      setIsMenuOpen(!isMenuOpen)
+    }
+
     return (
       <article className="task-preview-edit">
-        <button className="task-preview-edit-btn">
+        <button className="task-preview-edit-btn" onClick={onTaskPreviewEdit}>
           <VscEdit />
         </button>
+        {isMenuOpen &&
+          <div className='task-preview-edit-menu' onBlur={(ev) => (closeMenu(ev))}>
+            <button className='task-preview-edit-menu-btn'
+              onClick={(ev) => onArchiveTask(task.id, ev)}>
+              <HiOutlineArchive />
+              <span>Archive</span>
+            </button>
+          </div>
+        }
       </article>
     )
   }
@@ -112,7 +135,7 @@ export function TaskPreview({ groupId, task }) {
       {task.style && <SetBackground />}
       {task.labelIds && <SetLabels />}
       {task.title && <SetTitle />}
-      <SetEditBtn />
+      <SetEditBtn onArchiveTask={onArchiveTask} />
       <SetInfos />
       <SetMembers />
       {isModalOpen && (

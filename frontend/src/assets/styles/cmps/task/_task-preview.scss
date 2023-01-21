@@ -12,6 +12,7 @@
     'label      label'
     'title      title'
     'info       member';
+
   .task-preview {
     &-background {
       border-radius: $clr-task-preview-border-radius;
@@ -19,9 +20,11 @@
       grid-area: background;
       margin-bottom: 6px;
     }
+
     &-no-background {
       margin-bottom: 6px;
     }
+
     &-labels {
       display: flex;
       gap: 4px;
@@ -30,16 +33,19 @@
       padding-right: 8px;
       margin-top: 4px;
       margin-bottom: 4px;
+
       .task-preview-label {
         border-radius: 4px;
         height: 8px;
         width: 40px;
       }
     }
+
     &-no-labels {
       grid-area: labels;
       display: none;
     }
+
     &-title {
       grid-area: title;
       text-align: start;
@@ -48,10 +54,12 @@
       margin-top: 4px;
       margin-bottom: 4px;
       height: fit-content;
+
       & p {
         margin: 0;
       }
     }
+
     &-edit {
       height: 32px;
       width: 32px;
@@ -61,6 +69,7 @@
       justify-self: end;
       display: none;
       transition: all ease-in-out 0.3s;
+
       &-btn {
         position: absolute;
         display: grid;
@@ -76,11 +85,13 @@
         background-color: #f4f5f7;
         margin-top: 2.4px;
         margin-right: 2.5px;
+
         &:hover {
           opacity: 0.8;
         }
       }
     }
+
     &-info {
       grid-area: info;
       justify-self: start;
@@ -88,6 +99,7 @@
       margin-top: 4px;
       margin-bottom: 6px;
     }
+
     &-member {
       grid-area: member;
       justify-self: end;
@@ -96,6 +108,7 @@
       margin-bottom: 6px;
       display: flex;
       gap: 4px;
+
       .task-preview-img {
         height: 28px;
         width: 28px;
@@ -103,10 +116,33 @@
       }
     }
   }
+
   &:hover {
     background-color: rgb(236, 234, 234);
+
     .task-preview-edit {
       display: block;
+
+      .task-preview-edit-menu {
+        position: relative;
+        left: 25px;
+
+        .task-preview-edit-menu-btn {
+          background: #0009;
+          border-radius: 3px;
+          clear: both;
+          color: #c7d1db;
+          display: block;
+          float: left;
+          margin: 0 0 4px 8px;
+          padding: 6px 12px 6px 8px;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          transition: transform 85ms ease-in;
+          width: 100px;
+        }
+      }
     }
   }
 }

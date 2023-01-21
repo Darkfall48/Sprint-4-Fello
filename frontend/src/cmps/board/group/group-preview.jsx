@@ -12,7 +12,7 @@ import { removeTask, addTask, updateBoard } from '../../../store/actions/board.a
 import { store } from '../../../store/store'
 
 
-export function GroupPreview({ group, onRemoveGroup }) {
+export function GroupPreview({ group, onRemoveGroup}) {
 
   const board = useSelector((storeState) => storeState.boardModule.board)
 
@@ -37,8 +37,10 @@ export function GroupPreview({ group, onRemoveGroup }) {
     setNewTask(boardService.getEmptyTask(''))
     setEditMode(false)
   }
-
-  function onArchiveTask(taskId) {
+  
+  function onArchiveTask(taskId,ev) {
+    // ev.preventDefault()
+    // ev.stopPropogation()
     console.log('taskId', taskId)
     removeTask(group, taskId)
   }
@@ -73,7 +75,7 @@ export function GroupPreview({ group, onRemoveGroup }) {
           </h1>
           <button onClick={() => onRemoveGroup(group.id)}><CgClose /></button>
         </div>
-        <TaskList groupId={group.id} tasks={group.tasks} />
+        <TaskList groupId={group.id} tasks={group.tasks} onArchiveTask={onArchiveTask}/>
         {editMode && (
           <form className="task-preview-section add-tesk-edit" 
           onSubmit={onSubmitTask}
