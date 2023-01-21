@@ -20,11 +20,11 @@ import loader2 from '../../assets/animation/loader/loader2.svg'
 
 export function Loader() {
 
-  return (
+  return <section className="loader">
     <img
-      className="loader"
+      className="loader-img"
       src={loader2}
       alt="Loader"
     />
-  )
+  </section>
 }

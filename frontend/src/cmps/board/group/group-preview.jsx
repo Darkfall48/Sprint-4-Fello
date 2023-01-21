@@ -12,7 +12,7 @@ import { removeTask, addTask, updateBoard } from '../../../store/actions/board.a
 import { store } from '../../../store/store'
 
 
-export function GroupPreview({ group, onRemoveGroup}) {
+export function GroupPreview({ group, onRemoveGroup }) {
 
   const board = useSelector((storeState) => storeState.boardModule.board)
 
@@ -37,8 +37,8 @@ export function GroupPreview({ group, onRemoveGroup}) {
     setNewTask(boardService.getEmptyTask(''))
     setEditMode(false)
   }
-  
-  function onArchiveTask(taskId,ev) {
+
+  function onArchiveTask(taskId, ev) {
     // ev.preventDefault()
     // ev.stopPropogation()
     console.log('taskId', taskId)
@@ -75,29 +75,31 @@ export function GroupPreview({ group, onRemoveGroup}) {
           </h1>
           <button onClick={() => onRemoveGroup(group.id)}><CgClose /></button>
         </div>
-        <TaskList groupId={group.id} tasks={group.tasks} onArchiveTask={onArchiveTask}/>
-        {editMode && (
-          <form className="task-preview-section add-tesk-edit" 
-          onSubmit={onSubmitTask}
-          onBlur={(ev)=> onSubmitTask(ev)}
-          >
-            <input type="text"
-              name='title'
-              className='add-task-textarea'
-              placeholder='Enter a title for this card...'
-              value={newTask.title}
-              onChange={handleChange}
-            />
-          </form>
-        )}
-        <div className="group-bottom-control-btns">
-          <button onClick={onAddTask} className="add-task-btn">
-            <BsPlus className="plus" />
-            <span>Add a card</span>
-          </button>
-          <button name="template" id="template" className="template-btn">
-            <TbTemplate />
-          </button>
+        <div className='group-section'>
+          <TaskList groupId={group.id} tasks={group.tasks} onArchiveTask={onArchiveTask} />
+          {editMode && (
+            <form className="task-preview-section add-tesk-edit"
+              onSubmit={onSubmitTask}
+              onBlur={(ev) => onSubmitTask(ev)}
+            >
+              <input type="text"
+                name='title'
+                className='add-task-textarea'
+                placeholder='Enter a title for this card...'
+                value={newTask.title}
+                onChange={handleChange}
+              />
+            </form>
+          )}
+          <div className="group-bottom-control-btns">
+            <button onClick={onAddTask} className="add-task-btn">
+              <BsPlus className="plus" />
+              <span>Add a card</span>
+            </button>
+            <button name="template" id="template" className="template-btn">
+              <TbTemplate />
+            </button>
+          </div>
         </div>
       </div>
       {/* )} */}

@@ -44,6 +44,33 @@
         border-radius: $border-radius;
         padding: 6px 8px 2px;
         box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
+       
+        // scrollbar
+        // max-height: 80vh;
+    
+        // & .group-section{
+          
+
+        //     overflow-x: hidden;
+        //     overflow-y: auto;
+          
+        //     //scrollbar - maybe add to basic?
+        //     &::-webkit-scrollbar {
+        //       height: 12px;
+        //       width: 9px;
+        //     }
+          
+        //     &::-webkit-scrollbar-thumb {
+        //       background: rgba(122, 128, 143, 0.2);
+        //       border-radius: 0.5rem;
+        //     }
+          
+        //     &::-webkit-scrollbar-track {
+        //       background-color: rgba(216, 216, 219, 0.849);
+        //       border-right: 15px solid transparent;
+        //       border-radius: 0.5rem;
+        //     }
+        // }
         .add-tesk-edit{
             padding: 6px 8px 2px 8px;
             margin-top:10px;
@@ -72,6 +99,13 @@
             line-height: 20px;
             margin-left: 8px;
             margin-top: 5px;
+            width: 100%;
+            text-align: left;
+            padding: 0 3px;
+
+            &:focus{
+                background-color: $clr-white;
+            }
         }
 
         .group-bottom-control-btns {
@@ -95,6 +129,7 @@
                 }
             }
         }
+
     }
 }
 

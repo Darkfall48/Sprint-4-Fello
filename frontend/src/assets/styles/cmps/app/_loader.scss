@@ -1,4 +1,11 @@
 .loader {
     // animation: 1000ms infinite spin;
     // animation-delay: var(--loader-delay);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 100vw;
+    height: 50vh;
 }
