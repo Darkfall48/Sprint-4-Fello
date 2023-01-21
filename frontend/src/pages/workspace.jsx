@@ -44,7 +44,7 @@ export function Workspace() {
   return <section className="workspace-section" >
 
     <div className="starred-boards-container">
-      <h1><AiOutlineStar /> Starred boards</h1>
+      <h1><AiOutlineStar className="workspace-icons"/> Starred boards</h1>
       {boards.map(board => {
         console.log('board.isStarred', board.isStarred);
         return board.isStarred
@@ -53,8 +53,8 @@ export function Workspace() {
           onRemoveBoard={onRemoveBoard}
         />}
     </div>
-    <div className="starred-boards-container" >
-      <h1><AiOutlineClockCircle /> Recently viewed</h1>
+    <div className="starred-boards-container">
+      <h1><AiOutlineClockCircle className="workspace-icons"/> Recently viewed</h1>
       <BoardList
         boards={boards}
         onRemoveBoard={onRemoveBoard}

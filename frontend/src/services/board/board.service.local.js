@@ -150,16 +150,16 @@ function _createBoards() {
   let boards = utilService.loadFromStorage(BOARD_KEY)
   if (!boards || !boards.length) {
     const boards = [
-      _createBoard('Robot Board'),
-      _createBoard('Alien Board'),
-      _createBoard('Cat Board'),
-      _createBoard('Dog Board'),
+      _createBoard('Robot Board', 'https://images.unsplash.com/photo-1671894618012-b1f9d305a97f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80'),
+      _createBoard('Alien Board', 'https://images.unsplash.com/photo-1673605124954-132c332de83f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'),
+      _createBoard('Cat Board', 'https://images.unsplash.com/photo-1673768501816-6a565f620309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'),
+      _createBoard('Dog Board', 'https://images.unsplash.com/photo-1539807134273-f97ed182b488?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2115&q=80'),
     ]
     utilService.saveToStorage(BOARD_KEY, boards)
   }
 }
 
-function _createBoard(title) {
+function _createBoard(title, backgroundImg) {
   return {
     _id: 'b' + utilService.getRandomIntInclusive(100, 900),
     title,
@@ -171,9 +171,8 @@ function _createBoard(title) {
       imgUrl: { imgUrlMember3 },
     },
     style: {
-      bgColor: '#ff0000',
-      backgroundImg:
-        'https://images.unsplash.com/photo-1673768501816-6a565f620309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
+      bgColor: '#5ba4cf',
+      backgroundImg,
     },
     labels: [
       {
@@ -237,10 +236,10 @@ function _createBoard(title) {
 
 function _createGroups() {
   return [
-    _createGroup('Group 1'),
-    _createGroup('Group 2'),
-    _createGroup('Group 3'),
-    // _createGroup('Group 4'),
+    _createGroup('Working on'),
+    _createGroup('Bugs'),
+    _createGroup('Testing'),
+    _createGroup('Done'),
   ]
 }
 
@@ -256,9 +255,9 @@ function _createGroup(title) {
 
 function _createTasks() {
   return [
-    _createTask(utilService.makeLorem(6)),
-    _createTask(utilService.makeLorem(8)),
-    _createTask(utilService.makeLorem(4)),
+    _createTask('Build basic crud'),
+    _createTask('Adding npm packages'),
+    _createTask('Create backend'),
     // _createTask(utilService.makeLorem(10)),
   ]
 }

@@ -12,6 +12,7 @@ import { BoardAdd } from '../workspace/board-add';
 
 export function AppHeader() {
 
+  const boards = useSelector((storeState) => storeState.boardModule.boards)
   const board = useSelector((storeState) => storeState.boardModule.board)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -22,6 +23,8 @@ export function AppHeader() {
   function onCloseModal() {
     setIsModalOpen(!isModalOpen)
   }
+
+  const starredBoards = boards.filter((board) => board.isStarred)
 
   return (
     // <header className="app-header-section full" style={board?.style?.backgroundImg && {background: `url(${board.style.backgroundImg}) center center / cover`} || board?.style?.bgColor && { background: board.style.bgColor }}>
@@ -36,11 +39,26 @@ export function AppHeader() {
           </NavLink>
         ))}
       </nav>
+
+      {/* <div className="dropdown">
+        <li><button>Starred<BiChevronDown className='down-arrow-nav' /></button>
+          <div className="dropdown-content">
+            {starredBoards.map(starredBoard =>{
+              console.log('starredBoard', starredBoard);
+             return <Link to={`/board/${starredBoard._id}`}>{starredBoard.style.backgroundImg}</Link>
+            })}
+
+          </div>
+        </li>
+      </div> */}
+
+
       <div className='dropdown'>
-        <button onClick={() => { setIsModalOpen(!isModalOpen) }}>Create</button>
-        {isModalOpen && <div className='dropdown-content'>
-         {isModalOpen && <BoardAdd onCloseModal={onCloseModal} />}
-        </div>}
+        <li> <button onClick={() => { setIsModalOpen(!isModalOpen) }}>Create</button>
+          {<div className='dropdown-content'>
+            {isModalOpen && <BoardAdd onCloseModal={onCloseModal} />}
+          </div>}
+        </li>
       </div>
 
     </header>

@@ -3,11 +3,34 @@ a {
     list-style: none;
     text-decoration: none;
     line-height: 1;
-
+//    position: relative;
+//             z-index: 2;
 
     &:hover {
         text-decoration: none;
         // background-color: rgba(0, 0, 0, 0.302);
+        filter: contrast(80%);
+
+        & button {
+
+            display: block;
+            // position: relative;
+            // z-index: 100;
+
+        }
+
+        & .hidden-btns {
+            & .star {
+                opacity: 1;
+                transition: 0.5s;
+                // position: relative;
+                // z-index: 100;
+
+            }
+
+        }
+
+
     }
 
 
@@ -18,7 +41,7 @@ a {
         // background-size: cover;
 
         border-radius: 3px;
-        color: #fff;
+        color: $clr-white;
         font-size: .8547em;
         height: 96px;
         width: 194px;
@@ -44,8 +67,8 @@ a {
         }
 
         &:hover {
-            background-color: rgba(158, 176, 187, 0.425);
-            background-color: #0000004d;
+            // background-color: rgba(158, 176, 187, 0.425);
+            // background-color: #0000004d;
 
 
             // & .board-tile-fade {
@@ -60,10 +83,9 @@ a {
 
 
             & button {
-
                 display: block;
-                // position: relative;
-                // z-index: 100;
+                position: relative;
+                z-index: 100;
 
             }
 
@@ -71,9 +93,8 @@ a {
                 & .star {
                     opacity: 1;
                     transition: 0.5s;
-                    // position: relative;
-                    // z-index: 100;
-
+                    position: relative;
+                    z-index: 100;
                 }
 
             }
@@ -112,44 +133,44 @@ a {
 
         }
 
-        & .hidden-btns {
-            display: flex;
-            flex-direction: row-reverse;
+        // & .hidden-btns {
+        //     display: flex;
+        //     flex-direction: row-reverse;
 
-            // position: relative;
-            // z-index: 100;
+        //     // position: relative;
+        //     // z-index: 100;
 
-            //try to fix z-index
-            & button {
-                background-color: transparent;
-                margin: 0;
-                padding: 0;
-                display: block;
-                // position: relative;
-                // z-index: 100;
+        //     //try to fix z-index
+        //     & button {
+        //         background-color: transparent;
+        //         margin: 0;
+        //         padding: 0;
+        //         display: block;
+        //         position: relative;
+        //         z-index: 100;
 
-            }
+        //     }
 
-            & .star {
-                opacity: 0;
-                width: 15px;
-                height: 15px;
-                display: block;
-                // position: relative;
-                // z-index: 100;
+        //     & .star {
+        //         opacity: 0;
+        //         width: 15px;
+        //         height: 15px;
+        //         display: block;
+        //         position: relative;
+        //         z-index: 100;
 
-            }
+        //     }
 
-            & .starred {
-                width: 15px;
-                height: 15px;
-                fill: yellow;
-                display: block;
-                // position: relative;
-                // z-index: 5;
+        //     & .starred {
+        //         width: 15px;
+        //         height: 15px;
+        //         fill: yellow;
+        //         display: block;
+        //         position: relative;
+        //         z-index: 5;
 
-            }
-        }
+        //     }
+        // }
 
 
 
@@ -162,4 +183,53 @@ a {
 
 
 
+
+}
+
+.hidden-btns {
+    display: flex;
+    flex-direction: row-reverse;
+
+    // position: relative;
+    // z-index: 100;
+
+    //try to fix z-index
+    & button {
+        background-color: transparent;
+        margin: 0;
+        padding: 0;
+        display: block;
+      
+
+    }
+
+    & .star {
+        // opacity: 0;
+        color: $clr-white;
+        width: 15px;
+        height: 15px;
+        display: block;
+        // position: relative;
+        // z-index: 100;
+        position: relative;
+        // z-index: 100;
+        top: -18px;
+        left: -5px;
+        cursor: pointer;
+
+    }
+
+    & .starred {
+        width: 15px;
+        height: 15px;
+        fill: yellow;
+        display: block;
+        // position: relative;
+        // z-index: 5;
+        position: relative;
+        // z-index: 100;
+        top: -18px;
+        left: -5px;
+        cursor: pointer;
+    }
 }

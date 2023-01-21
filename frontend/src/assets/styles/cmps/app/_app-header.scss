@@ -73,17 +73,48 @@
         position: relative;
         display: inline-block;
         align-self: center;
+        list-style: none;
+
+        & button{
+            background-color: #172b4d66;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            line-height: 20px;
+            border-radius: rem(3px);
+            padding: 6px 12px;
+
+            transition-property: background-color;
+            transition-duration: 85ms;
+            transition-timing-function: ease;
+
+            &:hover{
+                background-color: rgba(255, 255, 255, 0.327);
+            }
+        }
+
+        // &:hover {
+
+        //     & .dropdown-content {
+        //         display: block;
+        //     }
+        // }
 
 
     }
 
     & .dropdown-content {
-        position:absolute;
-    
-        & .modal-content{
-            position:absolute;
+        position: absolute;
+        // display: none;
+
+        position: absolute;
+        min-width: 130px;
+        z-index: 1;
+
+        & .modal-content {
+            position: relative;
             top: 50px;
             left: 1000px;
+
         }
     }
 
