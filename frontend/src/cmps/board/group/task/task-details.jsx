@@ -2,10 +2,14 @@
 import { useRef } from 'react'
 import { useSelector } from 'react-redux'
 //? Icons
-import { AiOutlineEye, AiOutlinePlus } from 'react-icons/ai'
 import { BsReverseLayoutTextWindowReverse } from 'react-icons/bs'
 import { GrTextAlignFull } from 'react-icons/gr'
 import { VscClose } from 'react-icons/vsc'
+//? Components
+import { SetTitle } from './cmps/set-title'
+import { SetLabels } from './cmps/set-labels'
+import { SetMembers } from './cmps/set-members'
+import { SetDescription } from './cmps/set-description'
 
 export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -17,6 +21,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
   console.log('Grouppyyyy', group)
   console.log('Boardyyyy', board)
 
+  //? Private Components
   function SetHeader() {
     const { style } = task
     if (!style.bgColor)
@@ -44,125 +49,6 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
     )
   }
 
-  function SetTitle() {
-    return (
-      <article className="task-details-section-title">
-        <textarea
-          className="task-details-section-title-input"
-          type="text"
-          name="task-title"
-          id="task-title"
-          defaultValue={task.title}
-        />
-        <p className="task-details-section-title-description">
-          <h2 className="task-details-section-title-description-title">
-            In the list
-          </h2>
-          <a className="task-details-section-title-description-link" href="#">
-            {' ' + group.title}
-          </a>
-          <AiOutlineEye
-            title="Followed"
-            className="task-details-section-title-description-icon"
-          />
-        </p>
-      </article>
-    )
-  }
-
-  function SetLabels() {
-    const labels = board.labels
-    const { labelIds } = task
-
-    if (!labelIds || !labelIds.length)
-      return <article className="task-details-section-labels"></article>
-    return (
-      <article className="task-details-section-labels">
-        <h2 className="task-details-section-labels-title">Labels</h2>
-        <div className="task-details-section-labels-container">
-          {labelIds.map((labelId) => {
-            const label = labels.find((label) => label.id === labelId)
-            return (
-              <span
-                className="task-details-section-labels-container-label"
-                key={label.id}
-                style={{ backgroundColor: label.color + '66' }}
-                title={label.title ? label.title : ''}
-              >
-                <div
-                  className="task-details-section-labels-container-circle"
-                  style={{ backgroundColor: label.color }}
-                ></div>
-                <span className="task-details-section-labels-container-title">
-                  {label.title ? label.title : 'None'}
-                </span>
-              </span>
-            )
-          })}
-          <button
-            className="task-details-section-labels-add-btn"
-            title="Add Label"
-          >
-            <AiOutlinePlus />
-          </button>
-        </div>
-      </article>
-    )
-  }
-
-  function SetMembers() {
-    const members = board.members
-    const { memberIds } = task
-
-    if (!memberIds || !memberIds.length)
-      return <article className="task-details-section-members"></article>
-    return (
-      <article className="task-details-section-members">
-        <h2 className="task-details-section-members-title">Members</h2>
-        <div className="task-details-section-members-container">
-          {memberIds.map((memberId) => {
-            const member = members.find((member) => member._id === memberId)
-            const { _id, imgUrl, fullname } = member
-            return (
-              <img
-                key={_id}
-                className="task-details-section-members-container-img"
-                src={imgUrl}
-                alt={fullname}
-                title={fullname}
-              />
-            )
-          })}
-          <button
-            className="task-details-section-members-add-btn"
-            title="Add Members"
-          >
-            <AiOutlinePlus />
-          </button>
-        </div>
-      </article>
-    )
-  }
-
-  function SetDescription() {
-    const { description } = task
-
-    if (!description)
-      return <section className="task-details-section-description"></section>
-    return (
-      <section className="task-details-section-description">
-        <h2 className="task-details-section-description-title">Description</h2>
-        <textarea
-          className="task-details-section-description-input"
-          type="text"
-          name="task-description"
-          id="task-description"
-          defaultValue={description}
-        />
-      </section>
-    )
-  }
-
   return (
     <main
       className="task-details-modal-overlay"
@@ -175,11 +61,11 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
         <SetCloseBtn />
         {task.style.bgColor && <SetHeader />}
         <BsReverseLayoutTextWindowReverse className="task-details-section-title-icon" />
-        <SetTitle />
-        {task.labelIds && <SetLabels />}
-        {task.memberIds && <SetMembers />}
+        <SetTitle group={group} task={task} />
+        {task.labelIds && <SetLabels board={board} task={task} />}
+        {task.memberIds && <SetMembers board={board} task={task} />}
         <GrTextAlignFull className="task-details-section-description-icon" />
-        <SetDescription />
+        <SetDescription task={task} />
       </section>
     </main>
   )
