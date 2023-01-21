@@ -47,8 +47,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
   function SetTitle() {
     return (
       <article className="task-details-section-title">
-        <BsReverseLayoutTextWindowReverse className="task-details-section-title-icon" />
-        <input
+        <textarea
           className="task-details-section-title-input"
           type="text"
           name="task-title"
@@ -56,11 +55,16 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
           defaultValue={task.title}
         />
         <p className="task-details-section-title-description">
-          In the list
+          <h2 className="task-details-section-title-description-title">
+            In the list
+          </h2>
           <a className="task-details-section-title-description-link" href="#">
             {' ' + group.title}
           </a>
-          <AiOutlineEye />
+          <AiOutlineEye
+            title="Followed"
+            className="task-details-section-title-description-icon"
+          />
         </p>
       </article>
     )
@@ -114,19 +118,28 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
       return <article className="task-details-section-members"></article>
     return (
       <article className="task-details-section-members">
-        {memberIds.map((memberId) => {
-          const member = members.find((member) => member._id === memberId)
-          const { _id, imgUrl, fullname } = member
-          return (
-            <img
-              key={_id}
-              className="task-details-section-members-img"
-              src={imgUrl}
-              alt={fullname}
-              title={fullname}
-            />
-          )
-        })}
+        <h2 className="task-details-section-members-title">Members</h2>
+        <div className="task-details-section-members-container">
+          {memberIds.map((memberId) => {
+            const member = members.find((member) => member._id === memberId)
+            const { _id, imgUrl, fullname } = member
+            return (
+              <img
+                key={_id}
+                className="task-details-section-members-container-img"
+                src={imgUrl}
+                alt={fullname}
+                title={fullname}
+              />
+            )
+          })}
+          <button
+            className="task-details-section-members-add-btn"
+            title="Add Members"
+          >
+            <AiOutlinePlus />
+          </button>
+        </div>
       </article>
     )
   }
@@ -138,12 +151,8 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
       return <section className="task-details-section-description"></section>
     return (
       <section className="task-details-section-description">
-        <GrTextAlignFull className="task-details-section-description-icon" />
         <h2 className="task-details-section-description-title">Description</h2>
-        <button className="task-details-section-description-edit-btn">
-          Edit
-        </button>
-        <input
+        <textarea
           className="task-details-section-description-input"
           type="text"
           name="task-description"
@@ -161,13 +170,15 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
     >
       <section
         className="task-details-section"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(ev) => ev.stopPropagation()}
       >
         <SetCloseBtn />
         {task.style.bgColor && <SetHeader />}
+        <BsReverseLayoutTextWindowReverse className="task-details-section-title-icon" />
         <SetTitle />
         {task.labelIds && <SetLabels />}
         {task.memberIds && <SetMembers />}
+        <GrTextAlignFull className="task-details-section-description-icon" />
         <SetDescription />
       </section>
     </main>
