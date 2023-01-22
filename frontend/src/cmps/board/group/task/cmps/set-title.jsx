@@ -1,5 +1,6 @@
 //? Icon
 import { AiOutlineEye } from 'react-icons/ai'
+import { BsReverseLayoutTextWindowReverse } from 'react-icons/bs'
 
 export function SetTitle({ type, group, task }) {
   switch (type) {
@@ -15,9 +16,13 @@ export function SetTitle({ type, group, task }) {
     default:
       //* Task Details
       return (
-        <article className="task-details-section-title">
+        <article
+          className="task-details-title"
+          onClick={(ev) => ev.stopPropagation()}
+        >
+          <BsReverseLayoutTextWindowReverse className="task-details-title-icon" />
           <textarea
-            className="task-details-section-title-input"
+            className="task-details-title-input"
             type="text"
             name="task-title"
             id="task-title"
@@ -25,12 +30,12 @@ export function SetTitle({ type, group, task }) {
             onKeyDown={(ev) => (ev.key === 'Enter' ? ev.preventDefault() : ev)}
             defaultValue={task.title}
           />
-          <div className="task-details-section-title-description">
-            <h2 className="task-details-section-title-description-title">
+          <div className="task-details-title-description">
+            <h2 className="task-details-title-description-title">
               In the list
             </h2>
             <a
-              className="task-details-section-title-description-link"
+              className="task-details-title-description-link"
               title={group.title}
               href="#"
             >
@@ -39,7 +44,7 @@ export function SetTitle({ type, group, task }) {
             {task.priority === 'high' && (
               <AiOutlineEye
                 title="Followed"
-                className="task-details-section-title-description-icon"
+                className="task-details-title-description-icon"
               />
             )}
           </div>

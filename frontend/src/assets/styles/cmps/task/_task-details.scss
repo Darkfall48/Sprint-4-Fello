@@ -9,7 +9,7 @@
   z-index: 4;
   background: rgba(0, 0, 0, 0.5);
   //* Modal Section
-  & .task-details-section {
+  & .task-details {
     cursor: auto;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
       Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
@@ -24,13 +24,18 @@
     z-index: 5;
     min-width: 768px;
     display: grid;
-    grid-template-columns: 56px 512px 1fr;
+    grid-template-columns: 576px 192px;
     grid-template-areas:
-      'header header header'
-      't-icon title title'
-      '. members aside'
-      '. labels aside'
-      'd-icon description aside';
+      'header header'
+      'title title'
+      'main aside';
+    // grid-template-columns: 56px 512px 1fr;
+    // grid-template-areas:
+    //   'header header header'
+    //   't-icon title title'
+    //   '. members aside'
+    //   '. labels aside'
+    //   'd-icon description aside';
     //* Close Button
     &-close-btn {
       position: absolute;
@@ -51,29 +56,38 @@
         background-color: #f0f0f0;
       }
     }
-    //* Header
     &-header {
       grid-area: header;
-      color: whitesmoke;
-      height: 116px;
+      //* Header
+      &-cover {
+        color: whitesmoke;
+        height: 116px;
+      }
     }
-    //* Group Title Icon
-    &-title-icon {
-      grid-area: t-icon;
-      justify-self: center;
-      color: #172b4d;
-      font-size: 20px;
-      margin-top: 26px;
-    }
+
     //* Group Title
     &-title {
+      //* Group Title Icon
       grid-area: title;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      grid-template-rows: min-content;
+      grid-template-areas:
+        't-icon input'
+        '. description';
+      // gap: 4px;
       margin-top: 20px;
       margin-bottom: 20px;
+      &-icon {
+        grid-area: t-icon;
+        align-self: center;
+        justify-self: center;
+        color: #172b4d;
+        font-size: 20px;
+        // margin-top: 26px;
+      }
       &-input {
+        grid-area: input;
         padding-left: 6px;
         margin-right: 48px;
         height: 33.2px;
@@ -86,6 +100,7 @@
         resize: none;
       }
       &-description {
+        grid-area: description;
         padding-left: 8px;
         display: flex;
         align-items: center;
@@ -112,154 +127,167 @@
         }
       }
     }
-    //* Labels
-    &-labels {
-      grid-area: labels;
-      display: flex;
-      flex-direction: column;
-      justify-self: flex-start;
-      margin-bottom: 20px;
-      &-title {
-        align-self: flex-start;
-        color: #5e6c84;
-        font-size: 12px;
-        font-weight: 600;
-        padding-left: 8px;
-      }
-      &-container {
-        justify-self: flex-start;
+
+    //* Main
+    &-main {
+      grid-area: main;
+      display: grid;
+      grid-template-columns: 56px 512px;
+      grid-template-areas:
+        't-icon title'
+        '. members'
+        '. labels'
+        'd-icon description';
+
+      //* Labels
+      &-labels {
+        grid-area: labels;
         display: flex;
-        flex-wrap: wrap;
-        gap: 4px;
-        grid-area: label;
-        padding-left: 8px;
-        padding-right: 8px;
-        margin-bottom: 4px;
-        align-items: center;
-        &-label {
-          cursor: pointer;
-          border-radius: 3px;
-          max-width: 100%;
-          min-width: 48px;
-          height: 32px;
+        flex-direction: column;
+        justify-self: flex-start;
+        margin-bottom: 20px;
+        &-title {
+          align-self: flex-start;
+          color: #5e6c84;
+          font-size: 12px;
+          font-weight: 600;
+          padding-left: 8px;
+        }
+        &-container {
+          justify-self: flex-start;
           display: flex;
-          align-items: center;
-          gap: 8px;
+          flex-wrap: wrap;
+          gap: 4px;
+          grid-area: label;
           padding-left: 8px;
           padding-right: 8px;
-          &:hover {
-            filter: saturate(85%) brightness(85%);
+          margin-bottom: 4px;
+          align-items: center;
+          &-label {
+            cursor: pointer;
+            border-radius: 3px;
+            max-width: 100%;
+            min-width: 48px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-left: 8px;
+            padding-right: 8px;
+            &:hover {
+              filter: saturate(85%) brightness(85%);
+            }
+          }
+          &-circle {
+            border-radius: 50%;
+            min-width: 16px;
+            max-width: 16px;
+            min-height: 16px;
+            max-height: 16px;
+          }
+          &-title {
+            color: #172b4d;
+            font-size: 14px;
+            width: max-content;
           }
         }
-        &-circle {
-          border-radius: 50%;
-          min-width: 16px;
-          max-width: 16px;
-          min-height: 16px;
-          max-height: 16px;
-        }
-        &-title {
-          color: #172b4d;
-          font-size: 14px;
-          width: max-content;
-        }
-      }
-      &-add-btn {
-        border-radius: 3px;
-        margin: 0;
-        padding: 0;
-        line-height: 0;
-        width: 32px;
-        height: 32px;
-        justify-items: center;
-        align-items: center;
-        font-size: 16px;
-        background-color: #f0f0f0;
-        color: #172b4d;
-        &:hover {
-        }
-      }
-    }
-    //* Members
-    &-members {
-      grid-area: members;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-bottom: 20px;
-      &-title {
-        align-items: flex-start;
-        color: #5e6c84;
-        font-size: 12px;
-        font-weight: 600;
-        padding-left: 8px;
-      }
-      &-container {
-        align-items: flex-start;
-        padding-left: 8px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 4px;
-        &-img {
-          cursor: pointer;
-          height: 32px;
+        &-add-btn {
+          border-radius: 3px;
+          margin: 0;
+          padding: 0;
+          line-height: 0;
           width: 32px;
-          border-radius: 50%;
+          height: 32px;
+          justify-items: center;
+          align-items: center;
+          font-size: 16px;
+          background-color: #f0f0f0;
+          color: #172b4d;
+          &:hover {
+          }
         }
       }
-      &-add-btn {
-        border-radius: 50%;
-        margin: 0;
-        padding: 0;
-        line-height: 0;
-        width: 32px;
-        height: 32px;
-        justify-items: center;
-        align-items: center;
-        font-size: 16px;
-        background-color: #f0f0f0;
+      //* Members
+      &-members {
+        grid-area: members;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        &-title {
+          align-items: flex-start;
+          color: #5e6c84;
+          font-size: 12px;
+          font-weight: 600;
+          padding-left: 8px;
+        }
+        &-container {
+          align-items: flex-start;
+          padding-left: 8px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px;
+          &-img {
+            cursor: pointer;
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+          }
+        }
+        &-add-btn {
+          border-radius: 50%;
+          margin: 0;
+          padding: 0;
+          line-height: 0;
+          width: 32px;
+          height: 32px;
+          justify-items: center;
+          align-items: center;
+          font-size: 16px;
+          background-color: #f0f0f0;
+          color: #172b4d;
+        }
+      }
+      //* Description Icon
+      &-description-icon {
+        grid-area: d-icon;
+        justify-self: center;
         color: #172b4d;
+        font-size: 20px;
+        margin-top: 6px;
+      }
+      //* Description
+      &-description {
+        grid-area: description;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        &-title {
+          align-self: flex-start;
+          font-size: 16px;
+          font-weight: 600;
+          color: #172b4d;
+        }
+        &-input {
+          align-self: flex-start;
+          width: 100%;
+          border: none;
+          overflow: hidden;
+          overflow-wrap: break-word;
+          resize: none;
+          color: #172b4d;
+          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+            Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          outline: none;
+          &:focus {
+            box-shadow: 0 0 0 1px inset #dfe1e6;
+          }
+        }
       }
     }
 
-    //* Description Icon
-    &-description-icon {
-      grid-area: d-icon;
-      justify-self: center;
-      color: #172b4d;
-      font-size: 20px;
-      margin-top: 6px;
-    }
-    //* Description
-    &-description {
-      grid-area: description;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 20px;
-      &-title {
-        align-self: flex-start;
-        font-size: 16px;
-        font-weight: 600;
-        color: #172b4d;
-      }
-      &-input {
-        align-self: flex-start;
-        width: 100%;
-        border: none;
-        overflow: hidden;
-        overflow-wrap: break-word;
-        resize: none;
-        color: #172b4d;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-          Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        outline: none;
-        &:focus {
-          box-shadow: 0 0 0 1px inset #dfe1e6;
-        }
-      }
-    }
     //* Aside Pannel
     &-aside {
       grid-area: aside;
