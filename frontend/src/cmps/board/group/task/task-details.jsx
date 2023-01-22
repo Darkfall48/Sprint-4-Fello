@@ -27,6 +27,7 @@ import { SetDescription } from './cmps/set-description'
 import { SetChecklist } from './cmps/set-checklist'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Loader } from '../../../helpers/loader'
+import { removeTask } from '../../../../store/actions/board.actions'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -74,6 +75,16 @@ export function TaskDetails() {
         </button>
       </div>
     )
+  }
+
+  async function onRemoveTask(group, taskId) {
+    try {
+      await removeTask(group, taskId)
+      navigate(-1)
+      console.log('Task', taskId, 'removed')
+    } catch (err) {
+      console.log('Cannot remove Task', taskId, ':', err)
+    }
   }
 
   function SetCloseBtn() {
@@ -193,7 +204,10 @@ export function TaskDetails() {
                 <span>Make template</span>
               </button>
               <hr />
-              <button title="Archive">
+              <button
+                title="Archive"
+                onClick={() => onRemoveTask(group, taskId)}
+              >
                 <TiArchive />
                 <span>Archive</span>
               </button>

@@ -2,7 +2,7 @@
 import { AiOutlinePlus } from 'react-icons/ai'
 
 export function SetLabels({ type, board, task }) {
-  const labels = board.labels
+  const labels = board?.labels
   const { labelIds } = task
   switch (type) {
     //* Task Preview
@@ -16,9 +16,9 @@ export function SetLabels({ type, board, task }) {
             return (
               <span
                 className="task-preview-label"
-                key={label.id}
-                style={{ backgroundColor: label.color }}
-                title={label.title ? label.title : 'None'}
+                key={label?.id}
+                style={{ backgroundColor: label?.color }}
+                title={label?.title ? label?.title : 'None'}
               ></span>
             )
           })}
@@ -28,27 +28,27 @@ export function SetLabels({ type, board, task }) {
 
     default:
       //* Task Details
-      if (!labelIds || !labelIds.length)
+      if (!labelIds || !labelIds?.length)
         return <article className="task-details-main-labels"></article>
       return (
         <article className="task-details-main-labels">
           <h2 className="task-details-main-labels-title">Labels</h2>
           <div className="task-details-main-labels-container">
             {labelIds.map((labelId) => {
-              const label = labels.find((label) => label.id === labelId)
+              const label = labels?.find((label) => label.id === labelId)
               return (
                 <span
                   className="task-details-main-labels-container-label"
-                  key={label.id}
-                  style={{ backgroundColor: label.color + '66' }}
-                  title={label.title ? label.title : ''}
+                  key={labelId}
+                  style={{ backgroundColor: label?.color + '66' }}
+                  title={label?.title ? label?.title : ''}
                 >
                   <div
                     className="task-details-main-labels-container-circle"
-                    style={{ backgroundColor: label.color }}
+                    style={{ backgroundColor: label?.color }}
                   ></div>
                   <span className="task-details-main-labels-container-title">
-                    {label.title ? label.title : 'None'}
+                    {label?.title ? label?.title : 'None'}
                   </span>
                 </span>
               )
