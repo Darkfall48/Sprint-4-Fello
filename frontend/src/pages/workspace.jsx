@@ -10,6 +10,7 @@ import { loadBoards, removeBoard } from "../store/actions/board.actions";
 export function Workspace() {
 
   const boards = useSelector((storeState) => storeState.boardModule.boards)
+  const starredBoard = boards.filter((board) => board.isStarred)
 
   useEffect(() => {
     onLoadBoards()
@@ -36,28 +37,55 @@ export function Workspace() {
     }
   }
 
-  const starredBoard = boards.filter((board) => board.isStarred)
+  function onStarredBoard() {
+    if (!starredBoard.length) return
+    else return <h1><AiOutlineStar className="workspace-icons" /> Starred boards</h1>
+  }
+
+  // function onCountryClick(ev, country) {
+  //   ev.preventDefault()
+  //   const { recentlyViewed } = this.state;
+  //   const newState = {}; // add your other updates here
+
+  //   if (!recentlyViewed.includes(country)) {
+  //     // firstly take first two items as a new array
+  //     newState.recentlyViewed = recentlyViewed.slice(1);
+  //     // add country into beginning of new array
+  //     newState.recentlyViewed.unshift(country);
+  //   }
+
+  //   this.setState(newState);
+
+  // }
+
 
   if (!boards) return <div>Loading...</div>
   return <section className="workspace-section" >
 
     <div className="starred-boards-container">
-      <h1><AiOutlineStar className="workspace-icons"/> Starred boards</h1>
-      {boards.map(board => {
-        // console.log('board.isStarred', board.isStarred);
-        return board.isStarred
-      }) && <BoardList
-          boards={starredBoard}
-          onRemoveBoard={onRemoveBoard}
-        />}
+      {/* {starredBoard.length && <h1><AiOutlineStar className="workspace-icons"/> Starred boards</h1>} */}
+      {onStarredBoard()}
+      <BoardList
+        boards={starredBoard}
+        onRemoveBoard={onRemoveBoard}
+      />
     </div>
     <div className="starred-boards-container">
-      <h1><AiOutlineClockCircle className="workspace-icons"/> Recently viewed</h1>
+      <h1><AiOutlineClockCircle className="workspace-icons" /> Recently viewed</h1>
       <BoardList
         boards={boards}
         onRemoveBoard={onRemoveBoard}
       />
     </div>
+    <div className="starred-boards-container">
+      <h3>Your workspaces</h3>
+      <BoardList
+        boards={boards}
+        onRemoveBoard={onRemoveBoard}
+        createBoardPlaceholder={true}
+      />
+    </div>
+
 
   </section>
 }

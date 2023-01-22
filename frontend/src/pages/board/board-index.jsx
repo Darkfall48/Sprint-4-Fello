@@ -11,6 +11,7 @@ import { loadBoard } from '../../store/actions/board.actions.js'
 import { BoardDetails } from '../../cmps/board/board-details.jsx'
 import { Loader } from '../../cmps/helpers/loader'
 import { store } from '../../store/store'
+import { utilService } from '../../services/util.service.js'
 
 export function BoardIndex() {
   const board = useSelector((storeState) => storeState.boardModule.board)

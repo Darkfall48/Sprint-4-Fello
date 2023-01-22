@@ -5,6 +5,7 @@ import { showErrorMsg, showSuccessMsg } from "../../services/connection/event-bu
 import React from 'react';
 import { boardService } from "../../services/board/board.service.local"
 import { addBoard } from "../../store/actions/board.actions"
+import { AiOutlineClose } from "react-icons/ai";
 
 
 export function BoardAdd({ onCloseModal }) {
@@ -52,14 +53,14 @@ export function BoardAdd({ onCloseModal }) {
 
     }
 
-    return <section className="board-add">
-            <div className="modal" onClick={onCloseModal}>
+    // return <section className="board-add">
+          return  <div className="modal" onClick={onCloseModal}>
                 <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                     <div className="form-container">
 
                         <div className="modal-header">
                             <h2>Create board</h2>
-                            <button onClick={onCloseModal}>X</button>
+                            <button onClick={onCloseModal}><AiOutlineClose/></button>
 
                         </div>
 
@@ -104,5 +105,5 @@ export function BoardAdd({ onCloseModal }) {
                 </div>
             </div>
     
-    </section >
+    // </section >
 }
