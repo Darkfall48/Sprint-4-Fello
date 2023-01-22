@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 
 import { TaskList } from './task/task-list'
-import { BsPlus } from 'react-icons/bs'
+import { HiOutlinePlus } from 'react-icons/hi'
 import { TbTemplate } from 'react-icons/tb'
 import { BsThreeDots } from 'react-icons/bs'
 import { CgClose } from 'react-icons/cg'
@@ -128,10 +128,10 @@ export function GroupPreview({ group }) {
         )}
         <div className="group-bottom-control-btns">
           <button onClick={onAddTask} className="add-task-btn">
-            <BsPlus className="plus" />
+            <HiOutlinePlus className="plus" />
             <span>Add a card</span>
           </button>
-          <button name="template" id="template" className="template-btn">
+          <button name="template" className="template-btn">
             <TbTemplate />
           </button>
         </div>
