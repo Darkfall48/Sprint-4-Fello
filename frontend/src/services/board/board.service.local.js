@@ -189,7 +189,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
       imgUrl: { imgUrlMember3 },
     },
     style: {
-      bgColor: '',
+      bgColor,
       backgroundImg,
     },
     labels: [
