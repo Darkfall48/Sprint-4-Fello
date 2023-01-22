@@ -117,7 +117,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
             <button title="Cover">Cover</button>
           </article>
 
-          <article className="task-details-aside-group-action">
+          {/* <article className="task-details-aside-group-action">
             <h2 className="task-details-aside-group-action-title">Actions</h2>
             <button title="Move">Move</button>
             <button title="Copy">Copy</button>
@@ -125,7 +125,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
             <hr />
             <button title="Archive">Archive</button>
             <button title="Share">Share</button>
-          </article>
+          </article> */}
         </aside>
       </section>
     </section>
