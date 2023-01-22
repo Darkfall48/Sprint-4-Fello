@@ -334,3 +334,11 @@
     }
   }
 }
+
+.task-details-edit-btn{
+  @include btn('task-edit', $list-btn-bg-clr-modal-hover, 6px 12px, $task-details-btn-bg-clr-hover);
+  display: flex;
+}
+.icon-task-detail-btn{
+margin:0 6px 0 0;
+}
