@@ -5,9 +5,9 @@ import { AddBoardModal } from "./modal/add-board-modal";
 import { GroupActionsModal } from './modal/group-actions-modal';
 
 
-export function Modal({ type, modalTitle, onCloseModal, group }) {
+export function Modal({ type, modalTitle, onCloseModal, group , onAddTask}) {
 
-    return <div className={`modal-content modal-${type}`} onClick={(e) => e.stopPropagation()}>
+    return <div className={`modal-content modal-${type}`} onClick={(e) => e.stopPropagation()} onBlur={(ev) => onCloseModal(ev)} >
             <div className="form-container" id="modal-form-container">
 
                 <div className="modal-header" id={`modal-header-${type}`}>
@@ -19,7 +19,7 @@ export function Modal({ type, modalTitle, onCloseModal, group }) {
                         case 'add-board':
                             return <AddBoardModal onCloseModal={onCloseModal} />
                         case 'group-actions':
-                            return <GroupActionsModal group={group} />
+                            return <GroupActionsModal group={group} onCloseModal={onCloseModal} onAddTask={onAddTask} />
                         default:
                             console.log(`Cannot load component type: ${type}.`);
                     }

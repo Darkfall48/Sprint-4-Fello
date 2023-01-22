@@ -35,6 +35,10 @@ export function GroupPreview({ group }) {
     console.log('newTask', newTask)
   }
 
+  function exitEditMode(){
+    setEditMode(false)
+  }
+
   async function onSubmitTask(e) {
     e.preventDefault()
     addTask(group, newTask)
@@ -66,7 +70,8 @@ export function GroupPreview({ group }) {
     setIsGroupMenuOpen(true)
   }
 
-  function onCloseModal() {
+  function onCloseModal(ev) {
+    ev.preventDefault()
     setIsGroupMenuOpen(false)
   }
 
@@ -94,7 +99,7 @@ export function GroupPreview({ group }) {
                 modalTitle="List Actions"
                 onCloseModal={onCloseModal}
                 group={group}
-                
+                onAddTask={onAddTask}
               />
           )}
         </div>
@@ -116,7 +121,9 @@ export function GroupPreview({ group }) {
               placeholder="Enter a title for this card..."
               value={newTask.title}
               onChange={handleChange}
-            />
+            />        
+            {/* <button className='new-group-add-btn' onClick={() => onSubmitTask()}>Add task</button>
+            <button className="close-add-group" onClick={exitEditMode}><CgClose /></button> */}
           </form>
         )}
         <div className="group-bottom-control-btns">

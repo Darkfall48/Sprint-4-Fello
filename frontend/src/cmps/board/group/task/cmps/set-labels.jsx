@@ -29,32 +29,32 @@ export function SetLabels({ type, board, task }) {
     default:
       //* Task Details
       if (!labelIds || !labelIds.length)
-        return <article className="task-details-section-labels"></article>
+        return <article className="task-details-main-labels"></article>
       return (
-        <article className="task-details-section-labels">
-          <h2 className="task-details-section-labels-title">Labels</h2>
-          <div className="task-details-section-labels-container">
+        <article className="task-details-main-labels">
+          <h2 className="task-details-main-labels-title">Labels</h2>
+          <div className="task-details-main-labels-container">
             {labelIds.map((labelId) => {
               const label = labels.find((label) => label.id === labelId)
               return (
                 <span
-                  className="task-details-section-labels-container-label"
+                  className="task-details-main-labels-container-label"
                   key={label.id}
                   style={{ backgroundColor: label.color + '66' }}
                   title={label.title ? label.title : ''}
                 >
                   <div
-                    className="task-details-section-labels-container-circle"
+                    className="task-details-main-labels-container-circle"
                     style={{ backgroundColor: label.color }}
                   ></div>
-                  <span className="task-details-section-labels-container-title">
+                  <span className="task-details-main-labels-container-title">
                     {label.title ? label.title : 'None'}
                   </span>
                 </span>
               )
             })}
             <button
-              className="task-details-section-labels-add-btn"
+              className="task-details-main-labels-add-btn"
               title="Add Label"
             >
               <AiOutlinePlus />

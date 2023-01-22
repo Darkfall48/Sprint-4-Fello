@@ -8,6 +8,11 @@ import {
 } from 'react-icons/bs'
 import { GrTextAlignFull } from 'react-icons/gr'
 import { VscClose } from 'react-icons/vsc'
+import { HiOutlineUser } from 'react-icons/hi'
+import { TbTag } from 'react-icons/tb'
+import { IoMdCheckboxOutline } from 'react-icons/io'
+import { FiClock } from 'react-icons/fi'
+import { ImAttachment } from 'react-icons/im'
 //? Components
 import { SetTitle } from './cmps/set-title'
 import { SetLabels } from './cmps/set-labels'
@@ -31,13 +36,13 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
     const { style } = task
     if (!style.bgColor)
       return (
-        <div className="task-details-section-header">
+        <div className="task-details-header-cover">
           <SetCloseBtn />
         </div>
       )
     return (
       <div
-        className="task-details-section-header"
+        className="task-details-header-cover"
         style={{ backgroundColor: style.bgColor }}
       ></div>
     )
@@ -46,7 +51,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
   function SetCloseBtn() {
     return (
       <button
-        className="task-details-section-close-btn"
+        className="task-details-close-btn"
         onClick={() => setIsModalOpen(!isModalOpen)}
       >
         <VscClose />
@@ -55,33 +60,42 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
   }
 
   return (
-    <main
+    <section
       className="task-details-modal-overlay"
       onClick={() => setIsModalOpen(false)}
     >
-      <section
-        className="task-details-section"
-        onClick={(ev) => ev.stopPropagation()}
-      >
+      <section className="task-details">
         <SetCloseBtn />
-        {task.style.bgColor && <SetHeader />}
-        <BsReverseLayoutTextWindowReverse className="task-details-section-title-icon" />
+        <header
+          className="task-details-header"
+          onClick={(ev) => ev.stopPropagation()}
+        >
+          {task.style.bgColor && <SetHeader />}
+        </header>
+
+        {/* <article className="task-details-title"> */}
         <SetTitle group={group} task={task} />
-        {task.labelIds && <SetLabels board={board} task={task} />}
-        {task.memberIds && <SetMembers board={board} task={task} />}
-        {task.description && (
-          <>
-            <GrTextAlignFull className="task-details-section-description-icon" />
-            <SetDescription task={task} />
-          </>
-        )}
-        {/*! Grid SCSS Not Working*/}
-        {/* {task.checklists &&
+        {/* </article> */}
+
+        <main
+          className="task-details-main"
+          onClick={(ev) => ev.stopPropagation()}
+        >
+          {task.labelIds && <SetLabels board={board} task={task} />}
+          {task.memberIds && <SetMembers board={board} task={task} />}
+          {task.description && (
+            <>
+              <GrTextAlignFull className="task-details-main-description-icon" />
+              <SetDescription task={task} />
+            </>
+          )}
+          {/*! Grid SCSS Not Working*/}
+          {/* {task.checklists &&
           task.checklists.map((checklist, idx) => (
             <>
               <BsCheck2Square
                 key={idx}
-                className="task-details-section-checklist-icon"
+                className="task-details-main-checklist-icon"
               />
               <SetChecklist
                 key={checklist.id + idx}
@@ -90,7 +104,44 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
               />
             </>
           ))} */}
+        </main>
+
+        <aside
+          className="task-details-aside"
+          onClick={(ev) => ev.stopPropagation()}
+        >
+          <article className="task-details-aside-task-action">
+            <h2 className="task-details-aside-task-action-title">
+              Add to Card
+            </h2>
+            <button title="I am Members">
+              <HiOutlineUser /> Members
+            </button>
+            <button title="I am Labels">
+              <TbTag /> Labels
+            </button>
+            <button title="I am Checklist">
+              <IoMdCheckboxOutline /> <span>Checklist</span>
+            </button>
+            <button title="I am Date">
+              <FiClock /> Date
+            </button>
+            <button title="I am Attachment">
+              <ImAttachment /> Imports
+            </button>
+          </article>
+
+          <article className="task-details-aside-group-action">
+            <h2 className="task-details-aside-group-action-title">Actions</h2>
+            <button title="Move">Move</button>
+            <button title="Copy">Copy</button>
+            <button title="Make template">Make template</button>
+            <hr />
+            <button title="Archive">Archive</button>
+            <button title="Share">Share</button>
+          </article>
+        </aside>
       </section>
-    </main>
+    </section>
   )
 }

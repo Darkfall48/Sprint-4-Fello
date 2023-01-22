@@ -2,6 +2,13 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+
+import { HiOutlineUser } from 'react-icons/hi'
+import { TbTag } from 'react-icons/tb'
+import { IoMdCheckboxOutline } from 'react-icons/io'
+import { FiClock } from 'react-icons/fi'
+import { ImAttachment } from 'react-icons/im'
+
 //? Services
 import { showSuccessMsg } from '../../services/connection/event-bus.service'
 import {
@@ -49,6 +56,26 @@ export function UserDetails() {
           <pre>{JSON.stringify(user, null, 2)}</pre>
         </div>
       )}
+      <button className="task-details-edit-btn">
+        <HiOutlineUser className="icon-task-detail-btn" /> <span>Members</span>{' '}
+      </button>
+      <button className="task-details-edit-btn">
+        <TbTag className="icon-task-detail-btn" />
+        <span>Labels</span>{' '}
+      </button>
+      <button className="task-details-edit-btn">
+        {' '}
+        <IoMdCheckboxOutline className="icon-task-detail-btn" />
+        <span>Checklist</span>
+      </button>
+      <button className="task-details-edit-btn">
+        <FiClock className="icon-task-detail-btn" />
+        <span>Dates</span>
+      </button>
+      <button className="task-details-edit-btn">
+        <ImAttachment className="icon-task-detail-btn" />
+        <span>Attachment</span>
+      </button>
     </section>
   )
 }

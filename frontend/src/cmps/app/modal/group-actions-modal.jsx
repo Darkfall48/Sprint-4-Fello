@@ -4,7 +4,7 @@ import { store } from '../../../store/store'
 import { showSuccessMsg, showErrorMsg, } from '../../../services/connection/event-bus.service'
 import { utilService } from '../../../services/util.service'
 
-export function GroupActionsModal({ group }) {
+export function GroupActionsModal({ group, onCloseModal, onAddTask }) {
 
   const board = useSelector((storeState) => storeState.boardModule.board)
 
@@ -17,6 +17,7 @@ export function GroupActionsModal({ group }) {
       await updateBoard(updatedBoard)
       await loadBoard(board._id)
       showSuccessMsg('Group removed')
+      onCloseModal()
     } catch (err) {
       showErrorMsg('Cannot remove group')
     }
@@ -33,13 +34,17 @@ export function GroupActionsModal({ group }) {
       await updateBoard(updatedBoard)
       await loadBoard(board._id)
       showSuccessMsg('Group removed')
+      onCloseModal()
     } catch (err) {
       showErrorMsg('Cannot remove group')
     }
   }
 
   return <section className='group-actions-modal-list-container'>
-    <button className='modal-btn-full' onClick={() => onRemoveGroup(group.id)}>
+    <button className='modal-btn-full' onClick={() => {
+      onAddTask()
+      onCloseModal()
+    }}>
       Add card...
     </button>
     <button className='modal-btn-full' onClick={() => onCopyList(group.id)}>

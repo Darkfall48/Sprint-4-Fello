@@ -18,6 +18,7 @@ export function RootCmp() {
         <Routes>
           <Route element={<Home/>} path='/'/>
           <Route element={<BoardIndex/>} path='board/:boardId'/>
+          <Route element={<UserDetails/>} path='user'/>
           {routes.map((route) => (
             <Route
               key={route.path}
