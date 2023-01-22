@@ -10,7 +10,7 @@ export function SetInfos({ task }) {
   console.log('Taskousssyyyy', task)
 
   function SetFollow() {
-    if (!task.priority || !task.priority !== 'high')
+    if (!task.priority || task.priority !== 'high')
       return <article className="task-preview-info-no-follow"></article>
     return (
       <article
