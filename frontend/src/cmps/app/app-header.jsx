@@ -39,25 +39,9 @@ export function AppHeader() {
         ))}
       </nav>
 
-      {/* <div className="dropdown">
-        <li><button>Starred<BiChevronDown className='down-arrow-nav' /></button>
-          <div className="dropdown-content">
-            {starredBoards.map(starredBoard =>{
-              console.log('starredBoard', starredBoard);
-             return <Link to={`/board/${starredBoard._id}`}>{starredBoard.style.backgroundImg}</Link>
-            })}
-
-          </div>
-        </li>
-      </div> */}
-
-
-      <div className='dropdown'>
-        <li> <button onClick={() => { setIsModalOpen(!isModalOpen) }}>Create</button>
-          {<div className='dropdown-content'>
-            {isModalOpen && <BoardAdd onCloseModal={onCloseModal} />}
-          </div>}
-        </li>
+      <div className='create-dropdown'>
+        <button onClick={() => { setIsModalOpen(!isModalOpen) }}>Create</button>
+        {isModalOpen && <BoardAdd onCloseModal={onCloseModal} />}
       </div>
 
     </header>

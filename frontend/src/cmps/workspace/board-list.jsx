@@ -4,7 +4,7 @@ import { BoardAdd } from "./board-add";
 
 import { BoardPreview } from "./board-preview";
 
-export function BoardList({ boards, onEditBoard, onRemoveBoard }) {
+export function BoardList({ boards, onEditBoard, onRemoveBoard, createBoardPlaceholder }) {
 
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -14,7 +14,7 @@ export function BoardList({ boards, onEditBoard, onRemoveBoard }) {
 
     return <section className="board-list">
         <ul>
-        {!boards.isStarred && <button className="board-list-btn" onClick={() => { setIsModalOpen(!isModalOpen) }}>Create new board</button>}
+       
             {boards.map((board, index) =>
                 <li
                     key={index}
@@ -27,6 +27,7 @@ export function BoardList({ boards, onEditBoard, onRemoveBoard }) {
                     />
 
                 </li>)}
+                {createBoardPlaceholder && <button className="board-list-btn" onClick={() => { setIsModalOpen(!isModalOpen) }}>Create new board</button>}
         </ul>
 
         {/* {isModalOpen &&  <Modal type={'add-board'} modalTitle={'Create board'} onCloseModal={onCloseModal}/> } */}

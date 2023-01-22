@@ -7,8 +7,8 @@ import boardSvg from '../assets/img/TrelloImage-1.webp'
 
 export function Home() {
   return (
-    <section className="home-section">
-      <div className="wave-container">
+    <section className="home-section main-container main-layout">
+      <div className="wave-container full">
         <div className="content-container">
           <div className="txt-container">
             <h1>Trello brings all your tasks, teammates, and tools together</h1>
@@ -27,7 +27,7 @@ export function Home() {
 
         <img src={svg} alt="Wave" />
       </div>
-      <div className="secondary-content-container">
+      <div className="secondary-content-container full">
         <div className="txt-content">
         <h1>A productivity powerhouse</h1>
         <p>

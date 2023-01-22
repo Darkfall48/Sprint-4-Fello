@@ -27,5 +27,19 @@
 
     }
 
+    h3{
+        align-items: center;
+        color: #5e6c84;
+        display: flex;
+        flex: 1;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        margin: 20px 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-transform: uppercase;
+    }
 
 }
