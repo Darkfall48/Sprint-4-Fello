@@ -1,5 +1,6 @@
 .task-preview-section {
   cursor: pointer;
+  min-height: 40px;
   min-width: 256px;
   max-width: 256px;
   border-radius: $clr-task-preview-section-border-radius;
@@ -8,7 +9,7 @@
   padding: 0;
   align-items: center;
   display: grid;
-  // grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas:
     'background background'
     'label      label'
@@ -107,10 +108,18 @@
       gap: 4px;
       font-size: 12px;
       color: #6b778c;
+      //* Is Following
+      &-no-follow {
+        display: none;
+      }
       &-follow {
         font-size: 16px;
         padding-top: 3px;
         padding-right: 4px;
+      }
+      //* Todos
+      &-no-todo {
+        display: none;
       }
       &-todo {
         padding-right: 4px;
@@ -124,10 +133,18 @@
           font-size: 12px;
         }
       }
+      //* Description
+      &-no-description {
+        display: none;
+      }
       &-description {
         padding-right: 4px;
         font-size: 14px;
         padding-top: 3px;
+      }
+      //* Comment
+      &-no-comment {
+        display: none;
       }
       &-comment {
         padding-right: 4px;

@@ -1,7 +1,7 @@
 export function SetDescription({ task }) {
   const { description } = task
 
-  if (!description)
+  if (!description || !description.length)
     return <section className="task-details-section-description"></section>
   return (
     <section className="task-details-section-description">
