@@ -105,7 +105,7 @@ export function TaskDetails() {
         <SetCloseBtn />
         <header
           className="task-details-header"
-          // onClick={(ev) => ev.stopPropagation()}
+          onClick={(ev) => ev.stopPropagation()}
         >
           {task?.style?.bgColor && <SetHeader />}
         </header>
@@ -116,7 +116,7 @@ export function TaskDetails() {
 
         <main
           className="task-details-main"
-          // onClick={(ev) => ev.stopPropagation()}
+          onClick={(ev) => ev.stopPropagation()}
         >
           {task.labelIds && <SetLabels board={board} task={task} />}
           {task.memberIds && <SetMembers board={board} task={task} />}
@@ -141,7 +141,7 @@ export function TaskDetails() {
 
         <aside
           className="task-details-aside"
-          // onClick={(ev) => ev.stopPropagation()}
+          onClick={(ev) => ev.stopPropagation()}
         >
           <article className="task-details-aside-suggested-action">
             <h2 className="task-details-aside-suggested-action-title">
