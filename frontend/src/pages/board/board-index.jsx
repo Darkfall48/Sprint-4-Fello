@@ -1,11 +1,11 @@
 //? Libraries
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Outlet, useNavigate, useParams } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
 //? Services
 //? Store
-import { loadBoard} from '../../store/actions/board.actions.js'
+import { loadBoard } from '../../store/actions/board.actions.js'
 // import { loadGroups, addGroup, updateGroup, removeGroup } from '../../store/actions/board.actions.js'
 //? Cmps
 import { BoardDetails } from '../../cmps/board/board-details.jsx'
@@ -23,8 +23,6 @@ export function BoardIndex() {
     }
   }, [])
 
-
-
   if (!board) return <Loader />
   return (
     <section
@@ -38,7 +36,7 @@ export function BoardIndex() {
     >
       {/* {!board ? <Loader /> : <BoardDetails board={board} />} */}
       <BoardDetails board={board} />
-
+      <Outlet />
     </section>
   )
 }
