@@ -326,13 +326,14 @@
     //* Aside Pannel
     &-aside {
       grid-area: aside;
+      padding-top: 6px;
       display: flex;
       flex-direction: column;
       &-suggested-action {
         display: flex;
         flex-direction: column;
         padding-left: 8px;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
         gap: 4px;
         &-title {
           align-self: flex-start;
