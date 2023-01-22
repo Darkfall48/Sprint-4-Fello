@@ -119,54 +119,60 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
             <h2 className="task-details-aside-suggested-action-title">
               Suggested
             </h2>
-            {/* <button title="Settings">Setting</button> */}
-            <button title="I am Members">
-              <HiOutlineUser /> Join
-            </button>
+            <div className="task-details-aside-suggested-action-button">
+              {/* <button title="Settings">Setting</button> */}
+              <button title="I am Members">
+                <HiOutlineUser /> Join
+              </button>
+            </div>
           </article>
 
           <article className="task-details-aside-task-action">
             <h2 className="task-details-aside-task-action-title">
               Add to Card
             </h2>
-            <button title="I am Members">
-              <HiOutlineUser /> <span>Members</span>
-            </button>
-            <button title="I am Labels">
-              <TbTag /> <span>Labels</span>
-            </button>
-            <button title="I am Checklist">
-              <IoMdCheckboxOutline /> <span>Checklist</span>
-            </button>
-            <button title="I am Date">
-              <FiClock /> <span>Date</span>
-            </button>
-            <button title="I am Attachment">
-              <ImAttachment /> <span>Imports</span>
-            </button>
+            <div className="task-details-aside-task-action-button">
+              <button title="I am Members">
+                <HiOutlineUser /> <span>Members</span>
+              </button>
+              <button title="I am Labels">
+                <TbTag /> <span>Labels</span>
+              </button>
+              <button title="I am Checklist">
+                <IoMdCheckboxOutline /> <span>Checklist</span>
+              </button>
+              <button title="I am Date">
+                <FiClock /> <span>Date</span>
+              </button>
+              <button title="I am Attachment">
+                <ImAttachment /> <span>Imports</span>
+              </button>
+            </div>
           </article>
 
           {/* <article className="task-details-aside-group-action">
             <h2 className="task-details-aside-group-action-title">Actions</h2>
-            <button title="Move">
-              <HiOutlineArrowRight />
-              <span>Move</span>
-            </button>
-            <button title="Copy">
-              <MdOutlineContentCopy /> <span>Copy</span>
-            </button>
-            <button title="Make template">
-              <TbTemplate />
-              <span>Make template</span>
-            </button>
-            <hr />
-            <button title="Archive">
-              <TiArchive />
-              <span>Archive</span>
-            </button>
-            <button title="Share">
-              <HiOutlineShare /> <span>Share</span>
-            </button>
+            <div className="task-details-aside-group-action-button">
+              <button title="Move">
+                <HiOutlineArrowRight />
+                <span>Move</span>
+              </button>
+              <button title="Copy">
+                <MdOutlineContentCopy /> <span>Copy</span>
+              </button>
+              <button title="Make template">
+                <TbTemplate />
+                <span>Make template</span>
+              </button>
+              <hr />
+              <button title="Archive">
+                <TiArchive />
+                <span>Archive</span>
+              </button>
+              <button title="Share">
+                <HiOutlineShare /> <span>Share</span>
+              </button>
+            </div>
           </article> */}
         </aside>
       </section>
