@@ -8,7 +8,7 @@
   padding: 0;
   align-items: center;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  // grid-template-columns: 1fr 1fr;
   grid-template-areas:
     'background background'
     'label      label'
@@ -171,11 +171,11 @@
         left: 25px;
 
         .task-preview-edit-menu-btn {
+          position: relative;
           background: #0009;
           border-radius: 3px;
           clear: both;
           color: #c7d1db;
-          display: block;
           float: left;
           margin: 0 0 4px 8px;
           padding: 6px 12px 6px 8px;
@@ -184,6 +184,7 @@
           line-height: 20px;
           transition: transform 85ms ease-in;
           width: 100px;
+          z-index: 10;
         }
       }
     }

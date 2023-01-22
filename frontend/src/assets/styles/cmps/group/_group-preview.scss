@@ -6,15 +6,42 @@
 
   .group-header {
     display: flex;
+    position: relative;
     justify-content: space-between;
+
+    .modal-group-actions {
+      position: absolute;
+      left: 210px;
+      top:35px;
+
+
+      .group-actions-modal-list-container {
+        padding: 0;
+
+        .modal-btn-full {
+          @include btn('modal-full', white, 0, $list-btn-bg-clr-modal-hover)
+        }
+      }
+      #modal-form-container{
+        padding: 0;
+
+        button:last-of-type{
+          margin-bottom: 12px;
+        }
+        button:first-of-type{
+          margin-top: 8px;
+        }
+      }
+    }
 
     button {
       background-color: rgba(255, 255, 255, 0);
       color: $clr-txt;
     }
+
   }
 
-  .template-btn {
+  & .template-btn {
     font-size: 1.3em;
     color: $clr-txt-btn;
     background-color: rgba(255, 255, 255, 0);
@@ -33,77 +60,79 @@
     margin: 0;
   }
 
-    .group-preview-section {
-        background-color: $group-bg-clr;
-        color: $clr-txt;
-        display: flex;
-        flex-direction: column;
+  .group-preview-section {
+    background-color: $group-bg-clr;
+    color: $clr-txt;
+    display: flex;
+    flex-direction: column;
+    border-radius: $border-radius;
+    padding: 6px 8px 2px;
+    box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
+
+    // scrollbar
+    // max-height: 80vh;
+
+    // & .group-section{
+
+
+    //     overflow-x: hidden;
+    //     overflow-y: auto;
+
+    //     //scrollbar - maybe add to basic?
+    //     &::-webkit-scrollbar {
+    //       height: 12px;
+    //       width: 9px;
+    //     }
+
+    //     &::-webkit-scrollbar-thumb {
+    //       background: rgba(122, 128, 143, 0.2);
+    //       border-radius: 0.5rem;
+    //     }
+
+    //     &::-webkit-scrollbar-track {
+    //       background-color: rgba(216, 216, 219, 0.849);
+    //       border-right: 15px solid transparent;
+    //       border-radius: 0.5rem;
+    //     }
+    // }
+    .add-task-edit {
+      padding: 6px 8px 2px 8px;
+      margin-top: 10px;
+
+      &:hover {
+        background-color: #fff;
+      }
+
+      .add-task-textarea {
+        border: none;
+        max-height: 162px;
+        min-height: 54px;
+        width: 100%;
         border-radius: $border-radius;
-        padding: 6px 8px 2px;
-        box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
-       
-        // scrollbar
-        // max-height: 80vh;
-    
-        // & .group-section{
-          
+        outline: none;
+        font-family: inherit;
+        resize: none;
+        overflow: hidden;
+        overflow-wrap: break-word;
+        padding: 0 5px 30px 0;
+        margin-top: 0;
+      }
+    }
 
-        //     overflow-x: hidden;
-        //     overflow-y: auto;
-          
-        //     //scrollbar - maybe add to basic?
-        //     &::-webkit-scrollbar {
-        //       height: 12px;
-        //       width: 9px;
-        //     }
-          
-        //     &::-webkit-scrollbar-thumb {
-        //       background: rgba(122, 128, 143, 0.2);
-        //       border-radius: 0.5rem;
-        //     }
-          
-        //     &::-webkit-scrollbar-track {
-        //       background-color: rgba(216, 216, 219, 0.849);
-        //       border-right: 15px solid transparent;
-        //       border-radius: 0.5rem;
-        //     }
-        // }
-        .add-tesk-edit{
-            padding: 6px 8px 2px 8px;
-            margin-top:10px;
-            &:hover{
-                background-color: #fff;
-            }
-            .add-task-textarea {
-                border:none ;
-                max-height: 162px;
-                min-height: 54px;
-                width:100%;
-                border-radius: $border-radius;
-                outline:none;
-                font-family: inherit;
-                resize:none;
-                overflow: hidden;
-                overflow-wrap: break-word;
-                padding: 0 5px 30px 0;
-                margin-top:0;
-            }
-        }
+    .group-title {
+      font-size: 1em;
+      font-weight: 600;
+      line-height: 20px;
+      margin-left: 8px;
+      margin-top: 5px;
+      width: 100%;
+      text-align: left;
+      padding: 0 3px;
 
-        .group-title {
-            font-size: 1em;
-            font-weight: 600;
-            line-height: 20px;
-            margin-left: 8px;
-            margin-top: 5px;
-            width: 100%;
-            text-align: left;
-            padding: 0 3px;
-
-            &:focus{
-                background-color: $clr-white;
-            }
-        }
+      &:focus {
+        background-color: $clr-white;
+      }
+    }
 
     .group-bottom-control-btns {
       display: flex;
@@ -122,13 +151,13 @@
         text-align: left;
         margin-left: 0;
 
-                &:hover {
-                    background-color: #091e4214;
-                }
-            }
+        &:hover {
+          background-color: #091e4214;
         }
-
+      }
     }
+
+  }
 }
 
 .add-group-container {

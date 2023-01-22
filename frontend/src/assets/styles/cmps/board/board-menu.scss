@@ -8,12 +8,15 @@
     transition-duration: .12s;
     transition-property: transform, opacity;
     transition-timing-function: ease-in;
-    width: 100%;
-
+    // width: 100%;
+    // height: 100vh;
+    position: sticky;
+    top:0;
+    // transform: translate(50%);
 
     // &-open{
     //     transform: translateX(0);
-    
+
     //     background-color: white;
     //     box-sizing: border-box;
     //     flex: 1 auto;
@@ -23,10 +26,14 @@
     //     transition-property: transform, opacity;
     //     transition-timing-function: ease-in;
     //     width: 100%;
-    
+
     // }
 
-    & .board-menu-header-content {
+    button {
+        color: black;
+    }
+
+    .board-menu-header-content {
         display: flex;
         align-items: center;
         box-sizing: border-box;
@@ -39,7 +46,7 @@
         transition: opacity .2s ease-in;
         width: 100%;
 
-        & h3 {
+        h3 {
             flex: 1;
             line-height: 20px;
             margin: 14px 32px;
@@ -50,12 +57,12 @@
             white-space: nowrap;
         }
 
-        & button{
+        button {
             color: black;
         }
     }
 
-    & .btns-container {
+    .btns-container {
         grid-gap: 8px;
         display: grid;
         gap: 8px;
@@ -67,21 +74,21 @@
         width: 100%;
     }
 
-    & .colors-btn {
+    .colors-btn {
         background-image: url(../../../img/colors-btn.jpg);
-        background-color: var(--ds-background-neutral, #dfe1e6);
+        background-color: #dfe1e6;
         background-size: cover;
-        border-radius: 8px;
+        border-radius: rem(8px);
         height: 96px;
         margin-bottom: 8px;
         width: 100%;
     }
 
-    & .imgs-btn {
+    .imgs-btn {
         background-image: url(../../../img/imgs-btn.jpg);
-        background-color: var(--ds-background-neutral, #dfe1e6);
+        background-color: #dfe1e6;
         background-size: cover;
-        border-radius: 8px;
+        border-radius: rem(8px);
         height: 96px;
         margin-bottom: 8px;
         width: 100%;
@@ -89,4 +96,3 @@
     }
 
 }
-

@@ -8,13 +8,13 @@ import { GroupList } from '../../cmps/board/group/group-list.jsx'
 import { Loader } from '../helpers/loader.jsx'
 import { BoardHeader } from './board-header'
 
-export function BoardDetails({ board , onLoadBoard}) {
+export function BoardDetails({ board }) {
 
   if (!board) return <Loader />
   return (
     <section className="board-details-section">
       <BoardHeader board={board} />
-      <GroupList  board={board} onLoadBoard={onLoadBoard}/>
+      <GroupList  board={board} />
     </section>
   )
 }

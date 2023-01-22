@@ -16,7 +16,7 @@ import {
 import { store } from '../../../store/store'
 import { Modal } from '../../app/modal'
 
-export function GroupPreview({ group, onRemoveGroup }) {
+export function GroupPreview({ group }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
 
   const contentRef = useRef(null)
@@ -42,15 +42,16 @@ export function GroupPreview({ group, onRemoveGroup }) {
     setEditMode(false)
   }
 
-  function onArchiveTask(taskId, ev) {
+  function onArchiveTask(ev,taskId) {
+    console.log('ev', ev)
     // ev.preventDefault()
-    // ev.stopPropogation()
+    // ev.stopImmediatePropagation()
     console.log('taskId', taskId)
     removeTask(group, taskId)
   }
 
   function changeContent(ev) {
-    board.title = contentRef.current.innerText
+    group.title = contentRef.current.innerText
 
     if (ev.key === 'Enter' && !ev.shiftKey) ev.target.blur()
     if (ev.key === 'Enter' || ev.type === 'blur') {
@@ -71,7 +72,6 @@ export function GroupPreview({ group, onRemoveGroup }) {
 
   return (
     <section className="group-preview-section">
-      {/* {group && ( */}
       <div>
         <div className="group-header">
           <h1
@@ -85,18 +85,17 @@ export function GroupPreview({ group, onRemoveGroup }) {
           >
             {`${group.title}`}
           </h1>
-          <button onClick={() => onRemoveGroup(group.id)}>
-            <CgClose />
-          </button>
           <button onClick={() => onGroupMenuOpen(group.id)}>
             <BsThreeDots />
           </button>
           {isGroupMenuOpen && (
-            <Modal
-              type="group-preview"
-              modalTitle="List Actions"
-              onCloseModal={onCloseModal}
-            />
+              <Modal
+                type="group-actions"
+                modalTitle="List Actions"
+                onCloseModal={onCloseModal}
+                group={group}
+                
+              />
           )}
         </div>
         <TaskList
@@ -106,7 +105,7 @@ export function GroupPreview({ group, onRemoveGroup }) {
         />
         {editMode && (
           <form
-            className="task-preview-section add-tesk-edit"
+            className="task-preview-section add-task-edit"
             onSubmit={onSubmitTask}
             onBlur={(ev) => onSubmitTask(ev)}
           >
@@ -130,7 +129,6 @@ export function GroupPreview({ group, onRemoveGroup }) {
           </button>
         </div>
       </div>
-      {/* )} */}
     </section>
   )
 }

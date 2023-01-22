@@ -17,7 +17,6 @@
     box-sizing: border-box;
     outline: 0;
     overflow: hidden;
-
     position: fixed;
     width: 304px;
     will-change: top, left;
@@ -26,11 +25,11 @@
     z-index: 100;
     // transform: translate(0, -10%);
 
-    & h1 {
+    h1 {
         font-size: 2rem;
     }
 
-    & .modal-header {
+    .modal-header {
         border-bottom: 1px solid rgba(9, 30, 66, 0.13);
         height: 40px;
 
@@ -46,14 +45,14 @@
         gap: 80px;
         z-index: 100;
 
-        & h2 {
+        h2 {
             font-size: 14px;
             font-weight: 400;
             display: block;
             color: $modal-txt-clr;
         }
 
-        & button {
+        button {
             background-color: transparent;
             padding: 0;
             color: $modal-clr;
@@ -62,7 +61,7 @@
     }
 
 
-    & p {
+    p {
         margin: 0;
         text-align: left;
         color: $modal-txt-clr;
@@ -74,7 +73,7 @@
         margin-top: 12px;
     }
 
-    & .img-container {
+    .img-container {
         margin: 10px auto;
         width: 200px;
         height: 120px;
@@ -107,7 +106,7 @@
     //     }
     // }
 
-    & .btns-cover-img {
+    .btns-cover-img {
         display: flex;
         justify-content: space-between;
     }
@@ -118,7 +117,7 @@
 
     }
 
-    & .btn-cover-img {
+    .btn-cover-img {
         width: 100%;
         height: 40px;
         border-radius: 3px;
@@ -131,7 +130,7 @@
 
     }
 
-    & .btn-cover-color {
+    .btn-cover-color {
         width: 100%;
         height: 40px;
         border-radius: 3px;
@@ -187,11 +186,13 @@
 
     }
 
-    & .add-save-btns {
+     .add-save-btns {
         margin: 0;
         width: 100%;
 
-        & .allowed {
+
+
+        .allowed {
             background-color: $allowed-btn-bg-clr;
             color: $clr-white;
 
@@ -212,6 +213,10 @@
             line-height: 20px;
             padding: 6px 12px;
             margin: 0;
+
+            &:hover{
+                background-color: $disabled-btn-bg-clr;
+            }
 
         }
 

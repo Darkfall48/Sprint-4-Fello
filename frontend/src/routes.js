@@ -1,5 +1,4 @@
 //? Pages
-import { Home } from './pages/home'
 import { Workspace } from './pages/workspace'
 import { BoardIndex } from './pages/board/board-index'
 import { TaskDetails } from './cmps/board/group/task/task-details'
@@ -9,19 +8,9 @@ import { AboutUs } from './pages/about-us'
 
 const routes = [
   {
-    path: '/',
-    component: <Home />,
-    label: 'Home',
-  },
-  {
     path: '/board',
     component: <Workspace />,
     label: 'Workspaces',
-  },
-  {
-    path: '/board/:boardId',
-    component: <BoardIndex />,
-    label: 'Board Index',
   },
   // {
   //   path: '/board/:boardId/group/:groupId/task/taskId',
@@ -54,11 +43,11 @@ const routes = [
   //     component: <ChatApp />,
   //     label: 'Chat',
   //   },
-  {
-    path: '/about',
-    component: <AboutUs />,
-    label: 'About us',
-  },
+  // {
+  //   path: '/about',
+  //   component: <AboutUs />,
+  //   label: 'About us',
+  // },
 ]
 
 export default routes

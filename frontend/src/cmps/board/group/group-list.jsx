@@ -2,31 +2,30 @@
 import { useState } from 'react'
 import { CgClose } from 'react-icons/cg'
 import { BsPlus } from 'react-icons/bs'
-
+import { useNavigate } from 'react-router-dom'
 //? Services
 import { showSuccessMsg, showErrorMsg, } from '../../../services/connection/event-bus.service'
 import { boardService } from '../../../services/board/board.service.local'
-import { updateBoard } from '../../../store/actions/board.actions'
-import { store } from '../../../store/store'
-
+import { updateBoard, loadBoard } from '../../../store/actions/board.actions'
 //? Cmps
 import { GroupPreview } from './group-preview.jsx'
 import { Loader } from '../../helpers/loader'
 
-export function GroupList({ board, onLoadBoard }) {
+
+export function GroupList({ board }) {
 
   const [editMode, setEditMode] = useState(false)
   const [newGroupTitle, setNewGroupTitle] = useState('')
 
+  const navigate = useNavigate()
+
   function onNewGroupSelect(ev) {
     setEditMode(true)
-    console.log('editMode', editMode)
   }
 
   function exitEditMode() {
     // ev.stopPropogation()
     setEditMode(false)
-    console.log('editMode', editMode)
   }
 
   function handleChange({ target }) {
@@ -34,13 +33,14 @@ export function GroupList({ board, onLoadBoard }) {
     setNewGroupTitle(value)
   }
 
-  async function onAddGroup(newGroupTitle) {
+  async function onAddGroup(ev,newGroupTitle) {
+    if (ev.key!=='Enter')return
     const newGroup = boardService.getEmptyGroup(newGroupTitle)
     const groups = board.groups.concat(newGroup)
     const updatedBoard = { ...board, groups }
     try {
       await updateBoard(updatedBoard)
-      loadBoard()
+      onLoadBoard()
       setNewGroupTitle('')
       setEditMode(false)
       showSuccessMsg('Group saved!')
@@ -50,24 +50,16 @@ export function GroupList({ board, onLoadBoard }) {
     }
   }
 
-  async function onRemoveGroup(groupId) {
-    const updatedGroups = board.groups.filter((group) => group.id !== groupId)
-    const updatedBoard = { ...board, groups: updatedGroups }
-    console.log('newBoard', updatedBoard)
+  async function onLoadBoard() {
     try {
-      await updateBoard(updatedBoard)
-      loadBoard()
-      showSuccessMsg('Group removed')
+      await loadBoard(board._id)
+      showSuccessMsg('Boards loaded')
     } catch (err) {
-      showErrorMsg('Cannot remove group')
+      navigate('/board') //TODO: Ask Roi why it's not working
+      console.log('My error', err)
+      showErrorMsg('Cannot load boards')
     }
   }
-
-  function loadBoard() {
-    onLoadBoard()
-    store.dispatch({ type: 'CLEAN_STORE' })
-  }
-
 
   if (!board.groups) return <Loader />
   return (<section className="group-list-section">
@@ -75,7 +67,7 @@ export function GroupList({ board, onLoadBoard }) {
     {board.groups.map((group) => {
       return <article key={group.id} className="group-preview">
         <div className="group-preview-wrapper">
-          <GroupPreview group={group} onRemoveGroup={onRemoveGroup} />
+          <GroupPreview group={group} />
         </div>
       </article>
     })}
@@ -98,6 +90,7 @@ export function GroupList({ board, onLoadBoard }) {
           placeholder='Enter list title...'
           value={newGroupTitle}
           onChange={handleChange}
+          onKeyUp={(ev) => onAddGroup(ev,newGroupTitle)}
         />
         <button className='new-group-add-btn' onClick={() => onAddGroup(newGroupTitle)}>Add list</button>
         <button className="close-add-group" onClick={exitEditMode}><CgClose /></button>
@@ -109,14 +102,3 @@ export function GroupList({ board, onLoadBoard }) {
   )
 }
 
-
-    // async function onUpdateGroup(group) {
-    //   const price = +prompt('New price?')
-    //   const groupToSave = { ...group, price }
-    //   try {
-    //     const savedGroup = await updateGroup(groupToSave)
-    //     showSuccessMsg(`Group updated, new price: ${savedGroup.price}`)
-    //   } catch (err) {
-    //     showErrorMsg('Cannot update group')
-    //   }
-    // }

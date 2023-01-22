@@ -9,7 +9,6 @@ import routes from '../../routes'
 import { useState } from 'react';
 import { BoardAdd } from '../workspace/board-add';
 
-
 export function AppHeader() {
 
   const boards = useSelector((storeState) => storeState.boardModule.boards)

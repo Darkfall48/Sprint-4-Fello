@@ -53,8 +53,6 @@ export function BoardAdd({ onCloseModal }) {
     }
 
     return <section className="board-add">
-
-        <section className="todo-add">
             <div className="modal" onClick={onCloseModal}>
                 <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                     <div className="form-container">
@@ -105,6 +103,6 @@ export function BoardAdd({ onCloseModal }) {
                     </div>
                 </div>
             </div>
-        </section>
+    
     </section >
 }

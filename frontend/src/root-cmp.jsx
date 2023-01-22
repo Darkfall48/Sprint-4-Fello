@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router'
 import { AppHeader } from './cmps/app/app-header'
 import { UserDetails } from './pages/user/user-details'
 import { BoardIndex } from './pages/board/board-index'
+import { Home } from './pages/home'
 
 //? Routes
 import routes from './routes'
@@ -15,6 +16,8 @@ export function RootCmp() {
       <AppHeader />
       <main>
         <Routes>
+          <Route element={<Home/>} path='/'/>
+          <Route element={<BoardIndex/>} path='board/:boardId'/>
           {routes.map((route) => (
             <Route
               key={route.path}
