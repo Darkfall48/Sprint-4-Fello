@@ -3,8 +3,9 @@ a {
     list-style: none;
     text-decoration: none;
     line-height: 1;
-//    position: relative;
-//             z-index: 2;
+
+    //    position: relative;
+    //             z-index: 2;
 
     &:hover {
         text-decoration: none;
@@ -46,7 +47,11 @@ a {
         height: 96px;
         width: 194px;
 
-        // position: relative;
+
+        // filter: contrast(70%);
+    
+
+        position: relative;
 
         // position: relative;
         // z-index: 1;
@@ -116,6 +121,8 @@ a {
             justify-content: space-between;
             position: relative;
 
+           
+
             h4 {
                 text-align: left;
                 word-wrap: break-word;
@@ -123,8 +130,8 @@ a {
                 font-weight: 700;
                 text-decoration: none;
 
-                // position: relative;
-                // z-index: 10;
+                position: absolute;
+                // z-index: 5;
             }
 
 
@@ -164,7 +171,7 @@ a {
         //     & .starred {
         //         width: 15px;
         //         height: 15px;
-        //         fill: yellow;
+        //         fill: #f2d600;
         //         display: block;
         //         position: relative;
         //         z-index: 5;
@@ -190,7 +197,8 @@ a {
     display: flex;
     flex-direction: row-reverse;
 
-    // position: relative;
+    position: relative;
+
     // z-index: 100;
 
     //try to fix z-index
@@ -199,7 +207,7 @@ a {
         margin: 0;
         padding: 0;
         display: block;
-      
+
 
     }
 
@@ -208,28 +216,91 @@ a {
         color: $clr-white;
         width: 15px;
         height: 15px;
-        display: block;
+        // display: block;
         // position: relative;
         // z-index: 100;
         position: relative;
         // z-index: 100;
-        top: -18px;
+        top: -30px;
         left: -5px;
         cursor: pointer;
 
     }
+    // .star {
+    //     // opacity: 0;
+    //     color: $clr-white;
+    //     width: 15px;
+    //     height: 15px;
+    //     display: block;
+    //     // position: relative;
+    //     // z-index: 100;
+    //     position: relative;
+    //     // z-index: 100;
+    //     top: -18px;
+    //     left: -5px;
+    //     cursor: pointer;
+
+    // }
 
     .starred {
         width: 15px;
         height: 15px;
-        fill: yellow;
-        display: block;
+        fill: #f2d600;
+        // display: block;
         // position: relative;
         // z-index: 5;
         position: relative;
         // z-index: 100;
-        top: -18px;
-        left: -5px;
+        top: -32px;
+        left: -10px;
         cursor: pointer;
     }
+
+    // .starred {
+    //     width: 15px;
+    //     height: 15px;
+    //     fill: #f2d600;
+    //     display: block;
+    //     // position: relative;
+    //     // z-index: 5;
+    //     position: relative;
+    //     // z-index: 100;
+    //     top: -18px;
+    //     left: -5px;
+    //     cursor: pointer;
+    // }
+
+    h4 {
+        text-align: left;
+        word-wrap: break-word;
+        font-size: rem(16px);
+        font-weight: 700;
+        text-decoration: none;
+
+        position: absolute;
+        z-index: 5;
+    }
 }
+
+.title-preview{
+    position: relative;
+    // z-index: 5;
+    
+}
+h4 {
+    text-align: left;
+    word-wrap: break-word;
+    font-size: rem(16px);
+    font-weight: 700;
+    text-decoration: none;
+
+    position: absolute;
+    top: -90px;
+    left: 10px;
+    // z-index: 5;
+    cursor: pointer;
+    color: $clr-white ;
+    height: 0.1px;
+
+}
+

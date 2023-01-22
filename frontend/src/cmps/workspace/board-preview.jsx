@@ -17,12 +17,12 @@ export function BoardPreview({ board, onEditBoard, onRemoveBoard }) {
 
   return <>
     <Link to={`/board/${board._id}`}>
-      <section className="board-preview skeleton" style={board?.style?.backgroundImg ? { background: `url(${board.style.backgroundImg}) center center / cover` } : { background: '#0079bf' } || board?.style?.bgColor ? { background: board.style.bgColor } : { background: '#0079bf' }}>
+      <section className="board-preview skeleton" style={board?.style?.backgroundImg ? { background: `url(${board.style.backgroundImg}) center center / cover`, filter: 'contrast(80%)'} : { background: '#0079bf', filter: 'contrast(80%)'} || board?.style?.bgColor ? { background: board.style.bgColor, filter: 'contrast(80%)' } : { background: '#0079bf', filter: 'contrast(80%)' }}>
 
         <span className="board-fade">
 
           <div className="board-preview-details">
-            <h4>{board.title}</h4>
+            {/* <h4 className='title-preview'>{board.title}</h4> */}
 
             <div className="hidden-btns">
             {/* {!board.isStarred && <div onClick={(ev) => onStarredBoard(ev)}><AiOutlineStar className="star" /></div>}
@@ -39,6 +39,8 @@ export function BoardPreview({ board, onEditBoard, onRemoveBoard }) {
         </span>
       </section>
     </Link>
+
+    <h4 className='title-preview'>{board.title}</h4>
 
     <div className="hidden-btns">
       {!board.isStarred && <div onClick={onStarredBoard}><AiOutlineStar className="star" /></div>}

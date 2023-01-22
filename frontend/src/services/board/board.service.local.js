@@ -167,20 +167,21 @@ function _createBoards() {
   let boards = utilService.loadFromStorage(BOARD_KEY)
   if (!boards || !boards.length) {
     const boards = [
-      _createBoard('Robot Board', 'https://images.unsplash.com/photo-1671894618012-b1f9d305a97f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80'),
-      _createBoard('Alien Board', 'https://images.unsplash.com/photo-1673605124954-132c332de83f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'),
-      _createBoard('Cat Board', 'https://images.unsplash.com/photo-1673768501816-6a565f620309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'),
-      _createBoard('Dog Board', 'https://images.unsplash.com/photo-1539807134273-f97ed182b488?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2115&q=80'),
+      _createBoard('Work Board', 'https://images.unsplash.com/photo-1671894618012-b1f9d305a97f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80','', true),
+      _createBoard('Working On', 'https://images.unsplash.com/photo-1673605124954-132c332de83f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80','', false),
+      _createBoard('Daily Task', 'https://images.unsplash.com/photo-1673768501816-6a565f620309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80','', false),
+      _createBoard('Project Management','', '#509938', false),
+      // _createBoard('Project Management', 'https://images.unsplash.com/photo-1539807134273-f97ed182b488?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2115&q=80'),
     ]
     utilService.saveToStorage(BOARD_KEY, boards)
   }
 }
 
-function _createBoard(title, backgroundImg) {
+function _createBoard(title, backgroundImg, bgColor, isStarred) {
   return {
     _id: 'b' + utilService.getRandomIntInclusive(100, 900),
     title,
-    isStarred: utilService.getRandomIntInclusive(1, 4) >= 2 ? true : false,
+    isStarred,
     archivedAt: Date.now(),
     createdBy: {
       _id: 'u103',
@@ -188,7 +189,7 @@ function _createBoard(title, backgroundImg) {
       imgUrl: { imgUrlMember3 },
     },
     style: {
-      bgColor: '#5ba4cf',
+      bgColor: '',
       backgroundImg,
     },
     labels: [
@@ -240,7 +241,343 @@ function _createBoard(title, backgroundImg) {
         imgUrl: `${imgUrlMember3}`,
       },
     ],
-    groups: _createGroups(),
+    groups: [
+      {
+        id: 'g' + utilService.getRandomIntInclusive(100, 900),
+        title:'Working on',
+        archivedAt: 1589983468418,
+        tasks: [{
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'build basic crud',
+          priority: 'medium',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Keren Siebner',
+            imgUrl: { imgUrlMember1 },
+          },
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+  {
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'Add drag and drop',
+          priority: 'medium',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Yael Tal',
+            imgUrl: { imgUrlMember1 },
+          },
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        ],
+        style: {},
+      },
+      {
+        id: 'g' + utilService.getRandomIntInclusive(100, 900),
+        title:'bugs',
+        archivedAt: 1589983468418,
+        tasks: [{
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'Check for bugs',
+          priority: 'high',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Keren Siebner',
+            imgUrl: { imgUrlMember1 },
+          },
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        ],
+        style: {},
+      },
+      {
+        id: 'g' + utilService.getRandomIntInclusive(100, 900),
+        title:'Testing',
+        archivedAt: 1589983468418,
+        tasks: [{
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'System Activities',
+          priority: 'high',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Yael Tal',
+            imgUrl: { imgUrlMember1 },
+          },
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        {
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'Rules',
+          priority: 'medium',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Sidney Sebban',
+            imgUrl: { imgUrlMember1 },
+          },
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        ],
+        style: {},
+      },
+      {
+        id: 'g' + utilService.getRandomIntInclusive(100, 900),
+        title:'Done',
+        archivedAt: 1589983468418,
+        tasks: [{
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'Apply socket service',
+          priority: 'high',
+          description: '',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Yael Tal',
+            imgUrl: { imgUrlMember1 },
+          },
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        {
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'Data base implementation',
+          priority: 'high',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Yael Tal',
+            imgUrl: { imgUrlMember1 },
+          },
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        {
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'Add user authentication',
+          priority: 'high',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Sidney Sebban',
+            imgUrl: { imgUrlMember1 },
+          },
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        {
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'Add node.js modules',
+          priority: 'high',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Yael Tal',
+            imgUrl: { imgUrlMember1 },
+          },
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        ],
+        style: {},
+      },
+      {
+        id: 'g' + utilService.getRandomIntInclusive(100, 900),
+        title:'Ready for production',
+        archivedAt: 1589983468418,
+        tasks: [{
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'Create a database with mongo',
+          priority: 'high',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Keren Siebner',
+            imgUrl: { imgUrlMember1 },
+          },
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        {
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'bug search',
+          priority: 'low',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Yael Tal',
+            imgUrl: { imgUrlMember1 },
+          },
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        {
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'make a login system',
+          priority: 'low',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Yael Tal',
+            imgUrl: { imgUrlMember1 },
+          },
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        ],
+        style: {},
+      },
+    ],
     activities: [
       {
         id: 'a101',
@@ -275,7 +612,57 @@ function _createGroup(title) {
     id: 'g' + utilService.getRandomIntInclusive(100, 900),
     title,
     archivedAt: 1589983468418,
-    tasks: _createTasks(),
+    tasks: [{
+      id: 'c' + utilService.getRandomIntInclusive(100, 900),
+      title: 'build basic crud',
+      priority: 'high',
+      description: 'description',
+      memberIds: utilService.getRandomMembers(),
+      labelIds: utilService.getRandomLabels(),
+      dueDate: 16156215211,
+      byMember: {
+        _id: 'u101',
+        username: 'Tal123',
+        fullname: 'Yael Tal',
+        imgUrl: { imgUrlMember1 },
+      },
+      style: {
+        bgColor:
+          utilService.getRandomIntInclusive(1, 4) <= 2
+            ? utilService.getRandomChosenColor()
+            : '',
+        bgImg:
+          utilService.getRandomIntInclusive(1, 4) <= 2
+            ? utilService.getRandomChosenImg()
+            : '',
+      },
+    },
+    {
+      id: 'c' + utilService.getRandomIntInclusive(100, 900),
+      title: 'build basic crud',
+      priority: 'high',
+      description: 'description',
+      memberIds: utilService.getRandomMembers(),
+      labelIds: utilService.getRandomLabels(),
+      dueDate: 16156215211,
+      byMember: {
+        _id: 'u101',
+        username: 'Tal123',
+        fullname: 'Yael Tal',
+        imgUrl: { imgUrlMember1 },
+      },
+      style: {
+        bgColor:
+          utilService.getRandomIntInclusive(1, 4) <= 2
+            ? utilService.getRandomChosenColor()
+            : '',
+        bgImg:
+          utilService.getRandomIntInclusive(1, 4) <= 2
+            ? utilService.getRandomChosenImg()
+            : '',
+      },
+    },
+    ],
     style: {},
   }
 }
