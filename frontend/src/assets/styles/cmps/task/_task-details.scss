@@ -290,67 +290,87 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 24px;
+        gap: 4px;
         &-title {
           align-self: flex-start;
           color: #5e6c84;
           font-size: 12px;
           font-weight: 600;
-          padding-left: 8px;
+          margin: 0;
         }
-        & button {
-          @include btn(
-            'task-edit',
-            $list-btn-bg-clr-modal-hover,
-            6px 12px,
-            $task-details-btn-bg-clr-hover
-          );
+        &-button {
           display: flex;
-          gap: 6px;
+          flex-direction: column;
+          gap: 8px;
+          & button {
+            @include btn(
+              'task-edit',
+              $list-btn-bg-clr-modal-hover,
+              6px 12px,
+              $task-details-btn-bg-clr-hover
+            );
+            display: flex;
+            gap: 6px;
+            margin: 0;
+          }
         }
       }
       &-task-action {
         display: flex;
         flex-direction: column;
         margin-bottom: 24px;
+        gap: 4px;
         &-title {
           align-self: flex-start;
           color: #5e6c84;
           font-size: 12px;
           font-weight: 600;
-          padding-left: 8px;
+          margin: 0;
         }
-        & button {
-          @include btn(
-            'task-edit',
-            $list-btn-bg-clr-modal-hover,
-            6px 12px,
-            $task-details-btn-bg-clr-hover
-          );
+        &-button {
           display: flex;
-          gap: 6px;
+          flex-direction: column;
+          gap: 8px;
+          & button {
+            @include btn(
+              'task-edit',
+              $list-btn-bg-clr-modal-hover,
+              6px 12px,
+              $task-details-btn-bg-clr-hover
+            );
+            display: flex;
+            gap: 6px;
+            margin: 0;
+          }
         }
       }
       &-group-action {
         display: flex;
         flex-direction: column;
         margin-bottom: 24px;
-
+        gap: 4px;
         &-title {
           align-self: flex-start;
           color: #5e6c84;
           font-size: 12px;
           font-weight: 600;
-          padding-left: 8px;
+          margin: 0;
         }
-        & button {
-          @include btn(
-            'task-edit',
-            $list-btn-bg-clr-modal-hover,
-            6px 12px,
-            $task-details-btn-bg-clr-hover
-          );
+        &-button {
           display: flex;
-          gap: 6px;
+          flex-direction: column;
+          gap: 8px;
+          & button {
+            @include btn(
+              'task-edit',
+              $list-btn-bg-clr-modal-hover,
+              6px 12px,
+              $task-details-btn-bg-clr-hover
+            );
+            display: flex;
+            gap: 6px;
+            margin: 0;
+          }
         }
         & hr {
           place-self: left;
