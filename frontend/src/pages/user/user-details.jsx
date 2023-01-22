@@ -56,11 +56,26 @@ export function UserDetails() {
           <pre>{JSON.stringify(user, null, 2)}</pre>
         </div>
       )}
-      <button className="task-details-edit-btn"><HiOutlineUser className='icon-task-detail-btn'/> <span>Members</span> </button>
-      <button className="task-details-edit-btn"><TbTag className='icon-task-detail-btn'/><span>Labels</span> </button>
-      <button className="task-details-edit-btn"> <IoMdCheckboxOutline className='icon-task-detail-btn'/><span>Checklist</span></button>
-      <button className="task-details-edit-btn"><FiClock className='icon-task-detail-btn'/><span>Dates</span></button>
-      <button className="task-details-edit-btn"><ImAttachment className='icon-task-detail-btn'/><span>Attachment</span></button>
+      <button className="task-details-edit-btn">
+        <HiOutlineUser className="icon-task-detail-btn" /> <span>Members</span>{' '}
+      </button>
+      <button className="task-details-edit-btn">
+        <TbTag className="icon-task-detail-btn" />
+        <span>Labels</span>{' '}
+      </button>
+      <button className="task-details-edit-btn">
+        {' '}
+        <IoMdCheckboxOutline className="icon-task-detail-btn" />
+        <span>Checklist</span>
+      </button>
+      <button className="task-details-edit-btn">
+        <FiClock className="icon-task-detail-btn" />
+        <span>Dates</span>
+      </button>
+      <button className="task-details-edit-btn">
+        <ImAttachment className="icon-task-detail-btn" />
+        <span>Attachment</span>
+      </button>
     </section>
   )
 }

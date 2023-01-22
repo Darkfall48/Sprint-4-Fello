@@ -8,6 +8,11 @@ import {
 } from 'react-icons/bs'
 import { GrTextAlignFull } from 'react-icons/gr'
 import { VscClose } from 'react-icons/vsc'
+import { HiOutlineUser } from 'react-icons/hi'
+import { TbTag } from 'react-icons/tb'
+import { IoMdCheckboxOutline } from 'react-icons/io'
+import { FiClock } from 'react-icons/fi'
+import { ImAttachment } from 'react-icons/im'
 //? Components
 import { SetTitle } from './cmps/set-title'
 import { SetLabels } from './cmps/set-labels'
@@ -109,11 +114,21 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
             <h2 className="task-details-aside-task-action-title">
               Add to Card
             </h2>
-            <button title="Members">Members</button>
-            <button title="Labels">Labels</button>
-            <button title="Checklist">Checklist</button>
-            <button title="Date">Date</button>
-            <button title="Imports">Imports</button>
+            <button title="Members">
+              <HiOutlineUser /> Members
+            </button>
+            <button title="Labels">
+              <TbTag /> Labels
+            </button>
+            <button title="Checklist">
+              <IoMdCheckboxOutline /> <span>Checklist</span>
+            </button>
+            <button title="Date">
+              <FiClock /> Date
+            </button>
+            <button title="Imports">
+              <ImAttachment /> Imports
+            </button>
             <button title="Cover">Cover</button>
           </article>
 
