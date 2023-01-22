@@ -49,7 +49,7 @@ a {
 
 
         // filter: contrast(70%);
-    
+
 
         position: relative;
 
@@ -100,6 +100,8 @@ a {
                     transition: 0.5s;
                     position: relative;
                     z-index: 100;
+                    top: -30px;
+                    left: -10px;
                 }
 
             }
@@ -121,7 +123,7 @@ a {
             justify-content: space-between;
             position: relative;
 
-           
+
 
             h4 {
                 text-align: left;
@@ -221,11 +223,12 @@ a {
         // z-index: 100;
         position: relative;
         // z-index: 100;
-        top: -30px;
-        left: -5px;
+        top: -32px;
+        left: -10px;
         cursor: pointer;
 
     }
+
     // .star {
     //     // opacity: 0;
     //     color: $clr-white;
@@ -282,11 +285,12 @@ a {
     }
 }
 
-.title-preview{
+.title-preview {
     position: relative;
     // z-index: 5;
-    
+
 }
+
 h4 {
     text-align: left;
     word-wrap: break-word;
@@ -303,4 +307,3 @@ h4 {
     height: 0.1px;
 
 }
-

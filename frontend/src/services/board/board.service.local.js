@@ -260,6 +260,133 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             fullname: 'Keren Siebner',
             imgUrl: { imgUrlMember1 },
           },
+          comments: [
+            {
+              id: 'ZdPnm',
+              txt: 'also @yaronb please CR this',
+              createdAt: 1590999817436,
+              byMember: {
+                _id: 'u102',
+                fullname: 'Sidney Sebban',
+                imgUrl: { imgUrlMember2 },
+              },
+            },
+          ],
+          checklists: [
+            {
+              id: 'YEhmF',
+              title: 'Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: true,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 3',
+                  isDone: true,
+                },
+              ],
+            },
+            {
+              id: 'YEhmE',
+              title: 'Another Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: false,
+                },
+              ],
+            },
+          ],
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        {
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'Functional testing for app header',
+          priority: 'medium',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Keren Siebner',
+            imgUrl: { imgUrlMember1 },
+          },
+          comments: [
+            {
+              id: 'ZdPnm',
+              txt: 'also @yaronb please CR this',
+              createdAt: 1590999817436,
+              byMember: {
+                _id: 'u102',
+                fullname: 'Sidney Sebban',
+                imgUrl: { imgUrlMember2 },
+              },
+            },
+          ],
+          checklists: [
+            {
+              id: 'YEhmF',
+              title: 'Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: true,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 3',
+                  isDone: true,
+                },
+              ],
+            },
+            {
+              id: 'YEhmE',
+              title: 'Another Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: false,
+                },
+              ],
+            },
+          ],
           style: {
             bgColor:
               utilService.getRandomIntInclusive(1, 4) <= 2
@@ -317,6 +444,57 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             fullname: 'Keren Siebner',
             imgUrl: { imgUrlMember1 },
           },
+          comments: [
+            {
+              id: 'ZdPnm',
+              txt: 'also @yaronb please CR this',
+              createdAt: 1590999817436,
+              byMember: {
+                _id: 'u102',
+                fullname: 'Sidney Sebban',
+                imgUrl: { imgUrlMember2 },
+              },
+            },
+          ],
+          checklists: [
+            {
+              id: 'YEhmF',
+              title: 'Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: true,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 3',
+                  isDone: true,
+                },
+              ],
+            },
+            {
+              id: 'YEhmE',
+              title: 'Another Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: false,
+                },
+              ],
+            },
+          ],
           style: {
             bgColor:
               utilService.getRandomIntInclusive(1, 4) <= 2
@@ -374,6 +552,57 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             fullname: 'Sidney Sebban',
             imgUrl: { imgUrlMember1 },
           },
+          comments: [
+            {
+              id: 'ZdPnm',
+              txt: 'also @yaronb please CR this',
+              createdAt: 1590999817436,
+              byMember: {
+                _id: 'u102',
+                fullname: 'Sidney Sebban',
+                imgUrl: { imgUrlMember2 },
+              },
+            },
+          ],
+          checklists: [
+            {
+              id: 'YEhmF',
+              title: 'Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: true,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 3',
+                  isDone: true,
+                },
+              ],
+            },
+            {
+              id: 'YEhmE',
+              title: 'Another Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: false,
+                },
+              ],
+            },
+          ],
           style: {
             bgColor:
               utilService.getRandomIntInclusive(1, 4) <= 2
@@ -456,6 +685,57 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             fullname: 'Sidney Sebban',
             imgUrl: { imgUrlMember1 },
           },
+          comments: [
+            {
+              id: 'ZdPnm',
+              txt: 'also @yaronb please CR this',
+              createdAt: 1590999817436,
+              byMember: {
+                _id: 'u102',
+                fullname: 'Sidney Sebban',
+                imgUrl: { imgUrlMember2 },
+              },
+            },
+          ],
+          checklists: [
+            {
+              id: 'YEhmF',
+              title: 'Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: true,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 3',
+                  isDone: true,
+                },
+              ],
+            },
+            {
+              id: 'YEhmE',
+              title: 'Another Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: false,
+                },
+              ],
+            },
+          ],
           style: {
             bgColor:
               utilService.getRandomIntInclusive(1, 4) <= 2
@@ -513,6 +793,57 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             fullname: 'Keren Siebner',
             imgUrl: { imgUrlMember1 },
           },
+          comments: [
+            {
+              id: 'ZdPnm',
+              txt: 'also @yaronb please CR this',
+              createdAt: 1590999817436,
+              byMember: {
+                _id: 'u102',
+                fullname: 'Sidney Sebban',
+                imgUrl: { imgUrlMember2 },
+              },
+            },
+          ],
+          checklists: [
+            {
+              id: 'YEhmF',
+              title: 'Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: true,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 3',
+                  isDone: true,
+                },
+              ],
+            },
+            {
+              id: 'YEhmE',
+              title: 'Another Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: false,
+                },
+              ],
+            },
+          ],
           style: {
             bgColor:
               utilService.getRandomIntInclusive(1, 4) <= 2
