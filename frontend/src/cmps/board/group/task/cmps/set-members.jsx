@@ -2,7 +2,7 @@
 import { AiOutlinePlus } from 'react-icons/ai'
 
 export function SetMembers({ type, board, task }) {
-  const members = board.members
+  const members = board?.members
   const { memberIds } = task
 
   switch (type) {
@@ -38,15 +38,14 @@ export function SetMembers({ type, board, task }) {
           <h2 className="task-details-main-members-title">Members</h2>
           <div className="task-details-main-members-container">
             {memberIds.map((memberId) => {
-              const member = members.find((member) => member._id === memberId)
-              const { _id, imgUrl, fullname } = member
+              const member = members?.find((member) => member._id === memberId)
               return (
                 <img
-                  key={_id}
+                  key={memberId}
                   className="task-details-main-members-container-img"
-                  src={imgUrl}
-                  alt={fullname}
-                  title={fullname}
+                  src={member?.imgUrl}
+                  alt={member?.fullname}
+                  title={member?.fullname}
                 />
               )
             })}

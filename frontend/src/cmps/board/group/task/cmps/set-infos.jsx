@@ -7,7 +7,7 @@ import { FaRegComment } from 'react-icons/fa'
 import { taskService } from '../../../../../services/board/task.service'
 
 export function SetInfos({ task }) {
-  console.log('Taskousssyyyy', task)
+  //   console.log('Taskousssyyyy', task)
 
   function SetFollow() {
     if (!task.priority || task.priority !== 'high')

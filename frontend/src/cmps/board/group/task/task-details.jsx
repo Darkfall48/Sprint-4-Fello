@@ -1,5 +1,5 @@
 //? Libraries
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 //? Icons
 import {
@@ -25,22 +25,41 @@ import { SetLabels } from './cmps/set-labels'
 import { SetMembers } from './cmps/set-members'
 import { SetDescription } from './cmps/set-description'
 import { SetChecklist } from './cmps/set-checklist'
+import { useNavigate, useParams } from 'react-router-dom'
+import { Loader } from '../../../helpers/loader'
+import { removeTask } from '../../../../store/actions/board.actions'
 
-export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
+export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
-  const { current: group } = useRef(
-    board.groups.filter((group) => group.id === groupId)[0]
+  const navigate = useNavigate()
+  const { boardId, groupId, taskId } = useParams()
+  const [group, setGroup] = useState([])
+  const [task, setTask] = useState([])
+
+  console.log(
+    'Hello from board:',
+    boardId,
+    'in list:',
+    groupId,
+    'as task:',
+    taskId
   )
 
-  console.log('Taskkyyyy', task)
+  useEffect(() => {
+    // if (!board || !board.length) return
+    setGroup(board?.groups?.filter((group) => group.id === groupId)[0])
+    setTask(group?.tasks?.filter((task) => task.id === taskId)[0])
+  }, [board, group, task])
+
   console.log('GroupIddddd', groupId)
+  console.log('Taskkyyyy', task)
   console.log('Grouppyyyy', group)
   console.log('Boardyyyy', board)
 
   //? Private Components
   function SetHeader() {
     const { style } = task
-    if (!style.bgColor)
+    if (!style?.bgColor)
       return (
         <div className="task-details-header-cover">
           <SetCloseBtn />
@@ -58,23 +77,40 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
     )
   }
 
+  async function onRemoveTask(group, taskId) {
+    try {
+      await removeTask(group, taskId)
+      navigate(-1)
+      console.log('Task', taskId, 'removed')
+    } catch (err) {
+      console.log('Cannot remove Task', taskId, ':', err)
+    }
+  }
+
   function SetCloseBtn() {
     return (
       <button
         className={`task-details-close-btn-${
-          task.style.bgColor ? 'with-header' : 'no-header'
+          task?.style?.bgColor ? 'with-header' : 'no-header'
         }`}
-        onClick={() => setIsModalOpen(!isModalOpen)}
+        onClick={() => navigate(`/board/${boardId}`)}
       >
         <VscClose />
       </button>
     )
   }
 
+  if (!board || !group || !task) return <Loader />
+  // return (
+  //   <div>
+  //     Hello from board {boardId} in list {groupId} as task {taskId}
+  //   </div>
+  // )
   return (
     <section
       className="task-details-modal-overlay"
-      onClick={() => setIsModalOpen(false)}
+      onClick={() => navigate(`/board/${boardId}`)}
+      // onClick={() => setIsModalOpen(false)}
     >
       <section className="task-details">
         <SetCloseBtn />
@@ -82,7 +118,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
           className="task-details-header"
           onClick={(ev) => ev.stopPropagation()}
         >
-          {task.style.bgColor && <SetHeader />}
+          {task?.style?.bgColor && <SetHeader />}
         </header>
 
         {/* <article className="task-details-title"> */}
@@ -153,7 +189,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
             </div>
           </article>
 
-          {/* <article className="task-details-aside-group-action">
+          <article className="task-details-aside-group-action">
             <h2 className="task-details-aside-group-action-title">Actions</h2>
             <div className="task-details-aside-group-action-button">
               <button title="Move">
@@ -168,7 +204,10 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
                 <span>Make template</span>
               </button>
               <hr />
-              <button title="Archive">
+              <button
+                title="Archive"
+                onClick={() => onRemoveTask(group, taskId)}
+              >
                 <TiArchive />
                 <span>Archive</span>
               </button>
@@ -176,7 +215,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
                 <HiOutlineShare /> <span>Share</span>
               </button>
             </div>
-          </article> */}
+          </article>
         </aside>
       </section>
     </section>

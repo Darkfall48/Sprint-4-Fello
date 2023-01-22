@@ -10,14 +10,17 @@ import { SetTitle } from './cmps/set-title'
 import { SetMembers } from './cmps/set-members'
 import { SetLabels } from './cmps/set-labels'
 import { SetInfos } from './cmps/set-infos'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 export function TaskPreview({ groupId, task, onArchiveTask }) {
   // const boards = useSelector((storeState) => storeState.boardModule.boards)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  console.log('Is modal open?', isModalOpen)
+  // const [isModalOpen, setIsModalOpen] = useState(false)
+  // console.log('Is modal open?', isModalOpen)
   // const { boardId } = useParams()
   // const board = useRef(boards.filter((board) => board._id === boardId))
   const board = useSelector((storeState) => storeState.boardModule.board)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   //? Private Components
   function SetBackground() {
@@ -37,7 +40,10 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
   return (
     <section
       className="task-preview-section"
-      onClick={() => setIsModalOpen(!isModalOpen)}
+      onClick={() =>
+        navigate(`/board/${board._id}/group/${groupId}/task/${task.id}`)
+      }
+      // onClick={() => setIsModalOpen(!isModalOpen)}
     >
       {task.style && <SetBackground />}
       {task.labelIds && (
@@ -47,14 +53,14 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
       <SetEditBtn onArchiveTask={onArchiveTask} task={task} />
       <SetInfos task={task} />
       <SetMembers type={'preview'} board={board} task={task} />
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <TaskDetails
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
           groupId={groupId}
           task={task}
         />
-      )}
+      )} */}
     </section>
   )
 }

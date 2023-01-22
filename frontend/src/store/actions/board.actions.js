@@ -37,8 +37,7 @@ export function getActionUpdateBoard(board) {
   }
 }
 
-
-//? Board Actions: 
+//? Board Actions:
 
 export async function loadBoards() {
   try {
@@ -108,7 +107,7 @@ export async function updateBoard(board) {
 export async function saveGroup(group) {
   const { board } = store.getState().boardModule
   const { groups } = board
-  const groupIdx = groups.findIndex(grp => grp.id === group.id)
+  const groupIdx = groups.findIndex((grp) => grp.id === group.id)
   groups.splice(groupIdx, 1, group)
   const updatedBoard = { ...board, groups: groups }
   try {
@@ -121,7 +120,7 @@ export async function saveGroup(group) {
   }
 }
 
-//? Task Actions: 
+//? Task Actions:
 
 export async function addTask(group, task) {
   const updatedTasks = group.tasks.concat(task)
@@ -136,8 +135,8 @@ export async function addTask(group, task) {
 
 export async function removeTask(group, taskId) {
   try {
-    const upatedTasks = group.tasks.filter(task => task.id !== taskId)
-    const updatedGroup = { ...group, tasks: upatedTasks }
+    const updatedTasks = group.tasks.filter((task) => task.id !== taskId)
+    const updatedGroup = { ...group, tasks: updatedTasks }
     saveGroup(updatedGroup)
   } catch (err) {
     console.log('Cannot remove task', err)
@@ -178,9 +177,3 @@ export function onRemoveBoardOptimistic(boardId) {
       })
     })
 }
-
-
-
-
-
-
