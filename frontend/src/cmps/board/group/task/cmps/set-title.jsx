@@ -21,7 +21,7 @@ export function SetTitle({ type, group, task }) {
             type="text"
             name="task-title"
             id="task-title"
-            placeholder="Enter a title"
+            placeholder="Enter a name for the task.."
             onKeyDown={(ev) => (ev.key === 'Enter' ? ev.preventDefault() : ev)}
             defaultValue={task.title}
           />
