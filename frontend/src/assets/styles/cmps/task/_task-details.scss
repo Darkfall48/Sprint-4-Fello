@@ -31,22 +31,43 @@
       'main aside';
     //* Close Button
     &-close-btn {
-      position: absolute;
-      align-self: start;
-      justify-self: end;
-      margin: 8px;
-      padding: 0;
-      line-height: 0;
-      justify-items: center;
-      align-items: center;
-      font-size: 22px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background-color: transparent;
-      color: #172b4d;
-      &:hover {
-        background-color: #f0f0f0;
+      &-with-header {
+        position: absolute;
+        align-self: start;
+        justify-self: end;
+        margin: 8px;
+        padding: 0;
+        line-height: 0;
+        justify-items: center;
+        align-items: center;
+        font-size: 22px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.1);
+        color: #172b4d;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.15);
+        }
+      }
+      &-no-header {
+        position: absolute;
+        align-self: start;
+        justify-self: end;
+        margin: 8px;
+        padding: 0;
+        line-height: 0;
+        justify-items: center;
+        align-items: center;
+        font-size: 22px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: transparent;
+        color: #172b4d;
+        &:hover {
+          background-color: #091e4214;
+        }
       }
     }
     &-header {
