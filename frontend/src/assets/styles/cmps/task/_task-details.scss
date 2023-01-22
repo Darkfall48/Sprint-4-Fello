@@ -323,8 +323,14 @@
           padding-left: 8px;
         }
         & button {
-          height: 32px;
-          width: 168px;
+          @include btn(
+            'task-edit',
+            $list-btn-bg-clr-modal-hover,
+            6px 12px,
+            $task-details-btn-bg-clr-hover
+          );
+          display: flex;
+          gap: 4px;
         }
         & hr {
           place-self: left;

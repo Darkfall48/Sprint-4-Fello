@@ -114,22 +114,21 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
             <h2 className="task-details-aside-task-action-title">
               Add to Card
             </h2>
-            <button title="Members">
+            <button title="I am Members">
               <HiOutlineUser /> Members
             </button>
-            <button title="Labels">
+            <button title="I am Labels">
               <TbTag /> Labels
             </button>
-            <button title="Checklist">
+            <button title="I am Checklist">
               <IoMdCheckboxOutline /> <span>Checklist</span>
             </button>
-            <button title="Date">
+            <button title="I am Date">
               <FiClock /> Date
             </button>
-            <button title="Imports">
+            <button title="I am Attachment">
               <ImAttachment /> Imports
             </button>
-            <button title="Cover">Cover</button>
           </article>
 
           <article className="task-details-aside-group-action">
