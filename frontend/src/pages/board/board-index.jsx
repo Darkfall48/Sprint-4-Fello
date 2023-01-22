@@ -38,6 +38,7 @@ export function BoardIndex() {
     >
       {/* {!board ? <Loader /> : <BoardDetails board={board} />} */}
       <BoardDetails board={board} />
+
     </section>
   )
 }

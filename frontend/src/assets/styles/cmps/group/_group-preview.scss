@@ -19,7 +19,7 @@
         padding: 0;
 
         .modal-btn-full {
-          @include btn('modal-full', white, 0, $list-btn-bg-clr-modal-hover)
+          @include btn('modal-full', white, 6px 12px, $list-btn-bg-clr-modal-hover)
         }
       }
       #modal-form-container{

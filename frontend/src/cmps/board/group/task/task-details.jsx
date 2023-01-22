@@ -64,8 +64,6 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
         onClick={(ev) => ev.stopPropagation()}
       >
         <SetCloseBtn />
-        {task.style.bgColor && <SetHeader />}
-        <BsReverseLayoutTextWindowReverse className="task-details-section-title-icon" />
         <SetTitle group={group} task={task} />
         {task.labelIds && <SetLabels board={board} task={task} />}
         {task.memberIds && <SetMembers board={board} task={task} />}

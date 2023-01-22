@@ -71,41 +71,60 @@
     align-items: center;
     text-decoration: none;
     padding: $padding;
+    background-color: $bg;
     line-height: 1.25;
     font-size: 1em;
-    font-variation-settings: "wght" 430;
+    font-family: inherit;
+    font-variation-settings: "wght" 400;
     border: none;
     cursor: pointer;
     border-radius: 0.5rem;
     font-weight: 700;
     transition: background-color 0.2s;
+    
+    &:hover {
+        background-color: $hover;
+    }
 
     @if $type ==regular {
-        background-color: $bg;
         color: $clr1;
-        
-        &:hover {
-            background-color: $hover;
-        }
     }
     
     @else if $type ==modal-full {
-        font-family: inherit;
+        
         color: $clr-txt;
         text-align: left;
         width: 100%;
-        padding:6px 12px;
         border-radius: 0;
         margin:0;
-        
-        &:hover {
-            background-color: $hover;
-        }
-        // &:hover {
-        //     background-color: $list-btn-bg-clr-modal-hover;
-        // }
-
     }
+    
+    @else if $type ==task-edit {
+        border: none;
+        border-radius: 3px;
+        box-shadow: none;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: block;
+        height: 32px;
+        margin-top: 8px;
+        max-width: 300px;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        transition-duration: 85ms;
+        transition-property: background-color,border-color,box-shadow;
+        transition-timing-function: ease;
+        user-select: none;
+        white-space: nowrap;
+        line-height: 20px;
+        color:$clr-txt;
+        padding: 6px 12px;
+        width: 168px;
+    }
+
+    
 
 
     // @else if $type ==dark {
