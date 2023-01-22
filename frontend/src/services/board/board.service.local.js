@@ -390,7 +390,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
           id: 'c' + utilService.getRandomIntInclusive(100, 900),
           title: 'Add drag and drop',
           priority: 'medium',
-          description: 'description',
+          description: '',
           memberIds: utilService.getRandomMembers(),
           labelIds: utilService.getRandomLabels(),
           dueDate: 16156215211,
@@ -421,7 +421,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
         tasks: [{
           id: 'c' + utilService.getRandomIntInclusive(100, 900),
           title: 'Check for bugs',
-          priority: 'high',
+          priority: 'medium',
           description: 'description',
           memberIds: utilService.getRandomMembers(),
           labelIds: utilService.getRandomLabels(),
@@ -551,6 +551,16 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                 imgUrl: { imgUrlMember2 },
               },
             },
+            {
+              id: 'ZdPnm',
+              txt: 'don\'t forget to add what we talked about today',
+              createdAt: 1590999817436,
+              byMember: {
+                _id: 'u102',
+                fullname: 'Keren Siebner',
+                imgUrl: { imgUrlMember2 },
+              },
+            },
           ],
           checklists: [
             {
@@ -562,11 +572,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                   title: 'To Do 1',
                   isDone: false,
                 },
-                {
-                  id: utilService.makeId(5),
-                  title: 'To Do 2',
-                  isDone: true,
-                },
+
                 {
                   id: utilService.makeId(5),
                   title: 'To Do 3',
@@ -581,11 +587,6 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                 {
                   id: utilService.makeId(5),
                   title: 'To Do 1',
-                  isDone: false,
-                },
-                {
-                  id: utilService.makeId(5),
-                  title: 'To Do 2',
                   isDone: false,
                 },
               ],
@@ -638,7 +639,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
           id: 'c' + utilService.getRandomIntInclusive(100, 900),
           title: 'Data base implementation',
           priority: 'high',
-          description: 'description',
+          description: '',
           memberIds: utilService.getRandomMembers(),
           labelIds: utilService.getRandomLabels(),
           dueDate: 16156215211,
@@ -695,14 +696,10 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                   title: 'To Do 1',
                   isDone: false,
                 },
+
                 {
                   id: utilService.makeId(5),
                   title: 'To Do 2',
-                  isDone: true,
-                },
-                {
-                  id: utilService.makeId(5),
-                  title: 'To Do 3',
                   isDone: true,
                 },
               ],
@@ -734,7 +731,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
           id: 'c' + utilService.getRandomIntInclusive(100, 900),
           title: 'Add node.js modules',
           priority: 'high',
-          description: 'description',
+          description: '',
           memberIds: utilService.getRandomMembers(),
           labelIds: utilService.getRandomLabels(),
           dueDate: 16156215211,
@@ -777,6 +774,16 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             imgUrl: { imgUrlMember1 },
           },
           comments: [
+            {
+              id: 'ZdPnm',
+              txt: 'also @yaronb please CR this',
+              createdAt: 1590999817436,
+              byMember: {
+                _id: 'u102',
+                fullname: 'Yael tal',
+                imgUrl: { imgUrlMember2 },
+              },
+            },
             {
               id: 'ZdPnm',
               txt: 'also @yaronb please CR this',
@@ -944,7 +951,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
           id: 'c' + utilService.getRandomIntInclusive(100, 900),
           title: 'bug search',
           priority: 'low',
-          description: 'description',
+          description: '',
           memberIds: utilService.getRandomMembers(),
           labelIds: utilService.getRandomLabels(),
           dueDate: 16156215211,
@@ -1106,6 +1113,26 @@ function _createTask(title) {
         byMember: {
           _id: 'u102',
           fullname: 'Sidney Sebban',
+          imgUrl: { imgUrlMember2 },
+        },
+      },
+      {
+        id: 'fvsdg',
+        txt: 'also @yaronb please CR this',
+        createdAt: 1590999817436,
+        byMember: {
+          _id: 'u102',
+          fullname: 'Keren Siebner',
+          imgUrl: { imgUrlMember2 },
+        },
+      },
+      {
+        id: 'gds26',
+        txt: 'never mind',
+        createdAt: 1590999817436,
+        byMember: {
+          _id: 'u102',
+          fullname: 'Keren Siebner',
           imgUrl: { imgUrlMember2 },
         },
       },
