@@ -55,11 +55,11 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
   }
 
   return (
-    <main
+    <section
       className="task-details-modal-overlay"
       onClick={() => setIsModalOpen(false)}
     >
-      <section
+      <main
         className="task-details-section"
         onClick={(ev) => ev.stopPropagation()}
       >
@@ -90,7 +90,35 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
               />
             </>
           ))} */}
-      </section>
-    </main>
+        <aside
+          className="task-details-section-aside"
+          onClick={(ev) => ev.stopPropagation()}
+        >
+          <article className="task-details-section-aside-task-action">
+            <h2 className="task-details-section-aside-task-action-title">
+              Add to Card
+            </h2>
+            <button title="Members">Members</button>
+            <button title="Labels">Labels</button>
+            <button title="Checklist">Checklist</button>
+            <button title="Date">Date</button>
+            <button title="Imports">Imports</button>
+            <button title="Cover">Cover</button>
+          </article>
+
+          <article className="task-details-section-aside-group-action">
+            <h2 className="task-details-section-aside-group-action-title">
+              Actions
+            </h2>
+            <button title="Move">Move</button>
+            <button title="Copy">Copy</button>
+            <button title="Make template">Make template</button>
+            <hr />
+            <button title="Archive">Archive</button>
+            <button title="Share">Share</button>
+          </article>
+        </aside>
+      </main>
+    </section>
   )
 }

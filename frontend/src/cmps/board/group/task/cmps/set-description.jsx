@@ -11,6 +11,7 @@ export function SetDescription({ task }) {
         type="text"
         name="task-description"
         id="task-description"
+        placeholder="Add a description.."
         defaultValue={description}
       />
     </section>
