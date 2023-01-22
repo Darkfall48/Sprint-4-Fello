@@ -167,10 +167,10 @@ function _createBoards() {
   let boards = utilService.loadFromStorage(BOARD_KEY)
   if (!boards || !boards.length) {
     const boards = [
-      _createBoard('Work Board', 'https://images.unsplash.com/photo-1671894618012-b1f9d305a97f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80','', false),
-      _createBoard('Working On', 'https://images.unsplash.com/photo-1673605124954-132c332de83f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80','', true),
-      _createBoard('Daily Task', 'https://images.unsplash.com/photo-1673768501816-6a565f620309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80','', false),
-      _createBoard('Project Management','', '#509938', false),
+      _createBoard('Work Board', 'https://images.unsplash.com/photo-1671894618012-b1f9d305a97f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80', '', false),
+      _createBoard('Working On', 'https://images.unsplash.com/photo-1673605124954-132c332de83f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80', '', true),
+      _createBoard('Daily Task', 'https://images.unsplash.com/photo-1673768501816-6a565f620309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80', '', false),
+      _createBoard('Project Management', '', '#509938', false),
       // _createBoard('Project Management', 'https://images.unsplash.com/photo-1539807134273-f97ed182b488?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2115&q=80'),
     ]
     utilService.saveToStorage(BOARD_KEY, boards)
@@ -244,7 +244,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
     groups: [
       {
         id: 'g' + utilService.getRandomIntInclusive(100, 900),
-        title:'Working on',
+        title: 'Working on',
         archivedAt: 1589983468418,
         tasks: [{
           id: 'c' + utilService.getRandomIntInclusive(100, 900),
@@ -260,18 +260,6 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             fullname: 'Keren Siebner',
             imgUrl: { imgUrlMember1 },
           },
-          comments: [
-            {
-              id: 'ZdPnm',
-              txt: 'also @yaronb please CR this',
-              createdAt: 1590999817436,
-              byMember: {
-                _id: 'u102',
-                fullname: 'Sidney Sebban',
-                imgUrl: { imgUrlMember2 },
-              },
-            },
-          ],
           checklists: [
             {
               id: 'YEhmF',
@@ -398,7 +386,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                 : '',
           },
         },
-  {
+        {
           id: 'c' + utilService.getRandomIntInclusive(100, 900),
           title: 'Add drag and drop',
           priority: 'medium',
@@ -428,7 +416,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
       },
       {
         id: 'g' + utilService.getRandomIntInclusive(100, 900),
-        title:'bugs',
+        title: 'bugs',
         archivedAt: 1589983468418,
         tasks: [{
           id: 'c' + utilService.getRandomIntInclusive(100, 900),
@@ -511,7 +499,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
       },
       {
         id: 'g' + utilService.getRandomIntInclusive(100, 900),
-        title:'Testing',
+        title: 'Testing',
         archivedAt: 1589983468418,
         tasks: [{
           id: 'c' + utilService.getRandomIntInclusive(100, 900),
@@ -619,7 +607,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
       },
       {
         id: 'g' + utilService.getRandomIntInclusive(100, 900),
-        title:'Done',
+        title: 'Done',
         archivedAt: 1589983468418,
         tasks: [{
           id: 'c' + utilService.getRandomIntInclusive(100, 900),
@@ -687,19 +675,19 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
           },
           comments: [
             {
-              id: 'ZdPnm',
-              txt: 'also @yaronb please CR this',
+              id: utilService.makeId(5),
+              txt: 'don\'t forget to check',
               createdAt: 1590999817436,
               byMember: {
                 _id: 'u102',
-                fullname: 'Sidney Sebban',
+                fullname: 'Yael Tal',
                 imgUrl: { imgUrlMember2 },
               },
             },
           ],
           checklists: [
             {
-              id: 'YEhmF',
+              id: utilService.makeId(5),
               title: 'Checklist',
               todos: [
                 {
@@ -726,11 +714,6 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                 {
                   id: utilService.makeId(5),
                   title: 'To Do 1',
-                  isDone: false,
-                },
-                {
-                  id: utilService.makeId(5),
-                  title: 'To Do 2',
                   isDone: false,
                 },
               ],
@@ -777,7 +760,109 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
       },
       {
         id: 'g' + utilService.getRandomIntInclusive(100, 900),
-        title:'Ready for production',
+        title: 'QA',
+        archivedAt: 1589983468418,
+        tasks: [{
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'Automation tests',
+          priority: 'high',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Keren Siebner',
+            imgUrl: { imgUrlMember1 },
+          },
+          comments: [
+            {
+              id: 'ZdPnm',
+              txt: 'also @yaronb please CR this',
+              createdAt: 1590999817436,
+              byMember: {
+                _id: 'u102',
+                fullname: 'Sidney Sebban',
+                imgUrl: { imgUrlMember2 },
+              },
+            },
+          ],
+          checklists: [
+            {
+              id: 'YEhmF',
+              title: 'Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: true,
+                },
+              ],
+            },
+            {
+              id: 'YEhmE',
+              title: 'Another Checklist',
+              todos: [
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 1',
+                  isDone: false,
+                },
+                {
+                  id: utilService.makeId(5),
+                  title: 'To Do 2',
+                  isDone: false,
+                },
+              ],
+            },
+          ],
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        {
+          id: 'c' + utilService.getRandomIntInclusive(100, 900),
+          title: 'Finish making more customization options',
+          priority: 'low',
+          description: 'description',
+          memberIds: utilService.getRandomMembers(),
+          labelIds: utilService.getRandomLabels(),
+          dueDate: 16156215211,
+          byMember: {
+            _id: 'u101',
+            username: 'Tal123',
+            fullname: 'Yael Tal',
+            imgUrl: { imgUrlMember1 },
+          },
+          style: {
+            bgColor:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenColor()
+                : '',
+            bgImg:
+              utilService.getRandomIntInclusive(1, 4) <= 2
+                ? utilService.getRandomChosenImg()
+                : '',
+          },
+        },
+        ],
+      },
+      {
+        id: 'g' + utilService.getRandomIntInclusive(100, 900),
+        title: 'Ready for production',
         archivedAt: 1589983468418,
         tasks: [{
           id: 'c' + utilService.getRandomIntInclusive(100, 900),
