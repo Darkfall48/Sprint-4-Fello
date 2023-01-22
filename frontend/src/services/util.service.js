@@ -104,7 +104,7 @@ function getRandomChosenColor() {
     '#7bc86c',
     '#29cce5',
     '#5ba4cf',
-    '#172b4d',
+    // '#172b4d',
   ]
 
   const randomIndex = getRandomIntInclusive(0, colorArray.length - 1)
