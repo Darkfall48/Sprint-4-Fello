@@ -21,6 +21,7 @@ export function SetTitle({ type, group, task }) {
             type="text"
             name="task-title"
             id="task-title"
+            placeholder="Enter a title"
             onKeyDown={(ev) => (ev.key === 'Enter' ? ev.preventDefault() : ev)}
             defaultValue={task.title}
           />
@@ -35,10 +36,12 @@ export function SetTitle({ type, group, task }) {
             >
               {' ' + group.title}
             </a>
-            <AiOutlineEye
-              title="Followed"
-              className="task-details-section-title-description-icon"
-            />
+            {task.priority === 'high' && (
+              <AiOutlineEye
+                title="Followed"
+                className="task-details-section-title-description-icon"
+              />
+            )}
           </div>
         </article>
       )
