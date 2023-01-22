@@ -13,6 +13,11 @@ import { TbTag } from 'react-icons/tb'
 import { IoMdCheckboxOutline } from 'react-icons/io'
 import { FiClock } from 'react-icons/fi'
 import { ImAttachment } from 'react-icons/im'
+import { HiOutlineArrowRight } from 'react-icons/hi'
+import { MdOutlineContentCopy } from 'react-icons/md'
+import { TbTemplate } from 'react-icons/tb'
+import { TiArchive } from 'react-icons/ti'
+import { HiOutlineShare } from 'react-icons/hi'
 //? Components
 import { SetTitle } from './cmps/set-title'
 import { SetLabels } from './cmps/set-labels'
@@ -110,36 +115,59 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
           className="task-details-aside"
           onClick={(ev) => ev.stopPropagation()}
         >
+          <article className="task-details-aside-suggested-action">
+            <h2 className="task-details-aside-suggested-action-title">
+              Suggested
+            </h2>
+            {/* <button title="Settings">Setting</button> */}
+            <button title="I am Members">
+              <HiOutlineUser /> Join
+            </button>
+          </article>
+
           <article className="task-details-aside-task-action">
             <h2 className="task-details-aside-task-action-title">
               Add to Card
             </h2>
             <button title="I am Members">
-              <HiOutlineUser /> Members
+              <HiOutlineUser /> <span>Members</span>
             </button>
             <button title="I am Labels">
-              <TbTag /> Labels
+              <TbTag /> <span>Labels</span>
             </button>
             <button title="I am Checklist">
               <IoMdCheckboxOutline /> <span>Checklist</span>
             </button>
             <button title="I am Date">
-              <FiClock /> Date
+              <FiClock /> <span>Date</span>
             </button>
             <button title="I am Attachment">
-              <ImAttachment /> Imports
+              <ImAttachment /> <span>Imports</span>
             </button>
           </article>
 
-          <article className="task-details-aside-group-action">
+          {/* <article className="task-details-aside-group-action">
             <h2 className="task-details-aside-group-action-title">Actions</h2>
-            <button title="Move">Move</button>
-            <button title="Copy">Copy</button>
-            <button title="Make template">Make template</button>
+            <button title="Move">
+              <HiOutlineArrowRight />
+              <span>Move</span>
+            </button>
+            <button title="Copy">
+              <MdOutlineContentCopy /> <span>Copy</span>
+            </button>
+            <button title="Make template">
+              <TbTemplate />
+              <span>Make template</span>
+            </button>
             <hr />
-            <button title="Archive">Archive</button>
-            <button title="Share">Share</button>
-          </article>
+            <button title="Archive">
+              <TiArchive />
+              <span>Archive</span>
+            </button>
+            <button title="Share">
+              <HiOutlineShare /> <span>Share</span>
+            </button>
+          </article> */}
         </aside>
       </section>
     </section>
