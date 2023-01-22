@@ -416,7 +416,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
       },
       {
         id: 'g' + utilService.getRandomIntInclusive(100, 900),
-        title: 'bugs',
+        title: 'Bugs',
         archivedAt: 1589983468418,
         tasks: [{
           id: 'c' + utilService.getRandomIntInclusive(100, 900),
