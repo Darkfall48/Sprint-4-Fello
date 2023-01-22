@@ -105,7 +105,7 @@ export function TaskDetails() {
         <SetCloseBtn />
         <header
           className="task-details-header"
-          onClick={(ev) => ev.stopPropagation()}
+          // onClick={(ev) => ev.stopPropagation()}
         >
           {task?.style?.bgColor && <SetHeader />}
         </header>
@@ -116,7 +116,7 @@ export function TaskDetails() {
 
         <main
           className="task-details-main"
-          onClick={(ev) => ev.stopPropagation()}
+          // onClick={(ev) => ev.stopPropagation()}
         >
           {task.labelIds && <SetLabels board={board} task={task} />}
           {task.memberIds && <SetMembers board={board} task={task} />}
@@ -141,7 +141,7 @@ export function TaskDetails() {
 
         <aside
           className="task-details-aside"
-          onClick={(ev) => ev.stopPropagation()}
+          // onClick={(ev) => ev.stopPropagation()}
         >
           <article className="task-details-aside-suggested-action">
             <h2 className="task-details-aside-suggested-action-title">
@@ -178,7 +178,7 @@ export function TaskDetails() {
             </div>
           </article>
 
-          {/* <article className="task-details-aside-group-action">
+          <article className="task-details-aside-group-action">
             <h2 className="task-details-aside-group-action-title">Actions</h2>
             <div className="task-details-aside-group-action-button">
               <button title="Move">
@@ -201,7 +201,7 @@ export function TaskDetails() {
                 <HiOutlineShare /> <span>Share</span>
               </button>
             </div>
-          </article> */}
+          </article>
         </aside>
       </section>
     </section>

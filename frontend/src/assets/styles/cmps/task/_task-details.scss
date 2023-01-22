@@ -1,13 +1,18 @@
 //* Black Overlay
 .task-details-modal-overlay {
   position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
   cursor: pointer;
   top: 0;
   left: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
   z-index: 4;
   background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
   //* Modal Section
   & .task-details {
     cursor: auto;
@@ -16,11 +21,15 @@
       sans-serif;
     background-color: #fff;
     height: fit-content;
-    position: fixed;
-    top: 50%;
-    left: 50%;
+    position: relative;
+    // margin: 50px;
+
+    // top: 48px;
+    margin-top: 48px;
+    margin-bottom: 80px;
+    // left: 50%;
     padding: 0;
-    transform: translate(-50%, -50%);
+    // transform: translate(-50%, -50%);
     z-index: 5;
     min-width: 768px;
     display: grid;
