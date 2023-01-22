@@ -9,6 +9,13 @@ import { IoMdCheckboxOutline } from 'react-icons/io'
 import { FiClock } from 'react-icons/fi'
 import { ImAttachment } from 'react-icons/im'
 
+import { HiOutlineArrowRight } from 'react-icons/hi'
+import { MdOutlineContentCopy } from 'react-icons/md'
+import { TbTemplate } from 'react-icons/tb'
+import { TiArchive } from 'react-icons/im'
+import { HiOutlineShare } from 'react-icons/hi'
+
+
 //? Services
 import { showSuccessMsg } from '../../services/connection/event-bus.service'
 import {
@@ -75,7 +82,14 @@ export function UserDetails() {
       <button className="task-details-edit-btn">
         <ImAttachment className="icon-task-detail-btn" />
         <span>Attachment</span>
+        {/* <HiOutlineArrowRight/>
+        <MdOutlineContentCopy/>
+        <TbTemplate/>
+        <TiArchive/>
+        <HiOutlineShare/> */}
       </button>
     </section>
   )
 }
+
+

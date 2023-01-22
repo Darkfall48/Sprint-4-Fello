@@ -1,16 +1,18 @@
 .group-list-section {
   display: flex;
   height: 85vh;
+  padding-top: 0;
+  padding-left: 19px;
 
   .plus {
-    margin-top: 5px;
-    font-size: 1.5em;
+    margin-bottom: 3px;
+    font-size: 1.6em;
   }
 
   .add-group-btn {
     display: flex;
     align-items: center;
-    padding: 6px 8px;
+    padding: 10px 12px;
     background-color: #ffffff3d;
     color: $clr-white;
     width: 248px;
