@@ -324,18 +324,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             fullname: 'Keren Siebner',
             imgUrl: { imgUrlMember1 },
           },
-          comments: [
-            {
-              id: 'ZdPnm',
-              txt: 'also @yaronb please CR this',
-              createdAt: 1590999817436,
-              byMember: {
-                _id: 'u102',
-                fullname: 'Sidney Sebban',
-                imgUrl: { imgUrlMember2 },
-              },
-            },
-          ],
+          comments: [],
           checklists: [
             {
               id: 'YEhmF',
@@ -795,40 +784,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               },
             },
           ],
-          checklists: [
-            {
-              id: 'YEhmF',
-              title: 'Checklist',
-              todos: [
-                {
-                  id: utilService.makeId(5),
-                  title: 'To Do 1',
-                  isDone: false,
-                },
-                {
-                  id: utilService.makeId(5),
-                  title: 'To Do 2',
-                  isDone: true,
-                },
-              ],
-            },
-            {
-              id: 'YEhmE',
-              title: 'Another Checklist',
-              todos: [
-                {
-                  id: utilService.makeId(5),
-                  title: 'To Do 1',
-                  isDone: false,
-                },
-                {
-                  id: utilService.makeId(5),
-                  title: 'To Do 2',
-                  isDone: false,
-                },
-              ],
-            },
-          ],
+          checklists: [],
           style: {
             bgColor:
               utilService.getRandomIntInclusive(1, 4) <= 2
@@ -986,6 +942,28 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             fullname: 'Yael Tal',
             imgUrl: { imgUrlMember1 },
           },
+          comments: [
+            {
+              id: 'ZdPnm',
+              txt: 'also @yaronb please CR this',
+              createdAt: 1590999817436,
+              byMember: {
+                _id: 'u102',
+                fullname: 'Sidney Sebban',
+                imgUrl: { imgUrlMember2 },
+              },
+            },
+            {
+              id: 'ZdPnm',
+              txt: 'don\'t forget to add what we talked about today',
+              createdAt: 1590999817436,
+              byMember: {
+                _id: 'u102',
+                fullname: 'Keren Siebner',
+                imgUrl: { imgUrlMember2 },
+              },
+            },
+          ],
           style: {
             bgColor:
               utilService.getRandomIntInclusive(1, 4) <= 2
