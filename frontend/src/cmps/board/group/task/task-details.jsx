@@ -56,7 +56,9 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
   function SetCloseBtn() {
     return (
       <button
-        className="task-details-close-btn"
+        className={`task-details-close-btn-${
+          task.style.bgColor ? 'with-header' : 'no-header'
+        }`}
         onClick={() => setIsModalOpen(!isModalOpen)}
       >
         <VscClose />
@@ -88,12 +90,8 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
         >
           {task.labelIds && <SetLabels board={board} task={task} />}
           {task.memberIds && <SetMembers board={board} task={task} />}
-          {task.description && (
-            <>
-              <GrTextAlignFull className="task-details-main-description-icon" />
-              <SetDescription task={task} />
-            </>
-          )}
+          <GrTextAlignFull className="task-details-main-description-icon" />
+          <SetDescription task={task} />
           {/*! Grid SCSS Not Working*/}
           {/* {task.checklists &&
           task.checklists.map((checklist, idx) => (
