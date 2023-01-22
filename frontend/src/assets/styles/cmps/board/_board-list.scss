@@ -11,6 +11,7 @@
         width: rem(194px);
         margin: 0;
         font-weight: 400;
+        margin-bottom: 28px;
 
         &:hover {
             transition: 0.1s;
@@ -25,7 +26,8 @@
         flex-wrap: wrap;
         // justify-content: center;
         gap: 17px;
-        padding: 0 0 11px;
+        // padding: 0 0 11px;
+        padding: 0 0 0;
         margin: 0;
 
       
