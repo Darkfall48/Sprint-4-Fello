@@ -18,6 +18,7 @@ import { MdOutlineContentCopy } from 'react-icons/md'
 import { TbTemplate } from 'react-icons/tb'
 import { TiArchive } from 'react-icons/ti'
 import { HiOutlineShare } from 'react-icons/hi'
+import { MdOutlineLaptop } from 'react-icons/md'
 //? Components
 import { SetTitle } from './cmps/set-title'
 import { SetLabels } from './cmps/set-labels'
@@ -49,7 +50,11 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
       <div
         className="task-details-header-cover"
         style={{ backgroundColor: style.bgColor }}
-      ></div>
+      >
+        <button title="Change cover">
+          <MdOutlineLaptop /> Cover
+        </button>
+      </div>
     )
   }
 
@@ -119,7 +124,7 @@ export function TaskDetails({ isModalOpen, setIsModalOpen, groupId, task }) {
             </h2>
             <div className="task-details-aside-suggested-action-button">
               {/* <button title="Settings">Setting</button> */}
-              <button title="I am Members">
+              <button title="Add members">
                 <HiOutlineUser /> Join
               </button>
             </div>
