@@ -133,6 +133,20 @@ export async function addTask(group, task) {
   }
 }
 
+export async function updateTask(group, task) {
+  let { tasks } = group
+  const taskIdx = tasks.findIndex((tsk) => tsk.id === task.id)
+  tasks.splice(taskIdx, 1, task)
+  const updatedGroup = { ...group, tasks }
+  try {
+    console.log('Group Updated:', updatedGroup)
+    await saveGroup(updatedGroup)
+  } catch (err) {
+    console.log(`Cannot update task id ${task.id}`, err)
+    throw err
+  }
+}
+
 export async function removeTask(group, taskId) {
   try {
     const updatedTasks = group.tasks.filter((task) => task.id !== taskId)

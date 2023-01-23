@@ -23,7 +23,8 @@ import { SetDescription } from './cmps/set-description'
 import { SetChecklist } from './cmps/set-checklist'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { Loader } from '../../../helpers/loader'
-import { removeTask } from '../../../../store/actions/board.actions'
+//? Store
+import { removeTask, updateTask } from '../../../../store/actions/board.actions'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -49,10 +50,10 @@ export function TaskDetails() {
     setTask(group?.tasks?.filter((task) => task.id === taskId)[0])
   }, [board, group, task])
 
-  console.log('GroupIddddd', groupId)
-  console.log('Taskkyyyy', task)
-  console.log('Grouppyyyy', group)
-  console.log('Boardyyyy', board)
+  // console.log('GroupIddddd', groupId)
+  // console.log('Taskkyyyy', task)
+  // console.log('Grouppyyyy', group)
+  // console.log('Boardyyyy', board)
 
   //? Private Components
   function SetHeader() {
@@ -97,6 +98,17 @@ export function TaskDetails() {
   //     console.log(err)
   //   }
   // }
+
+  async function onUpdateTaskTitle({ value }) {
+    console.log('Value:', value)
+    let updatedTask = { ...task, title: value }
+    try {
+      setTask(updatedTask)
+      await updateTask(group, updatedTask)
+    } catch (err) {
+      console.log('Cannot update Task', taskId, ':', err)
+    }
+  }
 
   async function onRemoveTask(group, taskId) {
     try {
@@ -143,7 +155,11 @@ export function TaskDetails() {
         </header>
 
         {/* <article className="task-details-title"> */}
-        <SetTitle group={group} task={task} />
+        <SetTitle
+          onUpdateTaskTitle={onUpdateTaskTitle}
+          group={group}
+          task={task}
+        />
         {/* </article> */}
 
         <main
