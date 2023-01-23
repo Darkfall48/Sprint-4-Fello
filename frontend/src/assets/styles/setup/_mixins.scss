@@ -87,7 +87,7 @@
   cursor: pointer;
   border-radius: 0.5rem;
   font-weight: 400;
-  transition: background-color 0.2s;
+  // transition: background-color 0.2s;
 
   &:hover {
     background-color: $hover;
@@ -115,9 +115,9 @@
     position: relative;
     text-decoration: none;
     text-overflow: ellipsis;
-    transition-duration: 85ms;
-    transition-property: background-color, border-color, box-shadow;
-    transition-timing-function: ease;
+    // transition-duration: 85ms;
+    // transition-property: background-color, border-color, box-shadow;
+    // transition-timing-function: ease;
     user-select: none;
     white-space: nowrap;
     line-height: 20px;

@@ -8,6 +8,17 @@
     }
 }
 
+.modal-header{
+
+    #close-btn{
+        background-color: transparent;
+        padding: 0;
+        color: #6e6e6e;
+    }
+
+}
+
+
 #modal-form-container {
 
     padding: 0 12px 20px 12px;
@@ -35,6 +46,7 @@
         .modal-btn-full {
             @include btn('modal-full', $list-btn-bg-clr-modal-hover, 6px 12px, $task-details-btn-bg-clr-hover);
             margin: 4px 0 0 0;
+            text-align: center;
         }
         .no-member-msg{
             background-color: $list-btn-bg-clr-modal-hover;

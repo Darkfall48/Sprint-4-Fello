@@ -90,13 +90,7 @@ export function UserDetails() {
         <HiOutlineShare/> */}
       </button>
 
-      <Modal
-                type="task-members"
-                modalTitle="Members"
-                // onCloseModal={onCloseModal}
-                // task={task}
-                // group={group}
-              />
+
       
     </section>
   )
