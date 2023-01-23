@@ -6,6 +6,7 @@ import { AiOutlineStar } from "react-icons/ai";
 import { AiOutlineClockCircle } from "react-icons/ai";
 
 import { loadBoards, removeBoard } from "../store/actions/board.actions";
+import { Loader } from "../cmps/helpers/loader";
 
 export function Workspace() {
 
@@ -59,7 +60,7 @@ export function Workspace() {
   // }
 
 
-  if (!boards) return <div>Loading...</div>
+  if (!boards) return <Loader />
   return <section className="workspace-section" >
 
     <div className="starred-boards-container">

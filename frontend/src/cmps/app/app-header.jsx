@@ -39,10 +39,23 @@ export function AppHeader() {
         ))}
       </nav>
 
+      <div className='starred-dropdown'>
+        <h3 className='' onClick={() => { setIsModalOpen(!isModalOpen) }}>Starred <FiChevronDown className='down-arrow-nav' /></h3>
+        {isModalOpen && starredBoards.map(starredBoard => {
+            console.log('starredBoard', starredBoard);
+            return <div>
+              {/* <div style={starredBoard?.style?.backgroundImg && { background: `url(${board.style.backgroundImg}) center center / cover` } || board?.style?.bgColor && { background: board.style.bgColor }}></div> */}
+              <h3>{starredBoard}</h3>
+            </div>
+          })
+        }
+      </div>
+
       <div className='create-dropdown'>
         <button onClick={() => { setIsModalOpen(!isModalOpen) }}>Create</button>
         {isModalOpen && <BoardAdd onCloseModal={onCloseModal} />}
       </div>
+
 
     </header>
   )
