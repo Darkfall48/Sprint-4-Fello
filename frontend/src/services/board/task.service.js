@@ -1,6 +1,9 @@
 export const taskService = {
   countTodos,
   countIsDone,
+  getMemberById,
+  getMemberInitials,
+  getActivitiesByTaskId,
 }
 
 function countTodos(task) {
@@ -17,4 +20,17 @@ function countIsDone(task) {
     .flat()
     .filter((todo) => todo.isDone).length
   return count
+}
+
+function getMemberById(board, memberId) {
+  return board.members.filter((member) => member._id === memberId)
+}
+
+function getMemberInitials(fullname = 'John Smith') {
+  const [first, ...rest] = fullname.split(' ')
+  return `${first[0]}${rest.map((name) => name[0]).join(' ')}`
+}
+
+function getActivitiesByTaskId(board, taskId) {
+  return board?.activities?.filter((activity) => activity?.task?.id === taskId)
 }

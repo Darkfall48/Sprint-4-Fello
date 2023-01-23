@@ -7,6 +7,7 @@ import { removeTask, updateTask } from '../../../../store/actions/board.actions'
 //? Icons
 import { GrTextAlignFull } from 'react-icons/gr'
 import { HiOutlineUser } from 'react-icons/hi'
+import { RxActivityLog } from 'react-icons/rx'
 import { TbTag } from 'react-icons/tb'
 import { IoMdCheckboxOutline } from 'react-icons/io'
 import { FiClock } from 'react-icons/fi'
@@ -17,6 +18,7 @@ import { TbTemplate } from 'react-icons/tb'
 import { TiArchive } from 'react-icons/ti'
 import { HiOutlineShare } from 'react-icons/hi'
 //? Components
+import { SetActivities } from './cmps/set-activities'
 import { SetCloseBtn } from './cmps/set-close-btn'
 import { SetChecklist } from './cmps/set-checklist'
 import { SetDescription } from './cmps/set-description'
@@ -119,6 +121,8 @@ export function TaskDetails() {
           {task.memberIds && <SetMembers board={board} task={task} />}
           <GrTextAlignFull className="task-details-main-description-icon" />
           <SetDescription task={task} />
+          <RxActivityLog className="task-details-main-activity-icon" />
+          {board && <SetActivities board={board} taskId={taskId} />}
           {/*! Grid SCSS Not Working*/}
           {/* {task.checklists &&
           task.checklists.map((checklist, idx) => (
