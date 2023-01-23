@@ -17,7 +17,7 @@ const initialState = {
 export function boardReducer(state = initialState, action) {
   let newState = state
   let boards
-  // let board
+  let board
   switch (action.type) {
     case SET_BOARDS:
       newState = { ...state, boards: action.boards }
@@ -48,7 +48,9 @@ export function boardReducer(state = initialState, action) {
       boards = state.boards.map((board) =>
         board._id === action.board._id ? action.board : board
       )
-      newState = { ...state, boards: boards }
+      board =  state.board._id === action.board._id ? action.board : state.board
+      newState = { ...state, boards: boards, board }
+
       break
     case UNDO_REMOVE_BOARD:
       if (state.lastRemovedBoard) {

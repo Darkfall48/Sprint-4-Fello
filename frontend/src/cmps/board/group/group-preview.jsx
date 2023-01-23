@@ -21,7 +21,7 @@ export function GroupPreview({ group }) {
 
   const contentRef = useRef(null)
 
-  console.log('group', group)
+  // console.log('group', group)
   
   const [editMode, setEditMode] = useState(false)
   const [newTask, setNewTask] = useState(boardService.getEmptyTask(''))
@@ -51,10 +51,11 @@ export function GroupPreview({ group }) {
     addTask(group, newTask)
     setNewTask(boardService.getEmptyTask(''))
     setEditMode(false)
+    //here is the problem?
   }
 
   function onArchiveTask(taskId) {
-    console.log('taskId', taskId)
+    // console.log('taskId', taskId)
     removeTask(group, taskId)
   }
 
@@ -111,6 +112,7 @@ export function GroupPreview({ group }) {
           groupId={group.id}
           tasks={group.tasks}
           onArchiveTask={onArchiveTask}
+          group={group}
         />
         {editMode && (
           <form

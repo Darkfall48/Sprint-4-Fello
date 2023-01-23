@@ -93,6 +93,7 @@ export async function addBoard(board) {
 export async function updateBoard(board) {
   try {
     const savedBoard = await boardService.save(board)
+    // console.log('savedBoard:', savedBoard)
     console.log('Updated Board:', savedBoard)
     store.dispatch(getActionUpdateBoard(savedBoard))
     return savedBoard
@@ -105,11 +106,12 @@ export async function updateBoard(board) {
 //? Group Actions:
 
 export async function saveGroup(group) {
+  // console.log('group:', group)
   const { board } = store.getState().boardModule
   const { groups } = board
   const groupIdx = groups.findIndex((grp) => grp.id === group.id)
   groups.splice(groupIdx, 1, group)
-  const updatedBoard = { ...board, groups: groups }
+  const updatedBoard = { ...board, groups: [...groups] }
   try {
     await updateBoard(updatedBoard)
     loadBoard(board._id)
@@ -123,8 +125,12 @@ export async function saveGroup(group) {
 //? Task Actions:
 
 export async function addTask(group, task) {
-  const updatedTasks = group.tasks.concat(task)
+  // console.log('group:', group)
+  // console.log('task:', task)
+  const updatedTasks = [...group.tasks, task]
+// console.log('updatedTasks:', updatedTasks)
   const updatedGroup = { ...group, tasks: updatedTasks }
+  // console.log('updatedGroup:', updatedGroup)
   try {
     await saveGroup(updatedGroup)
   } catch (err) {
