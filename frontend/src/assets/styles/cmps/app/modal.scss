@@ -21,7 +21,7 @@
             padding: 12px 12px 12px 12px;
         }
 
-        p{
+        p {
             margin-bottom: 12px;
         }
 
@@ -33,8 +33,13 @@
         }
 
         .modal-btn-full {
-            @include btn('modal-full', $list-btn-bg-clr-modal-hover, 6px 12px, $list-btn-bg-clr-modal-hover);
-            margin: 0;
+            @include btn('modal-full', $list-btn-bg-clr-modal-hover, 6px 12px, $task-details-btn-bg-clr-hover);
+            margin: 4px 0 0 0;
+        }
+        .no-member-msg{
+            background-color: $list-btn-bg-clr-modal-hover;
+            color: $clr-txt-btn;
+            padding: 24px 6px;
         }
     }
 }
