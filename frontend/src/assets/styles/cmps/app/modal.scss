@@ -1,8 +1,45 @@
-#modal-header-group-actions{
-    padding:0 12px 8px 0;
-    button{
+#modal-header-group-actions {
+    padding: 0 12px 8px 0;
+
+    button {
         color: $clr-txt-btn;
         font-size: 1em;
-        padding-top:7px;
+        padding-top: 7px;
     }
-  }
+}
+
+#modal-form-container {
+
+    padding: 0 12px 20px 12px;
+
+    .modal-form-container {}
+
+    .modal-content-container {
+        padding: 10px 0 0 0;
+
+        input {
+            padding: 12px 12px 12px 12px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        .modal-btn-full-members {
+            @include btn('modal-full', white, 6px 12px, $list-btn-bg-clr-modal-hover);
+            justify-content: space-between;
+            margin: 0 0 5px 0;
+            font-size: 1em;
+        }
+
+        .modal-btn-full {
+            @include btn('modal-full', $list-btn-bg-clr-modal-hover, 6px 12px, $task-details-btn-bg-clr-hover);
+            margin: 4px 0 0 0;
+        }
+        .no-member-msg{
+            background-color: $list-btn-bg-clr-modal-hover;
+            color: $clr-txt-btn;
+            padding: 24px 6px;
+        }
+    }
+}

@@ -26,6 +26,7 @@ import {
 //? Store
 import { store } from '../../store/store'
 import { loadUser } from '../../store/actions/user.actions'
+import { Modal } from '../../cmps/app/modal'
 
 export function UserDetails() {
   const params = useParams()
@@ -88,6 +89,15 @@ export function UserDetails() {
         <TiArchive/>
         <HiOutlineShare/> */}
       </button>
+
+      <Modal
+                type="task-members"
+                modalTitle="Members"
+                // onCloseModal={onCloseModal}
+                // task={task}
+                // group={group}
+              />
+      
     </section>
   )
 }
