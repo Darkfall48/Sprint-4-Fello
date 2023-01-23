@@ -40,9 +40,10 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
   return (
     <section
       className="task-preview-section"
-      onClick={() =>
+      onClick={(ev) => {
+        ev.stopPropagation()
         navigate(`/board/${board._id}/group/${groupId}/task/${task.id}`)
-      }
+      }}
       // onClick={() => setIsModalOpen(!isModalOpen)}
     >
       {task.style && <SetBackground />}

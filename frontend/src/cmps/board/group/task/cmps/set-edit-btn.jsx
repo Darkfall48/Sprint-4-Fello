@@ -25,7 +25,10 @@ export function SetEditBtn({ onArchiveTask, task }) {
         <div className="task-preview-edit-menu" onBlur={(ev) => closeMenu(ev)}>
           <button
             className="task-preview-edit-menu-btn"
-            onClick={(ev) => onArchiveTask(ev,task.id)}
+            onClick={(ev) => {
+              ev.stopPropagation()
+              onArchiveTask(task.id)
+            }}
           >
             <HiOutlineArchive />
             <span>Archive</span>

@@ -35,7 +35,7 @@ export function GroupPreview({ group }) {
     console.log('newTask', newTask)
   }
 
-  function exitEditMode(){
+  function exitEditMode() {
     setEditMode(false)
   }
 
@@ -46,8 +46,8 @@ export function GroupPreview({ group }) {
     setEditMode(false)
   }
 
-  function onArchiveTask(ev,taskId) {
-    console.log('ev', ev)
+  function onArchiveTask(taskId) {
+    // console.log('ev', ev)
     // ev.preventDefault()
     // ev.stopImmediatePropagation()
     console.log('taskId', taskId)
@@ -94,13 +94,13 @@ export function GroupPreview({ group }) {
             <BsThreeDots />
           </button>
           {isGroupMenuOpen && (
-              <Modal
-                type="group-actions"
-                modalTitle="List Actions"
-                onCloseModal={onCloseModal}
-                group={group}
-                onAddTask={onAddTask}
-              />
+            <Modal
+              type="group-actions"
+              modalTitle="List Actions"
+              onCloseModal={onCloseModal}
+              group={group}
+              onAddTask={onAddTask}
+            />
           )}
         </div>
         <TaskList
@@ -121,7 +121,7 @@ export function GroupPreview({ group }) {
               placeholder="Enter a title for this card..."
               value={newTask.title}
               onChange={handleChange}
-            />        
+            />
             {/* <button className='new-group-add-btn' onClick={() => onSubmitTask()}>Add task</button>
             <button className="close-add-group" onClick={exitEditMode}><CgClose /></button> */}
           </form>
