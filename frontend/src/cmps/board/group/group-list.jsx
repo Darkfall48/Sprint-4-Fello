@@ -26,6 +26,7 @@ export function GroupList({ board }) {
   function exitEditMode() {
     // ev.stopPropogation()
     setEditMode(false)
+    setNewGroupTitle('')
   }
 
   function handleChange({ target }) {
@@ -81,7 +82,9 @@ export function GroupList({ board }) {
     </div>
 
     {editMode && (
-      <div className='add-group-container' >
+      <div className='add-group-container'
+      onBlur={exitEditMode}
+      >
         {/* <form action="submit" onSubmit={() => onAddGroup(groupToAdd.title)}> */}
         <input type="text"
           name="title"
@@ -92,8 +95,10 @@ export function GroupList({ board }) {
           onChange={handleChange}
           onKeyUp={(ev) => onAddGroup(ev,newGroupTitle)}
         />
-        <button className='new-group-add-btn' onClick={() => onAddGroup(newGroupTitle)}>Add list</button>
-        <button className="close-add-group" onClick={exitEditMode}><CgClose /></button>
+        <div  className='add-item-wrapper'>
+        <button className='new-item-add-btn' onClick={() => onAddGroup(newGroupTitle)}>Add list</button>
+        <button className="close-add-item" onClick={exitEditMode}><CgClose /></button>
+        </div>
         {/* </form> */}
       </div>
     )}

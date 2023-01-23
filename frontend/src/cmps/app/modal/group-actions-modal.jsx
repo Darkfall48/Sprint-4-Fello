@@ -1,3 +1,4 @@
+import { React, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux'
 import { updateBoard, loadBoard } from '../../../store/actions/board.actions'
 import { store } from '../../../store/store'
@@ -8,6 +9,16 @@ export function GroupActionsModal({ group, onCloseModal, onAddTask }) {
 
   const board = useSelector((storeState) => storeState.boardModule.board)
 
+  const ref = useRef(null)
+
+  // useEffect(() => {
+  //   document.body.addEventListener('click', closeModal)
+  // }, [])
+
+  // const closeModal =(e) =>{
+  //   console.log('e', e)
+  //   if (!ref.current.contains(e.target)) onCloseModal()
+  // }
 
   async function onRemoveGroup(groupId) {
     const updatedGroups = board.groups.filter((group) => group.id !== groupId)
@@ -40,7 +51,7 @@ export function GroupActionsModal({ group, onCloseModal, onAddTask }) {
     }
   }
 
-  return <section className='group-actions-modal-list-container'>
+  return <section className='group-actions-modal-list-container' ref={ref}>
     <button className='modal-btn-full' onClick={() => {
       onAddTask()
       onCloseModal()
