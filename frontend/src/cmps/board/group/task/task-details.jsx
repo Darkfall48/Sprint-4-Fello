@@ -1,9 +1,11 @@
 //? Libraries
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+//? Store
+import { removeTask, updateTask } from '../../../../store/actions/board.actions'
 //? Icons
 import { GrTextAlignFull } from 'react-icons/gr'
-import { VscClose } from 'react-icons/vsc'
 import { HiOutlineUser } from 'react-icons/hi'
 import { TbTag } from 'react-icons/tb'
 import { IoMdCheckboxOutline } from 'react-icons/io'
@@ -14,26 +16,31 @@ import { MdOutlineContentCopy } from 'react-icons/md'
 import { TbTemplate } from 'react-icons/tb'
 import { TiArchive } from 'react-icons/ti'
 import { HiOutlineShare } from 'react-icons/hi'
-import { MdOutlineLaptop } from 'react-icons/md'
 //? Components
-import { SetTitle } from './cmps/set-title'
+import { SetCloseBtn } from './cmps/set-close-btn'
+import { SetChecklist } from './cmps/set-checklist'
+import { SetDescription } from './cmps/set-description'
+import { SetHeader } from './cmps/set-header'
 import { SetLabels } from './cmps/set-labels'
 import { SetMembers } from './cmps/set-members'
-import { SetDescription } from './cmps/set-description'
-import { SetChecklist } from './cmps/set-checklist'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { SetTitle } from './cmps/set-title'
 import { Loader } from '../../../helpers/loader'
-//? Store
-import { removeTask, updateTask } from '../../../../store/actions/board.actions'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
-  const navigate = useNavigate()
   const { boardId, groupId, taskId } = useParams()
+
   const [group, setGroup] = useState([])
   const [task, setTask] = useState([])
 
   const location = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    // if (!board || !board.length) return
+    setGroup(board?.groups?.filter((group) => group.id === groupId)[0])
+    setTask(group?.tasks?.filter((task) => task.id === taskId)[0])
+  }, [board, group, task])
 
   console.log(
     'Hello from board:',
@@ -43,73 +50,23 @@ export function TaskDetails() {
     'as task:',
     taskId
   )
+  console.log('Taskkyyyy', task)
+  console.log('Grouppyyyy', group)
+  console.log('Boardyyyy', board)
 
-  useEffect(() => {
-    // if (!board || !board.length) return
-    setGroup(board?.groups?.filter((group) => group.id === groupId)[0])
-    setTask(group?.tasks?.filter((task) => task.id === taskId)[0])
-  }, [board, group, task])
-
-  // console.log('GroupIddddd', groupId)
-  // console.log('Taskkyyyy', task)
-  // console.log('Grouppyyyy', group)
-  // console.log('Boardyyyy', board)
-
-  //? Private Components
-  function SetHeader() {
-    const { style } = task
-    if (!style?.bgColor)
-      return (
-        <div className="task-details-header-cover">
-          <SetCloseBtn />
-        </div>
-      )
-    return (
-      <div
-        className="task-details-header-cover"
-        style={{ backgroundColor: style.bgColor }}
-      >
-        <button title="Change cover">
-          <MdOutlineLaptop /> Cover
-        </button>
-      </div>
-    )
-  }
-
-  async function getUrl() {
-    try {
-      const { pathname } = location
-      const url = `https://link.com${pathname}`
-      await navigator.clipboard.writeText(url)
-      console.log('URL was copied to clipboard:', url)
-    } catch (err) {
-      console.error('Failed to copy text: ', err)
-    }
-  }
-
-  // async function onEditTask(task) {
-  //   const price = +prompt('New price?')
-  //   const taskToSave = { ...task, price }
-  //   try {
-  //     const savedTask = await saveTask(taskToSave)
-  //     showSuccessMsg(`Toy updated to price: $${savedTask.price}`)
-  //   } catch (err) {
-  //     showErrorMsg('Cannot update task')
-  //     console.log(err)
-  //   }
-  // }
-
+  //? Update Task - CRUDL
   async function onUpdateTaskTitle({ value }) {
-    console.log('Value:', value)
-    let updatedTask = { ...task, title: value }
+    const updatedTask = { ...task, title: value }
     try {
       setTask(updatedTask)
       await updateTask(group, updatedTask)
+      console.log('Task:', taskId, 'updated successfully!')
     } catch (err) {
       console.log('Cannot update Task', taskId, ':', err)
     }
   }
 
+  //? Remove Task - CRUDL
   async function onRemoveTask(group, taskId) {
     try {
       await removeTask(group, taskId)
@@ -120,47 +77,39 @@ export function TaskDetails() {
     }
   }
 
-  function SetCloseBtn() {
-    return (
-      <button
-        className={`task-details-close-btn-${
-          task?.style?.bgColor ? 'with-header' : 'no-header'
-        }`}
-        onClick={() => navigate(`/board/${boardId}`)}
-      >
-        <VscClose />
-      </button>
-    )
+  //? Aside Private Functions
+  async function getUrl() {
+    try {
+      const { pathname } = location
+      const websiteUrl = '`https://link.com'
+      const url = websiteUrl + pathname
+      await navigator.clipboard.writeText(url)
+      console.log('URL was copied to clipboard:', url)
+    } catch (err) {
+      console.error('Failed to copy text: ', err)
+    }
   }
 
   if (!board || !group || !task) return <Loader />
-  // return (
-  //   <div>
-  //     Hello from board {boardId} in list {groupId} as task {taskId}
-  //   </div>
-  // )
   return (
     <section
       className="task-details-modal-overlay"
       onClick={() => navigate(`/board/${boardId}`)}
-      // onClick={() => setIsModalOpen(false)}
     >
       <section className="task-details">
-        <SetCloseBtn />
+        <SetCloseBtn boardId={boardId} task={task} />
         <header
           className="task-details-header"
           onClick={(ev) => ev.stopPropagation()}
         >
-          {task?.style?.bgColor && <SetHeader />}
+          {task?.style?.bgColor && <SetHeader task={task} />}
         </header>
 
-        {/* <article className="task-details-title"> */}
         <SetTitle
           onUpdateTaskTitle={onUpdateTaskTitle}
           group={group}
           task={task}
         />
-        {/* </article> */}
 
         <main
           className="task-details-main"
