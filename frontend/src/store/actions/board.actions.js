@@ -113,7 +113,7 @@ export async function saveGroup(group) {
   try {
     await updateBoard(updatedBoard)
     loadBoard(board._id)
-    store.dispatch({ type: 'CLEAN_STORE' })
+    // store.dispatch({ type: 'CLEAN_STORE' })
   } catch (err) {
     console.log(`Cannot save group id ${group.id}`, err)
     throw err

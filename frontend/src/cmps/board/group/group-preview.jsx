@@ -21,6 +21,8 @@ export function GroupPreview({ group }) {
 
   const contentRef = useRef(null)
 
+  console.log('group', group)
+  
   const [editMode, setEditMode] = useState(false)
   const [newTask, setNewTask] = useState(boardService.getEmptyTask(''))
   const [isGroupMenuOpen, setIsGroupMenuOpen] = useState(false)

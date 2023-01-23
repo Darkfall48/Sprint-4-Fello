@@ -34,7 +34,7 @@ export function GroupList({ board }) {
     setNewGroupTitle(value)
   }
 
-  async function onAddGroup(ev,newGroupTitle) {
+  async function onAddGroup(ev) {
     if (ev.key!=='Enter')return
     const newGroup = boardService.getEmptyGroup(newGroupTitle)
     const groups = board.groups.concat(newGroup)
