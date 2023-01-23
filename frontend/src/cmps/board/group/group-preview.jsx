@@ -29,27 +29,29 @@ export function GroupPreview({ group }) {
     setEditMode(true)
   }
 
-  function handleChange({ target }) {
+  function handleChange(ev) {
+    if (ev.key === 'Enter') onSubmitTask(ev)
+    const { target }= ev
     let { name, value } = target
     setNewTask((prevTask) => ({ ...prevTask, [name]: value }))
-    console.log('newTask', newTask)
+    // console.log('newTask', newTask)
   }
 
-  function exitEditMode(){
+  function exitEditMode(e){
+    e.preventDefault()
     setEditMode(false)
   }
 
-  async function onSubmitTask(e) {
-    e.preventDefault()
+   function onSubmitTask(ev) {
+    console.log('newTask', newTask)
+    if (newTask.title==='') return
+    ev.preventDefault()
     addTask(group, newTask)
     setNewTask(boardService.getEmptyTask(''))
     setEditMode(false)
   }
 
-  function onArchiveTask(ev,taskId) {
-    console.log('ev', ev)
-    // ev.preventDefault()
-    // ev.stopImmediatePropagation()
+  function onArchiveTask(taskId) {
     console.log('taskId', taskId)
     removeTask(group, taskId)
   }
@@ -71,7 +73,7 @@ export function GroupPreview({ group }) {
   }
 
   function onCloseModal(ev) {
-    ev.preventDefault()
+    // ev.preventDefault()
     setIsGroupMenuOpen(false)
   }
 
@@ -90,7 +92,7 @@ export function GroupPreview({ group }) {
           >
             {`${group.title}`}
           </h1>
-          <button onClick={() => onGroupMenuOpen(group.id)}>
+          <button onClick={() => onGroupMenuOpen(group.id)} className="group-edit-menu-btn">
             <BsThreeDots />
           </button>
           {isGroupMenuOpen && (
@@ -110,23 +112,26 @@ export function GroupPreview({ group }) {
         />
         {editMode && (
           <form
-            className="task-preview-section add-task-edit"
+            // className="task-preview-section add-task-edit"
             onSubmit={onSubmitTask}
             onBlur={(ev) => onSubmitTask(ev)}
           >
-            <input
+            <textarea
               type="text"
               name="title"
-              className="add-task-textarea"
+              className="task-preview-section add-task-edit"
               placeholder="Enter a title for this card..."
               value={newTask.title}
               onChange={handleChange}
-            />        
-            {/* <button className='new-group-add-btn' onClick={() => onSubmitTask()}>Add task</button>
-            <button className="close-add-group" onClick={exitEditMode}><CgClose /></button> */}
+              onKeyUp={handleChange}
+            />       
+            <div className='add-item-wrapper'>
+            <button className='new-item-add-btn' onClick={() => onSubmitTask()}>Add card</button>
+            <button type="button" className="close-add-item" onClick={exitEditMode}><CgClose /></button>
+              </div> 
           </form>
         )}
-        <div className="group-bottom-control-btns">
+        {!editMode && (<div className="group-bottom-control-btns">
           <button onClick={onAddTask} className="add-task-btn">
             <HiOutlinePlus className="plus" />
             <span>Add a card</span>
@@ -135,6 +140,7 @@ export function GroupPreview({ group }) {
             <TbTemplate />
           </button>
         </div>
+          )}
       </div>
     </section>
   )

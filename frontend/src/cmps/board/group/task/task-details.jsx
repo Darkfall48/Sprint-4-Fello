@@ -1,11 +1,7 @@
 //? Libraries
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 //? Icons
-import {
-  BsCheck2Square,
-  BsReverseLayoutTextWindowReverse,
-} from 'react-icons/bs'
 import { GrTextAlignFull } from 'react-icons/gr'
 import { VscClose } from 'react-icons/vsc'
 import { HiOutlineUser } from 'react-icons/hi'
@@ -25,9 +21,10 @@ import { SetLabels } from './cmps/set-labels'
 import { SetMembers } from './cmps/set-members'
 import { SetDescription } from './cmps/set-description'
 import { SetChecklist } from './cmps/set-checklist'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { Loader } from '../../../helpers/loader'
-import { removeTask } from '../../../../store/actions/board.actions'
+//? Store
+import { removeTask, updateTask } from '../../../../store/actions/board.actions'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -35,6 +32,8 @@ export function TaskDetails() {
   const { boardId, groupId, taskId } = useParams()
   const [group, setGroup] = useState([])
   const [task, setTask] = useState([])
+
+  const location = useLocation()
 
   console.log(
     'Hello from board:',
@@ -51,10 +50,10 @@ export function TaskDetails() {
     setTask(group?.tasks?.filter((task) => task.id === taskId)[0])
   }, [board, group, task])
 
-  console.log('GroupIddddd', groupId)
-  console.log('Taskkyyyy', task)
-  console.log('Grouppyyyy', group)
-  console.log('Boardyyyy', board)
+  // console.log('GroupIddddd', groupId)
+  // console.log('Taskkyyyy', task)
+  // console.log('Grouppyyyy', group)
+  // console.log('Boardyyyy', board)
 
   //? Private Components
   function SetHeader() {
@@ -75,6 +74,40 @@ export function TaskDetails() {
         </button>
       </div>
     )
+  }
+
+  async function getUrl() {
+    try {
+      const { pathname } = location
+      const url = `https://link.com${pathname}`
+      await navigator.clipboard.writeText(url)
+      console.log('URL was copied to clipboard:', url)
+    } catch (err) {
+      console.error('Failed to copy text: ', err)
+    }
+  }
+
+  // async function onEditTask(task) {
+  //   const price = +prompt('New price?')
+  //   const taskToSave = { ...task, price }
+  //   try {
+  //     const savedTask = await saveTask(taskToSave)
+  //     showSuccessMsg(`Toy updated to price: $${savedTask.price}`)
+  //   } catch (err) {
+  //     showErrorMsg('Cannot update task')
+  //     console.log(err)
+  //   }
+  // }
+
+  async function onUpdateTaskTitle({ value }) {
+    console.log('Value:', value)
+    let updatedTask = { ...task, title: value }
+    try {
+      setTask(updatedTask)
+      await updateTask(group, updatedTask)
+    } catch (err) {
+      console.log('Cannot update Task', taskId, ':', err)
+    }
   }
 
   async function onRemoveTask(group, taskId) {
@@ -122,7 +155,11 @@ export function TaskDetails() {
         </header>
 
         {/* <article className="task-details-title"> */}
-        <SetTitle group={group} task={task} />
+        <SetTitle
+          onUpdateTaskTitle={onUpdateTaskTitle}
+          group={group}
+          task={task}
+        />
         {/* </article> */}
 
         <main
@@ -211,7 +248,7 @@ export function TaskDetails() {
                 <TiArchive />
                 <span>Archive</span>
               </button>
-              <button title="Share">
+              <button title="Share" onClick={getUrl}>
                 <HiOutlineShare /> <span>Share</span>
               </button>
             </div>

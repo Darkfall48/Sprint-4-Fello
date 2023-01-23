@@ -13,7 +13,8 @@ export function SetEditBtn({ onArchiveTask, task }) {
 
   function onTaskPreviewEdit(ev) {
     ev.stopPropagation()
-    setIsMenuOpen(!isMenuOpen)
+    setIsMenuOpen(true)
+    console.log('isMenuOpen', isMenuOpen)
   }
 
   return (
@@ -25,13 +26,17 @@ export function SetEditBtn({ onArchiveTask, task }) {
         <div className="task-preview-edit-menu" onBlur={(ev) => closeMenu(ev)}>
           <button
             className="task-preview-edit-menu-btn"
-            onClick={(ev) => onArchiveTask(ev,task.id)}
+            onClick={(ev) => {
+              ev.stopPropagation()
+              onArchiveTask(task.id)
+            }}
           >
             <HiOutlineArchive />
             <span>Archive</span>
           </button>
         </div>
-      )}
-    </article>
+  )
+}
+    </article >
   )
 }
