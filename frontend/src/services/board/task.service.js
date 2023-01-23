@@ -23,7 +23,7 @@ function countIsDone(task) {
 }
 
 function getMemberById(board, memberId) {
-  return board.members.filter((member) => member._id === memberId)
+  return board?.members?.filter((member) => member?._id === memberId)
 }
 
 function getMemberInitials(fullname = 'John Smith') {
