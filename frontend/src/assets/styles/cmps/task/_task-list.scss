@@ -5,5 +5,25 @@
   place-items: center;
   gap: 8px;
   padding: 0px 4px;
-  //   overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    // height: 1px;
+    width: 1px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(24, 22, 191, 0.456);
+    height: 12px;
+    border-radius: 0.2rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    // margin: 50px;
+    // height: 12px;
+    // border-bottom: 10px solid transparent;
+    // border-radius: 0.2rem;
+  }
+
 }

@@ -1,5 +1,5 @@
 .group-preview-wrapper {
-  height: 100%;
+  max-height: 100%;
   margin: 0 4px;
   width: 272px;
   padding-top: 4px;
@@ -9,11 +9,17 @@
     position: relative;
     justify-content: space-between;
 
+    .group-edit-menu-btn {
+      padding-right: 0;
+      margin-right: 3px;
+      padding-top: 1.5px;
+      font-size: 1em;
+    }
+
     .modal-group-actions {
       position: absolute;
       left: 210px;
-      top:35px;
-
+      top: 35px;
 
       .group-actions-modal-list-container {
         padding: 0;
@@ -22,13 +28,15 @@
           @include btn('modal-full', white, 6px 12px, $list-btn-bg-clr-modal-hover)
         }
       }
-      #modal-form-container{
+
+      #modal-form-container {
         padding: 0;
 
-        button:last-of-type{
+        button:last-of-type {
           margin-bottom: 12px;
         }
-        button:first-of-type{
+
+        button:first-of-type {
           margin-top: 8px;
         }
       }
@@ -69,35 +77,17 @@
     padding: 6px 8px 2px;
     box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
 
-    // scrollbar
-    // max-height: 80vh;
-
-    // & .group-section{
-
-
-    //     overflow-x: hidden;
-    //     overflow-y: auto;
-
-    //     //scrollbar - maybe add to basic?
-    //     &::-webkit-scrollbar {
-    //       height: 12px;
-    //       width: 9px;
-    //     }
-
-    //     &::-webkit-scrollbar-thumb {
-    //       background: rgba(122, 128, 143, 0.2);
-    //       border-radius: 0.5rem;
-    //     }
-
-    //     &::-webkit-scrollbar-track {
-    //       background-color: rgba(216, 216, 219, 0.849);
-    //       border-right: 15px solid transparent;
-    //       border-radius: 0.5rem;
-    //     }
-    // }
     .add-task-edit {
-      padding: 6px 8px 2px 8px;
+      padding: 9px 8px 2px 8px;
       margin-top: 10px;
+      margin-bottom: 2px;
+      max-height: 162px;
+      min-height: 68px;
+      border: none;
+      // line-height: 20px;
+      text-align: start;
+      width: 100%;
+      resize: none;
 
       &:hover {
         background-color: #fff;
@@ -151,7 +141,7 @@
         width: 100%;
         border-radius: $border-radius;
         text-align: left;
-        margin:8px 0 8px 0;
+        margin: 8px 0 8px 0;
 
         &:hover {
           background-color: #091e4214;
@@ -186,23 +176,29 @@
     margin: 0;
   }
 
-  .new-group-add-btn {
+}
+
+.add-item-wrapper {
+  display: flex;
+  margin: 0;
+
+  .new-item-add-btn {
     display: flex;
     background-color: $clr4;
     border-radius: $border-radius;
     font-family: inherit;
     font-size: 1em;
     margin-left: 0;
-    padding: 8px 12px 5px;
+    padding: 7px 12px 5px;
     width: fit-content;
   }
 
-  .close-add-group {
+  .close-add-item {
     display: inline-block;
     background-color: transparent;
     color: $clr-txt-btn;
     font-size: 1.6em;
-    margin:0;
+    margin: 0;
     text-align: left;
     padding: 8px 0 6px 4px;
     width: fit-content;

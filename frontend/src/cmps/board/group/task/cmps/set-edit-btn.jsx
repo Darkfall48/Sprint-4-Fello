@@ -13,7 +13,8 @@ export function SetEditBtn({ onArchiveTask, task }) {
 
   function onTaskPreviewEdit(ev) {
     ev.stopPropagation()
-    setIsMenuOpen(!isMenuOpen)
+    setIsMenuOpen(true)
+    console.log('isMenuOpen', isMenuOpen)
   }
 
   return (
@@ -34,7 +35,8 @@ export function SetEditBtn({ onArchiveTask, task }) {
             <span>Archive</span>
           </button>
         </div>
-      )}
-    </article>
+  )
+}
+    </article >
   )
 }
