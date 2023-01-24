@@ -145,23 +145,37 @@
         color: $default-board-bg-clr;
         font-size: 22px;
     }
-    .black-checkbox{
+
+    .black-checkbox {
         color: #dfe1e6;
     }
 
 }
 
-.modal-task-labels{
-    
+.modal-task-labels {
+
     .modal-content-container {
         .labels-selection-container {
             margin-bottom: 15px;
             ;
-    
+
             button {
                 @include btn('modal-full', $list-btn-bg-clr-modal-hover, 6px 12px, $task-details-btn-bg-clr-hover);
             }
         }
-    
+
+    }
+}
+
+.label-color-selection-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    margin-bottom: 8px;
+    line-height: 20px;
+
+    .btn-label-color {
+        height: 28px;
+        width: 48.8px;
     }
 }
