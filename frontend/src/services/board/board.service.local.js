@@ -25,6 +25,7 @@ export const boardService = {
   getEmptyTodo,
   getEmptyChecklist,
   getCoverColors,
+  getLabelColors
 }
 
 async function query() {
@@ -1413,6 +1414,15 @@ function getColors() {
   return ['#0079bf', '#d29034', '#519839', '#b04632', '#89609e']
   // return ['#5ba4cf', '#f5dd29', '#7bc86c', '#ef7564', '#cd8de5']
 }
+
 function getCoverColors() {
   return ['#7BC86C', '#F5DD29', '#FFAF3F', '#EF7564', '#CD8DE5','#5BA4CF', '#29CCE5', '#6DECA9', '#FF8ED4', '#172B4D' ]
+}
+
+function getLabelColors() {
+  return ['#036aa7','#7bc86c', '#f5dd29', '#ffaf3f', '#ef7564', '#cd8de5', '#5ba4cf',
+  '#7bc86c88', '#f5dd2988', '#ffaf3f88', '#ef756488', '#cd8de588','#5ba4cf88',
+  '#7bc86c77', '#f5dd2977', '#ffaf3f77', '#ef756477', '#cd8de577', '#5ba4cf77',
+  '#7bc86c66', '#f5dd2966', '#ffaf3f66', '#ef756466', '#e568af', '#505f79',
+  ]
 }

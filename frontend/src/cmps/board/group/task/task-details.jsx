@@ -133,7 +133,7 @@ export function TaskDetails() {
             {task.memberIds && (
               <SetMembers board={board} task={task} group={group} />
             )}
-            {task.labelIds && <SetLabels board={board} task={task} />}
+            {task.labelIds && <SetLabels  board={board} task={task} />}
           </article>
 
           <SetDescription task={task} />
@@ -200,6 +200,7 @@ export function TaskDetails() {
                   modalTitle="Labels"
                   onCloseModal={onCloseModal}
                   task={task}
+                  group={group}
                   board={board}
                   onEditLabels={onEditLabels}
                 />

@@ -1,63 +1,99 @@
 import { boardReducer } from "../../../store/reducers/board.reducer";
-import { FiCheck } from 'react-icons/fi'
 import { IoMdCheckbox } from 'react-icons/io'
 import { MdOutlineCheckBoxOutlineBlank } from 'react-icons/md'
 import { RxPencil1 } from 'react-icons/rx'
+import { CgClose } from 'react-icons/cg'
 
 import { useState } from "react";
-import { SetLabels } from "../../board/group/task/cmps/set-labels";
+import { loadBoard, updateBoard, updateTask } from "../../../store/actions/board.actions";
+//?Services:
+import { boardService } from "../../../services/board/board.service.local";
+import { utilService } from "../../../services/util.service";
 
 
-export function TaskLabelsModal({ task, board, onCloseModal, onEditLabels }) {
+export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels }) {
 
-  const { labelIds } = task
   const labels = board?.labels
   const [filteredLabels, setFilteredLabels] = useState(labels)
   const [inputLabel, setInputLabel] = useState(labels)
-  const [updatedLabelIds, setUpdatedLabelIds] = useState(labelIds)
+  const [mode, setMode] = useState('select-label')
+  const [labelTitle, setLabelTitle] = useState('')
+  const [labelColor, setLabelColor] = useState('')
 
-  function onToggleLabel(label) {
+  async function onToggleLabel(label) {
+    const { id } = label
     let updatedLabelIds = []
-    if (labelIds.includes(label.id)) {
-      updatedLabelIds = labelIds.filter(labelId => labelId !== label.id)
+    if (task.labelIds.includes(id)) {
+      updatedLabelIds = task.labelIds.filter(labelId => labelId !== id)
     } else {
-      updatedLabelIds = labelIds.push(label.id)
+      updatedLabelIds = task.labelIds.concat(id)
     }
-    setUpdatedLabelIds(updatedLabelIds)
+    task = { ...task, labelIds: updatedLabelIds }
+    try {
+      await updateTask(group, task)
+      loadBoard()
+    } catch (err) {
+      console.log('Failed to update task', err)
+    }
   }
-
 
   function handleChange({ target }) {
     const { value } = target
     setInputLabel(value)
     const regex = new RegExp(value, 'i')
     const filteredLabels = labels.filter((label) => regex.test(label.title))
-    setFilteredLabels({ ...filteredLabels, })
+    console.log('filteredLabels', filteredLabels)
+    setFilteredLabels(filteredLabels)
+  }
+
+  function selectLabelColor(color) {
+    setLabelColor(color)
+    console.log('color', color)
+  }
+
+  function handleLabelTitleChange({ target }) {
+    const { value } = target
+    console.log('value', value)
+    setLabelTitle(value)
+  }
+
+  async function createNewLabel() {
+    const newLabel = { id: utilService.makeId(), title: labelTitle, color: labelColor }
+    const updatedLabels = board.labels.concat(newLabel)
+      board = { ...board, labels: updatedLabels }
+      setMode('select-label')
+      try {
+        await updateBoard(board)
+        loadBoard()
+      } catch (err) {
+        console.log('Failed to update board', err)
+      }
 
   }
 
-  function handleChange({ value }) {
-    console.log(value)
-  }
+  switch (mode) {
+    case 'select-label':
 
-
-
-  return <section className='modal-content-container'>
-    <input type="text" value={inputLabel.title} placeholder="Search labels..." onChange={handleChange} />
-    <div className="labels-selection-container">
-      {/* <SetLabels type="" board={board} task={task} filteredLabels={filteredLabels} /> */}
-      <article className="task-details-main-labels">
-        <h2 className="task-details-main-labels-title">Labels</h2>
+      return (<section className='modal-content-container'>
+        < input type="text" value={inputLabel.title} placeholder="Search labels..." onChange={handleChange} />
+        <div className="labels-selection-container">
+          {/* <SetLabels type="" board={board} task={task} filteredLabels={filteredLabels} /> */}
+          <p>Labels</p>
           {filteredLabels.map((label, idx) => {
             return (
               <div key={idx} id="labels-container-modal">
-                <span key={idx+1}>
-                  {(labelIds.includes(label.id)) && <IoMdCheckbox />}
-                  {(!labelIds.includes(label.id)) && <MdOutlineCheckBoxOutlineBlank />}
-                </span>
+                <label
+                  htmlFor="color-pick"
+                  key={idx + 1}
+                  onClick={() => onToggleLabel(label)}
+                >
+                  {(task.labelIds.includes(label.id)) && <IoMdCheckbox />}
+                  {(!task.labelIds.includes(label.id)) && <MdOutlineCheckBoxOutlineBlank className="black-checkbox" />}
+                </label>
 
                 <span
                   className="task-details-main-labels-container-label"
+                  id="color-pick"
                   key={label.id}
                   style={{ backgroundColor: label?.color + '66' }}
                   title={label?.title ? label?.title : ''}
@@ -66,19 +102,37 @@ export function TaskLabelsModal({ task, board, onCloseModal, onEditLabels }) {
                     className="task-details-main-labels-container-circle"
                     style={{ backgroundColor: label?.color }}
                   ></div>
-                  <span key={idx+2} className="task-details-main-labels-container-title">
+                  <span key={idx + 2} className="task-details-main-labels-container-title">
                     {label?.title ? label?.title : 'None'}
                   </span>
                 </span>
-                <span key={idx+3}><RxPencil1/></span>
+                <span key={idx + 3}><RxPencil1 /></span>
               </div>
             )
           })}
-      </article>
+        </div >
+        <button onClick={() => { setMode('edit-new') }}>Create a new label</button>
+      </section >
+      )
+      break
+    case 'edit-new':
+      return (
+        <div>
+          <p>Title</p>
+          <input type="text" value={labelTitle} onChange={handleLabelTitleChange} />
+          <p>Select a color</p>
+          <div className="label-color-selection-container">
+            {boardService.getLabelColors().map((color, idx) => {
+              return <button key={idx} onClick={() => selectLabelColor(color)} className="btn-label-color" style={{ backgroundColor: color }}></button>
+            })}
+          </div>
+          <button> <span><CgClose /></span> Remove color</button>
+          <button onClick={() => createNewLabel()}>Create</button>
+        </div>
 
-    </div >
-    <button className='modal-btn-full'>Create a new label</button>
-  </section >
+      )
+      break
+  }
 }
 
 

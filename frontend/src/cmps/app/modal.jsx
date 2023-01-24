@@ -27,7 +27,7 @@ export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task ,
                     case 'task-members':
                         return <TaskMembersModal task={task} group={group}  board={board} onCloseModal={onCloseModal} onAddTask={onAddTask} />
                     case 'task-labels':
-                        return <TaskLabelsModal task={task} board={board} onCloseModal={onCloseModal} onEditLabels={onEditLabels} />
+                        return <TaskLabelsModal task={task} group={group} board={board} onCloseModal={onCloseModal} onEditLabels={onEditLabels} />
                     case 'task-checklist':
                         return <TaskChecklistModal onCloseModal={onCloseModal} board={board} task={task} group={group} />
                     case 'task-cover':
