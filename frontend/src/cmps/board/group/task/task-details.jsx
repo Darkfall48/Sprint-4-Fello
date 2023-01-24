@@ -125,27 +125,29 @@ export function TaskDetails() {
           onClick={(ev) => ev.stopPropagation()}
         >
           {task.labelIds && <SetLabels board={board} task={task} />}
-          {task.memberIds && <SetMembers board={board} task={task} group={group} />}
+          {task.memberIds && (
+            <SetMembers board={board} task={task} group={group} />
+          )}
           <GrTextAlignFull className="task-details-main-description-icon" />
           <SetDescription task={task} />
-          <RxActivityLog className="task-details-main-activity-icon" />
+          <RxActivityLog className="task-details-main-activities-icon" />
           {board && <SetActivities board={board} taskId={taskId} />}
           {/*! Grid SCSS Not Working*/}
           {task.checklists &&
-          task.checklists.map((checklist, idx) => (
-            <>
-              <BsCheck2Square
-                key={idx}
-                className="task-details-main-checklist-icon"
-              />
-              <SetChecklist
-                key={checklist.id + idx}
-                task={task}
-                checklist={checklist}
-                group={group}
-              />
-            </>
-          ))}
+            task.checklists.map((checklist, idx) => (
+              <>
+                <BsCheck2Square
+                  key={idx}
+                  className="task-details-main-checklist-icon"
+                />
+                <SetChecklist
+                  key={checklist.id + idx}
+                  task={task}
+                  checklist={checklist}
+                  group={group}
+                />
+              </>
+            ))}
         </main>
 
         <aside
@@ -169,20 +171,27 @@ export function TaskDetails() {
               Add to Card
             </h2>
             <div className="task-details-aside-task-action-button">
-              <button title="I am Members" onClick={() => { setModalOpen('members') }}>
+              <button
+                title="I am Members"
+                onClick={() => {
+                  setModalOpen('members')
+                }}
+              >
                 <HiOutlineUser /> <span>Members</span>
               </button>
               <button title="I am Labels">
                 <TbTag /> <span>Labels</span>
               </button>
-              {(modalOpen === 'members') && <Modal
-                type="task-members"
-                modalTitle="Members"
-                onCloseModal={onCloseModal}
-                task={task}
-                group={group}
-                board={board}
-              />}
+              {modalOpen === 'members' && (
+                <Modal
+                  type="task-members"
+                  modalTitle="Members"
+                  onCloseModal={onCloseModal}
+                  task={task}
+                  group={group}
+                  board={board}
+                />
+              )}
               <button title="I am Checklist">
                 <IoMdCheckboxOutline /> <span>Checklist</span>
               </button>

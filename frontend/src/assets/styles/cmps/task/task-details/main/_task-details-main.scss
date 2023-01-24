@@ -1,0 +1,18 @@
+//* Main
+.task-details-main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  // display: grid;
+  // grid-auto-columns: 56px 512px;
+  // grid-auto-rows: auto;
+  // grid-template-columns: repeat(auto-fit, 56px 512px);
+  // grid-template-areas:
+  //   't-icon title'
+  //   '. members'
+  //   '. labels'
+  //   'd-icon description'
+  //   'checklist checklist'
+  //   'checklist checklist'
+  //   'a-icon activities';
+}

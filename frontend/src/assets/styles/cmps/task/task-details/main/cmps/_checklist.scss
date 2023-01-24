@@ -1,0 +1,24 @@
+//* Checklist
+.task-details-main-checklist {
+  &-icon {
+    grid-area: c-icon;
+    justify-self: center;
+    color: #172b4d;
+    font-size: 20px;
+    margin-top: 6px;
+  }
+  &-title {
+  }
+  &-progress-bar-container {
+    &-percentage {
+    }
+    &-advancement {
+    }
+  }
+  &-container {
+    &-toggle-btn {
+    }
+    &-title {
+    }
+  }
+}
