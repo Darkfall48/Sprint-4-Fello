@@ -3,18 +3,20 @@ import { useRef, useState } from 'react';
 import { BsCheck2Square } from 'react-icons/bs'
 import { updateTask } from '../../../../../store/actions/board.actions';
 import { TodoAdd } from './checklist/todo-add';
+import { AiOutlineClose } from "react-icons/ai";
 
 import { TodoList } from "./checklist/todo-list";
 
 export function SetChecklist({ task, checklist, group }) {
   const contentRef = useRef(null)
-
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isEditOn, setIsEditOn] = useState(false)
+  const [editChecklist, onEditChecklist] = useState(checklist)
   //for scss
   // const numChecklists = task.checklists.length
   // const root = document.documentElement
   // root.style.setProperty('--num-checklists', numChecklists)
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
 
   function onCloseModal() {
     setIsModalOpen(!isModalOpen)
@@ -25,7 +27,7 @@ export function SetChecklist({ task, checklist, group }) {
     const { todos } = checklist
 
     const idx = todos.findIndex(todo => todo.id === todoId)
-    if (idx < 0) throw new Error(`Remove failed, cannot find entity with id: ${todoId}`)
+    // if (idx < 0) throw new Error(`Remove failed, cannot find entity with id: ${todoId}`)
     todos.splice(idx, 1)
 
     updateTask(group, task)
@@ -33,11 +35,9 @@ export function SetChecklist({ task, checklist, group }) {
   }
 
   function onDoneTodo(todo) {
-    console.log('todo', todo);
-
     todo.isDone = !todo.isDone
     updateTask(group, task)
-    console.log('updated task isDone', task);
+    // console.log('updated task isDone', task);
   }
 
   function getUserProgress() {
@@ -49,30 +49,81 @@ export function SetChecklist({ task, checklist, group }) {
     }
   }
 
-  function changeContent(ev) {
-    checklist.title = contentRef.current.innerText
 
-    if (ev.key === 'Enter' && !ev.shiftKey) ev.target.blur()
-    if (ev.key === 'Enter' || ev.type === 'blur') {
-      ev.preventDefault()
-      updateTask(group, task)
-      contentRef.current.contentEditable = false
-    }
-    contentRef.current.contentEditable = true
+  function handleChange({ target }) {
+    let { value, name: field } = target
+    onEditChecklist((prevTitle) => {
+      return { ...prevTitle, [field]: value }
+    })
   }
+
+  function onChangeTitle(ev) {
+    ev.preventDefault()
+    // if (contentRef.current.value === '') return
+    checklist.title = editChecklist.title
+    updateTask(group, task)
+    setIsEditOn(!isEditOn)
+  }
+
+  function onEditTodo(ev) {
+    ev.preventDefault()
+
+    // const { checklists } = task
+
+    // const checklist = checklists.find(checklist => {
+    //     const checklistId = checklist.id
+    //     if (checklistId === checklist.id) return checklist
+    // })
+
+    // const { todos } = checklist
+
+    // const updatedTask = { ...task, ...checklists, ...todos, todo: todoToAdd }
+    // console.log('updatedTask', task);
+    // updateTask(group, task)
+    // inputRef.current.value = ''
+}
+
+function onRemoveChecklist(checklistId) {
+  const {checklists} = task
+  const idx = checklists.findIndex(checklist => checklist.id === checklistId)
+  // if (idx < 0) throw new Error(`Remove failed, cannot find entity with id: ${todoId}`)
+  checklists.splice(idx, 1)
+  updateTask(group, task)
+
+}
 
   return (
     <section className="task-details-main-checklist">
-      <div className="checklist-details">
+      {!isEditOn && <div className="checklist-details">
         <h3
           ref={contentRef}
-          onKeyDown={(ev) => changeContent(ev)}
-          onBlur={(ev) => changeContent(ev)}
-          contentEditable={true}
-          suppressContentEditableWarning={true}
+          onClick={() => (setIsEditOn(!isEditOn))}
         >{checklist.title}</h3>
-        <button className='todo-btns-btn'>Delete</button>
-      </div>
+        <button className='todo-btns-btn' onClick={()=> onRemoveChecklist(checklist.id)}>Delete</button>
+      </div>}
+
+      {isEditOn && <form onSubmit={(ev) => onChangeTitle(ev)} >
+
+        <textarea
+          name="title"
+          id="title"
+          cols="30"
+          rows="10"
+          placeholder={checklist.title}
+          value={editChecklist.title}
+          onChange={handleChange}
+          // ref={inputRef}
+          // onBlur={() => onCloseModal()}
+          style={{ overflow: 'hidden', overflowWrap: 'break-word', height: '56px' }}
+        >
+        </textarea>
+
+        <div className="todo-btns">
+          <button className="todo-btn">Save</button>
+          <button className="cancel-btn" onClick={() => (setIsEditOn(!isEditOn))}><AiOutlineClose /></button>
+        </div>
+
+      </form>}
 
       <div className="progress-bar-container">
         <span>{getUserProgress()}%</span>
@@ -93,18 +144,4 @@ export function SetChecklist({ task, checklist, group }) {
     </section>
   )
 }
-//   return (
-//     <section className="task-details-main-checklist">
-//       {checklist.todos.map((todo, idx) => (
-//            <TodoPreview todo={todo} />
-//         <div key={todo.id + idx}>
-//          <p>{todo.title}</p>
-//         <button>X</button>
-//         </div>
-//       ))}
-//       <button>Add an item</button>
-//       {/* <TodoAdd /> */}
-//     </section>
-//   )
-// }
 

@@ -9,6 +9,7 @@ import { TaskMembersModal } from './modal/task-members-modal';
 
 
 export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task , board }) {
+    console.log('group', group);
 
     return <div className={`modal-content modal-${type}`} onClick={(e) => e.stopPropagation()} onBlur={()=>onCloseModal}>
         <div className="form-container" id="modal-form-container">
@@ -28,7 +29,7 @@ export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task ,
                     case 'task-labels':
                         return <TaskLabelsModal task={task} group={group} onCloseModal={onCloseModal} onAddTask={onAddTask} />
                     case 'task-checklist':
-                        return <TaskChecklistModal onCloseModal={onCloseModal} board={board} />
+                        return <TaskChecklistModal onCloseModal={onCloseModal} board={board} task={task} group={group} />
                     default:
                         console.log(`Cannot load component type: ${type}.`);
                 }

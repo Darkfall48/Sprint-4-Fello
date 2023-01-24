@@ -4,15 +4,12 @@ import { updateTask } from "../../../../../../store/actions/board.actions";
 
 export function TodoAdd({ group, task, checklist, onCloseModal }) {
 
-    // const user = useSelector((storeState => storeState.userModule.user))
-
     const [todoToAdd, setTodoToAdd] = useState(boardService.getEmptyTodo())
     const inputRef = useRef(null)
 
     useEffect(() => {
         inputRef.current.focus()
     }, [])
-
 
     function handleChange({ target }) {
         let { value, name: field } = target
@@ -26,12 +23,6 @@ export function TodoAdd({ group, task, checklist, onCloseModal }) {
         ev.preventDefault()
         console.log('ev', ev);
         if (inputRef.current.value === '') return
-        const { checklists } = task
-
-        const checklist = checklists.find(checklist => {
-            const checklistId = checklist.id
-            if (checklistId === checklist.id) return checklist
-        })
 
         const { todos } = checklist
         todos.push(todoToAdd)

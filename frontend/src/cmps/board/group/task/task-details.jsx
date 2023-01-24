@@ -191,6 +191,8 @@ export function TaskDetails() {
                 modalTitle="Add checklist"
                 onCloseModal={onCloseModal}
                 board={board}
+                group={group}
+                task={task}
               />}
               <button title="I am Date">
                 <FiClock /> <span>Date</span>
