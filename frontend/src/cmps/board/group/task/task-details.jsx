@@ -192,9 +192,22 @@ export function TaskDetails() {
                   board={board}
                 />
               )}
-              <button title="I am Checklist">
+              <button
+                title="I am Checklist"
+                onClick={() => {
+                  setModalOpen('checklist')
+                }}
+              >
                 <IoMdCheckboxOutline /> <span>Checklist</span>
               </button>
+              {modalOpen === 'checklist' && (
+                <Modal
+                  type="task-checklist"
+                  modalTitle="Add checklist"
+                  onCloseModal={onCloseModal}
+                  board={board}
+                />
+              )}
               <button title="I am Date">
                 <FiClock /> <span>Date</span>
               </button>
