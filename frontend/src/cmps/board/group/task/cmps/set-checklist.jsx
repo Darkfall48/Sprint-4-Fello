@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { BsCheck2Square } from 'react-icons/bs'
-import { AiOutlineClose } from "react-icons/ai"
+import { AiOutlineClose } from 'react-icons/ai'
 import { updateTask } from '../../../../../store/actions/board.actions'
 import { TodoAdd } from './checklist/todo-add'
 
@@ -11,11 +11,6 @@ export function SetChecklist({ task, checklist, group }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isEditOn, setIsEditOn] = useState(false)
   const [editChecklist, onEditChecklist] = useState(checklist)
-  //for scss
-  // const numChecklists = task.checklists.length
-  // const root = document.documentElement
-  // root.style.setProperty('--num-checklists', numChecklists)
-
 
   function onCloseModal() {
     setIsModalOpen(!isModalOpen)
@@ -25,7 +20,7 @@ export function SetChecklist({ task, checklist, group }) {
     console.log('todoId', todoId)
     const { todos } = checklist
 
-    const idx = todos.findIndex(todo => todo.id === todoId)
+    const idx = todos.findIndex((todo) => todo.id === todoId)
     // if (idx < 0) throw new Error(`Remove failed, cannot find entity with id: ${todoId}`)
     todos.splice(idx, 1)
 
@@ -46,7 +41,6 @@ export function SetChecklist({ task, checklist, group }) {
       return toPrecentage
     }
   }
-
 
   function handleChange({ target }) {
     let { value, name: field } = target
@@ -79,62 +73,85 @@ export function SetChecklist({ task, checklist, group }) {
     // console.log('updatedTask', task);
     // updateTask(group, task)
     // inputRef.current.value = ''
-}
+  }
 
-function onRemoveChecklist(checklistId) {
-  const {checklists} = task
-  const idx = checklists.findIndex(checklist => checklist.id === checklistId)
-  // if (idx < 0) throw new Error(`Remove failed, cannot find entity with id: ${todoId}`)
-  checklists.splice(idx, 1)
-  updateTask(group, task)
-
-}
+  function onRemoveChecklist(checklistId) {
+    const { checklists } = task
+    const idx = checklists.findIndex(
+      (checklist) => checklist.id === checklistId
+    )
+    // if (idx < 0) throw new Error(`Remove failed, cannot find entity with id: ${todoId}`)
+    checklists.splice(idx, 1)
+    updateTask(group, task)
+  }
 
   return (
     <section className="task-details-main-checklist">
-      {!isEditOn && <div className="checklist-details">
-        <h3
-          ref={contentRef}
-          onClick={() => (setIsEditOn(!isEditOn))}
-        >{checklist.title}</h3>
-        <button className='todo-btns-btn' onClick={()=> onRemoveChecklist(checklist.id)}>Delete</button>
-      </div>}
+      <BsCheck2Square className="task-details-main-checklist-icon" />
+      {!isEditOn && (
+        <>
+          <h3
+            ref={contentRef}
+            onClick={() => setIsEditOn(!isEditOn)}
+            className="task-details-main-checklist-title"
+          >
+            {checklist.title}
+          </h3>
+          <button
+            className="task-details-main-checklist-remove-btn"
+            onClick={() => onRemoveChecklist(checklist.id)}
+          >
+            Delete
+          </button>
+        </>
+      )}
 
-      {isEditOn && <form onSubmit={(ev) => onChangeTitle(ev)} >
-
-        <textarea
-          name="title"
-          id="title"
-          cols="30"
-          rows="10"
-          placeholder={checklist.title}
-          value={editChecklist.title}
-          onChange={handleChange}
-          // ref={inputRef}
-          // onBlur={() => onCloseModal()}
-          style={{ overflow: 'hidden', overflowWrap: 'break-word', height: '56px' }}
+      {isEditOn && (
+        <form
+          onSubmit={(ev) => onChangeTitle(ev)}
+          className="task-details-main-checklist-title-input"
         >
-        </textarea>
-
-        <div className="todo-btns">
-          <button className="todo-btn">Save</button>
-          <button className="cancel-btn" onClick={() => (setIsEditOn(!isEditOn))}><AiOutlineClose /></button>
-        </div>
-
-      </form>}
-
-      <div className="progress-bar-container">
-        <span>{getUserProgress()}%</span>
-        <div className="progress-bar-bg">
-          <div
-            className="progress-bar"
+          <textarea
+            name="title"
+            id="title"
+            cols="30"
+            rows="10"
+            placeholder={checklist.title}
+            value={editChecklist.title}
+            onChange={handleChange}
+            // ref={inputRef}
+            // onBlur={() => onCloseModal()}
             style={{
-              height: '24px',
-              width: getUserProgress() + '%',
-              background: getUserProgress() === 100 ? '#61bd4f' : '#5ba4cf',
+              overflow: 'hidden',
+              overflowWrap: 'break-word',
+              height: '56px',
             }}
-          ></div>
-        </div>
+          ></textarea>
+
+          <div className="todo-btns">
+            <button className="todo-btn">Save</button>
+            <button
+              className="cancel-btn"
+              onClick={() => setIsEditOn(!isEditOn)}
+            >
+              <AiOutlineClose />
+            </button>
+          </div>
+        </form>
+      )}
+
+      <span className="task-details-main-checklist-progress-bar-percentage">
+        {getUserProgress()}%
+      </span>
+      <div className="task-details-main-checklist-progress-bar-advancement">
+        <div
+          className="task-details-main-checklist-progress-bar-advancement-transition"
+          style={{
+            height: 'inherit',
+            width: getUserProgress() + '%',
+            background: getUserProgress() === 100 ? '#61bd4f' : '#5ba4cf',
+          }}
+        ></div>
       </div>
 
       <TodoList
@@ -143,14 +160,16 @@ function onRemoveChecklist(checklistId) {
         onDoneTodo={onDoneTodo}
         // onEditTodo={onEditTodo}
       />
+
       {!isModalOpen && (
         <button
-          className="add-todo-btn todo-btns-btn"
+          className="task-details-main-checklist-add-todo-btn"
           onClick={() => setIsModalOpen(!isModalOpen)}
         >
           Add an item
         </button>
       )}
+
       {isModalOpen && (
         <TodoAdd
           task={task}

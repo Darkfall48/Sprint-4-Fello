@@ -10,7 +10,6 @@ export function TaskMembersModal({ task, group, board, onCloseModal, onAddTask }
     const [memberName, setMemberName] = useState('')
     const [filteredMembers, setFilteredMembers] = useState(board.members)
 
-    console.log('filteredMembers', filteredMembers)
     function checkIfMember(member) {
         if (task.memberIds.includes(member._id))
             return <span><FiCheck /></span>
@@ -25,8 +24,6 @@ export function TaskMembersModal({ task, group, board, onCloseModal, onAddTask }
         const regex = new RegExp(value, 'i')
         const filteredMembers = board.members.filter((member) => regex.test(member.fullname))
         setFilteredMembers(filteredMembers)
-        console.log('filteredMembers', filteredMembers)
-        console.log('memberName', memberName)
     }
 
     async function toggleTaskMember(memberId) {

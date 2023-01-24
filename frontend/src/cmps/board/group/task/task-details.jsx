@@ -99,6 +99,10 @@ export function TaskDetails() {
     setModalOpen('')
   }
 
+  function onEditLabels() {
+    console.log('edit labels')
+  }
+
   if (!board || !group || !task) return <Loader />
   return (
     <section
@@ -133,7 +137,6 @@ export function TaskDetails() {
           </article>
 
           <SetDescription task={task} />
-          {board && <SetActivities board={board} taskId={taskId} />}
           {/*! Grid SCSS Not Working*/}
           {task.checklists &&
             task.checklists.map((checklist, idx) => (
@@ -146,6 +149,7 @@ export function TaskDetails() {
                 />
               </>
             ))}
+          {board && <SetActivities board={board} taskId={taskId} />}
         </main>
 
         <aside
@@ -177,9 +181,6 @@ export function TaskDetails() {
               >
                 <HiOutlineUser /> <span>Members</span>
               </button>
-              <button title="I am Labels">
-                <TbTag /> <span>Labels</span>
-              </button>
               {modalOpen === 'members' && (
                 <Modal
                   type="task-members"
@@ -190,6 +191,19 @@ export function TaskDetails() {
                   board={board}
                 />
               )}
+              <button title="I am Labels" onClick={() => {setModalOpen('labels')}}>
+                <TbTag /> <span>Labels</span>
+              </button>
+              {modalOpen === 'labels' && (
+                <Modal
+                  type="task-labels"
+                  modalTitle="Labels"
+                  onCloseModal={onCloseModal}
+                  task={task}
+                  board={board}
+                  onEditLabels={onEditLabels}
+                />
+              )}
               <button
                 title="I am Checklist"
                 onClick={() => {
@@ -198,14 +212,16 @@ export function TaskDetails() {
               >
                 <IoMdCheckboxOutline /> <span>Checklist</span>
               </button>
-              {(modalOpen === 'checklist') && <Modal
-                type="task-checklist"
-                modalTitle="Add checklist"
-                onCloseModal={onCloseModal}
-                board={board}
-                group={group}
-                task={task}
-              />}
+              {modalOpen === 'checklist' && (
+                <Modal
+                  type="task-checklist"
+                  modalTitle="Add checklist"
+                  onCloseModal={onCloseModal}
+                  board={board}
+                  group={group}
+                  task={task}
+                />
+              )}
               <button title="I am Date">
                 <FiClock /> <span>Date</span>
               </button>
