@@ -15,4 +15,9 @@
   //   'checklist checklist'
   //   'checklist checklist'
   //   'a-icon activities';
+  &-article-container {
+    margin-left: 56px;
+    display: grid;
+    grid-auto-flow: column;
+  }
 }

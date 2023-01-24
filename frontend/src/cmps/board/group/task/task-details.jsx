@@ -107,6 +107,7 @@ export function TaskDetails() {
     >
       <section className="task-details">
         <SetCloseBtn boardId={boardId} task={task} />
+
         <header
           className="task-details-header"
           onClick={(ev) => ev.stopPropagation()}
@@ -124,22 +125,19 @@ export function TaskDetails() {
           className="task-details-main"
           onClick={(ev) => ev.stopPropagation()}
         >
-          {task.labelIds && <SetLabels board={board} task={task} />}
-          {task.memberIds && (
-            <SetMembers board={board} task={task} group={group} />
-          )}
-          <GrTextAlignFull className="task-details-main-description-icon" />
+          <article className="task-details-main-article-container">
+            {task.memberIds && (
+              <SetMembers board={board} task={task} group={group} />
+            )}
+            {task.labelIds && <SetLabels board={board} task={task} />}
+          </article>
+
           <SetDescription task={task} />
-          <RxActivityLog className="task-details-main-activities-icon" />
           {board && <SetActivities board={board} taskId={taskId} />}
           {/*! Grid SCSS Not Working*/}
           {task.checklists &&
             task.checklists.map((checklist, idx) => (
               <>
-                <BsCheck2Square
-                  key={idx}
-                  className="task-details-main-checklist-icon"
-                />
                 <SetChecklist
                   key={checklist.id + idx}
                   task={task}

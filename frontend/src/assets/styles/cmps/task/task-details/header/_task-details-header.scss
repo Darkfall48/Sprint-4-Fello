@@ -1,9 +1,11 @@
 //* Header
 .task-details-header {
   grid-area: header;
+  border-radius: 2px 2px 0px 0px;
   //* Header
   &-cover {
     color: whitesmoke;
+    border-radius: 2px 2px 0px 0px;
     height: 116px;
     display: flex;
     align-items: flex-end;

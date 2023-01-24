@@ -31,6 +31,7 @@
     // transform: translate(-50%, -50%);
     z-index: 5;
     min-width: 768px;
+    border-radius: 3px;
     display: grid;
     grid-template-columns: 576px 192px;
     grid-template-areas:
@@ -90,18 +91,20 @@
         '. description';
       // gap: 4px;
       margin-top: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       &-icon {
         grid-area: t-icon;
         align-self: center;
-        justify-self: center;
+        justify-self: flex-start;
+        margin-left: 22px;
         color: #172b4d;
         font-size: 20px;
         // margin-top: 26px;
       }
       &-input {
         grid-area: input;
-        padding-left: 6px;
+        // padding-left: 6px;
+        padding-left: 0;
         margin-right: 48px;
         height: 33.2px;
         font-size: 20px;
@@ -114,7 +117,7 @@
       }
       &-description {
         grid-area: description;
-        padding-left: 8px;
+        padding-left: 2px;
         display: flex;
         align-items: center;
         justify-content: flex-start;

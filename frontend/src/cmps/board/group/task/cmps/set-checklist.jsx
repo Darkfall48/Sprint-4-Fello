@@ -1,10 +1,9 @@
-
-import { useRef, useState } from 'react';
+import { useRef, useState } from 'react'
 import { BsCheck2Square } from 'react-icons/bs'
-import { updateTask } from '../../../../../store/actions/board.actions';
-import { TodoAdd } from './checklist/todo-add';
+import { updateTask } from '../../../../../store/actions/board.actions'
+import { TodoAdd } from './checklist/todo-add'
 
-import { TodoList } from "./checklist/todo-list";
+import { TodoList } from './checklist/todo-list'
 
 export function SetChecklist({ task, checklist, group }) {
   const contentRef = useRef(null)
@@ -21,23 +20,23 @@ export function SetChecklist({ task, checklist, group }) {
   }
 
   function onRemoveTodo(todoId) {
-    console.log('todoId', todoId);
+    console.log('todoId', todoId)
     const { todos } = checklist
 
-    const idx = todos.findIndex(todo => todo.id === todoId)
-    if (idx < 0) throw new Error(`Remove failed, cannot find entity with id: ${todoId}`)
+    const idx = todos.findIndex((todo) => todo.id === todoId)
+    if (idx < 0)
+      throw new Error(`Remove failed, cannot find entity with id: ${todoId}`)
     todos.splice(idx, 1)
 
     updateTask(group, task)
-
   }
 
   function onDoneTodo(todo) {
-    console.log('todo', todo);
+    console.log('todo', todo)
 
     todo.isDone = !todo.isDone
     updateTask(group, task)
-    console.log('updated task isDone', task);
+    console.log('updated task isDone', task)
   }
 
   function getUserProgress() {
@@ -63,6 +62,7 @@ export function SetChecklist({ task, checklist, group }) {
 
   return (
     <section className="task-details-main-checklist">
+      <BsCheck2Square className="task-details-main-checklist-icon" />
       <div className="checklist-details">
         <h3
           ref={contentRef}
@@ -70,15 +70,23 @@ export function SetChecklist({ task, checklist, group }) {
           onBlur={(ev) => changeContent(ev)}
           contentEditable={true}
           suppressContentEditableWarning={true}
-        >{checklist.title}</h3>
-        <button className='todo-btns-btn'>Delete</button>
+        >
+          {checklist.title}
+        </h3>
+        <button className="todo-btns-btn">Delete</button>
       </div>
 
       <div className="progress-bar-container">
         <span>{getUserProgress()}%</span>
         <div className="progress-bar-bg">
-          <div className="progress-bar" style={{ height: "24px", width: getUserProgress() + "%", background: getUserProgress() === 100 ? '#61bd4f' : '#5ba4cf' }}>
-          </div>
+          <div
+            className="progress-bar"
+            style={{
+              height: '24px',
+              width: getUserProgress() + '%',
+              background: getUserProgress() === 100 ? '#61bd4f' : '#5ba4cf',
+            }}
+          ></div>
         </div>
       </div>
 
@@ -86,10 +94,24 @@ export function SetChecklist({ task, checklist, group }) {
         todos={checklist.todos}
         onRemoveTodo={onRemoveTodo}
         onDoneTodo={onDoneTodo}
-      // onEditTodo={onEditTodo}
+        // onEditTodo={onEditTodo}
       />
-      {!isModalOpen && <button className='add-todo-btn todo-btns-btn' onClick={() => setIsModalOpen(!isModalOpen)}>Add an item</button>}
-      {isModalOpen && <TodoAdd task={task} group={group} checklist={checklist} onCloseModal={onCloseModal} />}
+      {!isModalOpen && (
+        <button
+          className="add-todo-btn todo-btns-btn"
+          onClick={() => setIsModalOpen(!isModalOpen)}
+        >
+          Add an item
+        </button>
+      )}
+      {isModalOpen && (
+        <TodoAdd
+          task={task}
+          group={group}
+          checklist={checklist}
+          onCloseModal={onCloseModal}
+        />
+      )}
     </section>
   )
 }
@@ -107,4 +129,3 @@ export function SetChecklist({ task, checklist, group }) {
 //     </section>
 //   )
 // }
-

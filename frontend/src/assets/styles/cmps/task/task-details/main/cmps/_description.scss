@@ -1,29 +1,43 @@
 //* Description
 .task-details-main-description {
-  grid-area: description;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+  // grid-area: description;
+  // flex-direction: column;
+  padding: 0;
+  display: grid;
+  grid-auto-columns: 56px 512px;
+  grid-template-areas:
+    'icon title'
+    '. input';
+  gap: 18px 0px;
+  margin-bottom: 24px;
   &-icon {
-    grid-area: d-icon;
-    justify-self: center;
+    grid-area: icon;
+    justify-self: flex-start;
+    margin-left: 22px;
     color: #172b4d;
     font-size: 20px;
-    margin-top: 6px;
+    // margin-top: 6px;
   }
   &-title {
-    align-self: flex-start;
+    margin: 0;
+    // margin-bottom: 18px;
+    grid-area: title;
+    justify-self: flex-start;
     font-size: 16px;
     font-weight: 600;
     color: #172b4d;
   }
   &-input {
-    align-self: flex-start;
+    grid-area: input;
+    justify-self: flex-start;
+    padding: 8px 12px;
     width: 100%;
     border: none;
     overflow: hidden;
     overflow-wrap: break-word;
     resize: none;
+    background-color: #091e420a;
+    border-radius: 3px;
     color: #172b4d;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
       Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
