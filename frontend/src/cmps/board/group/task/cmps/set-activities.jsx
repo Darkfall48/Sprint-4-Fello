@@ -1,8 +1,9 @@
+//? Libraries
 import { useState } from 'react'
-import { useRef } from 'react'
+//? Icons
+import { RxActivityLog } from 'react-icons/rx'
+//? Services
 import { taskService } from '../../../../../services/board/task.service'
-import { utilService } from '../../../../../services/util.service'
-import { Loader } from '../../../../helpers/loader'
 
 export function SetActivities({ board, taskId }) {
   console.log('!Board', board)
@@ -19,11 +20,13 @@ export function SetActivities({ board, taskId }) {
   if (!activities || !activities.length)
     return (
       <section className="task-details-main-activities">
+        <RxActivityLog className="task-details-main-activities-icon" />
         <h2 className="task-details-main-activities-title">Activity</h2>
       </section>
     )
   return (
     <section className="task-details-main-activities">
+      <RxActivityLog className="task-details-main-activities-icon" />
       <h2 className="task-details-main-activities-title">Activity</h2>
       <section className="task-details-main-activities-container">
         {activities.map((activity) => (

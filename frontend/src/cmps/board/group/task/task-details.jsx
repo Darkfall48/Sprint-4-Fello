@@ -107,6 +107,7 @@ export function TaskDetails() {
     >
       <section className="task-details">
         <SetCloseBtn boardId={boardId} task={task} />
+
         <header
           className="task-details-header"
           onClick={(ev) => ev.stopPropagation()}
@@ -124,28 +125,27 @@ export function TaskDetails() {
           className="task-details-main"
           onClick={(ev) => ev.stopPropagation()}
         >
-          {task.labelIds && <SetLabels board={board} task={task} />}
-          {task.memberIds && <SetMembers board={board} task={task} group={group} />}
-          <GrTextAlignFull className="task-details-main-description-icon" />
+          <article className="task-details-main-article-container">
+            {task.memberIds && (
+              <SetMembers board={board} task={task} group={group} />
+            )}
+            {task.labelIds && <SetLabels board={board} task={task} />}
+          </article>
+
           <SetDescription task={task} />
-          <RxActivityLog className="task-details-main-activity-icon" />
           {board && <SetActivities board={board} taskId={taskId} />}
           {/*! Grid SCSS Not Working*/}
           {task.checklists &&
-          task.checklists.map((checklist, idx) => (
-            <>
-              <BsCheck2Square
-                key={idx}
-                className="task-details-main-checklist-icon"
-              />
-              <SetChecklist
-                key={checklist.id + idx}
-                task={task}
-                checklist={checklist}
-                group={group}
-              />
-            </>
-          ))}
+            task.checklists.map((checklist, idx) => (
+              <>
+                <SetChecklist
+                  key={checklist.id + idx}
+                  task={task}
+                  checklist={checklist}
+                  group={group}
+                />
+              </>
+            ))}
         </main>
 
         <aside
@@ -169,21 +169,33 @@ export function TaskDetails() {
               Add to Card
             </h2>
             <div className="task-details-aside-task-action-button">
-              <button title="I am Members" onClick={() => { setModalOpen('members') }}>
+              <button
+                title="I am Members"
+                onClick={() => {
+                  setModalOpen('members')
+                }}
+              >
                 <HiOutlineUser /> <span>Members</span>
               </button>
               <button title="I am Labels">
                 <TbTag /> <span>Labels</span>
               </button>
-              {(modalOpen === 'members') && <Modal
-                type="task-members"
-                modalTitle="Members"
-                onCloseModal={onCloseModal}
-                task={task}
-                group={group}
-                board={board}
-              />}
-              <button title="I am Checklist" onClick={() => { setModalOpen('checklist')}}>
+              {modalOpen === 'members' && (
+                <Modal
+                  type="task-members"
+                  modalTitle="Members"
+                  onCloseModal={onCloseModal}
+                  task={task}
+                  group={group}
+                  board={board}
+                />
+              )}
+              <button
+                title="I am Checklist"
+                onClick={() => {
+                  setModalOpen('checklist')
+                }}
+              >
                 <IoMdCheckboxOutline /> <span>Checklist</span>
               </button>
               {(modalOpen === 'checklist') && <Modal

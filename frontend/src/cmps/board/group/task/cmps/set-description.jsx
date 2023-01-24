@@ -1,9 +1,13 @@
+//? Icons
+import { GrTextAlignFull } from 'react-icons/gr'
+
 export function SetDescription({ task }) {
   const { description } = task
 
   if (!description || !description.length)
     return (
       <section className="task-details-main-description">
+        <GrTextAlignFull className="task-details-main-description-icon" />
         <h2 className="task-details-main-description-title">Description</h2>
         <textarea
           className="task-details-main-description-input"
@@ -17,6 +21,7 @@ export function SetDescription({ task }) {
     )
   return (
     <section className="task-details-main-description">
+      <GrTextAlignFull className="task-details-main-description-icon" />
       <h2 className="task-details-main-description-title">Description</h2>
       <textarea
         className="task-details-main-description-input"

@@ -1,11 +1,10 @@
-
-import { useRef, useState } from 'react';
+import { useRef, useState } from 'react'
 import { BsCheck2Square } from 'react-icons/bs'
-import { updateTask } from '../../../../../store/actions/board.actions';
-import { TodoAdd } from './checklist/todo-add';
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai"
+import { updateTask } from '../../../../../store/actions/board.actions'
+import { TodoAdd } from './checklist/todo-add'
 
-import { TodoList } from "./checklist/todo-list";
+import { TodoList } from './checklist/todo-list'
 
 export function SetChecklist({ task, checklist, group }) {
   const contentRef = useRef(null)
@@ -23,7 +22,7 @@ export function SetChecklist({ task, checklist, group }) {
   }
 
   function onRemoveTodo(todoId) {
-    console.log('todoId', todoId);
+    console.log('todoId', todoId)
     const { todos } = checklist
 
     const idx = todos.findIndex(todo => todo.id === todoId)
@@ -31,7 +30,6 @@ export function SetChecklist({ task, checklist, group }) {
     todos.splice(idx, 1)
 
     updateTask(group, task)
-
   }
 
   function onDoneTodo(todo) {
@@ -128,8 +126,14 @@ function onRemoveChecklist(checklistId) {
       <div className="progress-bar-container">
         <span>{getUserProgress()}%</span>
         <div className="progress-bar-bg">
-          <div className="progress-bar" style={{ height: "24px", width: getUserProgress() + "%", background: getUserProgress() === 100 ? '#61bd4f' : '#5ba4cf' }}>
-          </div>
+          <div
+            className="progress-bar"
+            style={{
+              height: '24px',
+              width: getUserProgress() + '%',
+              background: getUserProgress() === 100 ? '#61bd4f' : '#5ba4cf',
+            }}
+          ></div>
         </div>
       </div>
 
@@ -137,11 +141,24 @@ function onRemoveChecklist(checklistId) {
         todos={checklist.todos}
         onRemoveTodo={onRemoveTodo}
         onDoneTodo={onDoneTodo}
-      // onEditTodo={onEditTodo}
+        // onEditTodo={onEditTodo}
       />
-      {!isModalOpen && <button className='add-todo-btn todo-btns-btn' onClick={() => setIsModalOpen(!isModalOpen)}>Add an item</button>}
-      {isModalOpen && <TodoAdd task={task} group={group} checklist={checklist} onCloseModal={onCloseModal} />}
+      {!isModalOpen && (
+        <button
+          className="add-todo-btn todo-btns-btn"
+          onClick={() => setIsModalOpen(!isModalOpen)}
+        >
+          Add an item
+        </button>
+      )}
+      {isModalOpen && (
+        <TodoAdd
+          task={task}
+          group={group}
+          checklist={checklist}
+          onCloseModal={onCloseModal}
+        />
+      )}
     </section>
   )
 }
-

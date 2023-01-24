@@ -26,7 +26,7 @@
 @import 'cmps/app/loader';
 @import 'cmps/app/modal';
 
-// Board
+//* Board
 @import 'cmps/board/board-details';
 @import 'cmps/board/board-filter';
 @import 'cmps/board/board-list';
@@ -34,17 +34,34 @@
 @import 'cmps/board/board-add';
 @import 'cmps/board/board-header';
 @import 'cmps/board/board-menu';
-// Group
+//* Group
 @import 'cmps/group/group-filter';
 @import 'cmps/group/group-list';
 @import 'cmps/group/group-preview';
-// Task
-@import 'cmps/task/task-details';
+//* Task
 @import 'cmps/task/task-list';
 @import 'cmps/task/task-preview';
-//task/checklist
+// Task Details
+@import 'cmps/task/task-details/task-details';
+// Task Details: Header
+@import 'cmps/task/task-details/header/task-details-header';
+// Task Details: Main
+@import 'cmps/task/task-details/main/task-details-main';
+@import 'cmps/task/task-details/main/cmps/activities';
+@import 'cmps/task/task-details/main/cmps/checklist';
+@import 'cmps/task/task-details/main/cmps/description';
+@import 'cmps/task/task-details/main/cmps/labels';
+@import 'cmps/task/task-details/main/cmps/members';
+// Task Details: Aside
+@import 'cmps/task/task-details/aside/task-details-aside';
+@import 'cmps/task/task-details/aside/segments/suggested-action';
+@import 'cmps/task/task-details/aside/segments/task-action';
+@import 'cmps/task/task-details/aside/segments/group-action';
+
+//TODO: Implement inside: Task Details/Main/Cmps/Checklist
 @import 'cmps/task/cmps/checklist';
-// User
+
+//* User
 @import 'cmps/user/admin-view';
 @import 'cmps/user/login-form';
 @import 'cmps/user/login-signup';
