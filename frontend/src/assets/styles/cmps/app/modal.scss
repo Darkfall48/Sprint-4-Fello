@@ -1,15 +1,44 @@
-#modal-header-group-actions {
-    padding: 0 12px 8px 0;
+#modal-header {
+    padding: 0 6px 0 3px;
+    border-bottom: 1px solid #091e4221;
+    h6 {
+        margin-bottom: 0;
+        position: relative;
+    }
 
     button {
+        position: absolute;
+        right: 3px;
+        top: 4px;
         color: $clr-txt-btn;
         font-size: 1em;
-        padding-top: 7px;
+        // padding-top: 7px;
+        background-color: transparent;
+        color: #6e6e6e;
+        width: fit-content;
     }
 }
 
-#modal-form-container {
+// #modal-header-task-members {
+//     h2{
+//         text-align: center;
+//     }
 
+//     #close-btn {
+//         // position: absolute;
+//         // right: 0;
+//         background-color: transparent;
+//         padding: 0;
+//         color: #6e6e6e;
+//     }
+
+// }
+
+// .task-details-aside-task-action-button {
+//     position: relative;
+// }
+
+#modal-form-container {
     padding: 0 12px 20px 12px;
 
     .modal-form-container {}
@@ -17,29 +46,43 @@
     .modal-content-container {
         padding: 10px 0 0 0;
 
-        input {
-            padding: 12px 12px 12px 12px;
-        }
+        .members-modal-content-wrapper {
 
-        p {
-            margin-bottom: 12px;
-        }
+            input {
+                padding: 12px 12px 12px 12px;
+            }
 
-        .modal-btn-full-members {
-            @include btn('modal-full', white, 6px 12px, $list-btn-bg-clr-modal-hover);
-            justify-content: space-between;
-            margin: 0 0 5px 0;
-            font-size: 1em;
-        }
+            p {
+                margin-bottom: 12px;
+            }
 
-        .modal-btn-full {
-            @include btn('modal-full', $list-btn-bg-clr-modal-hover, 6px 12px, $task-details-btn-bg-clr-hover);
-            margin: 4px 0 0 0;
-        }
-        .no-member-msg{
-            background-color: $list-btn-bg-clr-modal-hover;
-            color: $clr-txt-btn;
-            padding: 24px 6px;
+            // .board-members-check{
+
+            //     width:100%;
+            // }
+
+            .modal-btn-full-members {
+                @include btn('modal-full', white, 6px 0, $list-btn-bg-clr-modal-hover);
+                display: grid;
+                grid-template-columns: 1fr 5fr 1fr;
+                justify-content: space-between;
+                margin: 0 0 5px 5px;
+                font-size: 1em;
+            }
+
+            .modal-btn-full {
+                @include btn('modal-full', $list-btn-bg-clr-modal-hover, 6px 12px, $task-details-btn-bg-clr-hover);
+                margin: 4px 0 0 0;
+                text-align: center;
+            }
+
+            .no-member-msg {
+                background-color: $list-btn-bg-clr-modal-hover;
+                color: $clr-txt-btn;
+                padding: 24px 6px;
+                // height: fit-content;
+            }
         }
     }
+
 }

@@ -28,6 +28,7 @@ import { SetMembers } from './cmps/set-members'
 import { SetTitle } from './cmps/set-title'
 import { Loader } from '../../../helpers/loader'
 import { BsCheck2Square } from 'react-icons/bs'
+import { Modal } from '../../../app/modal'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -35,6 +36,7 @@ export function TaskDetails() {
 
   const [group, setGroup] = useState([])
   const [task, setTask] = useState([])
+  const [modalOpen, setModalOpen] = useState('')
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -53,9 +55,9 @@ export function TaskDetails() {
     'as task:',
     taskId
   )
-  console.log('Taskkyyyy', task)
-  console.log('Grouppyyyy', group)
-  console.log('Boardyyyy', board)
+  // console.log('Taskkyyyy', task)
+  // console.log('Grouppyyyy', group)
+  // console.log('Boardyyyy', board)
 
   //? Update Task - CRUDL
   async function onUpdateTaskTitle({ value }) {
@@ -91,6 +93,10 @@ export function TaskDetails() {
     } catch (err) {
       console.error('Failed to copy text: ', err)
     }
+  }
+
+  function onCloseModal() {
+    setModalOpen('')
   }
 
   if (!board || !group || !task) return <Loader />
@@ -163,12 +169,20 @@ export function TaskDetails() {
               Add to Card
             </h2>
             <div className="task-details-aside-task-action-button">
-              <button title="I am Members">
+              <button title="I am Members" onClick={() => { setModalOpen('members') }}>
                 <HiOutlineUser /> <span>Members</span>
               </button>
               <button title="I am Labels">
                 <TbTag /> <span>Labels</span>
               </button>
+              {(modalOpen === 'members') && <Modal
+                type="task-members"
+                modalTitle="Members"
+                onCloseModal={onCloseModal}
+                task={task}
+                group={group}
+                board={board}
+              />}
               <button title="I am Checklist">
                 <IoMdCheckboxOutline /> <span>Checklist</span>
               </button>
