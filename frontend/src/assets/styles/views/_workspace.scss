@@ -42,4 +42,23 @@
         text-transform: uppercase;
     }
 
+    // @include for-mobile-layout {
+    //     background-color: $clr3;
+    // }
+
+    // @include for-narrow-layout {
+    //     background-color: $clr2;
+    // }
+    
+    // @include for-normal-layout {
+    //     background-color: $clr3;
+    //     max-width: 900px;
+    // }
+
+    // @include for-wide-layout {
+    //     background-color: $clr4;
+    //     max-width: 1038px;
+    // }
+    
+
 }

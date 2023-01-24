@@ -25,7 +25,7 @@ export function Home() {
           </div>
         </div>
 
-        <img src={svg} alt="Wave" />
+        {/* <img src={svg} alt="Wave" /> */}
       </div>
       <div className="secondary-content-container full">
         <div className="txt-content">

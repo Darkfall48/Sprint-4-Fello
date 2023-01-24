@@ -1,16 +1,30 @@
 .home-section {
-  background: center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
-  background-blend-mode: normal, normal;
+  // background: url(../../img/home-page/wave.svg) center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+  // background-blend-mode: normal, normal;
   color: $clr-white;
   padding: 0;
   font-family: charlie-regular, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
+  @include for-mobile-layout {
+    background: url(../../img/home-page/wave-mobile.svg) center bottom -0.5px / 100% 24% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto no-repeat scroll padding-box border-box rgb(82, 67, 170);
+    background-blend-mode: normal, normal;
+    color: rgb(255, 255, 255);
+  }
+
   .wave-container {
     margin: 0;
+    background: url(../../img/home-page/wave.svg) center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    background-blend-mode: normal, normal;
+
+
 
     img {
       margin-top: -90px;
       transform: scaleX(-1);
+
+      @include for-mobile-layout {
+        margin-top: 0;
+      }
     }
 
     .content-container {
@@ -18,6 +32,14 @@
       justify-content: space-around;
       margin: 0 100px;
       padding: 0 100px;
+
+      @include for-mobile-layout {
+        flex-direction: column;
+        // flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+
+      }
 
       .txt-container {
         text-align: left;
@@ -27,9 +49,26 @@
         margin-bottom: 0px;
         padding: 60px 10px 0 150px;
 
+        @include for-mobile-layout {
+          padding: 4rem 1rem 1rem;
+          position: relative;
+          scroll-margin-top: 72px;
+          text-align: center;
+          width: 100%;
+          margin-top: 0px;
+        }
+
         h1 {
           font-size: 3rem;
           line-height: 1.25;
+
+          @include for-mobile-layout {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            margin-top: 0px;
+            font-size: 2rem;
+            line-height: 1.25;
+          }
         }
 
         p {
@@ -41,9 +80,21 @@
       .img-container {
         margin-top: 150px;
 
+        @include for-mobile-layout {
+          margin-top: 0;
+        }
+
         img {
           transform: scaleX(1);
           padding: 0px 150px 0 10px;
+
+          @include for-mobile-layout {
+            padding: 0;
+            padding-top: 4rem;
+            max-width: 100%;
+            height: auto;
+            margin-bottom: -150px;
+          }
         }
       }
     }
@@ -57,31 +108,55 @@
     text-align: center;
     padding: 100px;
     padding-top: 0;
-    margin-top: -20px;
+    // margin-top: -20px;
+    @include for-mobile-layout {
+      padding: 0;
+    }
 
     .txt-content {
       padding: 60px 30px;
+
+      @include for-mobile-layout {
+        padding: 170px 30px 60px;
+      }
     }
 
     h1 {
       font-size: 3rem;
       font-weight: 900;
-      letter-spacing: 0.35px;
-      line-height: 48px;
-      margin-bottom: 7px;
+      letter-spacing: rem(0.35px);
+      line-height: rem(48px);
+      margin-bottom: 1rem;
     }
 
     p {
-      font-size: 20px;
+      font-size: rem(20px);
       line-height: 30px;
       margin: 0;
       margin-bottom: 24px;
-      padding: 0 200px;
+      padding: 0 400px;
+      line-height: 1.5;
+
+      @include for-mobile-layout {
+        padding: 0;
+        padding-top: 1rem;
+      }
+    }
+
+    .home-btn {
+      @include for-mobile-layout {
+        width: auto;
+        display: inline-flex;
+      }
     }
 
     img {
       width: 900px;
-      margin-left: 40px;
+      margin-left: rem(40px);
+
+      @include for-mobile-layout {
+        margin-left: rem(5px);
+      }
     }
   }
 }
@@ -100,8 +175,87 @@
   position: relative;
   z-index: 5;
 
+  @include for-mobile-layout {
+    width: 100%;
+    display: inline-block;
+  }
+
   &:hover {
     background-color: #064ab0;
     color: $clr-white;
   }
 }
+
+
+// @include for-wide-layout {
+  
+//     .home-section {
+//       color: $clr-white;
+//       padding: 0;
+//       font-family: charlie-regular, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+//       .wave-container {
+//         margin: 0;
+//         background: url(../../img/home-page/wave.svg) center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+//         background-blend-mode: normal, normal;
+
+//         img {
+//           margin-top: -90px;
+//           transform: scaleX(-1);
+//         }
+
+//         .content-container {
+//           display: flex;
+//           justify-content: space-around;
+//           margin: 0 100px;
+//           padding: 0 100px;
+
+//           .txt-container {
+//             text-align: left;
+//             display: block;
+//             flex: 0 0 auto;
+//             width: 50%;
+//             margin-bottom: 0px;
+//             padding: 60px 10px 0 150px;
+
+//             h1 {
+//               font-size: 3rem;
+//               line-height: 1.25;
+//             }
+//           }
+
+//           .img-container {
+//             margin-top: 150px;
+
+//             img {
+//               transform: scaleX(1);
+//               padding: 0px 150px 0 10px;
+//             }
+//           }
+
+//         }
+
+//         .secondary-content-container {
+//           padding: 100px;
+//           padding-top: 0;
+
+//           .txt-content {
+//             padding: 60px 30px;
+
+//             p{
+//               padding: 0 400px;
+//             }
+//           }
+
+//           img{
+//             margin-left: rem(40px);
+//           }
+//         }
+
+//       }
+
+
+//     }
+
+  
+// }

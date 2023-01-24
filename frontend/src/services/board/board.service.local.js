@@ -22,6 +22,8 @@ export const boardService = {
   // getRandomBoard,
   getImages,
   getColors,
+  getEmptyTodo,
+  getEmptyChecklist,
 }
 
 async function query() {
@@ -145,6 +147,22 @@ function getEmptyTask(taskTitle) {
   }
 }
 
+function getEmptyTodo() {
+  return {
+    id: utilService.makeId(5),
+    title: '',
+    isDone: false,
+  }
+}
+
+function getEmptyChecklist() {
+  return {
+    id: utilService.makeId(5),
+    title: 'Checklist',
+    todos: []
+  }
+}
+
 function getDefaultFilter() {
   return { name: '', price: '', pageIdx: '' }
 }
@@ -152,6 +170,8 @@ function getDefaultFilter() {
 function getDefaultSort() {
   return { name: '' }
 }
+
+
 
 // function getRandomBoard() {
 //   const board = getEmptyBoard()
@@ -278,7 +298,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             },
             checklists: [
               {
-                id: 'YEhmF',
+                id: utilService.makeId(5),
                 title: 'Checklist',
                 todos: [
                   {
@@ -299,7 +319,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                 ],
               },
               {
-                id: 'YEhmE',
+                id: utilService.makeId(5),
                 title: 'Another Checklist',
                 todos: [
                   {
@@ -343,7 +363,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             comments: [],
             checklists: [
               {
-                id: 'YEhmF',
+                id: utilService.makeId(5),
                 title: 'Checklist',
                 todos: [
                   {
@@ -364,7 +384,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                 ],
               },
               {
-                id: 'YEhmE',
+                id: utilService.makeId(5),
                 title: 'Another Checklist',
                 todos: [
                   {
@@ -415,7 +435,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             },
             checklists: [
               {
-                id: 'YEhmF',
+                id: utilService.makeId(5),
                 title: 'Checklist',
                 todos: [
                   {
@@ -436,7 +456,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                 ],
               },
               {
-                id: 'YEhmE',
+                id: utilService.makeId(5),
                 title: 'Another Checklist',
                 todos: [
                   {
@@ -480,7 +500,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             comments: [],
             checklists: [
               {
-                id: 'YEhmF',
+                id: utilService.makeId(5),
                 title: 'Checklist',
                 todos: [
                   {
@@ -501,7 +521,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                 ],
               },
               {
-                id: 'YEhmE',
+                id: utilService.makeId(5),
                 title: 'Another Checklist',
                 todos: [
                   {
@@ -589,7 +609,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             ],
             checklists: [
               {
-                id: 'YEhmF',
+                id: utilService.makeId(5),
                 title: 'Checklist',
                 todos: [
                   {
@@ -610,7 +630,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                 ],
               },
               {
-                id: 'YEhmE',
+                id: utilService.makeId(5),
                 title: 'Another Checklist',
                 todos: [
                   {
@@ -708,7 +728,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             ],
             checklists: [
               {
-                id: 'YEhmF',
+                id: utilService.makeId(5),
                 title: 'Checklist',
                 todos: [
                   {
@@ -725,7 +745,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                 ],
               },
               {
-                id: 'YEhmE',
+                id: utilService.makeId(5),
                 title: 'Another Checklist',
                 todos: [
                   {
@@ -850,7 +870,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                 ],
               },
               {
-                id: 'YEhmE',
+                id: utilService.makeId(5),
                 title: 'Another Checklist',
                 todos: [
                   {
@@ -1013,7 +1033,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
             ],
             checklists: [
               {
-                id: 'YEhmF',
+                id: utilService.makeId(5),
                 title: 'Checklist',
                 todos: [
                   {
@@ -1034,7 +1054,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                 ],
               },
               {
-                id: 'YEhmE',
+                id: utilService.makeId(5),
                 title: 'Another Checklist',
                 todos: [
                   {
@@ -1304,7 +1324,7 @@ function _createTask(title) {
     ],
     checklists: [
       {
-        id: 'YEhmF',
+        id: utilService.makeId(5),
         title: 'Checklist',
         todos: [
           {
@@ -1325,7 +1345,7 @@ function _createTask(title) {
         ],
       },
       {
-        id: 'YEhmE',
+        id: utilService.makeId(5),
         title: 'Another Checklist',
         todos: [
           {

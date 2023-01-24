@@ -27,6 +27,7 @@ import { SetLabels } from './cmps/set-labels'
 import { SetMembers } from './cmps/set-members'
 import { SetTitle } from './cmps/set-title'
 import { Loader } from '../../../helpers/loader'
+import { BsCheck2Square } from 'react-icons/bs'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -124,7 +125,7 @@ export function TaskDetails() {
           <RxActivityLog className="task-details-main-activity-icon" />
           {board && <SetActivities board={board} taskId={taskId} />}
           {/*! Grid SCSS Not Working*/}
-          {/* {task.checklists &&
+          {task.checklists &&
           task.checklists.map((checklist, idx) => (
             <>
               <BsCheck2Square
@@ -135,9 +136,10 @@ export function TaskDetails() {
                 key={checklist.id + idx}
                 task={task}
                 checklist={checklist}
+                group={group}
               />
             </>
-          ))} */}
+          ))}
         </main>
 
         <aside

@@ -44,8 +44,8 @@ a {
         border-radius: 3px;
         color: $clr-white;
         font-size: .8547em;
-        height: 96px;
-        width: 194px;
+        height: rem(96px);
+        min-width: rem(194px);
 
 
         // filter: contrast(70%);
@@ -306,4 +306,8 @@ h4 {
     color: $clr-white ;
     height: 0.1px;
 
+}
+
+.boards-page-board-section-list-item:nth-of-type(4n) {
+    margin-right: 0;
 }
