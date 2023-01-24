@@ -14,25 +14,27 @@ export function TaskLabelsModal(){
     }
 
     return <section className='modal-content-container'>
-        {/* {isAppMember && */}
-            <div>
-                <input type="text" value={member} onChange={handleChange} />
-                <p>Board members</p>
-                <a className='modal-btn-full-members' >
-                    <img src="../../assets/img/members/member1.png" alt="" />
-                    <span>member.name</span>
-                    {/* {isTaskMember &&  */}
-                    <span><FiCheck/></span>
-                    {/* } */}
-                </a>
-                <button className='modal-btn-full' >
-                    Show other workspace members
-                </button>
-            </div>
-        {/*  } */}
-        {/* {!isAppMember &&  */}
-        <div className="no-member-msg">Looks like that person isn't a member yet.
-            Enter their email address to add them to the card and board.</div>
-            {/* } */}
+        <p>hello</p>
     </section>
 }
+
+//  {isAppMember && 
+// {/* <div>
+// <input type="text" value={member} onChange={handleChange} />
+// <p>Board members</p>
+// <a className='modal-btn-full-members' >
+//     <img src="../../assets/img/members/member1.png" alt="" />
+//     <span>member.name</span>
+//     {/* {isTaskMember &&  */}
+//     <span><FiCheck/></span>
+//     {/* } */}
+// </a>
+// <button className='modal-btn-full' >
+//     Show other workspace members
+// </button>
+// </div>
+// {/*  } */}
+// {/* {!isAppMember &&  */}
+// <div className="no-member-msg">Looks like that person isn't a member yet.
+// Enter their email address to add them to the card and board.</div> */}
+//  } 

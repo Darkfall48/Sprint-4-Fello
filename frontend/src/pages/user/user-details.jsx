@@ -90,7 +90,6 @@ export function UserDetails() {
         <HiOutlineShare/> */}
       </button>
 
-
       
     </section>
   )

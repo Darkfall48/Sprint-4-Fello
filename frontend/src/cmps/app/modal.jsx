@@ -12,8 +12,8 @@ export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task ,
     return <div className={`modal-content modal-${type}`} onClick={(e) => e.stopPropagation()} >
         <div className="form-container" id="modal-form-container">
 
-            <div className="modal-header" id={`modal-header-${type}`}>
-                <h2>{modalTitle} </h2>
+            <div id="modal-header">
+                <h6>{modalTitle} </h6>
                 <button id='close-btn' onClick={onCloseModal}><CgClose /></button>
             </div>
             {(() => {
