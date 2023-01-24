@@ -1,9 +1,15 @@
 //? Icon
+import { useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
+import { BsBrightnessAltHigh } from 'react-icons/bs'
 
-export function SetLabels({ type, board, task }) {
+
+export function SetLabels({ type, board, task, filteredLabels }) {
   const labels = board?.labels
   const { labelIds } = task
+
+
+
   switch (type) {
     //* Task Preview
     case 'preview':
@@ -25,6 +31,12 @@ export function SetLabels({ type, board, task }) {
         </article>
       )
       break
+    //* Labels modal Modal
+    // case 'modal':
+    //   return (
+
+    //   )
+    //   break
 
     default:
       //* Task Details
