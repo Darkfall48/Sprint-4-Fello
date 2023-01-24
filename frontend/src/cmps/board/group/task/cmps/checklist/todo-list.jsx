@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { TodoEdit } from './todo-edit.jsx'
 import { TodoPreview } from './todo-preview.jsx'
+import { AiOutlineClose } from 'react-icons/ai'
 
 export function TodoList({ todos, onRemoveTodo, onEditTodo, onDoneTodo }) {
   const [istodoEditable, setIstodoEditable] = useState(false)
@@ -30,12 +31,7 @@ export function TodoList({ todos, onRemoveTodo, onEditTodo, onDoneTodo }) {
           <div className="task-details-main-checklist-todos-list-todo-btn-container">
             <button
               className="task-details-main-checklist-todos-list-todo-btn-container-remove-btn"
-              onClick={() => {
-                onRemoveTodo(todo.id)
-              }}
-            >
-              X
-            </button>
+              onClick={() => { onRemoveTodo(todo.id) }} ><AiOutlineClose /></button>
             {/* {istodoEditable && <TodoEdit onCloseModal={onCloseModal} todo={todo} onEditTodo={onEditTodo}/>} */}
           </div>
         </li>

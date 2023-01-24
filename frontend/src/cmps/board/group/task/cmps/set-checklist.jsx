@@ -17,11 +17,8 @@ export function SetChecklist({ task, checklist, group }) {
   }
 
   function onRemoveTodo(todoId) {
-    console.log('todoId', todoId)
     const { todos } = checklist
-
     const idx = todos.findIndex((todo) => todo.id === todoId)
-    // if (idx < 0) throw new Error(`Remove failed, cannot find entity with id: ${todoId}`)
     todos.splice(idx, 1)
 
     updateTask(group, task)
@@ -30,11 +27,11 @@ export function SetChecklist({ task, checklist, group }) {
   function onDoneTodo(todo) {
     todo.isDone = !todo.isDone
     updateTask(group, task)
-    // console.log('updated task isDone', task);
   }
 
   function getUserProgress() {
     const { todos } = checklist
+    if (!todos.length) return 0
     if (todos.length) {
       let doneTodos = todos.filter((todo) => todo.isDone === true)
       let toPrecentage = Math.ceil((doneTodos.length / todos.length) * 100)
@@ -77,10 +74,7 @@ export function SetChecklist({ task, checklist, group }) {
 
   function onRemoveChecklist(checklistId) {
     const { checklists } = task
-    const idx = checklists.findIndex(
-      (checklist) => checklist.id === checklistId
-    )
-    // if (idx < 0) throw new Error(`Remove failed, cannot find entity with id: ${todoId}`)
+    const idx = checklists.findIndex(checklist => checklist.id === checklistId)
     checklists.splice(idx, 1)
     updateTask(group, task)
   }
@@ -141,11 +135,10 @@ export function SetChecklist({ task, checklist, group }) {
       )}
 
       <span className="task-details-main-checklist-progress-bar-percentage">
-        {getUserProgress()}%
+        {getUserProgress() + '%'}
       </span>
       <div className="task-details-main-checklist-progress-bar-advancement">
-        <div
-          className="task-details-main-checklist-progress-bar-advancement-transition"
+        <div className="task-details-main-checklist-progress-bar-advancement-transition"
           style={{
             height: 'inherit',
             width: getUserProgress() + '%',

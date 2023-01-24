@@ -2,87 +2,67 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { showErrorMsg, showSuccessMsg } from "../../../services/connection/event-bus.service"
 import { boardService } from "../../../services/board/board.service.local"
-import { addBoard } from "../../../store/actions/board.actions"
+import { addBoard, updateTask } from "../../../store/actions/board.actions"
+import { ImgUploader } from "../../helpers/img-uploader"
 
-export function TaskCoverModal({ task, onCloseModal }) {
-    const [boardToAdd, setBoardToAdd] = useState(boardService.getEmptyBoard())
-    const navigate = useNavigate()
+export function TaskCoverModal({ task, group, onCloseModal }) {
 
-
-    function handleChange({ target }) {
-        let { value, name: field } = target
-        setBoardToAdd((prevBoard) => ({ ...prevBoard, [field]: value }))
-    }
-
-    async function onSaveBoard(ev) {
-        ev.preventDefault()
-        onCloseModal()
-        try {
-            await addBoard(boardToAdd)
-            console.log('board saved', boardToAdd);
-            showSuccessMsg('Board saved!')
-            // navigate(`/board/${boardToAdd._id}`)
-
-        } catch (err) {
-            console.log('err', err)
-            showErrorMsg('Cannot save board')
-        }
-        // navigate(`/board/${boardToAdd._id}`)
-        navigate(`/board`)
-
-    }
+    const [updatedTask, onupdatedTask] = useState(task)
 
     function changeBoard(imgUrl, color) {
 
-        boardToAdd.style.backgroundImg = imgUrl
-        boardToAdd.style.bgColor = color
+        updatedTask.style.bgImg = imgUrl
+        updatedTask.style.bgColor = color
 
-        if (!boardToAdd.style.bgColor) {
-            boardToAdd.style.backgroundImg = imgUrl
-            setBoardToAdd((prevBoard) => ({ ...prevBoard, style: { backgroundImg: imgUrl, bgColor: '' } }))
+        if (!updatedTask.style.bgColor) {
+            updatedTask.style.bgImg = imgUrl
+            onupdatedTask((prevTask) => ({ ...prevTask, style: { bgImg: imgUrl, bgColor: '' } }))
+            updateTask(group, task)
         }
 
-        if (!boardToAdd.style.backgroundImg) {
-            boardToAdd.style.bgColor = color
-            setBoardToAdd((prevBoard) => ({ ...prevBoard, style: { backgroundImg: '', bgColor: color } }))
+        if (!updatedTask.style.bgImg) {
+            updatedTask.style.bgColor = color
+            onupdatedTask((prevTask) => ({ ...prevTask, style: { bgImg: '', bgColor: color } }))
+            updateTask(group, task)
         }
 
     }
-    return <div>
-        <div className="board-preview">
-            <div className="img-container" style={boardToAdd?.style?.backgroundImg && { background: `url(${boardToAdd.style.backgroundImg}) center center / cover` } || boardToAdd?.style?.bgColor && { background: boardToAdd.style.bgColor }}>
-                <img src="https://a.trellocdn.com/prgb/dist/images/board-preview-skeleton.14cda5dc635d1f13bc48.svg" alt="" />
+
+    const onUploaded = (imgUrl) => {
+        console.log('imgUrl', imgUrl);
+        updatedTask.style.bgImg = imgUrl
+        onupdatedTask((prevTask) => ({ ...prevTask, style: { bgImg: imgUrl, bgColor: '' } }))
+        updateTask(group, task)
+    }
+
+    return <div className="task-cover">
+
+        <p>Size</p>
+        <div className="cover-size-container">
+            <div role="button" className="cover-size" style={updatedTask?.style?.bgImg && { background: `url(${updatedTask.style.bgImg}) center center / cover` } || updatedTask?.style?.bgColor && { background: updatedTask.style.bgColor }}>
+                <div className="cover-lines">
+                    <div className="line-1">
+
+                    </div>
+                </div>
+            </div>
+            <div role="button" className="cover-size" style={updatedTask?.style?.bgImg && { background: `url(${updatedTask.style.bgImg}) center center / cover` } || updatedTask?.style?.bgColor && { background: updatedTask.style.bgColor }}>
+
             </div>
         </div>
+        <button>Remove cover</button>
 
-        <p>Background</p>
-        <div className="btns-cover-img">
-            {boardService.getImages().map((image, idx) => {
-                return <button key={idx} onClick={() => changeBoard(image, '')} className="btn-cover-img" style={{ backgroundImage: `url(${image})` }}></button>
-            })}
-        </div>
-
+        <p>Colors</p>
         <div className="btns-cover-color">
-            {boardService.getColors().map((color, idx) => {
-                return <button key={idx} onClick={() => changeBoard('', color)} className="btn-cover-color" style={{ backgroundColor: color }}></button>
+            {boardService.getCoverColors().map((color, idx) => {
+                return <button key={idx} onClick={() => changeBoard('', color)} className="btn-cover-color" style={{ background: color }}></button>
             })}
         </div>
 
-        <form onSubmit={onSaveBoard}>
-            <label htmlFor="title">Board title<span> *</span></label>
-            <input type="text"
-                name="title"
-                id="title"
-                placeholder="Enter title..."
-                value={boardToAdd.title}
-                onChange={handleChange}
-                required
-            />
+        <p>Attachments</p>
+        <button>Upload a cover image</button>
+        <ImgUploader onUploaded={onUploaded} />
+        
 
-            <div className="add-save-btns" >
-                {boardToAdd.title && <button className="allowed" style={{ cursor: 'pointer' }}> Create </button>}
-                {!boardToAdd.title && <button style={{ cursor: 'not-allowed' }}> Create </button>}
-            </div>
-        </form>
     </div>
 }

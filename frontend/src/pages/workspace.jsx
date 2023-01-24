@@ -17,7 +17,6 @@ export function Workspace() {
     onLoadBoards()
   }, [])
 
-
   async function onLoadBoards() {
     try {
       await loadBoards()
@@ -43,28 +42,10 @@ export function Workspace() {
     else return <h1><AiOutlineStar className="workspace-icons" /> Starred boards</h1>
   }
 
-  // function onCountryClick(ev, country) {
-  //   ev.preventDefault()
-  //   const { recentlyViewed } = this.state;
-  //   const newState = {}; // add your other updates here
-
-  //   if (!recentlyViewed.includes(country)) {
-  //     // firstly take first two items as a new array
-  //     newState.recentlyViewed = recentlyViewed.slice(1);
-  //     // add country into beginning of new array
-  //     newState.recentlyViewed.unshift(country);
-  //   }
-
-  //   this.setState(newState);
-
-  // }
-
-
   if (!boards) return <Loader />
   return <section className="workspace-section" >
 
     <div className="starred-boards-container">
-      {/* {starredBoard.length && <h1><AiOutlineStar className="workspace-icons"/> Starred boards</h1>} */}
       {onStarredBoard()}
       <BoardList
         boards={starredBoard}
@@ -86,7 +67,6 @@ export function Workspace() {
         createBoardPlaceholder={true}
       />
     </div>
-
 
   </section>
 }

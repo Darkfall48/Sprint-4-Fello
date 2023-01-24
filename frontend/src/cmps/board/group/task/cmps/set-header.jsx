@@ -5,7 +5,7 @@ import { MdOutlineLaptop } from 'react-icons/md'
 import { Modal } from '../../../../app/modal'
 import { SetCloseBtn } from './set-close-btn'
 
-export function SetHeader({ task }) {
+export function SetHeader({ task, group }) {
   const { style } = task
   const [modalOpen, setModalOpen] = useState(false)
 
@@ -22,8 +22,9 @@ export function SetHeader({ task }) {
   return (
     <div
       className="task-details-header-cover"
-      style={{ backgroundColor: style.bgColor }}
+      style={style?.bgColor ? { background: `url(${style.bgColor})` }: {background: 'rgb(185, 199, 206)'}}
     >
+      <img src={style.bgImg} alt="" />
       <button title="Change cover"
       onClick={()=>setModalOpen(true)}
       >
@@ -34,6 +35,7 @@ export function SetHeader({ task }) {
       modalTitle={'Cover'}
       task={task} 
       onCloseModal={onCloseModal} 
+      group={group}
       />}
     </div>
   )

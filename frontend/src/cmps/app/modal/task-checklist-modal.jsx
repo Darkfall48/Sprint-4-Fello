@@ -7,11 +7,8 @@ export function TaskChecklistModal({ board, onCloseModal, group, task }) {
     const [checklistToAdd, setChecklistToAdd] = useState(boardService.getEmptyChecklist())
     const inputRef = useRef(null)
 
-    console.log('board.groups.task!!!!!!!!', board.groups);
-
     function handleChange({ target }) {
         let { value, name: field } = target
-        console.log('value', value);
         setChecklistToAdd((prevTodo) => {
             return { ...prevTodo, [field]: value }
         })
@@ -19,7 +16,6 @@ export function TaskChecklistModal({ board, onCloseModal, group, task }) {
 
     function onAddChecklist(ev) {
         ev.preventDefault()
-        console.log('ev', ev);
         if (inputRef.current.value === '') return
 
         task.checklists.push(checklistToAdd)
@@ -27,8 +23,6 @@ export function TaskChecklistModal({ board, onCloseModal, group, task }) {
         onCloseModal()
         inputRef.current.value = ''
     }
-
-console.log('group.tasks', group.tasks);
 
     return <div>
         <p>Title</p>
@@ -49,9 +43,9 @@ console.log('group.tasks', group.tasks);
             <option value="none">(none)</option>
             {board.groups.map(group => {
                 group.tasks.map(task =>{
-                    return <optgroup label={task.title}>
+                    return <optgroup key={task.id} label={task.title}>
                     {task?.checklists?.map(checklist => {
-                        return <option value={checklist.title}>{checklist.title}</option>
+                        return <option key={checklist.id} value={checklist.title}>{checklist.title}</option>
                     })}
                 </optgroup>
                 })

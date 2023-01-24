@@ -14,7 +14,6 @@ export function BoardList({ boards, onEditBoard, onRemoveBoard, createBoardPlace
 
     return <section className="board-list">
         <ul>
-       
             {boards.map((board, index) =>
                 <li
                     key={index}
@@ -25,9 +24,8 @@ export function BoardList({ boards, onEditBoard, onRemoveBoard, createBoardPlace
                         onEditBoard={onEditBoard}
                         onRemoveBoard={onRemoveBoard}
                     />
-
                 </li>)}
-                {createBoardPlaceholder && <button className="board-list-btn" onClick={() => { setIsModalOpen(!isModalOpen) }}>Create new board</button>}
+            {createBoardPlaceholder && <button className="board-list-btn" onClick={() => { setIsModalOpen(!isModalOpen) }}>Create new board</button>}
         </ul>
 
         {/* {isModalOpen &&  <Modal type={'add-board'} modalTitle={'Create board'} onCloseModal={onCloseModal}/> } */}

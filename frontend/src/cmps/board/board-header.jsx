@@ -42,9 +42,7 @@ export function BoardHeader({board}) {
     function onStarredBoard() {
         board.isStarred = !board.isStarred
         setIsStarred(!board.isStarred)
-        // console.log('board.isStarred', board.isStarred);
         updateBoard(board)
-        // console.log('board from board-header', board)
     }
 
     return (

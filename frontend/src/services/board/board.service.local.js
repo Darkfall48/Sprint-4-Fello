@@ -24,6 +24,7 @@ export const boardService = {
   getColors,
   getEmptyTodo,
   getEmptyChecklist,
+  getCoverColors,
 }
 
 async function query() {
@@ -147,19 +148,19 @@ function getEmptyTask(taskTitle) {
   }
 }
 
+function getEmptyChecklist() {
+  return {
+    id: utilService.makeId(5),
+    title: 'Checklist',
+    todos: []
+  }
+}
+
 function getEmptyTodo() {
   return {
     id: utilService.makeId(5),
     title: '',
     isDone: false,
-  }
-}
-
-function getEmptyChecklist() {
-  return {
-    id: utilService.makeId(5),
-    title: '',
-    todos: []
   }
 }
 
@@ -170,7 +171,6 @@ function getDefaultFilter() {
 function getDefaultSort() {
   return { name: '' }
 }
-
 
 
 // function getRandomBoard() {
@@ -562,6 +562,8 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+            comments: [],
+            checklists: [],
             style: {
               bgColor:
                 utilService.getRandomIntInclusive(1, 4) <= 2
@@ -679,6 +681,8 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+            comments: [],
+            checklists: [],
             style: {
               bgColor:
                 utilService.getRandomIntInclusive(1, 4) <= 2
@@ -789,6 +793,8 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+            comments: [],
+            checklists: [],
             style: {
               bgColor:
                 utilService.getRandomIntInclusive(1, 4) <= 2
@@ -814,6 +820,8 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+            comments: [],
+            checklists: [],
             style: {
               bgColor:
                 utilService.getRandomIntInclusive(1, 4) <= 2
@@ -906,6 +914,8 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+             comments: [],
+            checklists: [],
             style: {
               bgColor:
                 utilService.getRandomIntInclusive(1, 4) <= 2
@@ -987,6 +997,8 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+            comments: [],
+            checklists: [],
             style: {
               bgColor:
                 utilService.getRandomIntInclusive(1, 4) <= 2
@@ -1095,6 +1107,8 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+            comments: [],
+            checklists: [],
             style: {
               bgColor:
                 utilService.getRandomIntInclusive(1, 4) <= 2
@@ -1142,6 +1156,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
                 },
               },
             ],
+            checklists: [],
             style: {
               bgColor:
                 utilService.getRandomIntInclusive(1, 4) <= 2
@@ -1397,4 +1412,7 @@ function getImages() {
 function getColors() {
   return ['#0079bf', '#d29034', '#519839', '#b04632', '#89609e']
   // return ['#5ba4cf', '#f5dd29', '#7bc86c', '#ef7564', '#cd8de5']
+}
+function getCoverColors() {
+  return ['#7BC86C', '#F5DD29', '#FFAF3F', '#EF7564', '#CD8DE5','#5BA4CF', '#29CCE5', '#6DECA9', '#FF8ED4', '#172B4D' ]
 }

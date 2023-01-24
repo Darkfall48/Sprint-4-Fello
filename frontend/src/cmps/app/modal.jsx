@@ -31,7 +31,7 @@ export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task ,
                     case 'task-checklist':
                         return <TaskChecklistModal onCloseModal={onCloseModal} board={board} task={task} group={group} />
                     case 'task-cover':
-                        return <TaskCoverModal onCloseModal={onCloseModal} task={task}/>
+                        return <TaskCoverModal onCloseModal={onCloseModal} task={task} group={group}/>
                     default:
                         console.log(`Cannot load component type: ${type}.`);
                 }

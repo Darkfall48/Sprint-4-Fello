@@ -15,8 +15,6 @@ export function BoardAdd({ onCloseModal }) {
 
     const [boardToAdd, setBoardToAdd] = useState(boardService.getEmptyBoard())
     const navigate = useNavigate()
-    const refContainer = useRef()
-
 
     function handleChange({ target }) {
         let { value, name: field } = target
@@ -41,24 +39,21 @@ export function BoardAdd({ onCloseModal }) {
 
     }
 
-    function changeBoard(imgUrl, color) {
+    async function changeBoard(imgUrl, color) {
 
         boardToAdd.style.backgroundImg = imgUrl
         boardToAdd.style.bgColor = color
 
         if (!boardToAdd.style.bgColor) {
+            try {
+                const color = await fac.getColorAsync(imgUrl)
+                boardToAdd.style.backgroundImg = imgUrl
+                boardToAdd.style.bgColor = color.rgba
+                setBoardToAdd((prevBoard) => ({ ...prevBoard, style: { backgroundImg: imgUrl, bgColor: boardToAdd.style.bgColor } }))
 
-            const averageColor = fac.getColorAsync(imgUrl)
-                .then(color => {
-                    console.log('color', color);
-                    boardToAdd.style.backgroundImg = imgUrl
-                    boardToAdd.style.bgColor = color.rgba
-                    setBoardToAdd((prevBoard) => ({ ...prevBoard, style: { backgroundImg: imgUrl, bgColor: boardToAdd.style.bgColor } }))
-                })
-                .catch(e => {
-                    console.log(e);
-                });
-            console.log('boardToAdd.style.bgColor', boardToAdd.style.bgColor);
+            } catch (err) {
+                console.log(err);
+            }
 
         }
 
