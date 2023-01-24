@@ -1,9 +1,18 @@
 //? Icon
+import { useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
+import { Modal } from '../../../../app/modal'
 
-export function SetMembers({ type, board, task }) {
+
+export function SetMembers({ type, board, task, group }) {
   const members = board?.members
+  const [modalOpen, setModalOpen] = useState('')
+
   const { memberIds } = task
+
+  function onCloseModal() {
+    setModalOpen('')
+  }
 
   switch (type) {
     //* Task Preview
@@ -28,7 +37,6 @@ export function SetMembers({ type, board, task }) {
         </article>
       )
       break
-
     default:
       //* Task Details
       if (!memberIds || !memberIds.length)
@@ -52,9 +60,18 @@ export function SetMembers({ type, board, task }) {
             <button
               className="task-details-main-members-add-btn"
               title="Add Members"
+              onClick={()=>setModalOpen('members')}
             >
               <AiOutlinePlus />
             </button>
+            {(modalOpen === 'members') && <Modal
+                type="task-members"
+                modalTitle="Members"
+                onCloseModal={onCloseModal}
+                task={task}
+                group={group}
+                board={board}
+              />}
           </div>
         </article>
       )

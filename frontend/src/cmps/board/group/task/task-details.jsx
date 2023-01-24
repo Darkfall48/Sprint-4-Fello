@@ -125,7 +125,7 @@ export function TaskDetails() {
           onClick={(ev) => ev.stopPropagation()}
         >
           {task.labelIds && <SetLabels board={board} task={task} />}
-          {task.memberIds && <SetMembers board={board} task={task} />}
+          {task.memberIds && <SetMembers board={board} task={task} group={group} />}
           <GrTextAlignFull className="task-details-main-description-icon" />
           <SetDescription task={task} />
           <RxActivityLog className="task-details-main-activity-icon" />
