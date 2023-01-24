@@ -48,7 +48,7 @@ export function BoardHeader({board}) {
     }
 
     return (
-        <section className="board-header">
+        <section className={board?.style?.bgColor?.islight? "board-header light" : "board-header light"} >
             <div className="title-container btn-color">
                 <h1
                     ref={contentRef}

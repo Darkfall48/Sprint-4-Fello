@@ -158,7 +158,7 @@ function getEmptyTodo() {
 function getEmptyChecklist() {
   return {
     id: utilService.makeId(5),
-    title: 'Checklist',
+    title: '',
     todos: []
   }
 }
@@ -190,19 +190,19 @@ function _createBoards() {
       _createBoard(
         'Work Board',
         'https://images.unsplash.com/photo-1671894618012-b1f9d305a97f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80',
-        '',
+        "rgba(26,93,112,1)",
         false
       ),
       _createBoard(
         'Working On',
         'https://images.unsplash.com/photo-1673605124954-132c332de83f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
-        '',
+        'rgba(101,148,180,1)',
         true
       ),
       _createBoard(
         'Daily Task',
         'https://images.unsplash.com/photo-1673768501816-6a565f620309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
-        '',
+        "rgba(35,49,35,1)",
         false
       ),
       _createBoard('Project Management', '', '#509938', false),
