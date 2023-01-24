@@ -7,15 +7,11 @@ import { useEffect } from "react";
 import { loadBoard, updateTask } from "../../../store/actions/board.actions";
 
 export function TaskMembersModal({ task, group, board, onCloseModal, onAddTask }) {
-    const [isTaskMember, setIsTaskMember] = useState(true)
-    const [isAppMember, setIsAppMember] = useState(true)
     const [memberName, setMemberName] = useState('')
     const [filteredMembers, setFilteredMembers] = useState(board.members)
 
     console.log('filteredMembers', filteredMembers)
     function checkIfMember(member) {
-        // console.log('member', member)
-        // console.log('memberIds', task.memberIds)
         if (task.memberIds.includes(member._id))
             return <span><FiCheck /></span>
         else return <span>{''}</span>
@@ -31,30 +27,19 @@ export function TaskMembersModal({ task, group, board, onCloseModal, onAddTask }
         setFilteredMembers(filteredMembers)
         console.log('filteredMembers', filteredMembers)
         console.log('memberName', memberName)
-        if (!filteredMembers.length  && !memberName) {
-            console.log('here!!!!')
-            setIsAppMember(false)
-        }
-        console.log('isAppMember', isAppMember)
     }
 
     async function toggleTaskMember(memberId) {
-        // console.log('memberId', memberId)
         let updatedMemberIds = []
         if (!task.memberIds.includes(memberId)) {
             updatedMemberIds = task.memberIds.concat(memberId)
             task = { ...task, memberIds: updatedMemberIds }
         } else {
-            // console.log('im here!!')
             const mmbrIds = task.memberIds
             updatedMemberIds = mmbrIds.filter(mmbrId => mmbrId !== memberId)
-            // console.log('mmbrIds', updatedMemberIds)
             task = { ...task, memberIds: updatedMemberIds }
-            // console.log('task', task)
         }
         try {
-            // console.log('group', group)
-            // console.log('task', task)
             await updateTask(group, task)
             loadBoard()
         } catch (err) {
@@ -65,14 +50,13 @@ export function TaskMembersModal({ task, group, board, onCloseModal, onAddTask }
     return <section className='modal-content-container'>
         <div className="members-modal-content-wrapper">
             <input type="text" value={memberName} onChange={handleChange} placeholder="Search members" />
-            {isAppMember &&
+            {!!filteredMembers.length &&
                 <div>
                     <p>Board members</p>
                     {filteredMembers.map((member, idx) => {
                         return <div className="board-members-check" key={member._id+idx}>
                             <a  className='modal-btn-full-members' onClick={() => toggleTaskMember(member._id)} >
                                 <img key={1+idx} className="task-details-main-members-container-img"
-                                    // src="/static/media/member1.4e156bb8ab9ef5ddc99e.png" alt="" />
                                     src={`${member.imgUrl}`} alt="" />
                                 <span key={member._id+idx}>{member.fullname}</span>
                                 {checkIfMember(member)}
@@ -87,7 +71,7 @@ export function TaskMembersModal({ task, group, board, onCloseModal, onAddTask }
             }
         </div>
 
-        {!isAppMember && <div className="no-member-msg">Looks like that person isn't a member yet.
+        {!filteredMembers.length && <div className="no-member-msg">Looks like that person isn't a member yet.
             Enter their email address to add them to the card and board.</div>}
     </section>
 }

@@ -3,13 +3,14 @@ import { CgClose } from 'react-icons/cg'
 
 import { AddBoardModal } from "./modal/add-board-modal";
 import { GroupActionsModal } from './modal/group-actions-modal';
+import { TaskChecklistModal } from './modal/task-checklist-modal';
 import { TaskLabelsModal } from './modal/task-labels-modal';
 import { TaskMembersModal } from './modal/task-members-modal';
 
 
 export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task , board }) {
 
-    return <div className={`modal-content modal-${type}`} onClick={(e) => e.stopPropagation()} >
+    return <div className={`modal-content modal-${type}`} onClick={(e) => e.stopPropagation()} onBlur={()=>onCloseModal}>
         <div className="form-container" id="modal-form-container">
 
             <div id="modal-header">
@@ -26,6 +27,8 @@ export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task ,
                         return <TaskMembersModal task={task} group={group}  board={board} onCloseModal={onCloseModal} onAddTask={onAddTask} />
                     case 'task-labels':
                         return <TaskLabelsModal task={task} group={group} onCloseModal={onCloseModal} onAddTask={onAddTask} />
+                    case 'task-checklist':
+                        return <TaskChecklistModal onCloseModal={onCloseModal} board={board} />
                     default:
                         console.log(`Cannot load component type: ${type}.`);
                 }
