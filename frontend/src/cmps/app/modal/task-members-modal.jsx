@@ -30,12 +30,11 @@ export function TaskMembersModal({ task, group, board, onCloseModal, onAddTask }
         let updatedMemberIds = []
         if (!task.memberIds.includes(memberId)) {
             updatedMemberIds = task.memberIds.concat(memberId)
-            task = { ...task, memberIds: updatedMemberIds }
         } else {
             const mmbrIds = task.memberIds
             updatedMemberIds = mmbrIds.filter(mmbrId => mmbrId !== memberId)
-            task = { ...task, memberIds: updatedMemberIds }
         }
+        task = { ...task, memberIds: updatedMemberIds }
         try {
             await updateTask(group, task)
             loadBoard()
