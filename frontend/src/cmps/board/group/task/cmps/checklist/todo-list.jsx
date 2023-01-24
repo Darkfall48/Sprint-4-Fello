@@ -23,7 +23,8 @@ export function TodoList({ todos, onRemoveTodo, onEditTodo, onDoneTodo }) {
                         name='isDone'
                         onClick={() => onDoneTodo(todo)}
                     />
-                    <TodoPreview todo={todo} onDoneTodo={onDoneTodo} />
+                    <p className={todo.isDone ? ' done' : ''}>{todo.title}</p>
+                    {/* <TodoPreview todo={todo} onDoneTodo={onDoneTodo} /> */}
                     </div>
 
                     <div className="list-buttons">

@@ -7,6 +7,7 @@ export function TaskChecklistModal({ board, onCloseModal, group, task }) {
     const [checklistToAdd, setChecklistToAdd] = useState(boardService.getEmptyChecklist())
     const inputRef = useRef(null)
 
+    console.log('board.groups.task!!!!!!!!', board.groups);
 
     function handleChange({ target }) {
         let { value, name: field } = target
@@ -27,6 +28,7 @@ export function TaskChecklistModal({ board, onCloseModal, group, task }) {
         inputRef.current.value = ''
     }
 
+console.log('group.tasks', group.tasks);
 
     return <div>
         <p>Title</p>
@@ -45,12 +47,15 @@ export function TaskChecklistModal({ board, onCloseModal, group, task }) {
         <p>Copy items from...</p>
         <select name="copy-items-from" className="copy-items-from">
             <option value="none">(none)</option>
-            {task.checklists.map(checklist => {
-                return <optgroup label={checklist.title}>
-                    {checklist.todos.map(todo => {
-                        return <option value={todo.title}>{todo.title}</option>
+            {board.groups.map(group => {
+                group.tasks.map(task =>{
+                    return <optgroup label={task.title}>
+                    {task?.checklists?.map(checklist => {
+                        return <option value={checklist.title}>{checklist.title}</option>
                     })}
                 </optgroup>
+                })
+               
 
             })}
         </select>

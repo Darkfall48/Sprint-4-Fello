@@ -4,6 +4,7 @@
     // background-color: $dynamic-background;
     color: $clr-white;
     display: flex;
+    align-items: center;
     // padding: 6px 4px 0 4px;
     // position: fixed;
     // top: 0;
@@ -15,7 +16,7 @@
     .header-links {
         color: white;
         font-size: 1.5em;
-        margin: 9px 0 10px 10px;
+        margin-left: 10px;
     }
 
     .logo {
@@ -24,7 +25,7 @@
         background-repeat: no-repeat;
         width: 75px;
         height: 15px;
-        margin: 12px 30px 10px 10px;
+        margin: 0 20px 0 10px;
 
         &:hover {
             background-image: url("https://a.trellocdn.com/prgb/dist/images/header-logo-spirit-loading.87e1af770a49ce8e84e3.gif");
@@ -81,12 +82,12 @@
         position: relative;
 
         button {
-            background-color: #172b4d66;
+            background-color: #29354966;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
             line-height: 20px;
             border-radius: rem(3px);
             padding: 6px 12px;
+            font-weight: 400;
 
             transition-property: background-color;
             transition-duration: 85ms;
@@ -104,15 +105,12 @@
                 // top: 50px;
                 // left: 580px;
                 z-index: 100;
-    
             
             }
           
-
         }
 
     }
-
 
 }
 

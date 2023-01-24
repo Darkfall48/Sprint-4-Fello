@@ -13,7 +13,6 @@ export function TodoAdd({ group, task, checklist, onCloseModal }) {
 
     function handleChange({ target }) {
         let { value, name: field } = target
-        console.log('value', value);
         setTodoToAdd((prevTodo) => {
             return { ...prevTodo, [field]: value }
         })
@@ -21,14 +20,11 @@ export function TodoAdd({ group, task, checklist, onCloseModal }) {
 
     function onAddTodo(ev) {
         ev.preventDefault()
-        console.log('ev', ev);
         if (inputRef.current.value === '') return
 
         const { todos } = checklist
         todos.push(todoToAdd)
 
-        // const updatedTask = { ...task, ...checklists, ...todos, todo: todoToAdd }
-        // console.log('updatedTask', task);
         updateTask(group, task)
         inputRef.current.value = ''
     }
@@ -50,16 +46,6 @@ export function TodoAdd({ group, task, checklist, onCloseModal }) {
                 style={{ overflow: 'hidden', overflowWrap: 'break-word', height: '56px' }}
             >
             </textarea>
-
-            {/* <input type="text"
-                id="title"
-                name="title"
-                placeholder="Add an item"
-                value={todoToAdd.title}
-                onChange={handleChange}
-                ref={inputRef}
-                style={{ height: '56px' }}
-            /> */}
 
             <div className="todo-btns">
                 <button className="todo-btn">Add</button>
