@@ -104,8 +104,9 @@
       &-input {
         grid-area: input;
         // padding-left: 6px;
-        padding-left: 0;
+        padding-left: 8px;
         margin-right: 48px;
+        margin-left: -8px;
         height: 33.2px;
         font-size: 20px;
         font-weight: 600;
