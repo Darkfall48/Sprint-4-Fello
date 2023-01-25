@@ -22,7 +22,7 @@ export function SetHeader({ task, group }) {
   return (
     <div
       className="task-details-header-cover"
-      style={style?.bgImg ? { background: `url(${style.bgColor})` }: {background: 'rgb(185, 199, 206)'} || style?.bgColor ? { background: style.bgColor }: {background: 'rgb(185, 199, 206)'}}
+      style={style?.bgImg ? { background: `url(${style.bgColor})` }: {background: ''} || style?.bgColor ? { background: style.bgColor }: {background: ''}}
     >
       <img src={style.bgImg} alt="" />
       <button title="Change cover"
