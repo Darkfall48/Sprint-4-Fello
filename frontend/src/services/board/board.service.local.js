@@ -25,6 +25,9 @@ export const boardService = {
   getCoverColors,
   getLabelColors,
   getEmptyAttachment,
+  getGroupById,
+  swapItemBetweenLists,
+  reorder,
   // getRandomBoard,
 }
 
@@ -101,6 +104,12 @@ async function save(board) {
 //   return board
 // }
 
+//make it async?
+function getGroupById(board, groupId) {
+  return board.groups.find(group => group.id === groupId)
+ 
+}
+
 function getEmptyBoard() {
   return {
     // _id: utilService.makeId(),
@@ -175,6 +184,19 @@ function getDefaultSort() {
   return { name: '' }
 }
 
+
+function swapItemBetweenLists(sourceList, destinationList, sourceIdx, destinationIdx) {
+  const deletedItem = sourceList.tasks.splice(sourceIdx, 1)
+  destinationList.tasks.push(...deletedItem)
+  return reorder(destinationList.tasks, destinationList.tasks.length - 1, destinationIdx)
+}
+
+function reorder(arr, startIdx, endIdx) {
+  const orderedArr = [...arr]
+  const [removed] = orderedArr.splice(startIdx, 1)
+  orderedArr.splice(endIdx, 0, removed)
+  return orderedArr
+}
 
 // function getRandomBoard() {
 //   const board = getEmptyBoard()

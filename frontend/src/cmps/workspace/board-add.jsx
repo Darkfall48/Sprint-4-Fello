@@ -38,6 +38,7 @@ export function BoardAdd({ onCloseModal, buttonRef}) {
         navigate(`/board`)
 
     }
+    
 
     async function changeBoard(imgUrl, color) {
 

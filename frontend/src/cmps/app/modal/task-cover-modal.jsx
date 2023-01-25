@@ -9,36 +9,18 @@ export function TaskCoverModal({ task, group, onCloseModal }) {
 
     const [updatedTask, onupdatedTask] = useState(task)
 
-    function changeBoard(imgUrl, color) {
-
-        updatedTask.style.bgImg = imgUrl
-        updatedTask.style.bgColor = color
-
-        if (!updatedTask.style.bgColor) {
-            updatedTask.style.bgImg = imgUrl
-            onupdatedTask((prevTask) => ({ ...prevTask, style: { bgImg: imgUrl } }))
-            updateTask(group, task)
-            console.log('updated task from task cover- img', task );
-        }
-
-        if (!updatedTask.style.bgImg) {
-            updatedTask.style.bgColor = color
-            onupdatedTask((prevTask) => ({ ...prevTask, style: { bgColor: color } }))
-            updateTask(group, task)
-            console.log('updated task from task cover - color', task );
-        }
-
-        onupdatedTask((prevTask) => ({ ...prevTask, style: { bgImg: imgUrl, bgColor: color } }))
-            updateTask(group, task)
+    function changeBoard(key, value) {
+        updatedTask.style = { [key]: value}
+        onupdatedTask((prevTask) => ({ ...prevTask, style: { [key]: value } }))
+        updateTask(group, updatedTask)
 
     }
 
-    const onUploaded = (imgUrl) => {
-        console.log('imgUrl', imgUrl);
-        updatedTask.style.bgImg = imgUrl
-        onupdatedTask((prevTask) => ({ ...prevTask, style: { bgImg: imgUrl, bgColor: '' } }))
-        updateTask(group, task)
-    }
+    // function onRemoverCover(key, value){
+    //     updatedTask.style = { [key]: value}
+    //     onupdatedTask((prevTask) => ({ ...prevTask, style: { [key]: value } }))
+    //     updateTask(group, updatedTask)
+    // }
 
     return <div className="task-cover">
 
@@ -55,19 +37,18 @@ export function TaskCoverModal({ task, group, onCloseModal }) {
 
             </div>
         </div>
-        <button>Remove cover</button>
+        {/* <button>Remove cover</button> */}
 
         <p>Colors</p>
         <div className="btns-cover-color">
             {boardService.getCoverColors().map((color, idx) => {
-                return <button key={idx} onClick={() => changeBoard('', color)} className="btn-cover-color" style={{ background: color }}></button>
+                return <button key={idx} onClick={() => changeBoard('bgColor', color)} className="btn-cover-color" style={{ background: color }}></button>
             })}
         </div>
 
         <p>Attachments</p>
-        <button>Upload a cover image</button>
-        <ImgUploader onUploaded={onUploaded} />
-        
+        <ImgUploader onUploaded={changeBoard} />
+
 
     </div>
 }

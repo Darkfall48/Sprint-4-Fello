@@ -24,7 +24,7 @@ export function TaskChecklistModal({ board, onCloseModal, group, task }) {
         inputRef.current.value = ''
     }
 
-    return <div>
+    return <div className="task-checklist">
         <p>Title</p>
         <form onSubmit={(ev) => onAddChecklist(ev)} >
 

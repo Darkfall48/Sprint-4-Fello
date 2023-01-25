@@ -353,10 +353,10 @@ form {
   transition-property: background-color, border-color, box-shadow;
   transition-timing-function: ease;
   white-space: normal;
-  background-color: var(--ds-background-brand-bold, #0079bf);
+  background-color:  #0079bf;
   border: none;
   box-shadow: none;
-  color: var(--ds-text-inverse, #fff);
+  color: $clr-white;
   margin: 0;
 }
 

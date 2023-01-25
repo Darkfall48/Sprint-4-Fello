@@ -11,11 +11,12 @@ import { boardService } from '../../../services/board/board.service.local'
 import { removeTask, addTask, updateBoard } from '../../../store/actions/board.actions'
 //?Componenets
 import { Modal } from '../../app/modal'
+import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 
-export function GroupPreview({ group, handleLabelClick, labelsPreview }) {
+export function GroupPreview({ group, handleLabelClick, labelsPreview, provided, board, isDragging }) {
 
-  const board = useSelector((storeState) => storeState.boardModule.board)
+  // const board = useSelector((storeState) => storeState.boardModule.board)
   const contentRef = useRef(null)
 
   const [editMode, setEditMode] = useState(false)
@@ -72,72 +73,77 @@ export function GroupPreview({ group, handleLabelClick, labelsPreview }) {
   }
 
   return (
-    <section className="group-preview-section">
-      <div>
-        <div className="group-header">
-          <h1
-            className="group-title"
-            ref={contentRef}
-            style={{ wordBreak: 'keep-all' }}
-            onKeyDown={(ev) => changeContent(ev)}
-            onBlur={(ev) => changeContent(ev)}
-            contentEditable={true}
-            suppressContentEditableWarning={true}
-          >
-            {`${group.title}`}
-          </h1>
-          <button onClick={() => onGroupMenuOpen(group.id)} className="group-edit-menu-btn">
-            <BsThreeDots />
-          </button>
-          {isGroupMenuOpen && (
-            <Modal
-              type="group-actions"
-              modalTitle="List Actions"
-              onCloseModal={onCloseModal}
-              group={group}
-              onAddTask={onAddTask}
-            />
+    <Droppable droppableId={group.id} direction="vertical" type="task">
+      {prov =>
+        <section className="group-preview-section" ref={prov.innerRef}  {...provided.dragHandleProps}>
+          <div className="group-header">
+            <h1
+              className="group-title"
+              ref={contentRef}
+              style={{ wordBreak: 'keep-all' }}
+              onKeyDown={(ev) => changeContent(ev)}
+              onBlur={(ev) => changeContent(ev)}
+              contentEditable={true}
+              suppressContentEditableWarning={true}
+            >
+              {`${group.title}`}
+            </h1>
+            <button onClick={() => onGroupMenuOpen(group.id)} className="group-edit-menu-btn">
+              <BsThreeDots />
+            </button>
+            {isGroupMenuOpen && (
+              <Modal
+                type="group-actions"
+                modalTitle="List Actions"
+                onCloseModal={onCloseModal}
+                group={group}
+                onAddTask={onAddTask}
+              />
+            )}
+          </div>
+          <TaskList
+            handleLabelClick={handleLabelClick}
+            labelsPreview={labelsPreview}
+            groupId={group.id}
+            tasks={group.tasks}
+            onArchiveTask={onArchiveTask}
+            group={group}
+            provided={provided}
+            boardId={board._id}
+          />
+          {editMode && (
+            <form
+              onSubmit={onSubmitTask}
+              onBlur={(ev) => onSubmitTask(ev)}
+            >
+              <textarea
+                type="text"
+                name="title"
+                className="task-preview-section add-task-edit"
+                placeholder="Enter a title for this card..."
+                value={newTask.title}
+                onChange={handleChange}
+                onKeyUp={handleChange}
+              />
+              <div className='add-item-wrapper'>
+                <button className='new-item-add-btn' onClick={() => onSubmitTask()}>Add card</button>
+                <button type="button" className="close-add-item" onClick={exitEditMode}><CgClose /></button>
+              </div>
+            </form>
           )}
-        </div>
-        <TaskList
-          handleLabelClick={handleLabelClick}
-          labelsPreview={labelsPreview}
-          groupId={group.id}
-          tasks={group.tasks}
-          onArchiveTask={onArchiveTask}
-          group={group}
-        />
-        {editMode && (
-          <form
-            onSubmit={onSubmitTask}
-            onBlur={(ev) => onSubmitTask(ev)}
-          >
-            <textarea
-              type="text"
-              name="title"
-              className="task-preview-section add-task-edit"
-              placeholder="Enter a title for this card..."
-              value={newTask.title}
-              onChange={handleChange}
-              onKeyUp={handleChange}
-            />
-            <div className='add-item-wrapper'>
-              <button className='new-item-add-btn' onClick={() => onSubmitTask()}>Add card</button>
-              <button type="button" className="close-add-item" onClick={exitEditMode}><CgClose /></button>
-            </div>
-          </form>
-        )}
-        {!editMode && (<div className="group-bottom-control-btns">
-          <button onClick={onAddTask} className="add-task-btn">
-            <HiOutlinePlus className="plus" />
-            <span>Add a card</span>
-          </button>
-          <button name="template" className="template-btn">
-            <TbTemplate />
-          </button>
-        </div>
-        )}
-      </div>
-    </section>
+          {!editMode && (<div className="group-bottom-control-btns">
+            <button onClick={onAddTask} className="add-task-btn">
+              <HiOutlinePlus className="plus" />
+              <span>Add a card</span>
+            </button>
+            <button name="template" className="template-btn">
+              <TbTemplate />
+            </button>
+          </div>
+          )}
+        </section>
+      }
+    </Droppable>
   )
+
 }

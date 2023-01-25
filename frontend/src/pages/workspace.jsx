@@ -55,13 +55,13 @@ export function Workspace() {
         onRemoveBoard={onRemoveBoard}
       />
     </div>
-    <div className="starred-boards-container">
+    {/* <div className="starred-boards-container">
       <h1><AiOutlineClockCircle className="workspace-icons" /> Recently viewed</h1>
       <BoardList
         boards={recentlyViewedBoard}
         onRemoveBoard={onRemoveBoard}
       />
-    </div>
+    </div> */}
     <div className="starred-boards-container">
       <h3>Your workspaces</h3>
       <BoardList

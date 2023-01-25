@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 //? Services
 import { showSuccessMsg, showErrorMsg, } from '../../../services/connection/event-bus.service'
 import { boardService } from '../../../services/board/board.service.local'
-import { updateBoard, loadBoard } from '../../../store/actions/board.actions'
+import { updateBoard, loadBoard, saveGroup } from '../../../store/actions/board.actions'
 //? Cmps
 import { GroupPreview } from './group-preview.jsx'
 import { Loader } from '../../helpers/loader'
@@ -69,52 +69,36 @@ export function GroupList({ board }) {
     }
   }
 
-  function handeOnDragEnd(result) {
-    const { destination, source, draggableId } = result;
-
-    if (!result.destination) return
-
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
-      return;
+  function handleOnDragEnd({ source, destination, type }) {
+    if (!destination) return
+    const { droppableId: destinationId, index: destinationIdx } = destination
+    const { droppableId: sourceId, index: sourceIdx } = source
+  
+    if (type === 'task') {
+      const sourceGroups = boardService.getGroupById(board, destinationId)
+      console.log('sourceGroups', sourceGroups);
+      const destinationGroups = boardService.getGroupById(board, sourceId)
+      const tasks = sourceGroups.tasks
+  
+      if (sourceId === destinationId) {
+        sourceGroups.tasks = boardService.reorder(tasks, sourceIdx, destinationIdx)
+      } else {
+        sourceGroups.tasks = boardService.swapItemBetweenLists(destinationGroups, sourceGroups, sourceIdx, destinationIdx)
+      }
+    } else if (type === 'group') {
+      board.groups = boardService.reorder(board.groups, sourceIdx, destinationIdx)
     }
-
-    const start = board.groups[source.droppableId];
-    const finish = board.groups[destination.droppableId];
-
-    const items = board.groups
-    const [reorderedItem] = items.splice(result.source.index, 1)
-    items.splice(result.destination.index, 0, reorderedItem)
-    const updatedGroups = { ...board, groups: items }
-
-    //  Moving from one list to another
-    //  const startTaskIds = Array.from(start.taskIds);
-    //  startTaskIds.splice(source.index, 1);
-    //  const newStart = {
-    //    ...start,
-    //    taskIds: startTaskIds,
-    //  };
- 
-    //  const finishTaskIds = Array.from(finish.taskIds);
-    //  finishTaskIds.splice(destination.index, 0, draggableId);
-    //  const newFinish = {
-    //    ...finish,
-    //    taskIds: finishTaskIds,
-    //  };
-
-    updateBoard(updatedGroups)
-
+    updateBoard(board)
+  
   }
 
   if (!board.groups) return <Loader />
   return (<section className="group-list-section">
 
-    <DragDropContext onDragEnd={handeOnDragEnd}>
+    <DragDropContext onDragEnd={handleOnDragEnd}>
       <Droppable droppableId={board._id} direction="horizontal" type="group">
         {(provided, snapshot) => (
-          <div ref={provided.innerRef} {...provided.droppableProps} style={{display: 'flex'}}>
+          <div ref={provided.innerRef} style={{ display: 'flex' }}>
             {board.groups.map((group, index) => (
               <Draggable key={group.id} draggableId={group.id} index={index}>
                 {(provided, snapshot) => (
@@ -122,18 +106,20 @@ export function GroupList({ board }) {
                     className="group-preview"
                     ref={provided.innerRef}
                     {...provided.draggableProps}
-                    {...provided.dragHandleProps}
+                    // {...provided.dragHandleProps}
                   >
 
                     <div className="group-preview-wrapper">
                       <GroupPreview
-                      handleLabelClick= {handleLabelClick}
-                      labelsPreview={labelsPreview}
-                      group={group}
-                      // tasks={tasks}
-                        isDragging={snapshot.isDragging}
+                        handleLabelClick={handleLabelClick}
+                        labelsPreview={labelsPreview}
+                        group={group}
+                        board={board}
+                        index={index}
+                        isDragging={snapshot.isDragging && !snapshot.isDropAnimating}
                         provided={provided}
-                        key={group.id} />
+                        key={group.id}
+                      />
                     </div>
                   </article>
                 )}
@@ -178,4 +164,3 @@ export function GroupList({ board }) {
   </section>
   )
 }
-

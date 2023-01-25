@@ -12,7 +12,7 @@ export function SetHeader({ task, group }) {
   function onCloseModal() {
     setModalOpen(false)
   }
-
+  console.log('style', style);
   if (!style?.bgColor && !style?.bgImg)
     return (
       <div className="task-details-header-cover">
@@ -22,20 +22,20 @@ export function SetHeader({ task, group }) {
   return (
     <div
       className="task-details-header-cover"
-      style={style?.bgImg ? { background: `url(${style.bgColor})` }: {background: ''} || style?.bgColor ? { background: style.bgColor }: {background: ''}}
+      style={style?.bgImg ? { background: `url(${style.bgColor})` } : { background: style.bgColor }}
     >
       <img src={style.bgImg} alt="" />
       <button title="Change cover"
-      onClick={()=>setModalOpen(true)}
+        onClick={() => setModalOpen(true)}
       >
         <MdOutlineLaptop /> Cover
       </button>
-      {modalOpen && <Modal 
-      type={'task-cover'}
-      modalTitle={'Cover'}
-      task={task} 
-      onCloseModal={onCloseModal} 
-      group={group}
+      {modalOpen && <Modal
+        type={'task-cover'}
+        modalTitle={'Cover'}
+        task={task}
+        onCloseModal={onCloseModal}
+        group={group}
       />}
     </div>
   )

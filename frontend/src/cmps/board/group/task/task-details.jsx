@@ -116,7 +116,7 @@ export function TaskDetails() {
           className="task-details-header"
           onClick={(ev) => ev.stopPropagation()}
         >
-          {task?.style?.bgColor && <SetHeader task={task} group={group}/>}
+          {(task?.style?.bgColor || task?.style?.bgImg) && <SetHeader task={task} group={group}/>}
         </header>
 
         <SetTitle
