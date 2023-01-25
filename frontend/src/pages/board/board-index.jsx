@@ -15,8 +15,8 @@ import { utilService } from '../../services/util.service.js'
 
 export function BoardIndex() {
   const board = useSelector((storeState) => storeState.boardModule.board)
-
   const { boardId } = useParams()
+
   useEffect(() => {
     loadBoard(boardId)
     return () => {

@@ -31,6 +31,7 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
   }
 
   function handleLabelClick() {
+    // TODO: When state change: re-render board
     setLabelsPreview(
       labelsPreview === 'preview-simple' ? 'preview-detailed' : 'preview-simple'
     )
