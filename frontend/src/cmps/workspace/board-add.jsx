@@ -11,7 +11,7 @@ import { FastAverageColor } from "fast-average-color";
 
 const fac = new FastAverageColor();
 
-export function BoardAdd({ onCloseModal }) {
+export function BoardAdd({ onCloseModal, buttonRef}) {
 
     const [boardToAdd, setBoardToAdd] = useState(boardService.getEmptyBoard())
     const navigate = useNavigate()
@@ -66,7 +66,7 @@ export function BoardAdd({ onCloseModal }) {
 
     // return <section className="board-add">
     return <div className="modal" onClick={onCloseModal}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{left: utilService.getPosition(buttonRef).left + '20px', top: utilService.getPosition(buttonRef).top + '0px'}}>
             <div className="form-container">
 
                 <div className="modal-header">
@@ -82,15 +82,15 @@ export function BoardAdd({ onCloseModal }) {
                 </div>
 
                 <p>Background</p>
-                <div className="btns-cover-img">
+                <div className="btns-add-img">
                     {boardService.getImages().map((image, idx) => {
-                        return <button key={idx} onClick={() => changeBoard(image, '')} className="btn-cover-img" style={{ backgroundImage: `url(${image})` }} ></button>
+                        return <button key={idx} onClick={() => changeBoard(image, '')} className="btn-add-img" style={{ backgroundImage: `url(${image})` }} ></button>
                     })}
                 </div>
 
-                <div className="btns-cover-color">
+                <div className="btns-add-color">
                     {boardService.getColors().map((color, idx) => {
-                        return <button key={idx} onClick={() => changeBoard('', color)} className="btn-cover-color" style={{ backgroundColor: color }}></button>
+                        return <button key={idx} onClick={() => changeBoard('', color)} className="btn-add-color" style={{ backgroundColor: color }}></button>
                     })}
                 </div>
 

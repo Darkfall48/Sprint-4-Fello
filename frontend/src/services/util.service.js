@@ -14,6 +14,7 @@ export const utilService = {
   saveToStorage,
   loadFromStorage,
   getRandomChosenImg,
+  getPosition,
 }
 
 function makeId(length = 6) {
@@ -224,5 +225,9 @@ function animateCSS(el, animation) {
   })
 }
 
-
+function getPosition(ref){
+  const position = ref.current.getBoundingClientRect()
+  console.log(ref.current.getBoundingClientRect());
+  return position
+}
 

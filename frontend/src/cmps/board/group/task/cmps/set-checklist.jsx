@@ -47,11 +47,22 @@ export function SetChecklist({ task, checklist, group }) {
   }
 
   function onChangeTitle(ev) {
-    ev.preventDefault()
-    // if (contentRef.current.value === '') return
-    checklist.title = editChecklist.title
-    updateTask(group, task)
-    setIsEditOn(!isEditOn)
+    if (ev._reactName === "onSubmit")  {
+      ev.preventDefault()
+      // if (contentRef.current.value === '') return
+      checklist.title = editChecklist.title
+      updateTask(group, task)
+      setIsEditOn(!isEditOn)
+    }   
+
+    if (ev.key === 'Enter' && !ev.shiftKey) ev.target.blur()
+    if (ev.key === 'Enter' || ev.type === 'blur') {
+      ev.preventDefault()
+      checklist.title = editChecklist.title
+      updateTask(group, task)
+      setIsEditOn(!isEditOn)
+    }
+
   }
 
   function onEditTodo(ev) {
@@ -102,7 +113,9 @@ export function SetChecklist({ task, checklist, group }) {
 
       {isEditOn && (
         <form
+          // onKeyDown={(ev) => onChangeTitle(ev)}
           onSubmit={(ev) => onChangeTitle(ev)}
+          onKeyDown={(ev) => onChangeTitle(ev)}
           className="task-details-main-checklist-title-input"
         >
           <textarea
@@ -151,7 +164,7 @@ export function SetChecklist({ task, checklist, group }) {
         todos={checklist.todos}
         onRemoveTodo={onRemoveTodo}
         onDoneTodo={onDoneTodo}
-        // onEditTodo={onEditTodo}
+      // onEditTodo={onEditTodo}
       />
 
       {!isModalOpen && (

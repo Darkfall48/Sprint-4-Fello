@@ -18,17 +18,29 @@ export function TodoAdd({ group, task, checklist, onCloseModal }) {
   }
 
   function onAddTodo(ev) {
-    ev.preventDefault()
     if (inputRef.current.value === '') return
     const { todos } = checklist
-    todos.push(todoToAdd)
-    updateTask(group, task)
-    inputRef.current.value = ''
+
+    if (ev._reactName === "onSubmit") {
+      ev.preventDefault()
+      todos.push(todoToAdd)
+      updateTask(group, task)
+      inputRef.current.value = ''
+    }
+
+    if (ev.key === 'Enter' && !ev.shiftKey) ev.target.blur()
+    if (ev.key === 'Enter' || ev.type === 'blur') {
+      ev.preventDefault()
+      todos.push(todoToAdd)
+      updateTask(group, task)
+      inputRef.current.value = ''
+    }
   }
 
   return (
     <form
       onSubmit={(ev) => onAddTodo(ev)}
+      onKeyDown={(ev) => onAddTodo(ev)}
       className="task-details-main-checklist-add-todo-input"
     >
       <textarea

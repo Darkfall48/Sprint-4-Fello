@@ -44,14 +44,15 @@ export function TaskChecklistModal({ board, onCloseModal, group, task }) {
             {board.groups.map(group => {
                 group.tasks.map(task =>{
                     return <optgroup key={task.id} label={task.title}>
-                    {task?.checklists?.map(checklist => {
+                    {/* {task?.checklists?.map(checklist => {
                         return <option key={checklist.id} value={checklist.title}>{checklist.title}</option>
-                    })}
+                    })} */}
                 </optgroup>
                 })
                
 
             })}
         </select>
+        <button onClick={(ev) => onAddChecklist(ev)}>Add</button>
     </div>
 }

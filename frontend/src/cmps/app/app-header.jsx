@@ -18,13 +18,14 @@ export function AppHeader() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const board = useSelector((storeState) => storeState.boardModule.board)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const buttonRef = useRef()
 
   function onCloseModal() {
     setIsModalOpen(!isModalOpen)
   }
 
   return (
-    <header className="app-header-section full" style={ board?.style?.bgColor && { background: board.style.bgColor }}>
+    <header className="app-header-section full" style={board?.style?.bgColor && { background: board.style.bgColor }}>
       <Link to="/" ><CgMenuGridR className="header-links" /></Link>
       <Link to="/board" className='logo' />
       <nav>
@@ -37,8 +38,9 @@ export function AppHeader() {
       </nav>
 
       <div className='create-dropdown'>
-        <button onClick={() => { setIsModalOpen(!isModalOpen) }}>Create</button>
-        {isModalOpen && <BoardAdd onCloseModal={onCloseModal} />}
+        {/* <button onClick={() => { setIsModalOpen(!isModalOpen) }}>Create</button> */}
+        <button ref={buttonRef} onClick={() => { setIsModalOpen(!isModalOpen) }}>Create</button>
+        {isModalOpen && <BoardAdd onCloseModal={onCloseModal} buttonRef={buttonRef}/>}
       </div>
 
     </header>
