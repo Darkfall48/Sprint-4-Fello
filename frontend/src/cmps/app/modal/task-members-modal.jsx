@@ -1,12 +1,11 @@
-import { boardReducer } from "../../../store/reducers/board.reducer";
+//?Libraries
 import { FiCheck } from 'react-icons/fi'
-
 import { useState } from "react";
-import { MdRememberMe } from "react-icons/md";
-import { useEffect } from "react";
+//?Services
 import { loadBoard, updateTask } from "../../../store/actions/board.actions";
 
-export function TaskMembersModal({ task, group, board, onCloseModal, onAddTask }) {
+
+export function TaskMembersModal({ task, group, board }) {
     const [memberName, setMemberName] = useState('')
     const [filteredMembers, setFilteredMembers] = useState(board.members)
 
@@ -15,8 +14,6 @@ export function TaskMembersModal({ task, group, board, onCloseModal, onAddTask }
             return <span><FiCheck /></span>
         else return <span>{''}</span>
     }
-
-    // const member = board.members.find(mmbr => mmbr.id === member.id)
 
     function handleChange({ target }) {
         const { value } = target
@@ -50,11 +47,11 @@ export function TaskMembersModal({ task, group, board, onCloseModal, onAddTask }
                 <div>
                     <p>Board members</p>
                     {filteredMembers.map((member, idx) => {
-                        return <div className="board-members-check" key={member._id+idx}>
-                            <a  className='modal-btn-full-members' onClick={() => toggleTaskMember(member._id)} >
-                                <img key={1+idx} className="task-details-main-members-container-img"
+                        return <div className="board-members-check" key={member._id + idx}>
+                            <a className='modal-btn-full-members' onClick={() => toggleTaskMember(member._id)} >
+                                <img key={1 + idx} className="task-details-main-members-container-img"
                                     src={`${member.imgUrl}`} alt="" />
-                                <span key={member._id+idx}>{member.fullname}</span>
+                                <span key={member._id + idx}>{member.fullname}</span>
                                 {checkIfMember(member)}
                             </a>
                         </div>

@@ -116,7 +116,7 @@ export function TaskDetails() {
           className="task-details-header"
           onClick={(ev) => ev.stopPropagation()}
         >
-          {task?.style?.bgColor && <SetHeader task={task} group={group}/>}
+          {task?.style?.bgColor && <SetHeader task={task} group={group} />}
         </header>
 
         <SetTitle
@@ -133,7 +133,7 @@ export function TaskDetails() {
             {task.memberIds && (
               <SetMembers board={board} task={task} group={group} />
             )}
-            {task.labelIds && <SetLabels  board={board} task={task} />}
+            {task.labelIds && <SetLabels board={board} task={task} />}
           </article>
 
           <SetDescription task={task} />
@@ -191,7 +191,7 @@ export function TaskDetails() {
                   board={board}
                 />
               )}
-              <button title="I am Labels" onClick={() => {setModalOpen('labels')}}>
+              <button title="I am Labels" onClick={() => { setModalOpen('labels') }}>
                 <TbTag /> <span>Labels</span>
               </button>
               {modalOpen === 'labels' && (
@@ -223,12 +223,32 @@ export function TaskDetails() {
                   task={task}
                 />
               )}
-              <button title="I am Date">
-                <FiClock /> <span>Date</span>
+              <button
+                title="I am Date"
+                onClick={() => {
+                  setModalOpen('Date')
+                }}>
+                <FiClock /> <span>Dates</span>
               </button>
-              <button title="I am Attachment">
-                <ImAttachment /> <span>Imports</span>
+              <button 
+              title="I am Attachment"
+              onClick={() => {
+                setModalOpen('attachment')
+              }}
+              >
+                <ImAttachment /> <span>Attachment</span>
               </button>
+              {modalOpen === 'attachment' && (
+                <Modal
+                  type="task-attachment"
+                  modalTitle="Attach from..."
+                  onCloseModal={onCloseModal}
+                  board={board}
+                  group={group}
+                  task={task}
+                />
+              )}
+
             </div>
           </article>
 
@@ -261,6 +281,6 @@ export function TaskDetails() {
           </article>
         </aside>
       </section>
-    </section>
+    </section >
   )
 }

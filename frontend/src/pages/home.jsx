@@ -11,7 +11,7 @@ export function Home() {
       <div className="wave-container full">
         <div className="content-container">
           <div className="txt-container">
-            <h1>Trello brings all your tasks, teammates, and tools together</h1>
+            <h1>Fello brings all your tasks, teammates, and tools together</h1>
             <p>Keep everything in the same place—even if your team isn't.</p>
             <Link className="home-btn" to={'/board'}>
               Start demo
@@ -29,15 +29,15 @@ export function Home() {
       </div>
       <div className="secondary-content-container full">
         <div className="txt-content">
-        <h1>A productivity powerhouse</h1>
-        <p>
-          Simple, flexible, and powerful. All it takes are boards, lists, and
-          cards to get a clear view of who's doing what and what needs to get
-          done.
-        </p>
-        <Link className="home-btn" to={'/board'}>
-          Start
-        </Link>
+          <h1>A productivity powerhouse</h1>
+          <p>
+            Simple, flexible, and powerful. All it takes are boards, lists, and
+            cards to get a clear view of who's doing what and what needs to get
+            done.
+          </p>
+          <Link className="home-btn" to={'/board'}>
+            Start
+          </Link>
         </div>
         <img src={boardSvg} alt="boardSvg" />
       </div>

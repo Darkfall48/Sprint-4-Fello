@@ -25,7 +25,6 @@ export function GroupList({ board }) {
   }
 
   function exitEditMode() {
-    // ev.stopPropogation()
     setEditMode(false)
     setNewGroupTitle('')
   }
@@ -58,7 +57,7 @@ export function GroupList({ board }) {
       showSuccessMsg('Boards loaded')
     } catch (err) {
       navigate('/board') //TODO: Ask Roi why it's not working
-      console.log('My error', err)
+      console.log('Board failed to load', err)
       showErrorMsg('Cannot load boards')
     }
   }
@@ -137,14 +136,6 @@ export function GroupList({ board }) {
       </Droppable>
     </DragDropContext>
 
-    {/* {board.groups.map((group) => {
-      return <article key={group.id} className="group-preview">
-        <div className="group-preview-wrapper">
-          <GroupPreview group={group} />
-        </div>
-      </article>
-    })} */}
-
     <div className='new-group-wrapper'>
       {!editMode && (
         <div className="add-new-group">
@@ -168,7 +159,7 @@ export function GroupList({ board }) {
           onKeyUp={(ev) => onAddGroup(ev, newGroupTitle)}
         />
         <div className='add-item-wrapper'>
-          <button className='new-item-add-btn' onClick={() => onAddGroup(newGroupTitle)}>Add list</button>
+          <button className='new-item-add-btn' onClick={() => onAddGroup()}>Add list</button>
           <button className="close-add-item" onClick={exitEditMode}><CgClose /></button>
         </div>
         {/* </form> */}

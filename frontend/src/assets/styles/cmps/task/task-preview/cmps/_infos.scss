@@ -1,0 +1,64 @@
+.task-preview {
+  &-infos {
+    grid-area: infos;
+    justify-self: start;
+    padding-left: 8px;
+    margin-top: 4px;
+    margin-bottom: 6px;
+    display: flex;
+    place-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: #6b778c;
+    //* Is Following
+    &-no-follow {
+      display: none;
+    }
+    &-follow {
+      font-size: 16px;
+      padding-top: 3px;
+      padding-right: 4px;
+    }
+    //* Todos
+    &-no-todo {
+      display: none;
+    }
+    &-todo {
+      padding-right: 4px;
+      display: flex;
+      place-items: center;
+      gap: 4px;
+      & svg {
+        font-size: 14px;
+      }
+      & span {
+        font-size: 12px;
+      }
+    }
+    //* Description
+    &-no-description {
+      display: none;
+    }
+    &-description {
+      padding-right: 4px;
+      font-size: 14px;
+      padding-top: 3px;
+    }
+    //* Comment
+    &-no-comment {
+      display: none;
+    }
+    &-comment {
+      padding-right: 4px;
+      display: flex;
+      place-items: center;
+      gap: 4px;
+      & svg {
+        font-size: 14px;
+      }
+      & span {
+        font-size: 12px;
+      }
+    }
+  }
+}

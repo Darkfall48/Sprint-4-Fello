@@ -1,34 +1,12 @@
 //? Components
-import { useState } from 'react'
 import { TaskPreview } from './task-preview'
-import { FaAccusoft } from 'react-icons/fa'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { useSelector } from 'react-redux'
-import { saveGroup, updateBoard, updateTask } from '../../../../store/actions/board.actions'
-import { boardService } from '../../../../services/board/board.service.local'
+import { saveGroup} from '../../../../store/actions/board.actions'
 
-export function TaskList({ groupId, tasks, onArchiveTask, group }) {
+export function TaskList({ groupId, onArchiveTask, group }) {
 
   const board = useSelector((storeState) => storeState.boardModule.board)
-
-  // console.log('group', group);
-
-  // function getCurrTasks(){
-  //   const tasksArray = []
-  //   const currGroup = board.groups.map(group => group.tasks)
-  //   console.log('currGroup', currGroup);
-  //   const currTasks = currGroup.map(task => task)
-  //   console.log('currTasks', currTasks);
-  //   const currTask = currTasks.map(task => {
-  //     task.map(item => {
-  //       tasksArray.push(item)
-  //     })
-
-  //   })
-  //   return tasksArray
-  // }
-
-  // console.log('tasks', tasks);
 
   function handleOnDragEnd(result) {
     const { destination, source, draggableId } = result;
@@ -79,12 +57,19 @@ export function TaskList({ groupId, tasks, onArchiveTask, group }) {
     </DragDropContext>
   )
 
-  // return (
-  //   <section className="task-list-section">
-  //     {tasks.map((task) => (
-  //       <TaskPreview key={task.id} groupId={groupId} task={task} onArchiveTask={onArchiveTask}/>
-  //     ))}
-  //   </section>
-  // )
 }
 
+  // function getCurrTasks(){
+  //   const tasksArray = []
+  //   const currGroup = board.groups.map(group => group.tasks)
+  //   console.log('currGroup', currGroup);
+  //   const currTasks = currGroup.map(task => task)
+  //   console.log('currTasks', currTasks);
+  //   const currTask = currTasks.map(task => {
+  //     task.map(item => {
+  //       tasksArray.push(item)
+  //     })
+
+  //   })
+  //   return tasksArray
+  // }

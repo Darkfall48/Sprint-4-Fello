@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { Modal } from '../../../../app/modal'
 
-
 export function SetMembers({ type, board, task, group }) {
   const members = board?.members
   const [modalOpen, setModalOpen] = useState('')
@@ -18,16 +17,16 @@ export function SetMembers({ type, board, task, group }) {
     //* Task Preview
     case 'preview':
       if (!memberIds || !memberIds.length)
-        return <article className="task-preview-member"></article>
+        return <article className="task-preview-members"></article>
       return (
-        <article className="task-preview-member">
+        <article className="task-preview-members">
           {memberIds.map((memberId) => {
             const member = members.find((member) => member._id === memberId)
             const { _id, imgUrl, fullname } = member
             return (
               <img
                 key={_id}
-                className="task-preview-img"
+                className="task-preview-members-img"
                 src={imgUrl}
                 alt={fullname}
                 title={fullname}
@@ -60,18 +59,20 @@ export function SetMembers({ type, board, task, group }) {
             <button
               className="task-details-main-members-add-btn"
               title="Add Members"
-              onClick={()=>setModalOpen('members')}
+              onClick={() => setModalOpen('members')}
             >
               <AiOutlinePlus />
             </button>
-            {(modalOpen === 'members') && <Modal
+            {modalOpen === 'members' && (
+              <Modal
                 type="task-members"
                 modalTitle="Members"
                 onCloseModal={onCloseModal}
                 task={task}
                 group={group}
                 board={board}
-              />}
+              />
+            )}
           </div>
         </article>
       )

@@ -179,3 +179,20 @@
         width: 48.8px;
     }
 }
+
+.task-attachment-modal-content{
+    margin-top: 10px;
+    input{
+        margin-bottom: 5px;
+    }
+}
+.attachment-action-btns-container {
+}
+
+#modal-btn-full {
+    @include btn('modal-full', white, 6px 12px, $list-btn-bg-clr-modal-hover)
+}
+
+#attach-btn {
+    width: fit-content;
+}

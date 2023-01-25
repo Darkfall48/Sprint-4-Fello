@@ -40,7 +40,15 @@
 @import 'cmps/group/group-preview';
 //* Task
 @import 'cmps/task/task-list';
-@import 'cmps/task/task-preview';
+// Task Preview
+@import 'cmps/task/task-preview/task-preview';
+// Task Preview: Components
+@import 'cmps/task/task-preview/cmps/cover';
+@import 'cmps/task/task-preview/cmps/edit-btn';
+@import 'cmps/task/task-preview/cmps/infos';
+@import 'cmps/task/task-preview/cmps/labels';
+@import 'cmps/task/task-preview/cmps/members';
+@import 'cmps/task/task-preview/cmps/title';
 // Task Details
 @import 'cmps/task/task-details/task-details';
 // Task Details: Header
