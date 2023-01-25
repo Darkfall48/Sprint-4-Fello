@@ -23,10 +23,10 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
     return (
       <article
         className="task-preview-cover"
-        style={{
-          backgroundColor: style.bgColor,
-        }}
-      ></article>
+        style={ style?.bgImg ? { background: '' } : { background: style.bgColor }}
+      >
+
+      </article>
     )
   }
 
@@ -45,6 +45,7 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
         navigate(`/board/${board._id}/group/${groupId}/task/${task.id}`)
       }}
     >
+      <img src={task.style.bgImg} alt="" />
       {task.style && <SetCover />}
       {task.labelIds && (
         <SetLabels

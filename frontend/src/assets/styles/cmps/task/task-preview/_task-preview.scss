@@ -15,6 +15,8 @@
     'labels      labels'
     'title      title'
     'infos       members';
+
+   
   &:hover {
     background-color: rgb(236, 234, 234);
 
@@ -44,6 +46,10 @@
         }
       }
     }
+  }
+
+  img{
+    grid-area: cover;
   }
 }
 

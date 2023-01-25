@@ -4,7 +4,7 @@ import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { updateBoard } from '../../store/actions/board.actions';
 
-export function BoardPreview({ board, onRemoveBoard}) {
+export function BoardPreview({ board, onRemoveBoard }) {
 
   function onStarredBoard(ev) {
     ev.stopPropagation()
@@ -13,9 +13,15 @@ export function BoardPreview({ board, onRemoveBoard}) {
     console.log('board', board);
   }
 
+  function recentlyViewedBoard() {
+    const recentlyViewed = Date.now()
+    board.lastViewed = recentlyViewed
+    console.log('board.lastViewed from preview', board.lastViewed);
+  }
+
   return <>
-    <Link to={`/board/${board._id}`}>
-      <section className="board-preview skeleton" style={board?.style?.backgroundImg ? { background: `url(${board.style.backgroundImg}) center center / cover`, filter: 'contrast(80%)'} : { background: '#0079bf', filter: 'contrast(80%)'} || board?.style?.bgColor ? { background: board.style.bgColor, filter: 'contrast(80%)' } : { background: '#0079bf', filter: 'contrast(80%)' }}>
+    <Link to={`/board/${board._id}`} onClick={() => recentlyViewedBoard()}>
+      <section className="board-preview skeleton" style={board?.style?.backgroundImg ? { background: `url(${board.style.backgroundImg}) center center / cover`, filter: 'contrast(80%)' } : { background: '#0079bf', filter: 'contrast(80%)' } || board?.style?.bgColor ? { background: board.style.bgColor, filter: 'contrast(80%)' } : { background: '#0079bf', filter: 'contrast(80%)' }}>
         <span className="board-fade"></span>
       </section>
     </Link>

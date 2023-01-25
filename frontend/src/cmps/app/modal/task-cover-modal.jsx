@@ -11,22 +11,22 @@ export function TaskCoverModal({ task, group, onCloseModal }) {
 
     function changeBoard(imgUrl, color) {
 
-        // updatedTask.style.bgImg = imgUrl
+        updatedTask.style.bgImg = imgUrl
         updatedTask.style.bgColor = color
 
-        // if (!updatedTask.style.bgColor) {
-        //     updatedTask.style.bgImg = imgUrl
-        //     onupdatedTask((prevTask) => ({ ...prevTask, style: { bgImg: imgUrl } }))
-        //     updateTask(group, task)
-        //     console.log('updated task from task cover- img', task );
-        // }
+        if (!updatedTask.style.bgColor) {
+            updatedTask.style.bgImg = imgUrl
+            onupdatedTask((prevTask) => ({ ...prevTask, style: { bgImg: imgUrl } }))
+            updateTask(group, task)
+            console.log('updated task from task cover- img', task );
+        }
 
-        // if (!updatedTask.style.bgImg) {
-        //     updatedTask.style.bgColor = color
-        //     onupdatedTask((prevTask) => ({ ...prevTask, style: { bgColor: color } }))
-        //     updateTask(group, task)
-        //     console.log('updated task from task cover - color', task );
-        // }
+        if (!updatedTask.style.bgImg) {
+            updatedTask.style.bgColor = color
+            onupdatedTask((prevTask) => ({ ...prevTask, style: { bgColor: color } }))
+            updateTask(group, task)
+            console.log('updated task from task cover - color', task );
+        }
 
         onupdatedTask((prevTask) => ({ ...prevTask, style: { bgImg: imgUrl, bgColor: color } }))
             updateTask(group, task)
