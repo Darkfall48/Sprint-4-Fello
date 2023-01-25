@@ -1,4 +1,5 @@
 module.exports = {
-  dbURL: 'mongodb+srv://theUser:thePass@cluster0-klgzh.mongodb.net/test?retryWrites=true&w=majority',
-  dbName : 'tester_db'
+  dbURL:
+    'mongodb+srv://sidney48:8reWqeRIjtFqDRLi@fellocluster.koowot8.mongodb.net/?retryWrites=true&w=majority',
+  dbName: 'fello_db',
 }
