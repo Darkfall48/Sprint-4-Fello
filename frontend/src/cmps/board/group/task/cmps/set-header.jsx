@@ -13,7 +13,7 @@ export function SetHeader({ task, group }) {
     setModalOpen(false)
   }
 
-  if (!style?.bgColor)
+  if (!style?.bgColor && !style?.bgImg)
     return (
       <div className="task-details-header-cover">
         <SetCloseBtn />
@@ -22,7 +22,7 @@ export function SetHeader({ task, group }) {
   return (
     <div
       className="task-details-header-cover"
-      style={style?.bgColor ? { background: `url(${style.bgColor})` }: {background: 'rgb(185, 199, 206)'}}
+      style={style?.bgImg ? { background: `url(${style.bgColor})` }: {background: 'rgb(185, 199, 206)'} || style?.bgColor ? { background: style.bgColor }: {background: 'rgb(185, 199, 206)'}}
     >
       <img src={style.bgImg} alt="" />
       <button title="Change cover"
