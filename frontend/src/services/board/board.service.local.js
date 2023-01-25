@@ -23,7 +23,8 @@ export const boardService = {
   getEmptyTodo,
   getEmptyChecklist,
   getCoverColors,
-  getLabelColors
+  getLabelColors,
+  getEmptyAttachment,
   // getRandomBoard,
 }
 
@@ -104,7 +105,8 @@ function getEmptyBoard() {
   return {
     // _id: utilService.makeId(),
     title: '',
-    createdAt: Date.now(),
+    archivedAt: Date.now(),
+    lastViewed: Date.now(),
     isStarred: false,
     style: {
       bgColor: '#0079bf',
@@ -136,6 +138,7 @@ function getEmptyTask(taskTitle) {
     checklists: [],
     memberIds: [],
     labelIds: [],
+    attachments: [],
     dueDate: null,
     byMember: {},
     style: {},
@@ -155,6 +158,12 @@ function getEmptyTodo() {
     id: utilService.makeId(5),
     title: '',
     isDone: false,
+  }
+}
+function getEmptyAttachment() {
+  return {
+    id: utilService.makeId(5),
+    title: '',
   }
 }
 
@@ -212,6 +221,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
     title,
     isStarred,
     archivedAt: Date.now(),
+    lastViewed: Date.now(),
     createdBy: {
       _id: 'u103',
       fullname: 'Keren Siebner',
@@ -290,6 +300,8 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Keren Siebner',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
+            comments: [],
             checklists: [
               {
                 id: utilService.makeId(5),
@@ -354,6 +366,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Keren Siebner',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
             comments: [],
             checklists: [
               {
@@ -427,6 +440,8 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Keren Siebner',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
+            comments: [],
             checklists: [
               {
                 id: utilService.makeId(5),
@@ -491,6 +506,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Keren Siebner',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
             comments: [],
             checklists: [
               {
@@ -556,6 +572,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
             comments: [],
             checklists: [],
             style: {
@@ -591,6 +608,8 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Keren Siebner',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
+            comments: [],
             comments: [
               {
                 id: 'ZdPnm',
@@ -675,6 +694,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
             comments: [],
             checklists: [],
             style: {
@@ -702,6 +722,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Sidney Sebban',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
             comments: [
               {
                 id: 'ZdPnm',
@@ -787,6 +808,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
             comments: [],
             checklists: [],
             style: {
@@ -841,6 +863,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Sidney Sebban',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
             comments: [
               {
                 id: utilService.makeId(5),
@@ -908,6 +931,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
              comments: [],
             checklists: [],
             style: {
@@ -943,6 +967,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Keren Siebner',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
             comments: [
               {
                 id: 'ZdPnm',
@@ -991,6 +1016,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
             comments: [],
             checklists: [],
             style: {
@@ -1025,6 +1051,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Keren Siebner',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
             comments: [
               {
                 id: 'ZdPnm',
@@ -1101,6 +1128,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
             comments: [],
             checklists: [],
             style: {
@@ -1128,6 +1156,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Yael Tal',
               imgUrl: { imgUrlMember1 },
             },
+            attachments: [],
             comments: [
               {
                 id: 'ZdPnm',
