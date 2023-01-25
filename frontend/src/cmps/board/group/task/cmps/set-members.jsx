@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { Modal } from '../../../../app/modal'
+import { MemberDetailsModal } from '../../../../app/modal/member-details-modal'
 
 export function SetMembers({ type, board, task, group }) {
   const members = board?.members
@@ -20,17 +21,28 @@ export function SetMembers({ type, board, task, group }) {
         return <article className="task-preview-members"></article>
       return (
         <article className="task-preview-members">
-          {memberIds.map((memberId) => {
+          {memberIds.map((memberId, idx) => {
             const member = members.find((member) => member._id === memberId)
             const { _id, imgUrl, fullname } = member
             return (
-              <img
-                key={_id}
-                className="task-preview-members-img"
-                src={imgUrl}
-                alt={fullname}
-                title={fullname}
-              />
+              <>
+                <img
+                  key={_id}
+                  className="task-preview-members-img"
+                  src={imgUrl}
+                  alt={fullname}
+                  title={fullname}
+                  onClick={() => setModalOpen('member-details')}
+                />
+                {modalOpen === 'member-details' && (
+                  <MemberDetailsModal
+                    key={idx}
+                    onCloseModal={onCloseModal}
+                    task={task}
+                    board={board}
+                  />
+                )}
+              </>
             )
           })}
         </article>
@@ -79,3 +91,4 @@ export function SetMembers({ type, board, task, group }) {
       break
   }
 }
+
