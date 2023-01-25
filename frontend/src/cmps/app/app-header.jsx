@@ -24,9 +24,13 @@ export function AppHeader() {
   }
 
   return (
-    <header className="app-header-section full" style={ board?.style?.bgColor && { background: board.style.bgColor }}>
+    <header className="app-header-section full" style={board?.style?.bgColor && { background: board.style.bgColor }}>
       <Link to="/" ><CgMenuGridR className="header-links" /></Link>
-      <Link to="/board" className='logo' />
+      <Link to="/board"  >
+        {/* <span className='logo'></span> */}
+        <img src="../assets/img/header/logo.png" alt="" />
+        <h2 className='logo-name' style={{ fontFamily: 'charlie-regular', color: 'white' }}>Frello</h2>
+      </Link>
       <nav>
         {routes.map((route) => (
           <NavLink key={route.path} to={route.path}>

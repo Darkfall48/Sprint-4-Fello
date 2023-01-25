@@ -1,5 +1,4 @@
 //? Icon
-import { useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BsBrightnessAltHigh } from 'react-icons/bs'
 

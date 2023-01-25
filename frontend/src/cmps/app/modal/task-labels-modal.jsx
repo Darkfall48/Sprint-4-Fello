@@ -91,7 +91,6 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
       return (<section className='modal-content-container'>
         < input type="text" value={inputLabel.title} placeholder="Search labels..." onChange={handleChange} />
         <div className="labels-selection-container">
-          {/* <SetLabels type="" board={board} task={task} filteredLabels={filteredLabels} /> */}
           <p>Labels</p>
           {filteredLabels.map((label, idx) => {
             return (
@@ -105,7 +104,7 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
                   {(!task.labelIds.includes(label.id)) && <MdOutlineCheckBoxOutlineBlank className="black-checkbox" />}
                 </label>
 
-                <span
+                <div
                   className="task-details-main-labels-container-label"
                   id="color-pick"
                   key={label.id}
@@ -120,7 +119,7 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
                   <span key={idx + 4} className="task-details-main-labels-container-title">
                     {label?.title ? label?.title : 'None'}
                   </span>
-                </span>
+                </div>
                 <span key={idx + 5} onClick={()=> {
                   setMode('create-new')
                   setEditExisting(true)}}><RxPencil1 /></span>
