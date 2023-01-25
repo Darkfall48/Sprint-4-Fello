@@ -51,14 +51,27 @@ async function add(board) {
 //? Update - Edit
 async function update(board) {
   try {
-    const { name, price, labels, createdAt, modifiedAt, inStock } = board
-    const boardToSave = {
-      name,
-      price,
-      labels,
+    const {
+      title,
+      archivedAt,
       createdAt,
-      modifiedAt,
-      inStock,
+      createdBy,
+      labels,
+      style,
+      members,
+      groups,
+      activities,
+    } = board
+    const boardToSave = {
+      title,
+      archivedAt,
+      createdAt,
+      createdBy,
+      labels,
+      style,
+      members,
+      groups,
+      activities,
     }
     const collection = await dbService.getCollection(BOARDS_DB)
     await collection.updateOne(
@@ -101,12 +114,21 @@ async function remove(boardId) {
 //? Private Functions - Query - List/Filtering/Sorting/Paging
 
 function _buildFilterCriteria(filterBy) {
-  const { name, maxPrice, inStock, labels } = filterBy
+  const {
+    title,
+    archivedAt,
+    createdAt,
+    createdBy,
+    labels,
+    style,
+    members,
+    groups,
+    activities,
+  } = filterBy
   let criteria = {}
-  if (name) criteria.name = { $regex: name ? name : '', $options: 'i' }
-  if (maxPrice) criteria.price = { $lt: maxPrice ? +maxPrice : Infinity }
-  if (inStock) criteria.inStock = true // TODO: Make it work with false
+  if (title) criteria.name = { $regex: title ? title : '', $options: 'i' }
   if (labels?.length) criteria.labels = { $all: labels.split(',') }
+  if (members?.length) criteria.members = { $all: members.split(',') }
   return criteria
 }
 
