@@ -1,3 +1,13 @@
+module.exports = {
+  makeId,
+  getRandomInt,
+  debounce,
+  generateRandomName,
+  timeAgo,
+  generateRandomImg,
+  randomPastTime,
+}
+
 function makeId(length = 5) {
   var txt = ''
   var possible =
@@ -104,14 +114,4 @@ function randomPastTime() {
 
   const pastTime = getRandomIntInclusive(HOUR, WEEK)
   return Date.now() - pastTime
-}
-
-module.exports = {
-  makeId,
-  getRandomInt,
-  debounce,
-  generateRandomName,
-  timeAgo,
-  generateRandomImg,
-  randomPastTime,
 }

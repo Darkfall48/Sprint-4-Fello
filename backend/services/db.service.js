@@ -1,7 +1,9 @@
+//? Libraries
 const MongoClient = require('mongodb').MongoClient
-
-const config = require('../config')
+//? Services
 const logger = require('./logger.service')
+//? Config
+const config = require('../config')
 
 module.exports = {
   getCollection,

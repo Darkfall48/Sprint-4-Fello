@@ -1,6 +1,8 @@
+//? Libraries
 const express = require('express')
-const {login, signup, logout} = require('./auth.controller')
-
+//? Controller
+const { login, signup, logout } = require('./auth.controller')
+//? Config
 const router = express.Router()
 
 router.post('/login', login)
