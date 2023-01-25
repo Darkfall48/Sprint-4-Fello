@@ -226,15 +226,24 @@ export function TaskDetails() {
               <button
                 title="I am Date"
                 onClick={() => {
-                  setModalOpen('Date')
+                  setModalOpen('date')
                 }}>
                 <FiClock /> <span>Dates</span>
               </button>
-              <button 
-              title="I am Attachment"
-              onClick={() => {
-                setModalOpen('attachment')
-              }}
+              {modalOpen === 'date' && (
+                <Modal
+                  type="task-date"
+                  modalTitle="Dates"
+                  onCloseModal={onCloseModal}
+                  group={group}
+                  task={task}
+                />
+              )}
+              <button
+                title="I am Attachment"
+                onClick={() => {
+                  setModalOpen('attachment')
+                }}
               >
                 <ImAttachment /> <span>Attachment</span>
               </button>
