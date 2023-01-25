@@ -23,7 +23,7 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
     return (
       <article
         className="task-preview-cover"
-        style={ style?.bgImg ? { background: '' } : { background: style.bgColor }}
+        style={ style?.bgImg ? { background: '' } : { background: style.bgColor } }
       >
 
       </article>
