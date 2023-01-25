@@ -57,7 +57,7 @@ function generateRandomName() {
     'wing',
     'yang',
     'snow',
-    'fire'
+    'fire',
   ]
   return (
     names[Math.floor(Math.random() * names.length)] +
@@ -97,7 +97,6 @@ function timeAgo(ms = new Date()) {
   }
 }
 
-
 function randomPastTime() {
   const HOUR = 1000 * 60 * 60
   const DAY = 1000 * 60 * 60 * 24
@@ -114,5 +113,5 @@ module.exports = {
   generateRandomName,
   timeAgo,
   generateRandomImg,
-  randomPastTime
+  randomPastTime,
 }
