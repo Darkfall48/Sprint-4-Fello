@@ -11,9 +11,9 @@ import { SetLabels } from './cmps/set-labels'
 import { SetInfos } from './cmps/set-infos'
 import { useNavigate } from 'react-router-dom'
 
-export function TaskPreview({ groupId, task, onArchiveTask }) {
+export function TaskPreview({ groupId, task, onArchiveTask, handleLabelClick, labelsPreview }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
-  const [labelsPreview, setLabelsPreview] = useState('preview-simple')
+  // const [labelsPreview, setLabelsPreview] = useState('preview-simple')
   const navigate = useNavigate()
 
   //? Private Components
@@ -30,12 +30,12 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
     )
   }
 
-  function handleLabelClick() {
-    // TODO: When state change: re-render board
-    setLabelsPreview(
-      labelsPreview === 'preview-simple' ? 'preview-detailed' : 'preview-simple'
-    )
-  }
+  // function handleLabelClick() {
+  //   // TODO: When state change: re-render board
+  //   setLabelsPreview(
+  //     labelsPreview === 'preview-simple' ? 'preview-detailed' : 'preview-simple'
+  //   )
+  // }
 
   return (
     <section
