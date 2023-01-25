@@ -1,5 +1,5 @@
+//?Libraries
 import { useState, useRef } from 'react'
-
 import { TaskList } from './task/task-list'
 import { HiOutlinePlus } from 'react-icons/hi'
 import { TbTemplate } from 'react-icons/tb'
@@ -8,21 +8,16 @@ import { CgClose } from 'react-icons/cg'
 import { useSelector } from 'react-redux'
 //?Services
 import { boardService } from '../../../services/board/board.service.local'
-import {
-  removeTask,
-  addTask,
-  updateBoard,
-} from '../../../store/actions/board.actions'
-import { store } from '../../../store/store'
+import { removeTask, addTask, updateBoard } from '../../../store/actions/board.actions'
+//?Componenets
 import { Modal } from '../../app/modal'
 
-export function GroupPreview({ group }) {
-  const board = useSelector((storeState) => storeState.boardModule.board)
 
+export function GroupPreview({ group }) {
+
+  const board = useSelector((storeState) => storeState.boardModule.board)
   const contentRef = useRef(null)
 
-  // console.log('group', group)
-  
   const [editMode, setEditMode] = useState(false)
   const [newTask, setNewTask] = useState(boardService.getEmptyTask(''))
   const [isGroupMenuOpen, setIsGroupMenuOpen] = useState(false)
@@ -33,29 +28,26 @@ export function GroupPreview({ group }) {
 
   function handleChange(ev) {
     if (ev.key === 'Enter') onSubmitTask(ev)
-    const { target }= ev
+    const { target } = ev
     let { name, value } = target
     setNewTask((prevTask) => ({ ...prevTask, [name]: value }))
-    // console.log('newTask', newTask)
   }
 
-  function exitEditMode(e){
+  function exitEditMode(e) {
     e.preventDefault()
     setEditMode(false)
   }
 
-   function onSubmitTask(ev) {
+  function onSubmitTask(ev) {
     console.log('newTask', newTask)
-    if (newTask.title==='') return
+    if (newTask.title === '') return
     ev.preventDefault()
     addTask(group, newTask)
     setNewTask(boardService.getEmptyTask(''))
     setEditMode(false)
-    //here is the problem?
   }
 
   function onArchiveTask(taskId) {
-    // console.log('taskId', taskId)
     removeTask(group, taskId)
   }
 
@@ -75,8 +67,7 @@ export function GroupPreview({ group }) {
     setIsGroupMenuOpen(true)
   }
 
-  function onCloseModal(ev) {
-    // ev.preventDefault()
+  function onCloseModal() {
     setIsGroupMenuOpen(false)
   }
 
@@ -99,13 +90,13 @@ export function GroupPreview({ group }) {
             <BsThreeDots />
           </button>
           {isGroupMenuOpen && (
-              <Modal
-                type="group-actions"
-                modalTitle="List Actions"
-                onCloseModal={onCloseModal}
-                group={group}
-                onAddTask={onAddTask}
-              />
+            <Modal
+              type="group-actions"
+              modalTitle="List Actions"
+              onCloseModal={onCloseModal}
+              group={group}
+              onAddTask={onAddTask}
+            />
           )}
         </div>
         <TaskList
@@ -116,7 +107,6 @@ export function GroupPreview({ group }) {
         />
         {editMode && (
           <form
-            // className="task-preview-section add-task-edit"
             onSubmit={onSubmitTask}
             onBlur={(ev) => onSubmitTask(ev)}
           >
@@ -128,11 +118,11 @@ export function GroupPreview({ group }) {
               value={newTask.title}
               onChange={handleChange}
               onKeyUp={handleChange}
-            />       
+            />
             <div className='add-item-wrapper'>
-            <button className='new-item-add-btn' onClick={() => onSubmitTask()}>Add card</button>
-            <button type="button" className="close-add-item" onClick={exitEditMode}><CgClose /></button>
-              </div> 
+              <button className='new-item-add-btn' onClick={() => onSubmitTask()}>Add card</button>
+              <button type="button" className="close-add-item" onClick={exitEditMode}><CgClose /></button>
+            </div>
           </form>
         )}
         {!editMode && (<div className="group-bottom-control-btns">
@@ -144,7 +134,7 @@ export function GroupPreview({ group }) {
             <TbTemplate />
           </button>
         </div>
-          )}
+        )}
       </div>
     </section>
   )

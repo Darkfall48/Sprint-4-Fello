@@ -1,4 +1,4 @@
-import { React, useEffect, useRef } from 'react';
+import { React} from 'react';
 import { CgClose } from 'react-icons/cg'
 
 import { AddBoardModal } from "./modal/add-board-modal";

@@ -1,14 +1,13 @@
-import { boardReducer } from "../../../store/reducers/board.reducer";
+//?Libraries
 import { IoMdCheckbox } from 'react-icons/io'
 import { MdOutlineCheckBoxOutlineBlank } from 'react-icons/md'
 import { RxPencil1 } from 'react-icons/rx'
 import { CgClose } from 'react-icons/cg'
-
-import { useState } from "react";
-import { loadBoard, updateBoard, updateTask } from "../../../store/actions/board.actions";
 //?Services:
+import { loadBoard, updateBoard, updateTask } from "../../../store/actions/board.actions";
 import { boardService } from "../../../services/board/board.service.local";
 import { utilService } from "../../../services/util.service";
+import { useEffect, useState } from "react";
 
 
 export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels }) {
@@ -19,6 +18,13 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
   const [mode, setMode] = useState('select-label')
   const [labelTitle, setLabelTitle] = useState('')
   const [labelColor, setLabelColor] = useState('')
+  const [editExisiting,setEditExisting] = useState(false)
+  // const [updatedBoard,setUpdatedBoard] = useState(board)
+
+  // useEffect(()=>{
+  //   loadBoard()
+  // },[updatedBoard])
+
 
   async function onToggleLabel(label) {
     const { id } = label
@@ -31,7 +37,7 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
     task = { ...task, labelIds: updatedLabelIds }
     try {
       await updateTask(group, task)
-      loadBoard()
+      loadBoard(board._id)
     } catch (err) {
       console.log('Failed to update task', err)
     }
@@ -63,11 +69,19 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
       board = { ...board, labels: updatedLabels }
       setMode('select-label')
       try {
+        // const savedBoard = await updateBoard(board)
         await updateBoard(board)
-        loadBoard()
+        console.log('board._id', board._id)
+        loadBoard(board._id)
+        // setUpdatedBoard(savedBoard)
       } catch (err) {
         console.log('Failed to update board', err)
       }
+
+  }
+
+  function deleteLabel(){
+    setEditExisting(false)
 
   }
 
@@ -101,21 +115,24 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
                   <div
                     className="task-details-main-labels-container-circle"
                     style={{ backgroundColor: label?.color }}
+                    key={idx + 3}
                   ></div>
-                  <span key={idx + 2} className="task-details-main-labels-container-title">
+                  <span key={idx + 4} className="task-details-main-labels-container-title">
                     {label?.title ? label?.title : 'None'}
                   </span>
                 </span>
-                <span key={idx + 3}><RxPencil1 /></span>
+                <span key={idx + 5} onClick={()=> {
+                  setMode('create-new')
+                  setEditExisting(true)}}><RxPencil1 /></span>
               </div>
             )
           })}
         </div >
-        <button onClick={() => { setMode('edit-new') }}>Create a new label</button>
+        <button onClick={() => { setMode('create-new') }}>Create a new label</button>
       </section >
       )
       break
-    case 'edit-new':
+    case 'create-new':
       return (
         <div>
           <p>Title</p>
@@ -128,53 +145,10 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
           </div>
           <button> <span><CgClose /></span> Remove color</button>
           <button onClick={() => createNewLabel()}>Create</button>
+          {editExisiting && <button onClick={()=>deleteLabel()}>Delete</button>}
         </div>
 
       )
       break
   }
 }
-
-
-
-
-
-// <article className="task-details-main-labels">
-//     {updatedLabelIds.map((label, idx) => {
-//       return (
-//         <label className="task-label-selection-wrapper"
-//           key={idx}
-//           onClick={() => onToggleLabel(label)}
-//         >
-//           {/* <input type="checkbox" /> */}
-//           {(labelIds.includes(label.id)) && <span><IoMdCheckbox /></span>}
-//           {(!labelIds.includes(label.id)) && <span><MdOutlineCheckBoxOutlineBlank /></span>}
-//           <div
-//             className="task-label-selection"
-//             key={label?.id}
-//             style={{ backgroundColor: label?.color }}
-//             title={label?.title ? label?.title : 'None'}
-//           >
-//             <div
-//               className="task-details-main-labels-container-circle"
-//               style={{ backgroundColor: label?.color }}
-//             ></div>
-
-//             <span>{label.title}</span>
-//           </div>
-//         </label>
-//       )
-//     })}
-//   </article>
-
-{/* {labelIds.map((labelId, idx) => {
-      const label = labels.find((label) => label.id === labelId)
-      return (
-        <span
-          className="task-label-selection"
-          key={idx}
-          style={{ backgroundColor: label?.color }}
-          title={label?.title ? label?.title : 'None'}
-        >{label?.title}</span>
-      )
-    })} */}

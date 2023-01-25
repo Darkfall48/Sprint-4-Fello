@@ -54,7 +54,7 @@ export async function loadBoards() {
 
 export async function loadBoard(boardId) {
   try {
-    // console.log('boardId', boardId)
+    console.log('boardId', boardId)
     await loadBoards()
     const board = await boardService.get(boardId)
     // console.log('Board from DB:', board)

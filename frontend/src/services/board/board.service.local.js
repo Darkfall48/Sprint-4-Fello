@@ -4,7 +4,6 @@ import imgUrlMember1 from '../../assets/img/members/member1.png'
 import imgUrlMember2 from '../../assets/img/members/member2.png'
 import imgUrlMember3 from '../../assets/img/members/member3.jpg'
 
-const pageSize = 5
 const BOARD_KEY = 'boardDB'
 
 _createBoards()
@@ -19,13 +18,13 @@ export const boardService = {
   getEmptyTask,
   getDefaultFilter,
   getDefaultSort,
-  // getRandomBoard,
   getImages,
   getColors,
   getEmptyTodo,
   getEmptyChecklist,
   getCoverColors,
   getLabelColors
+  // getRandomBoard,
 }
 
 async function query() {
@@ -53,12 +52,6 @@ async function query() {
   //       filteredBoards = filteredBoards.sort((a, b) =>
   //         a.name.localeCompare(b.name)
   //       )
-  //     }
-  //     // Paging
-  //     // const totalPages = Math.ceil(boards.length / pageSize)
-  //     if (filterBy.pageIdx !== undefined) {
-  //       const startIdx = filterBy.pageIdx * pageSize
-  //       filteredBoards = filteredBoards.slice(startIdx, pageSize + startIdx)
   //     }
   // })
   // return Promise.resolve(filteredBoards)
