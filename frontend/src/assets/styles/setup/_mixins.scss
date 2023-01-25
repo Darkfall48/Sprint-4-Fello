@@ -72,7 +72,7 @@
   $type: regular,
   $bg: $clr1,
   $padding: em(10px) em(20px),
-  $hover: darken($bg, 8%)
+  $hover: $bg
 ) {
   display: inline-flex;
   align-items: center;
@@ -85,7 +85,7 @@
   font-variation-settings: 'wght' 400;
   border: none;
   cursor: pointer;
-  border-radius: 0.5rem;
+  border-radius: $border-radius;
   font-weight: 400;
   // transition: background-color 0.2s;
 
@@ -124,6 +124,12 @@
     color: $clr-txt;
     padding: 6px 12px;
     width: 168px;
+  }
+
+  @else if $type == action{
+    margin-left: 0;
+    color: white;
+    width: fit-content;
   }
 
   // @else if $type ==dark {

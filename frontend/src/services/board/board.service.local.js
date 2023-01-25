@@ -954,7 +954,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               imgUrl: { imgUrlMember1 },
             },
             attachments: [],
-             comments: [],
+            comments: [],
             checklists: [],
             style: {
               bgColor:
@@ -1460,13 +1460,15 @@ function getColors() {
 }
 
 function getCoverColors() {
-  return ['#7BC86C', '#F5DD29', '#FFAF3F', '#EF7564', '#CD8DE5','#5BA4CF', '#29CCE5', '#6DECA9', '#FF8ED4', '#172B4D' ]
+  return ['#7BC86C', '#F5DD29', '#FFAF3F', '#EF7564', '#CD8DE5', '#5BA4CF', '#29CCE5', '#6DECA9', '#FF8ED4', '#172B4D']
 }
 
 function getLabelColors() {
-  return ['#036aa7','#7bc86c', '#f5dd29', '#ffaf3f', '#ef7564', '#cd8de5', '#5ba4cf',
-  '#7bc86c88', '#f5dd2988', '#ffaf3f88', '#ef756488', '#cd8de588','#5ba4cf88',
-  '#7bc86c77', '#f5dd2977', '#ffaf3f77', '#ef756477', '#cd8de577', '#5ba4cf77',
-  '#7bc86c66', '#f5dd2966', '#ffaf3f66', '#ef756466', '#e568af', '#505f79',
+  return ['#B7DDB0', '#F5EA92', '#FAD29C', '#EFB3AB', '#DFC0EB',
+    '#7BC86C', '#F5DD29', '#FFAF3F', '#EF7564', '#CD8DE5',
+    '#5AAC44', '#E6C60D', '#E79217', '#CF513D', '#A86CC1',
+    '#8BBDD9', '#8FDFEB', '#B3F1D0', '#F9C2E4', '#172b4d',
+    '#5BA4CF', '#29CCE5', '#6DECA9', '#FF8ED4', '#344563',
+    '#026AA7', '#00AECC', '#4ED583', '#e568af', '#505f79',
   ]
 }
