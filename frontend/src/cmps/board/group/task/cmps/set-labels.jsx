@@ -70,7 +70,7 @@ export function SetLabels({
                     ></div>
                   <span className="task-preview-detailed-labels-container-title"
                     key={idx+2}>
-                    {label?.title ? label?.title : 'None'}
+                    {label?.title}
                   </span>
                 </span>
               )
@@ -105,7 +105,7 @@ export function SetLabels({
                   <span className="task-details-main-labels-container-title"
                   key={idx+1}
                   >
-                    {label?.title ? label?.title : 'None'}
+                    {label?.title}
                   </span>
                 </span>
               )

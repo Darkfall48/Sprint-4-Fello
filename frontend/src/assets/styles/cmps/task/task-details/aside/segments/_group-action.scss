@@ -28,8 +28,10 @@
     }
   }
   & hr {
-    place-self: left;
-    width: 168px;
-    height: 2px;
+    width: 167px;
+    background-color: #091e4221;
+    height: 1px;
+    position: relative;
+    margin:0;
   }
 }
