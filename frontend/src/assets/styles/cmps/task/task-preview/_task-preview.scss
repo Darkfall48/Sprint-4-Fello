@@ -11,10 +11,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    'background background'
-    'label      label'
+    'cover cover'
+    'labels      labels'
     'title      title'
-    'info       member';
+    'infos       members';
   &:hover {
     background-color: rgb(236, 234, 234);
 

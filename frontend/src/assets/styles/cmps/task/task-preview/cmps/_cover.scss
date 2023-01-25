@@ -1,11 +1,12 @@
 .task-preview {
   &-cover {
+    grid-area: cover;
     border-radius: $clr-task-preview-border-radius;
     height: 32px;
-    grid-area: background;
     margin-bottom: 6px;
   }
   &-no-cover {
+    grid-area: cover;
     margin-bottom: 6px;
   }
 }

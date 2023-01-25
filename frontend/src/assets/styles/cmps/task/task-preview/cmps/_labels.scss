@@ -1,21 +1,82 @@
 .task-preview {
-  &-labels {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 4px;
-    grid-area: label;
-    padding-left: 8px;
-    padding-right: 8px;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    &-label {
-      border-radius: 4px;
-      height: 8px;
-      width: 40px;
+  &-simple {
+    &-labels {
+      grid-area: labels !important;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 4px;
+      grid-area: label;
+      padding-left: 8px;
+      padding-right: 8px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      &-label {
+        // transition: all 0.2s ease-in-out;
+        border-radius: 4px;
+        height: 8px;
+        width: 40px;
+        &:hover {
+          filter: saturate(85%) brightness(85%);
+          background-color: rgba(255, 0, 0, 0.4);
+        }
+      }
+    }
+    &-no-labels {
+      grid-area: labels !important;
+      display: none;
     }
   }
-  &-no-labels {
-    grid-area: labels;
-    display: none;
+
+  &-detailed {
+    &-labels {
+      grid-area: labels;
+      display: flex;
+      flex-direction: column;
+      justify-self: flex-start;
+      //   margin-bottom: 20px;
+      &-container {
+        justify-self: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        grid-area: label;
+        padding-left: 8px;
+        padding-right: 8px;
+        margin-bottom: 4px;
+        align-items: center;
+        transition: all 0.2s ease-in-out;
+        &-label {
+          cursor: pointer;
+          border-radius: 3px;
+          max-width: 100%;
+          min-width: 56px;
+          height: 16px;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          padding-left: 4px;
+          padding-right: 8px;
+          transition: all 0.2s ease-in-out;
+          &:hover {
+            filter: saturate(85%) brightness(85%);
+            background-color: rgba(255, 0, 0, 0.4);
+          }
+        }
+        &-circle {
+          border-radius: 50%;
+          min-width: 8px;
+          max-width: 8px;
+          min-height: 8px;
+          max-height: 8px;
+          transition: all 0.2s ease-in-out;
+        }
+        &-title {
+          color: #172b4d;
+          font-size: 12px;
+          width: max-content;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+    }
   }
 }

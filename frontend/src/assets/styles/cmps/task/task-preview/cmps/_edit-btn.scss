@@ -1,9 +1,9 @@
 .task-preview {
   &-edit {
+    // grid-area: edit;
     height: 32px;
     width: 32px;
     position: absolute;
-    grid-area: edit;
     align-self: baseline;
     justify-self: end;
     display: none;
