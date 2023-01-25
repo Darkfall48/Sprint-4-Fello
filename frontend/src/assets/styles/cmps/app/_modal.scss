@@ -180,19 +180,61 @@
     }
 }
 
-.task-attachment-modal-content{
+.task-attachment-modal-content {
     margin-top: 10px;
-    input{
+
+    input {
         margin-bottom: 5px;
     }
 }
-.attachment-action-btns-container {
-}
+
+.attachment-action-btns-container {}
 
 #modal-btn-full {
     @include btn('modal-full', white, 6px 12px, $list-btn-bg-clr-modal-hover)
 }
 
+#modal-btn-full-grey {
+    @include btn('modal-full', $list-btn-bg-clr-modal-hover, 6px 12px, $task-details-btn-bg-clr-hover);
+    justify-content: center;
+    border-radius: $border-radius;
+}
+
+#delete-btn {
+    @include btn('action', #b04632, 7px 12px);
+}
+
+#save-btn {
+
+    @include btn('action', $clr4, 7px 12px, $allowed-btn-bg-clr);
+
+    // display: flex;
+    // background-color: #0079bf;
+    // border-radius: 3px;
+    // font-family: inherit;
+    // font-size: 1em;
+    // margin-left: 0;
+    // padding: 7px 12px 5px;
+    // width: fit-content;
+    // color: white;
+}
+
 #attach-btn {
     width: fit-content;
+}
+
+.new-label-demo {
+    background-color: #F4F5F7;
+    padding: 32px;
+    margin: 12px 0 0 0;
+    
+}
+
+.return-btn{
+    position: absolute;
+    left:10px;
+    top:9px;
+    &:hover{
+        cursor: pointer;
+    }
 }

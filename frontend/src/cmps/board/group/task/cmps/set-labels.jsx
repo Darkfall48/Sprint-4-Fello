@@ -1,13 +1,19 @@
 //? Icon
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BsBrightnessAltHigh } from 'react-icons/bs'
+import { Modal } from '../../../../app/modal'
 
 export function SetLabels({
   type,
   board,
+  group,
   task,
   filteredLabels,
   handleLabelClick,
+  setModalOpen,
+  modalOpen,
+  onCloseModal,
+  onEditLabels
 }) {
   const labels = board?.labels
   const { labelIds } = task
@@ -44,7 +50,7 @@ export function SetLabels({
       return (
         <article className="task-preview-detailed-labels">
           <div className="task-preview-detailed-labels-container">
-            {labelIds.map((labelId) => {
+            {labelIds.map((labelId, idx) => {
               const label = labels?.find((label) => label.id === labelId)
               return (
                 <span
@@ -60,9 +66,11 @@ export function SetLabels({
                   <div
                     className="task-preview-detailed-labels-container-circle"
                     style={{ backgroundColor: label?.color }}
-                  ></div>
-                  <span className="task-preview-detailed-labels-container-title">
-                    {label?.title ? label?.title : 'None'}
+                    key={idx+1}
+                    ></div>
+                  <span className="task-preview-detailed-labels-container-title"
+                    key={idx+2}>
+                    {label?.title}
                   </span>
                 </span>
               )
@@ -80,7 +88,7 @@ export function SetLabels({
         <article className="task-details-main-labels">
           <h2 className="task-details-main-labels-title">Labels</h2>
           <div className="task-details-main-labels-container">
-            {labelIds.map((labelId) => {
+            {labelIds.map((labelId, idx) => {
               const label = labels?.find((label) => label.id === labelId)
               return (
                 <span
@@ -92,9 +100,12 @@ export function SetLabels({
                   <div
                     className="task-details-main-labels-container-circle"
                     style={{ backgroundColor: label?.color }}
+                    key={idx+2}
                   ></div>
-                  <span className="task-details-main-labels-container-title">
-                    {label?.title ? label?.title : 'None'}
+                  <span className="task-details-main-labels-container-title"
+                  key={idx+1}
+                  >
+                    {label?.title}
                   </span>
                 </span>
               )
@@ -102,9 +113,22 @@ export function SetLabels({
             <button
               className="task-details-main-labels-add-btn"
               title="Add Label"
+              onClick={() => {setModalOpen('labels')}}
+              
             >
               <AiOutlinePlus />
             </button>
+          {modalOpen === 'labels' && (
+              <Modal
+                type="task-labels"
+                modalTitle="Labels"
+                onCloseModal={onCloseModal}
+                task={task}
+                group={group}
+                board={board}
+                onEditLabels={onEditLabels}
+              />
+            )}
           </div>
         </article>
       )
