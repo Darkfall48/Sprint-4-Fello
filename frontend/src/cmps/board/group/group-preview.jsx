@@ -13,7 +13,7 @@ import { removeTask, addTask, updateBoard } from '../../../store/actions/board.a
 import { Modal } from '../../app/modal'
 
 
-export function GroupPreview({ group }) {
+export function GroupPreview({ group, handleLabelClick, labelsPreview }) {
 
   const board = useSelector((storeState) => storeState.boardModule.board)
   const contentRef = useRef(null)
@@ -100,6 +100,8 @@ export function GroupPreview({ group }) {
           )}
         </div>
         <TaskList
+          handleLabelClick={handleLabelClick}
+          labelsPreview={labelsPreview}
           groupId={group.id}
           tasks={group.tasks}
           onArchiveTask={onArchiveTask}

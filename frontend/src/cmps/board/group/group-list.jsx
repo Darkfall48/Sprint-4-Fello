@@ -14,9 +14,16 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 
 
 export function GroupList({ board }) {
-
+  const [labelsPreview, setLabelsPreview] = useState('preview-simple')
   const [editMode, setEditMode] = useState(false)
   const [newGroupTitle, setNewGroupTitle] = useState('')
+
+  function handleLabelClick() {
+    // TODO: When state change: re-render board
+    setLabelsPreview(
+      labelsPreview === 'preview-simple' ? 'preview-detailed' : 'preview-simple'
+    )
+  }
 
   const navigate = useNavigate()
 
@@ -119,7 +126,9 @@ export function GroupList({ board }) {
                   >
 
                     <div className="group-preview-wrapper">
-                      <GroupPreview 
+                      <GroupPreview
+                      handleLabelClick= {handleLabelClick}
+                      labelsPreview={labelsPreview}
                       group={group}
                       // tasks={tasks}
                         isDragging={snapshot.isDragging}

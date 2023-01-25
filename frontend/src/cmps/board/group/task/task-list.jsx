@@ -4,7 +4,7 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { useSelector } from 'react-redux'
 import { saveGroup} from '../../../../store/actions/board.actions'
 
-export function TaskList({ groupId, onArchiveTask, group }) {
+export function TaskList({ groupId, onArchiveTask, group, handleLabelClick, labelsPreview }) {
 
   const board = useSelector((storeState) => storeState.boardModule.board)
 
@@ -45,7 +45,7 @@ export function TaskList({ groupId, onArchiveTask, group }) {
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                   >
-                    <TaskPreview key={task.id} groupId={groupId} task={task} onArchiveTask={onArchiveTask} />
+                    <TaskPreview labelsPreview={labelsPreview} handleLabelClick= {handleLabelClick}  key={task.id} groupId={groupId} task={task} onArchiveTask={onArchiveTask} />
                   </div>
                 )}
               </Draggable>
