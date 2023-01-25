@@ -29,6 +29,7 @@ import { SetTitle } from './cmps/set-title'
 import { Loader } from '../../../helpers/loader'
 import { BsCheck2Square } from 'react-icons/bs'
 import { Modal } from '../../../app/modal'
+import { SetAttachment } from './cmps/set-attachment'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -116,7 +117,7 @@ export function TaskDetails() {
           className="task-details-header"
           onClick={(ev) => ev.stopPropagation()}
         >
-          {(task?.style?.bgColor || task?.style?.bgImg) && <SetHeader task={task} group={group}/>}
+          {(task?.style?.bgColor || task?.style?.bgImg) && <SetHeader task={task} group={group} />}
         </header>
 
         <SetTitle
@@ -133,10 +134,21 @@ export function TaskDetails() {
             {task.memberIds && (
               <SetMembers board={board} task={task} group={group} />
             )}
-            {task.labelIds && <SetLabels  board={board} task={task} />}
+            {task.labelIds && <SetLabels board={board} task={task} />}
           </article>
 
           <SetDescription task={task} />
+          {task.attachments &&
+            task.attachments.map((attachment, idx) => (
+              <>
+                <SetAttachment
+                  key={attachment.id + idx}
+                  task={task}
+                  attachment={attachment}
+                  group={group}
+                />
+              </>
+            ))}
           {/*! Grid SCSS Not Working*/}
           {task.checklists &&
             task.checklists.map((checklist, idx) => (
@@ -191,7 +203,7 @@ export function TaskDetails() {
                   board={board}
                 />
               )}
-              <button title="I am Labels" onClick={() => {setModalOpen('labels')}}>
+              <button title="I am Labels" onClick={() => { setModalOpen('labels') }}>
                 <TbTag /> <span>Labels</span>
               </button>
               {modalOpen === 'labels' && (
@@ -247,6 +259,15 @@ export function TaskDetails() {
               >
                 <ImAttachment /> <span>Attachment</span>
               </button>
+              {modalOpen === 'attachment' && (
+                <Modal
+                  type="task-attachment"
+                  modalTitle="Attach from…"
+                  onCloseModal={onCloseModal}
+                  group={group}
+                  task={task}
+                />
+              )}
             </div>
           </article>
 

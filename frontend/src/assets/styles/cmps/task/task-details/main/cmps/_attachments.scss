@@ -1,0 +1,57 @@
+.task-details-main-attachment{
+    padding: 0;
+    display: grid;
+    grid-auto-columns: 56px 424px 88px;
+    grid-template-areas:
+      'icon title remove-btn'
+      'percentage advancement advancement'
+      'todos todos todos'
+      '. add-btn .';
+    margin-bottom: 24px;
+
+    // border-radius: 3px;
+    // margin: 0 0 8px;
+    // min-height: 80px;
+    // overflow: hidden;
+    // position: relative;
+    // display: flex;
+    // flex-direction: column;
+
+    &-input {
+        grid-area: title;
+      }
+
+    button{
+        text-decoration: underline;
+        background-color: transparent;
+        color: #5e6c84;
+    }
+
+    &-thumbnail{
+        background-color: #091e420a;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        border-radius: 3px;
+        height: 80px;
+        left: 0;
+        margin-top: -40px;
+        position: absolute;
+        text-align: center;
+        text-decoration: none;
+        top: 50%;
+        width: 112px;
+        z-index: 1;
+
+        a{
+            img{
+                border-radius: rem(3px);
+            }
+          
+        }
+
+        
+    }
+
+   
+}

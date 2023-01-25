@@ -107,7 +107,7 @@ async function save(board) {
 //make it async?
 function getGroupById(board, groupId) {
   return board.groups.find(group => group.id === groupId)
- 
+
 }
 
 function getEmptyBoard() {
@@ -173,6 +173,9 @@ function getEmptyAttachment() {
   return {
     id: utilService.makeId(5),
     title: '',
+    img: '',
+    createdAt: Date.now(),
+    comment: [],
   }
 }
 
@@ -322,7 +325,13 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Keren Siebner',
               imgUrl: { imgUrlMember1 },
             },
-            attachments: [],
+            attachments: [{
+              id: utilService.makeId(5),
+              title: 'Shared Background',
+              img: 'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/256x171/315d250bcd06a5f6dd93dae1bd19318f/photo-1461896836934-ffe607ba8211.jpg',
+              createdAt: Date.now(),
+              comment: [],},
+            ],
             comments: [],
             checklists: [
               {
@@ -954,7 +963,7 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               imgUrl: { imgUrlMember1 },
             },
             attachments: [],
-             comments: [],
+            comments: [],
             checklists: [],
             style: {
               bgColor:
@@ -1460,13 +1469,13 @@ function getColors() {
 }
 
 function getCoverColors() {
-  return ['#7BC86C', '#F5DD29', '#FFAF3F', '#EF7564', '#CD8DE5','#5BA4CF', '#29CCE5', '#6DECA9', '#FF8ED4', '#172B4D' ]
+  return ['#7BC86C', '#F5DD29', '#FFAF3F', '#EF7564', '#CD8DE5', '#5BA4CF', '#29CCE5', '#6DECA9', '#FF8ED4', '#172B4D']
 }
 
 function getLabelColors() {
-  return ['#036aa7','#7bc86c', '#f5dd29', '#ffaf3f', '#ef7564', '#cd8de5', '#5ba4cf',
-  '#7bc86c88', '#f5dd2988', '#ffaf3f88', '#ef756488', '#cd8de588','#5ba4cf88',
-  '#7bc86c77', '#f5dd2977', '#ffaf3f77', '#ef756477', '#cd8de577', '#5ba4cf77',
-  '#7bc86c66', '#f5dd2966', '#ffaf3f66', '#ef756466', '#e568af', '#505f79',
+  return ['#036aa7', '#7bc86c', '#f5dd29', '#ffaf3f', '#ef7564', '#cd8de5', '#5ba4cf',
+    '#7bc86c88', '#f5dd2988', '#ffaf3f88', '#ef756488', '#cd8de588', '#5ba4cf88',
+    '#7bc86c77', '#f5dd2977', '#ffaf3f77', '#ef756477', '#cd8de577', '#5ba4cf77',
+    '#7bc86c66', '#f5dd2966', '#ffaf3f66', '#ef756466', '#e568af', '#505f79',
   ]
 }

@@ -1,14 +1,32 @@
+import { useState } from "react";
+import { boardService } from "../../../services/board/board.service.local";
+import { updateTask } from "../../../store/actions/board.actions";
 import { ImgUploader } from "../../helpers/img-uploader";
 
-export function TaskAttachmentModal({ board, onCloseModal, group, task }) {
- 
-    const onUploaded = (imgUrl) => {
+export function TaskAttachmentModal({ onCloseModal, group, task }) {
+
+    const [attachmentToAdd, setAttachmentToAdd] = useState(boardService.getEmptyAttachment())
+
+    const onUploaded = (bgImg, imgUrl) => {
         console.log('imgUrl', imgUrl);
-        // updatedTask.style.bgImg = imgUrl
-        // onupdatedTask((prevTask) => ({ ...prevTask, style: { bgImg: imgUrl, bgColor: '' } }))
+        attachmentToAdd.img = imgUrl
+        // attachmentToAdd.title = imgUrl
+
+        // console.log('attachmentToAdd', attachmentToAdd);
+        // setAttachmentToAdd((prevTask) => ({ ...prevTask, img: imgUrl }))
         // updateTask(group, task)
+        // console.log('task added ', task);
+        onAddAttachment()
     }
 
+    function onAddAttachment() {
+        // ev.preventDefault()
+        // if (inputRef.current.value === '') return
+        task.attachments.push(attachmentToAdd)
+  
+        updateTask(group, task)
+        onCloseModal()
+    }
 
     return <div className="task-attachment-modal-content">
 
