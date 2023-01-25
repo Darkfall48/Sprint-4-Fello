@@ -1,0 +1,15 @@
+.task-preview {
+  &-title {
+    grid-area: title;
+    text-align: start;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    height: fit-content;
+    overflow-wrap: break-word;
+    & p {
+      margin: 0;
+    }
+  }
+}

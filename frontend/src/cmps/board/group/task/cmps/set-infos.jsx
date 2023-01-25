@@ -11,10 +11,10 @@ export function SetInfos({ task }) {
 
   function SetFollow() {
     if (!task.priority || task.priority !== 'high')
-      return <article className="task-preview-info-no-follow"></article>
+      return <article className="task-preview-infos-no-follow"></article>
     return (
       <article
-        className="task-preview-info-follow"
+        className="task-preview-infos-follow"
         title="You are following this card."
       >
         <AiOutlineEye />
@@ -24,9 +24,9 @@ export function SetInfos({ task }) {
 
   function SetTodos() {
     if (!task.checklists || !task.checklists.length)
-      return <article className="task-preview-info-no-todo"></article>
+      return <article className="task-preview-infos-no-todo"></article>
     return (
-      <article className="task-preview-info-todo" title="Element of checklist">
+      <article className="task-preview-infos-todo" title="Element of checklist">
         <BsCheck2Square />
         <span>
           {taskService.countIsDone(task)}/{taskService.countTodos(task)}
@@ -37,10 +37,10 @@ export function SetInfos({ task }) {
 
   function SetDescription() {
     if (!task.description)
-      return <article className="task-preview-info-no-description"></article>
+      return <article className="task-preview-infos-no-description"></article>
     return (
       <article
-        className="task-preview-info-description"
+        className="task-preview-infos-description"
         title="This card contain a description."
       >
         {task.description && <GrTextAlignFull />}
@@ -50,9 +50,9 @@ export function SetInfos({ task }) {
 
   function SetComments() {
     if (!task.comments || !task.comments.length)
-      return <article className="task-preview-info-no-comment"></article>
+      return <article className="task-preview-infos-no-comment"></article>
     return (
-      <article className="task-preview-info-comment" title="Comments">
+      <article className="task-preview-infos-comment" title="Comments">
         <FaRegComment />
         <span>{task.comments.length}</span>
       </article>
@@ -60,7 +60,7 @@ export function SetInfos({ task }) {
   }
 
   return (
-    <article className="task-preview-info">
+    <article className="task-preview-infos">
       <SetFollow />
       <SetTodos />
       <SetDescription />

@@ -23,13 +23,12 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
   const navigate = useNavigate()
 
   //? Private Components
-  function SetBackground() {
+  function SetCover() {
     const { style } = task
-    if (!style.bgColor)
-      return <div className="task-preview-no-background"></div>
+    if (!style.bgColor) return <div className="task-preview-no-cover"></div>
     return (
       <article
-        className="task-preview-background"
+        className="task-preview-cover"
         style={{
           backgroundColor: style.bgColor,
         }}
@@ -46,9 +45,9 @@ export function TaskPreview({ groupId, task, onArchiveTask }) {
       }}
       // onClick={() => setIsModalOpen(!isModalOpen)}
     >
-      {task.style && <SetBackground />}
+      {task.style && <SetCover />}
       {task.labelIds && (
-        <SetLabels type={'preview'} board={board} task={task} />
+        <SetLabels type={'preview-detailed'} board={board} task={task} />
       )}
       {task.title && <SetTitle type="preview" task={task} />}
       <SetEditBtn onArchiveTask={onArchiveTask} task={task} />

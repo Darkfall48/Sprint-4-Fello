@@ -1,0 +1,21 @@
+.task-preview {
+  &-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 4px;
+    grid-area: label;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    &-label {
+      border-radius: 4px;
+      height: 8px;
+      width: 40px;
+    }
+  }
+  &-no-labels {
+    grid-area: labels;
+    display: none;
+  }
+}
