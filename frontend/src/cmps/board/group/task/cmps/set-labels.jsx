@@ -1,13 +1,9 @@
 //? Icon
-import { useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
-import { BsBrightnessAltHigh } from 'react-icons/bs'
-
 
 export function SetLabels({ type, board, task, filteredLabels }) {
   const labels = board?.labels
   const { labelIds } = task
-
 
 
   switch (type) {
@@ -31,12 +27,6 @@ export function SetLabels({ type, board, task, filteredLabels }) {
         </article>
       )
       break
-    //* Labels modal Modal
-    // case 'modal':
-    //   return (
-
-    //   )
-    //   break
 
     default:
       //* Task Details

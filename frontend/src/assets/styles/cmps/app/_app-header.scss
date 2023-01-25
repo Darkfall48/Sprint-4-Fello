@@ -20,16 +20,21 @@
     }
 
     .logo {
-        background-image: url("https://a.trellocdn.com/prgb/dist/images/header-logo-spirit.d947df93bc055849898e.gif");
+        background-image: url("../../../img/header/logo.png");
         background-size: cover;
         background-repeat: no-repeat;
-        width: 75px;
+        width: 15px;
         height: 15px;
         margin: 0 20px 0 10px;
 
         &:hover {
             background-image: url("https://a.trellocdn.com/prgb/dist/images/header-logo-spirit-loading.87e1af770a49ce8e84e3.gif");
         }
+    }
+
+    .logo-name {
+        margin: 0 10px;
+        padding-bottom: 18px;
     }
 
     .user-info {
@@ -55,6 +60,7 @@
     nav {
         font-size: 1em;
         padding: 5px;
+        margin-bottom: 0;
         // display: flex;
         // justify-content: space-between;
 
@@ -88,6 +94,7 @@
             border-radius: rem(3px);
             padding: 6px 12px;
             font-weight: 400;
+            margin: 0 5px;
 
             transition-property: background-color;
             transition-duration: 85ms;
@@ -100,17 +107,16 @@
 
         .modal-content {
 
-            .add-board{
+            .add-board {
                 position: absolute;
                 // top: 50px;
                 // left: 580px;
                 z-index: 100;
-            
+
             }
-          
+
         }
 
     }
 
 }
-
