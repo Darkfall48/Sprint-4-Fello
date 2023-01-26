@@ -53,7 +53,8 @@ export function SetMembers({ type, board, task, group }) {
     default:
       //* Task Details
       if (!memberIds || !memberIds.length)
-        return <article className="task-details-main-members"></article>
+      return
+        // return <article className="task-details-main-members"></article>
       return (
         <article className="task-details-main-members">
           <h2 className="task-details-main-members-title">Members</h2>
