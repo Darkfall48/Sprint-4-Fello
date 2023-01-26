@@ -114,12 +114,12 @@ export function SetLabels({
               className="task-details-main-labels-add-btn"
               title="Add Label"
               onClick={() => {
-                setModalOpen('labels')
+                setModalOpen('labels-preview')
               }}
             >
               <AiOutlinePlus />
             </button>
-            {modalOpen === 'labels' && (
+            {modalOpen === 'labels-preview' && (
               <Modal
                 type="task-labels"
                 modalTitle="Labels"

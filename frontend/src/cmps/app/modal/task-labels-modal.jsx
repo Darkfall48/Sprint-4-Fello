@@ -17,13 +17,12 @@ export function TaskLabelsModal({
   task,
   group,
   board,
-  onCloseModal,
-  onEditLabels,
-  onReturnBtn,
+  mode,
+  onToggleMode
 }) {
   const [filteredLabels, setFilteredLabels] = useState(board?.labels||[])
   const [inputLabel, setInputLabel] = useState('')
-  const [mode, setMode] = useState('select-label')
+  // const [mode, setMode] = useState('select-label')
   const [labelTitle, setLabelTitle] = useState('')
   const [labelColor, setLabelColor] = useState('')
   const [editExisiting, setEditExisting] = useState(false)
@@ -82,14 +81,11 @@ console.log('board.labels', board)
     setFilteredLabels(updatedLabels)
   }
 
-  function onToggleMode(mode) {
-    setMode(mode)
-  }
+
 
   async function updateLabelstoBoard(updatedLabels) {
     board = { ...board, labels: updatedLabels }
-    setMode('select-label')
-    onReturnBtn(false)
+    onToggleMode('select-label')
     setLabelColor('')
     setLabelTitle('')
     try {
@@ -125,11 +121,10 @@ console.log('board.labels', board)
             <p>Labels</p>
             {filteredLabels?.map((label, idx) => {
               return (
-                <div key={idx} id="labels-container-modal">
+                <div key={idx} id="labels-container-modal"
+                onClick={() => onToggleLabel(label)}>
                   <label
-                    htmlFor="color-pick"
                     key={idx}
-                    onClick={() => onToggleLabel(label)}
                   >
                     {task.labelIds.includes(label.id) && <IoMdCheckbox />}
                     {!task.labelIds.includes(label.id) && (
@@ -139,19 +134,18 @@ console.log('board.labels', board)
 
                   {label?.title && <div
                     className="task-details-main-labels-container-label"
-                    id="color-pick"
-                    key={label.id}
-                    style={{ backgroundColor: label?.color + '66' }}
+                    style={{ backgroundColor: label?.color + '66'  }}
                     title={label?.title ? label?.title : ''}
-                  >
+                    >
                     <div
                       className="task-details-main-labels-container-circle"
                       style={{ backgroundColor: label?.color }}
                       // key={idx}
-                    ></div>
+                      ></div>
                     <span
                       // key={idx}
                       className="task-details-main-labels-container-title"
+                      id="color-pick"
                     >
                       {label?.title}
                     </span>
@@ -159,8 +153,7 @@ console.log('board.labels', board)
                   <span
                     // key={idx}
                     onClick={() => {
-                      setMode('create-new')
-                      onReturnBtn(true)
+                      onToggleMode('create-new')
                       setEditExisting(true)
                       setEditLabel(label)
                     }}
@@ -174,8 +167,7 @@ console.log('board.labels', board)
           <button
             id="modal-btn-full-grey"
             onClick={() => {
-              setMode('create-new')
-              onReturnBtn(true)
+              onToggleMode('create-new')
             }}
           >
             Create a new label
@@ -206,6 +198,7 @@ console.log('board.labels', board)
           <input
             type="text"
             value={labelTitle}
+            placeholder={editLabel.title}
             onChange={handleLabelTitleChange}
           />
           <p>Select a color</p>
@@ -227,7 +220,9 @@ console.log('board.labels', board)
               )
             })}
           </div>
-          <button id="modal-btn-full-grey">
+          <button id="modal-btn-full-grey"
+          onClick={()=>selectLabelColor('')}
+          >
             {' '}
             <span>
               <CgClose />

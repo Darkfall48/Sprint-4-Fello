@@ -1,5 +1,5 @@
 //? Libraries
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 //? Store
@@ -17,6 +17,8 @@ import { MdOutlineContentCopy } from 'react-icons/md'
 import { TbTemplate } from 'react-icons/tb'
 import { TiArchive } from 'react-icons/ti'
 import { HiOutlineShare } from 'react-icons/hi'
+import { MdOutlineLaptop } from 'react-icons/md'
+
 //? Components
 import { SetActivities } from './cmps/set-activities'
 import { SetCloseBtn } from './cmps/set-close-btn'
@@ -34,6 +36,8 @@ import { SetAttachment } from './cmps/set-attachment'
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const { boardId, groupId, taskId } = useParams()
+  const buttonRef = useRef()
+
 
   const [group, setGroup] = useState([])
   const [task, setTask] = useState([])
@@ -215,12 +219,7 @@ export function TaskDetails() {
                   board={board}
                 />
               )}
-              <button
-                title="I am Labels"
-                onClick={() => {
-                  setModalOpen('labels')
-                }}
-              >
+              <button title="I am Labels" onClick={() => { setModalOpen('labels') }} ref={buttonRef}>
                 <TbTag /> <span>Labels</span>
               </button>
               {modalOpen === 'labels' && (
@@ -232,6 +231,7 @@ export function TaskDetails() {
                   group={group}
                   board={board}
                   onEditLabels={onEditLabels}
+                  buttonRef={buttonRef}
                 />
               )}
               <button
@@ -295,7 +295,7 @@ export function TaskDetails() {
                       setModalOpen('cover')
                     }}
                   >
-                    <ImAttachment /> <span>Cover</span>
+                    <MdOutlineLaptop /> <span>Cover</span>
                   </button>
                   {modalOpen === 'cover' && (
                     <Modal
