@@ -17,7 +17,9 @@
   //   'a-icon activities';
   &-article-container {
     margin-left: 56px;
-    display: grid;
-    grid-auto-flow: column;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
   }
 }
