@@ -8,6 +8,7 @@ import { SetTitle } from './cmps/set-title'
 import { SetMembers } from './cmps/set-members'
 import { SetLabels } from './cmps/set-labels'
 import { SetInfos } from './cmps/set-infos'
+import { useRef } from 'react'
 
 export function TaskPreview({
   groupId,
@@ -15,6 +16,7 @@ export function TaskPreview({
   onArchiveTask,
   handleLabelClick,
   labelsPreview,
+  mode
 }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const navigate = useNavigate()
@@ -37,7 +39,15 @@ export function TaskPreview({
         />
       )}
       {task.title && <SetTitle type="preview" task={task} />}
-      <SetEditBtn onArchiveTask={onArchiveTask} task={task} />
+      {mode!=='quick-edit'&&
+      <SetEditBtn
+        onArchiveTask={onArchiveTask}
+        task={task}
+        handleLabelClick={handleLabelClick}
+        key={task.id}
+        groupId={groupId}
+        labelsPreview={labelsPreview} />
+      }
       <SetInfos task={task} />
       <SetMembers type={'preview'} board={board} task={task} />
     </section>

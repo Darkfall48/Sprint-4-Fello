@@ -201,6 +201,7 @@ export function TaskDetails() {
                 onClick={() => {
                   setModalOpen('members')
                 }}
+                ref={buttonRef}
               >
                 <HiOutlineUser /> <span>Members</span>
               </button>
@@ -212,6 +213,7 @@ export function TaskDetails() {
                   task={task}
                   group={group}
                   board={board}
+                  buttonRef={buttonRef}
                 />
               )}
               <button
@@ -240,6 +242,7 @@ export function TaskDetails() {
                 onClick={() => {
                   setModalOpen('checklist')
                 }}
+                ref={buttonRef}
               >
                 <IoMdCheckboxOutline /> <span>Checklist</span>
               </button>
@@ -251,6 +254,7 @@ export function TaskDetails() {
                   board={board}
                   group={group}
                   task={task}
+                  buttonRef={buttonRef}
                 />
               )}
               <button
@@ -258,6 +262,7 @@ export function TaskDetails() {
                 onClick={() => {
                   setModalOpen('date')
                 }}
+                ref={buttonRef}
               >
                 <FiClock /> <span>Dates</span>
               </button>
@@ -268,6 +273,7 @@ export function TaskDetails() {
                   onCloseModal={onCloseModal}
                   group={group}
                   task={task}
+                  buttonRef={buttonRef}
                 />
               )}
               <button
@@ -275,6 +281,7 @@ export function TaskDetails() {
                 onClick={() => {
                   setModalOpen('attachment')
                 }}
+                ref={buttonRef}
               >
                 <ImAttachment /> <span>Attachment</span>
               </button>
@@ -285,6 +292,7 @@ export function TaskDetails() {
                   onCloseModal={onCloseModal}
                   group={group}
                   task={task}
+                  buttonRef={buttonRef}
                 />
               )}
 
@@ -295,6 +303,7 @@ export function TaskDetails() {
                     onClick={() => {
                       setModalOpen('cover')
                     }}
+                    ref={buttonRef}
                   >
                     <MdOutlineLaptop /> <span>Cover</span>
                   </button>
@@ -305,6 +314,7 @@ export function TaskDetails() {
                       onCloseModal={onCloseModal}
                       group={group}
                       task={task}
+                      buttonRef={buttonRef}
                     />
                   )}
                 </>

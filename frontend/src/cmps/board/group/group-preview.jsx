@@ -27,6 +27,8 @@ export function GroupPreview({
 }) {
   // const board = useSelector((storeState) => storeState.boardModule.board)
   const contentRef = useRef(null)
+  const buttonRef = useRef()
+
 
   const [editMode, setEditMode] = useState(false)
   const [newTask, setNewTask] = useState(boardService.getEmptyTask(''))
@@ -108,6 +110,7 @@ export function GroupPreview({
             <button
               onClick={() => onGroupMenuOpen(group.id)}
               className="group-edit-menu-btn"
+              ref={buttonRef}
             >
               <BsThreeDots />
             </button>
@@ -118,6 +121,7 @@ export function GroupPreview({
                 onCloseModal={onCloseModal}
                 group={group}
                 onAddTask={onAddTask}
+                buttonRef={buttonRef}
               />
             )}
           </div>
