@@ -22,9 +22,9 @@ export function SetHeader({ task, group }) {
   return (
     <div
       className="task-details-header-cover"
-      style={style?.bgImg ? { background: `url(${style.bgColor})` } : { background: style.bgColor }}
+      style={style?.bgImg ? { background: `url(${style.bgImg})`, backgroundSize: 'contain', backgroundPosition: 'center',backgroundRepeat: 'no-repeat'  } : { background: style.bgColor }}
     >
-      <img src={style.bgImg} alt="" />
+      {/* <img src={style.bgImg} alt="" /> */}
       <button title="Change cover"
         onClick={() => setModalOpen(true)}
       >
