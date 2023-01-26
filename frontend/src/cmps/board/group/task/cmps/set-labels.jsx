@@ -25,12 +25,12 @@ export function SetLabels({
         return <article className="task-preview-simple-no-labels"></article>
       return (
         <article className="task-preview-simple-labels">
-          {labelIds.map((labelId) => {
+          {labelIds.map((labelId, idx) => {
             const label = labels.find((label) => label.id === labelId)
             return (
               <span
                 className="task-preview-simple-labels-label"
-                key={label?.id}
+                key={labelId + idx}
                 style={{ backgroundColor: label?.color }}
                 title={label?.title ? label?.title : 'None'}
                 onClick={(ev) => {
@@ -55,7 +55,7 @@ export function SetLabels({
               return (
                 <span
                   className="task-preview-detailed-labels-container-label"
-                  key={labelId}
+                  key={labelId + idx}
                   style={{ backgroundColor: label?.color + '66' }}
                   title={label?.title ? label?.title : ''}
                   onClick={(ev) => {

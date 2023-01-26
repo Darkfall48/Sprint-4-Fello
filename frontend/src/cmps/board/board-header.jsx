@@ -84,7 +84,7 @@ export function BoardHeader({board}) {
                 <button className="share"><RiUserSharedLine /> Share </button>
                 <span className="board-header-btn-divider"></span>
                 <button onClick={() => { setIsModalOpen(!isModalOpen)}}><BsThreeDots /></button>
-                {/* {isModalOpen && <BoardMenu board={board} onCloseModal={onCloseModal} isModalOpen={isModalOpen}/>} */}
+                {isModalOpen && <BoardMenu board={board} onCloseModal={onCloseModal} isModalOpen={isModalOpen}/>}
             </div>
         </section>
     )

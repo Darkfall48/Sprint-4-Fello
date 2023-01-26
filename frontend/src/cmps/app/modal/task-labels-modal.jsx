@@ -21,7 +21,7 @@ export function TaskLabelsModal({
   onEditLabels,
   onReturnBtn,
 }) {
-  const [filteredLabels, setFilteredLabels] = useState(board?.labels)
+  const [filteredLabels, setFilteredLabels] = useState(board?.labels||[])
   const [inputLabel, setInputLabel] = useState('')
   const [mode, setMode] = useState('select-label')
   const [labelTitle, setLabelTitle] = useState('')
@@ -29,6 +29,7 @@ export function TaskLabelsModal({
   const [editExisiting, setEditExisting] = useState(false)
   const [active, setActive] = useState(false)
   const [editLabel, setEditLabel] = useState(null)
+console.log('board.labels', board)
 
   async function onToggleLabel(label) {
     const { id } = label
@@ -76,7 +77,7 @@ export function TaskLabelsModal({
       title: labelTitle,
       color: labelColor,
     }
-    const updatedLabels = board.labels.concat(newLabel)
+    const updatedLabels =  board?.labels?.concat(newLabel)
     updateLabelstoBoard(updatedLabels)
     setFilteredLabels(updatedLabels)
   }
@@ -122,12 +123,12 @@ export function TaskLabelsModal({
           />
           <div className="labels-selection-container">
             <p>Labels</p>
-            {filteredLabels.map((label, idx) => {
+            {filteredLabels?.map((label, idx) => {
               return (
                 <div key={idx} id="labels-container-modal">
                   <label
                     htmlFor="color-pick"
-                    key={idx + 1}
+                    key={idx}
                     onClick={() => onToggleLabel(label)}
                   >
                     {task.labelIds.includes(label.id) && <IoMdCheckbox />}
@@ -136,7 +137,7 @@ export function TaskLabelsModal({
                     )}
                   </label>
 
-                  <div
+                  {label?.title && <div
                     className="task-details-main-labels-container-label"
                     id="color-pick"
                     key={label.id}
@@ -146,17 +147,17 @@ export function TaskLabelsModal({
                     <div
                       className="task-details-main-labels-container-circle"
                       style={{ backgroundColor: label?.color }}
-                      key={idx + 3}
+                      // key={idx}
                     ></div>
                     <span
-                      key={idx + 4}
+                      // key={idx}
                       className="task-details-main-labels-container-title"
                     >
-                      {label?.title ? label?.title : 'None'}
+                      {label?.title}
                     </span>
-                  </div>
+                  </div>}
                   <span
-                    key={idx + 5}
+                    // key={idx}
                     onClick={() => {
                       setMode('create-new')
                       onReturnBtn(true)

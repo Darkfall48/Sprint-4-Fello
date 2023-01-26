@@ -17,8 +17,6 @@
     // box-sizing: border-box;
     // background-position: center center;
     background-color: rgb(185, 199, 206);
-    height: 160px;
-    min-height: 160px;
     padding: 0px;
 
     img{
@@ -40,12 +38,13 @@
         $list-btn-bg-clr-modal-hover,
         6px 12px,
         $task-details-btn-bg-clr-hover );
-      display: flex;
-      gap: 6px;
-      margin: 8px;
-      background-color: rgba(0, 0, 0, 0.1);
-      color: #172b4d;
-
+        display: flex;
+        gap: 6px;
+        margin: 8px;
+        background-color: rgba(0, 0, 0, 0.1);
+        color: #172b4d;
+        width: fit-content;
+        
       &:hover {
         background-color: rgba(0, 0, 0, 0.15);
       }

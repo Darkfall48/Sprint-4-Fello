@@ -2,6 +2,12 @@
 import { utilService } from '../util.service'
 import { httpService } from '../connection/http.service'
 //? Private Variables
+const imgUrlMember1 =
+  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716783/member1_pf7spp.png'
+const imgUrlMember2 =
+  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716611/member2_cjjxdg.png'
+const imgUrlMember3 =
+  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716621/member3_ickw2k.jpg'
 const BASE_URL = 'board/'
 
 export const boardService = {
@@ -134,9 +140,9 @@ function getGroupById(board, groupId) {
 
 function getEmptyBoard() {
   return {
-    // _id: utilService.makeId(),
     title: '',
     archivedAt: Date.now(),
+    createdAt: Date.now(),
     lastViewed: Date.now(),
     isStarred: false,
     style: {
@@ -144,6 +150,55 @@ function getEmptyBoard() {
       backgroundImg: '',
     },
     groups: [],
+    labels: [
+      {
+        id: 'l101',
+        title: 'Done',
+        color: '#7bc86c',
+      },
+      {
+        id: 'l102',
+        title: 'Progress',
+        color: '#f5dd29',
+      },
+      {
+        id: 'l103',
+        title: 'To Do!',
+        color: '#ffaf3f',
+      },
+      {
+        id: 'l104',
+        title: 'Later',
+        color: '#ef7564',
+      },
+      {
+        id: 'l105',
+        title: 'Reported',
+        color: '#cd8de5',
+      },
+      {
+        id: 'l106',
+        title: 'Abandoned',
+        color: '#5ba4cf',
+      },
+    ],
+    members: [
+      {
+        _id: 'u101',
+        fullname: 'Yael Tal',
+        imgUrl: imgUrlMember1,
+      },
+      {
+        _id: 'u102',
+        fullname: 'Sidney Sebban',
+        imgUrl: imgUrlMember2,
+      },
+      {
+        _id: 'u103',
+        fullname: 'Keren Siebner',
+        imgUrl: imgUrlMember3,
+      },
+    ],
   }
 }
 

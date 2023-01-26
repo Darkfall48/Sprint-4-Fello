@@ -134,7 +134,6 @@ export function TaskDetails() {
             {task.memberIds && (
               <SetMembers board={board} task={task} group={group} />
             )}
-            {task.labelIds && <SetLabels board={board} task={task} />}
             {task.labelIds && <SetLabels  
             board={board} 
             task={task} 

@@ -1,41 +1,23 @@
 //? Libraries
-import { useState } from 'react'
 import { useSelector } from 'react-redux'
-//? Services
-import { utilService } from '../../../../services/util.service'
+import { useNavigate } from 'react-router-dom'
 //? Components
+import { SetCover } from './cmps/set-cover'
 import { SetEditBtn } from './cmps/set-edit-btn'
 import { SetTitle } from './cmps/set-title'
 import { SetMembers } from './cmps/set-members'
 import { SetLabels } from './cmps/set-labels'
 import { SetInfos } from './cmps/set-infos'
-import { useNavigate } from 'react-router-dom'
 
-export function TaskPreview({ groupId, task, onArchiveTask, handleLabelClick, labelsPreview }) {
+export function TaskPreview({
+  groupId,
+  task,
+  onArchiveTask,
+  handleLabelClick,
+  labelsPreview,
+}) {
   const board = useSelector((storeState) => storeState.boardModule.board)
-  // const [labelsPreview, setLabelsPreview] = useState('preview-simple')
   const navigate = useNavigate()
-
-  //? Private Components
-  function SetCover() {
-    const { style } = task
-    if (!style.bgColor) return <div className="task-preview-no-cover"></div>
-    return (
-      <article
-        className="task-preview-cover"
-        style={ style?.bgImg ? { background: '' } : { background: style.bgColor } }
-      >
-
-      </article>
-    )
-  }
-
-  // function handleLabelClick() {
-  //   // TODO: When state change: re-render board
-  //   setLabelsPreview(
-  //     labelsPreview === 'preview-simple' ? 'preview-detailed' : 'preview-simple'
-  //   )
-  // }
 
   return (
     <section
@@ -45,8 +27,7 @@ export function TaskPreview({ groupId, task, onArchiveTask, handleLabelClick, la
         navigate(`/board/${board._id}/group/${groupId}/task/${task.id}`)
       }}
     >
-      <img src={task.style.bgImg} alt="" />
-      {task.style && <SetCover />}
+      {task.style && <SetCover task={task} />}
       {task.labelIds && (
         <SetLabels
           handleLabelClick={handleLabelClick}

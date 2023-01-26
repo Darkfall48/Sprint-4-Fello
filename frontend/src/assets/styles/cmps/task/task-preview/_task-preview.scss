@@ -16,9 +16,8 @@
     'title      title'
     'infos       members';
 
-   
   &:hover {
-    background-color: rgb(236, 234, 234);
+    background-color: #f4f5f7;
 
     .task-preview-edit {
       display: block;
@@ -48,7 +47,7 @@
     }
   }
 
-  img{
+  img {
     grid-area: cover;
   }
 }
