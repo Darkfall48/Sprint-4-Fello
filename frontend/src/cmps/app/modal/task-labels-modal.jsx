@@ -4,14 +4,23 @@ import { MdOutlineCheckBoxOutlineBlank } from 'react-icons/md'
 import { RxPencil1 } from 'react-icons/rx'
 import { CgClose } from 'react-icons/cg'
 //?Services:
-import { loadBoard, updateBoard, updateTask } from "../../../store/actions/board.actions";
-import { boardService } from "../../../services/board/board.service.local";
-import { utilService } from "../../../services/util.service";
-import { useEffect, useState } from "react";
+import {
+  loadBoard,
+  updateBoard,
+  updateTask,
+} from '../../../store/actions/board.actions'
+import { boardService } from '../../../services/board/board.service'
+import { utilService } from '../../../services/util.service'
+import { useEffect, useState } from 'react'
 
-
-export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels, onReturnBtn }) {
-
+export function TaskLabelsModal({
+  task,
+  group,
+  board,
+  onCloseModal,
+  onEditLabels,
+  onReturnBtn,
+}) {
   const [filteredLabels, setFilteredLabels] = useState(board?.labels)
   const [inputLabel, setInputLabel] = useState('')
   const [mode, setMode] = useState('select-label')
@@ -25,7 +34,7 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
     const { id } = label
     let updatedLabelIds = []
     if (task.labelIds.includes(id)) {
-      updatedLabelIds = task.labelIds.filter(labelId => labelId !== id)
+      updatedLabelIds = task.labelIds.filter((labelId) => labelId !== id)
     } else {
       updatedLabelIds = task.labelIds.concat(id)
     }
@@ -42,7 +51,9 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
     const { value } = target
     setInputLabel(value)
     const regex = new RegExp(value, 'i')
-    const filteredLabels = board.labels.filter((label) => regex.test(label.title))
+    const filteredLabels = board.labels.filter((label) =>
+      regex.test(label.title)
+    )
     console.log('filteredLabels', filteredLabels)
     setFilteredLabels(filteredLabels)
   }
@@ -60,13 +71,17 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
   }
 
   function createNewLabel() {
-    const newLabel = { id: utilService.makeId(), title: labelTitle, color: labelColor }
+    const newLabel = {
+      id: utilService.makeId(),
+      title: labelTitle,
+      color: labelColor,
+    }
     const updatedLabels = board.labels.concat(newLabel)
     updateLabelstoBoard(updatedLabels)
     setFilteredLabels(updatedLabels)
   }
 
-  function onToggleMode(mode){
+  function onToggleMode(mode) {
     setMode(mode)
   }
 
@@ -87,7 +102,9 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
 
   function deleteLabel() {
     setEditExisting(false)
-    const updatedLabels = board.labels.filter((label) => label.id !== editLabel.id)
+    const updatedLabels = board.labels.filter(
+      (label) => label.id !== editLabel.id
+    )
     setEditLabel(null)
     updateLabelstoBoard(updatedLabels)
     setFilteredLabels(updatedLabels)
@@ -95,60 +112,80 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
 
   switch (mode) {
     case 'select-label':
+      return (
+        <section className="modal-content-container">
+          <input
+            type="text"
+            value={inputLabel.title}
+            placeholder="Search labels..."
+            onChange={handleChange}
+          />
+          <div className="labels-selection-container">
+            <p>Labels</p>
+            {filteredLabels.map((label, idx) => {
+              return (
+                <div key={idx} id="labels-container-modal">
+                  <label
+                    htmlFor="color-pick"
+                    key={idx + 1}
+                    onClick={() => onToggleLabel(label)}
+                  >
+                    {task.labelIds.includes(label.id) && <IoMdCheckbox />}
+                    {!task.labelIds.includes(label.id) && (
+                      <MdOutlineCheckBoxOutlineBlank className="black-checkbox" />
+                    )}
+                  </label>
 
-      return (<section className='modal-content-container'>
-        < input type="text" value={inputLabel.title} placeholder="Search labels..." onChange={handleChange} />
-        <div className="labels-selection-container">
-          <p>Labels</p>
-          {filteredLabels.map((label, idx) => {
-            return (
-              <div key={idx} id="labels-container-modal">
-                <label
-                  htmlFor="color-pick"
-                  key={idx + 1}
-                  onClick={() => onToggleLabel(label)}
-                >
-                  {(task.labelIds.includes(label.id)) && <IoMdCheckbox />}
-                  {(!task.labelIds.includes(label.id)) && <MdOutlineCheckBoxOutlineBlank className="black-checkbox" />}
-                </label>
-
-                <div
-                  className="task-details-main-labels-container-label"
-                  id="color-pick"
-                  key={label.id}
-                  style={{ backgroundColor: label?.color + '66' }}
-                  title={label?.title ? label?.title : ''}
-                >
                   <div
-                    className="task-details-main-labels-container-circle"
-                    style={{ backgroundColor: label?.color }}
-                    key={idx + 3}
-                  ></div>
-                  <span key={idx + 4} className="task-details-main-labels-container-title">
-                    {label?.title ? label?.title : 'None'}
+                    className="task-details-main-labels-container-label"
+                    id="color-pick"
+                    key={label.id}
+                    style={{ backgroundColor: label?.color + '66' }}
+                    title={label?.title ? label?.title : ''}
+                  >
+                    <div
+                      className="task-details-main-labels-container-circle"
+                      style={{ backgroundColor: label?.color }}
+                      key={idx + 3}
+                    ></div>
+                    <span
+                      key={idx + 4}
+                      className="task-details-main-labels-container-title"
+                    >
+                      {label?.title ? label?.title : 'None'}
+                    </span>
+                  </div>
+                  <span
+                    key={idx + 5}
+                    onClick={() => {
+                      setMode('create-new')
+                      onReturnBtn(true)
+                      setEditExisting(true)
+                      setEditLabel(label)
+                    }}
+                  >
+                    <RxPencil1 />
                   </span>
                 </div>
-                <span key={idx + 5} onClick={() => {
-                  setMode('create-new')
-                  onReturnBtn(true)
-                  setEditExisting(true)
-                  setEditLabel(label)
-                }}><RxPencil1 /></span>
-              </div>
-            )
-          })}
-        </div >
-        <button id='modal-btn-full-grey' onClick={() => { 
-          setMode('create-new')
-          onReturnBtn(true)
-           }}>Create a new label</button>
-      </section >
+              )
+            })}
+          </div>
+          <button
+            id="modal-btn-full-grey"
+            onClick={() => {
+              setMode('create-new')
+              onReturnBtn(true)
+            }}
+          >
+            Create a new label
+          </button>
+        </section>
       )
       break
     case 'create-new':
       return (
         <div>
-          <div className='new-label-demo'>
+          <div className="new-label-demo">
             <div
               className="task-details-main-labels-container-label"
               id="color-pick"
@@ -165,31 +202,49 @@ export function TaskLabelsModal({ task, group, board, onCloseModal, onEditLabels
             </div>
           </div>
           <p>Title</p>
-          <input type="text" value={labelTitle} onChange={handleLabelTitleChange} />
+          <input
+            type="text"
+            value={labelTitle}
+            onChange={handleLabelTitleChange}
+          />
           <p>Select a color</p>
           <div className="label-color-selection-container">
-
             {boardService.getLabelColors().map((color, idx) => {
-            const active = editLabel?.color===color ? true : false 
-              return (<button key={idx}
-                onClick={() => selectLabelColor(color)}
-                className="btn-label-color"
-                style={{
-                  backgroundColor: color, borderWidth: "1px",
-                  borderStyle: "solid", border: active ? "grey" : ""
-                }}>
-              </button>)
+              const active = editLabel?.color === color ? true : false
+              return (
+                <button
+                  key={idx}
+                  onClick={() => selectLabelColor(color)}
+                  className="btn-label-color"
+                  style={{
+                    backgroundColor: color,
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    border: active ? 'grey' : '',
+                  }}
+                ></button>
+              )
             })}
-
           </div>
-          <button id="modal-btn-full-grey"> <span><CgClose /></span> Remove color</button>
+          <button id="modal-btn-full-grey">
+            {' '}
+            <span>
+              <CgClose />
+            </span>{' '}
+            Remove color
+          </button>
           <hr />
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <button id="save-btn" onClick={() => createNewLabel()}>Create</button>
-            {editExisiting && <button id="delete-btn" onClick={() => deleteLabel()}>Delete</button>}
+            <button id="save-btn" onClick={() => createNewLabel()}>
+              Create
+            </button>
+            {editExisiting && (
+              <button id="delete-btn" onClick={() => deleteLabel()}>
+                Delete
+              </button>
+            )}
           </div>
         </div>
-
       )
       break
   }

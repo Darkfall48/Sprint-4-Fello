@@ -1,5 +1,5 @@
 //? Services
-import { boardService } from '../../services/board/board.service.local'
+import { boardService } from '../../services/board/board.service'
 import { userService } from '../../services/user/user.service'
 import {
   showSuccessMsg,

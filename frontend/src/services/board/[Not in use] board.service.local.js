@@ -106,8 +106,7 @@ async function save(board) {
 
 //make it async?
 function getGroupById(board, groupId) {
-  return board.groups.find(group => group.id === groupId)
-
+  return board.groups.find((group) => group.id === groupId)
 }
 
 function getEmptyBoard() {
@@ -158,7 +157,7 @@ function getEmptyChecklist() {
   return {
     id: utilService.makeId(5),
     title: 'Checklist',
-    todos: []
+    todos: [],
   }
 }
 
@@ -169,6 +168,7 @@ function getEmptyTodo() {
     isDone: false,
   }
 }
+
 function getEmptyAttachment() {
   return {
     id: utilService.makeId(5),
@@ -187,11 +187,19 @@ function getDefaultSort() {
   return { name: '' }
 }
 
-
-function swapItemBetweenLists(sourceList, destinationList, sourceIdx, destinationIdx) {
+function swapItemBetweenLists(
+  sourceList,
+  destinationList,
+  sourceIdx,
+  destinationIdx
+) {
   const deletedItem = sourceList.tasks.splice(sourceIdx, 1)
   destinationList.tasks.push(...deletedItem)
-  return reorder(destinationList.tasks, destinationList.tasks.length - 1, destinationIdx)
+  return reorder(
+    destinationList.tasks,
+    destinationList.tasks.length - 1,
+    destinationIdx
+  )
 }
 
 function reorder(arr, startIdx, endIdx) {
@@ -218,7 +226,7 @@ function _createBoards() {
       _createBoard(
         'Work Board',
         'https://images.unsplash.com/photo-1671894618012-b1f9d305a97f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80',
-        "rgba(26,93,112,1)",
+        'rgba(26,93,112,1)',
         false
       ),
       _createBoard(
@@ -230,7 +238,7 @@ function _createBoards() {
       _createBoard(
         'Daily Task',
         'https://images.unsplash.com/photo-1673768501816-6a565f620309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
-        "rgba(35,49,35,1)",
+        'rgba(35,49,35,1)',
         false
       ),
       _createBoard('Project Management', '', '#509938', false),
@@ -325,12 +333,14 @@ function _createBoard(title, backgroundImg, bgColor, isStarred) {
               fullname: 'Keren Siebner',
               imgUrl: { imgUrlMember1 },
             },
-            attachments: [{
-              id: utilService.makeId(5),
-              title: 'Shared Background',
-              img: 'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/256x171/315d250bcd06a5f6dd93dae1bd19318f/photo-1461896836934-ffe607ba8211.jpg',
-              createdAt: Date.now(),
-              comment: [],},
+            attachments: [
+              {
+                id: utilService.makeId(5),
+                title: 'Shared Background',
+                img: 'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/256x171/315d250bcd06a5f6dd93dae1bd19318f/photo-1461896836934-ffe607ba8211.jpg',
+                createdAt: Date.now(),
+                comment: [],
+              },
             ],
             comments: [],
             checklists: [
@@ -1469,15 +1479,51 @@ function getColors() {
 }
 
 function getCoverColors() {
-  return ['#7BC86C', '#F5DD29', '#FFAF3F', '#EF7564', '#CD8DE5', '#5BA4CF', '#29CCE5', '#6DECA9', '#FF8ED4', '#172B4D']
+  return [
+    '#7BC86C',
+    '#F5DD29',
+    '#FFAF3F',
+    '#EF7564',
+    '#CD8DE5',
+    '#5BA4CF',
+    '#29CCE5',
+    '#6DECA9',
+    '#FF8ED4',
+    '#172B4D',
+  ]
 }
 
 function getLabelColors() {
-  return ['#B7DDB0', '#F5EA92', '#FAD29C', '#EFB3AB', '#DFC0EB',
-    '#7BC86C', '#F5DD29', '#FFAF3F', '#EF7564', '#CD8DE5',
-    '#5AAC44', '#E6C60D', '#E79217', '#CF513D', '#A86CC1',
-    '#8BBDD9', '#8FDFEB', '#B3F1D0', '#F9C2E4', '#172b4d',
-    '#5BA4CF', '#29CCE5', '#6DECA9', '#FF8ED4', '#344563',
-    '#026AA7', '#00AECC', '#4ED583', '#e568af', '#505f79',
+  return [
+    '#B7DDB0',
+    '#F5EA92',
+    '#FAD29C',
+    '#EFB3AB',
+    '#DFC0EB',
+    '#7BC86C',
+    '#F5DD29',
+    '#FFAF3F',
+    '#EF7564',
+    '#CD8DE5',
+    '#5AAC44',
+    '#E6C60D',
+    '#E79217',
+    '#CF513D',
+    '#A86CC1',
+    '#8BBDD9',
+    '#8FDFEB',
+    '#B3F1D0',
+    '#F9C2E4',
+    '#172b4d',
+    '#5BA4CF',
+    '#29CCE5',
+    '#6DECA9',
+    '#FF8ED4',
+    '#344563',
+    '#026AA7',
+    '#00AECC',
+    '#4ED583',
+    '#e568af',
+    '#505f79',
   ]
 }

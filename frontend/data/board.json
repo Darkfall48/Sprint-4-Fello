@@ -1,128 +1,133 @@
 [
-    {
-        "_id": "b101",
-        "title": "Robot dev proj",
+  {
+    "title": "Robot dev proj",
+    "archivedAt": 1589983468418,
+    "createdAt": 1589983468418,
+    "createdBy": {
+      "_id": "u101",
+      "fullname": "Keren Siebner",
+      "imgUrl": "https://res.cloudinary.com/dqbvyn6b2/image/upload/v1673887781/f7npgdha6qhpsbf26utb.png"
+    },
+    "style": {
+      "bgColor": "#FF00FF",
+      "backgroundImg": "https://res.cloudinary.com/dqbvyn6b2/image/upload/v1673887781/f7npgdha6qhpsbf26utb.png"
+    },
+    "labels": [
+      {
+        "id": "l101",
+        "title": "Done",
+        "color": "#7bc86c"
+      },
+      {
+        "id": "l102",
+        "title": "Progress",
+        "color": "#f5dd29"
+      },
+      {
+        "id": "l103",
+        "title": "To Do!",
+        "color": "#ffaf3f"
+      },
+      {
+        "id": "l104",
+        "title": "Later",
+        "color": "#ef7564"
+      },
+      {
+        "id": "l105",
+        "title": "Reported",
+        "color": "#cd8de5"
+      },
+      {
+        "id": "l106",
+        "title": "Abandoned",
+        "color": "#5ba4cf"
+      }
+    ],
+    "members": [
+      {
+        "_id": "u101",
+        "fullname": "Yael Tal",
+        "imgUrl": "https://res.cloudinary.com/dqbvyn6b2/image/upload/v1673887781/f7npgdha6qhpsbf26utb.png"
+      },
+      {
+        "_id": "u102",
+        "fullname": "Sidney Sebban",
+        "imgUrl": "https://res.cloudinary.com/dqbvyn6b2/image/upload/v1673887781/f7npgdha6qhpsbf26utb.png"
+      },
+      {
+        "_id": "u103",
+        "fullname": "Keren Siebner",
+        "imgUrl": "https://res.cloudinary.com/dqbvyn6b2/image/upload/v1673887781/f7npgdha6qhpsbf26utb.png"
+      }
+    ],
+    "groups": [
+      {
+        "id": "g101",
+        "title": "I am a special Group",
         "archivedAt": 1589983468418,
-        "createdAt": 1589983468418,
-        "createdBy": {
-            "_id": "u101",
-            "fullname": "Abi Abambi",
-            "imgUrl": "http://some-img"
-        },
-        "style": {},
-        "labels": [
-            {
-                "id": "l101",
-                "title": "Done",
-                "color": "#61bd4f"
+        "tasks": [
+          {
+            "id": "c101",
+            "title": "I am c101",
+            "priority": "medium",
+            "description": "",
+            "memberIds": ["u101", "u102", "u103"],
+            "labelIds": ["l101", "l102", "l103", "l104", "l105", "l106"],
+            "dueDate": 16156215211,
+            "byMember": {
+              "_id": "u101",
+              "username": "Tal123",
+              "fullname": "Keren Siebner",
+              "imgUrl": "https://res.cloudinary.com/dqbvyn6b2/image/upload/v1673887781/f7npgdha6qhpsbf26utb.png"
             },
-            {
-                "id": "l102",
-                "title": "Progress",
-                "color": "#61bd33"
-            }
-        ],
-        "members": [
-            {
-                "_id": "u101",
-                "fullname": "Tal Tarablus",
-                "imgUrl": "https://www.google.com"
-            }
-        ],
-        "groups": [
-            {
-                "id": "g101",
-                "title": "Group 1",
-                "archivedAt": 1589983468418,
-                "tasks": [
-                    {
-                        "id": "c101",
-                        "title": "Replace logo"
-                    },
-                    {
-                        "id": "c102",
-                        "title": "Add Samples"
-                    }
-                ],
-                "style": {}
-            },
-            {
-                "id": "g102",
-                "title": "Group 2",
-                "tasks": [
-                    {
-                        "id": "c103",
-                        "title": "Do that",
-                        "archivedAt": 1589983468418
-                    },
-                    {
-                        "id": "c104",
-                        "title": "Help me",
-                        "status": "in-progress",
-                        "description": "description",
-                        "comments": [
-                            {
-                                "id": "ZdPnm",
-                                "txt": "also @yaronb please CR this",
-                                "createdAt": 1590999817436.0,
-                                "byMember": {
-                                    "_id": "u101",
-                                    "fullname": "Tal Tarablus",
-                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                                }
-                            }
-                        ],
-                        "checklists": [
-                            {
-                                "id": "YEhmF",
-                                "title": "Checklist",
-                                "todos": [
-                                    {
-                                        "id": "212jX",
-                                        "title": "To Do 1",
-                                        "isDone": false
-                                    }
-                                ]
-                            }
-                        ],
-                        "memberIds": [
-                            "u101"
-                        ],
-                        "labelIds": [
-                            "l101",
-                            "l102"
-                        ],
-                        "createdAt": 1590999730348,
-                        "dueDate": 16156215211,
-                        "byMember": {
-                            "_id": "u101",
-                            "username": "Tal",
-                            "fullname": "Tal Tarablus",
-                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                        },
-                        "style": {
-                            "bgColor": "#26de81"
-                        }
-                    }
-                ],
-                "style": {}
-            }
-        ],
-        "activities": [
-            {
+            "attachments": [
+              {
                 "id": "a101",
-                "txt": "Changed Color",
-                "createdAt": 154514,
-                "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "http://some-img"
-                },
-                "task": {
-                    "id": "c101",
-                    "title": "Replace Logo"
-                }
+                "title": "Shared Background",
+                "img": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/256x171/315d250bcd06a5f6dd93dae1bd19318f/photo-1461896836934-ffe607ba8211.jpg",
+                "createdAt": 16156215211,
+                "comment": []
+              }
+            ],
+            "comments": [],
+            "checklists": [
+              {
+                "id": "c101",
+                "title": "Checklist",
+                "todos": [
+                  {
+                    "id": "t101",
+                    "title": "To Do 1",
+                    "isDone": false
+                  }
+                ]
+              }
+            ],
+            "style": {
+              "bgColor": "#FF00FF",
+              "bgImg": "https://res.cloudinary.com/dqbvyn6b2/image/upload/v1673887781/f7npgdha6qhpsbf26utb.png"
             }
-        ]
-    }
+          }
+        ],
+        "style": {}
+      }
+    ],
+    "activities": [
+      {
+        "id": "a101",
+        "txt": "Changed Color",
+        "createdAt": 154514,
+        "byMember": {
+          "_id": "u102",
+          "fullname": "Sidney Sebban",
+          "imgUrl": "https://res.cloudinary.com/dqbvyn6b2/image/upload/v1673887781/f7npgdha6qhpsbf26utb.png"
+        },
+        "task": {
+          "id": "c101",
+          "title": "Replace Logo"
+        }
+      }
+    ]
+  }
 ]

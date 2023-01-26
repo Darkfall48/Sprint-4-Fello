@@ -7,15 +7,24 @@ import { BsThreeDots } from 'react-icons/bs'
 import { CgClose } from 'react-icons/cg'
 import { useSelector } from 'react-redux'
 //?Services
-import { boardService } from '../../../services/board/board.service.local'
-import { removeTask, addTask, updateBoard } from '../../../store/actions/board.actions'
+import { boardService } from '../../../services/board/board.service'
+import {
+  removeTask,
+  addTask,
+  updateBoard,
+} from '../../../store/actions/board.actions'
 //?Componenets
 import { Modal } from '../../app/modal'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
-
-export function GroupPreview({ group, handleLabelClick, labelsPreview, provided, board, isDragging }) {
-
+export function GroupPreview({
+  group,
+  handleLabelClick,
+  labelsPreview,
+  provided,
+  board,
+  isDragging,
+}) {
   // const board = useSelector((storeState) => storeState.boardModule.board)
   const contentRef = useRef(null)
 
@@ -74,8 +83,12 @@ export function GroupPreview({ group, handleLabelClick, labelsPreview, provided,
 
   return (
     <Droppable droppableId={group.id} direction="vertical" type="task">
-      {prov =>
-        <section className="group-preview-section" ref={prov.innerRef}  {...provided.dragHandleProps}>
+      {(prov) => (
+        <section
+          className="group-preview-section"
+          ref={prov.innerRef}
+          {...provided.dragHandleProps}
+        >
           <div className="group-header">
             <h1
               className="group-title"
@@ -88,7 +101,10 @@ export function GroupPreview({ group, handleLabelClick, labelsPreview, provided,
             >
               {`${group.title}`}
             </h1>
-            <button onClick={() => onGroupMenuOpen(group.id)} className="group-edit-menu-btn">
+            <button
+              onClick={() => onGroupMenuOpen(group.id)}
+              className="group-edit-menu-btn"
+            >
               <BsThreeDots />
             </button>
             {isGroupMenuOpen && (
@@ -112,10 +128,7 @@ export function GroupPreview({ group, handleLabelClick, labelsPreview, provided,
             boardId={board._id}
           />
           {editMode && (
-            <form
-              onSubmit={onSubmitTask}
-              onBlur={(ev) => onSubmitTask(ev)}
-            >
+            <form onSubmit={onSubmitTask} onBlur={(ev) => onSubmitTask(ev)}>
               <textarea
                 type="text"
                 name="title"
@@ -125,25 +138,36 @@ export function GroupPreview({ group, handleLabelClick, labelsPreview, provided,
                 onChange={handleChange}
                 onKeyUp={handleChange}
               />
-              <div className='add-item-wrapper'>
-                <button className='new-item-add-btn' onClick={() => onSubmitTask()}>Add card</button>
-                <button type="button" className="close-add-item" onClick={exitEditMode}><CgClose /></button>
+              <div className="add-item-wrapper">
+                <button
+                  className="new-item-add-btn"
+                  onClick={() => onSubmitTask()}
+                >
+                  Add card
+                </button>
+                <button
+                  type="button"
+                  className="close-add-item"
+                  onClick={exitEditMode}
+                >
+                  <CgClose />
+                </button>
               </div>
             </form>
           )}
-          {!editMode && (<div className="group-bottom-control-btns">
-            <button onClick={onAddTask} className="add-task-btn">
-              <HiOutlinePlus className="plus" />
-              <span>Add a card</span>
-            </button>
-            <button name="template" className="template-btn">
-              <TbTemplate />
-            </button>
-          </div>
+          {!editMode && (
+            <div className="group-bottom-control-btns">
+              <button onClick={onAddTask} className="add-task-btn">
+                <HiOutlinePlus className="plus" />
+                <span>Add a card</span>
+              </button>
+              <button name="template" className="template-btn">
+                <TbTemplate />
+              </button>
+            </div>
           )}
         </section>
-      }
+      )}
     </Droppable>
   )
-
 }

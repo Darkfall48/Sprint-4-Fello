@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { boardService } from '../../../../../../services/board/board.service.local'
+import { boardService } from '../../../../../../services/board/board.service'
 import { updateTask } from '../../../../../../store/actions/board.actions'
 
 export function TodoAdd({ group, task, checklist, onCloseModal }) {
@@ -21,7 +21,7 @@ export function TodoAdd({ group, task, checklist, onCloseModal }) {
     if (inputRef.current.value === '') return
     const { todos } = checklist
 
-    if (ev._reactName === "onSubmit") {
+    if (ev._reactName === 'onSubmit') {
       ev.preventDefault()
       todos.push(todoToAdd)
       updateTask(group, task)

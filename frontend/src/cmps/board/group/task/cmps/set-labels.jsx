@@ -13,7 +13,7 @@ export function SetLabels({
   setModalOpen,
   modalOpen,
   onCloseModal,
-  onEditLabels
+  onEditLabels,
 }) {
   const labels = board?.labels
   const { labelIds } = task
@@ -66,10 +66,12 @@ export function SetLabels({
                   <div
                     className="task-preview-detailed-labels-container-circle"
                     style={{ backgroundColor: label?.color }}
-                    key={idx+1}
-                    ></div>
-                  <span className="task-preview-detailed-labels-container-title"
-                    key={idx+2}>
+                    key={idx + 1}
+                  ></div>
+                  <span
+                    className="task-preview-detailed-labels-container-title"
+                    key={idx + 2}
+                  >
                     {label?.title}
                   </span>
                 </span>
@@ -93,18 +95,15 @@ export function SetLabels({
               return (
                 <span
                   className="task-details-main-labels-container-label"
-                  key={labelId}
+                  key={labelId + idx}
                   style={{ backgroundColor: label?.color + '66' }}
                   title={label?.title ? label?.title : ''}
                 >
                   <div
                     className="task-details-main-labels-container-circle"
                     style={{ backgroundColor: label?.color }}
-                    key={idx+2}
                   ></div>
-                  <span className="task-details-main-labels-container-title"
-                  key={idx+1}
-                  >
+                  <span className="task-details-main-labels-container-title">
                     {label?.title}
                   </span>
                 </span>
@@ -113,12 +112,13 @@ export function SetLabels({
             <button
               className="task-details-main-labels-add-btn"
               title="Add Label"
-              onClick={() => {setModalOpen('labels')}}
-              
+              onClick={() => {
+                setModalOpen('labels')
+              }}
             >
               <AiOutlinePlus />
             </button>
-          {modalOpen === 'labels' && (
+            {modalOpen === 'labels' && (
               <Modal
                 type="task-labels"
                 modalTitle="Labels"
