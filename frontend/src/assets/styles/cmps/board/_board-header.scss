@@ -28,6 +28,18 @@
       align-items: center;
       gap: 5px;
     }
+    &-dots-btn {
+      min-width: 32px;
+      max-width: 32px;
+      min-height: 32px;
+      max-height: 32px;
+      display: flex;
+      place-content: center;
+      padding: 0;
+      & svg {
+        font-size: 14px;
+      }
+    }
   }
 
   .members-container {
@@ -55,6 +67,14 @@
     display: flex;
     align-items: center;
     justify-items: center;
+
+    & button {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   h1 {
@@ -109,14 +129,18 @@
     }
 
     .star {
-      width: 20px;
-      height: 20px;
+      min-width: 20px;
+      max-width: 20px;
+      min-height: 20px;
+      max-height: 20px;
     }
 
     .starred {
       fill: yellow;
-      width: 20px;
-      height: 20px;
+      min-width: 20px;
+      max-width: 20px;
+      min-height: 20px;
+      max-height: 20px;
     }
   }
 
