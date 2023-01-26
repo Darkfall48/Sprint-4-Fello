@@ -4,6 +4,7 @@ import React from 'react'
 //? Assets
 import svg from '../assets/img/home-page.svg'
 import boardSvg from '../assets/img/TrelloImage-1.webp'
+import heroSvg from '../assets/img/home-page/hero.webp'
 
 export function Home() {
   return (
@@ -19,7 +20,7 @@ export function Home() {
           </div>
           <div className="img-container">
             <img
-              src={require(`../assets/img/home-page/hero.webp`)}
+              src={heroSvg}
               alt="Hero"
             />
           </div>
