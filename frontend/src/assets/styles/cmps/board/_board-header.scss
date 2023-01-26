@@ -1,16 +1,17 @@
 .board-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: transparent;
-    padding: 0;
-    padding-left: 24px;
-    //transition
-    // 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  padding: 0;
+  padding-left: 24px;
+  padding-right: 4px;
+  //transition
+  //
 
-    & .open{
-        margin-right: 301px;
-    }
+  & .open {
+    margin-right: 301px;
+  }
 
   .btns-container {
     display: flex;
