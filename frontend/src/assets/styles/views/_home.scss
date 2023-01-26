@@ -58,6 +58,15 @@
           margin-top: 0px;
         }
 
+        @include for-narrow-layout {
+          padding: 4rem 1rem 1rem;
+          position: relative;
+          scroll-margin-top: 72px;
+          text-align: center;
+          width: 100%;
+          margin-top: 0px;
+        }
+
         h1 {
           font-size: 3rem;
           line-height: 1.25;
@@ -69,11 +78,24 @@
             font-size: 2rem;
             line-height: 1.25;
           }
+
+          @include for-narrow-layout {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            margin-top: 0px;
+            font-size: 2rem;
+            line-height: 1.25;
+            text-align: left;
+          }
         }
 
         p {
           font-size: rem(20px);
           margin-bottom: 1.5rem;
+
+          @include for-narrow-layout {
+            text-align: left;
+          }
         }
       }
 
@@ -83,6 +105,10 @@
         @include for-mobile-layout {
           margin-top: 0;
         }
+
+        @include for-narrow-layout {
+            margin: 0;
+          }
 
         img {
           transform: scaleX(1);
@@ -94,6 +120,15 @@
             max-width: 100%;
             height: auto;
             margin-bottom: -150px;
+          }
+
+          @include for-mobile-layout {
+            padding: 0;
+            padding-top: 4rem;
+            max-width: 100%;
+            height: auto;
+            margin-bottom: -150px;
+            width: 50px;
           }
         }
       }
