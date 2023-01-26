@@ -5,8 +5,12 @@
     background-color: transparent;
     padding: 0;
     padding-left: 24px;
+    //transition
+    // 
 
-
+    & .open{
+        margin-right: 301px;
+    }
 
     .btns-container {
         display: flex;

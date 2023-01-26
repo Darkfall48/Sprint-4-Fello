@@ -1,10 +1,8 @@
 import { useRef, useState } from 'react'
-import { BsCheck2Square } from 'react-icons/bs'
+import { ImAttachment } from 'react-icons/im'
 import { AiOutlineClose } from 'react-icons/ai'
 import { updateTask } from '../../../../../store/actions/board.actions'
-import { TodoAdd } from './checklist/todo-add'
 
-import { TodoList } from './checklist/todo-list'
 import { AttachmentList } from './attachment/attachment-list'
 
 export function SetAttachment({ task, attachment, group }) {
@@ -26,12 +24,12 @@ export function SetAttachment({ task, attachment, group }) {
   // }
 
 
-  function handleChange({ target }) {
-    let { value, name: field } = target
-    onEditAttachmentlist((prevTitle) => {
-      return { ...prevTitle, [field]: value }
-    })
-  }
+  // function handleChange({ target }) {
+  //   let { value, name: field } = target
+  //   onEditAttachmentlist((prevTitle) => {
+  //     return { ...prevTitle, [field]: value }
+  //   })
+  // }
 
 
   function onEditTodo(ev) {
@@ -61,21 +59,38 @@ export function SetAttachment({ task, attachment, group }) {
 
   return (
     <section className="task-details-main-attachment">
-      <BsCheck2Square className="task-details-main-attachment-icon" />
+      <ImAttachment className="task-details-main-attachment-icon" />
 
-      <AttachmentList
-        attachments={task.attachments}
-        onRemoveAttachment={onRemoveAttachment}
-      // onEditTodo={onEditTodo}
-      />
-      <button
+      <ul className="task-details-main-attachment-list">
+
+        <li
+          className="task-details-main-attachments-list-attachment"
+        >
+          <div className="task-details-main-attachment-preview">
+            <a href={attachment.img} target="_blank">
+              <img src={attachment.img} alt="" />
+            </a>
+            <h3 className="attachment-title">
+              {attachment.title}
+            </h3>
+          </div>
+
+          {/* <div className="task-details-main-checklist-attachments-list-attachment-btn-container"> */}
+          <button className="attachment-remove-btn" onClick={() => onRemoveAttachment(attachment.id)}>
+            Delete
+          </button>
+
+        </li>
+
+      </ul>
+      {/* <button
         className="attachment-add-btn"
         onClick={() => setIsModalOpen(!isModalOpen)}
       >
         Add an Attachment
-      </button>
+      </button> */}
 
-      {isModalOpen && <p>add attachment modal</p>}
+      {/* {isModalOpen && <p>add attachment modal</p>} */}
 
       {/* {isModalOpen && (
         <TodoAdd

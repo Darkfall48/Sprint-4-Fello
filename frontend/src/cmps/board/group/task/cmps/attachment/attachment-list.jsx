@@ -22,11 +22,11 @@ export function AttachmentList({ attachments, onRemoveAttachment }) {
             </h3>
           </div>
 
-          <div className="task-details-main-checklist-attachments-list-attachment-btn-container">
+          {/* <div className="task-details-main-checklist-attachments-list-attachment-btn-container"> */}
           <button className="attachment-remove-btn" onClick={() => onRemoveAttachment(attachment.id)}>
             Delete
           </button>
-             </div>
+             {/* </div> */}
         </li>
       ))}
     </ul>

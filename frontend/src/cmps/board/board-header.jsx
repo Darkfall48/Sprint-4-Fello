@@ -46,6 +46,7 @@ export function BoardHeader({board}) {
     }
 
     return (
+        // <section className={board?.style?.bgColor?.islight? "board-header light" : "board-header light"} style={isModalOpen && {marginRight: 301 + 'px'}}>
         <section className={board?.style?.bgColor?.islight? "board-header light" : "board-header light"} >
             <div className="title-container btn-color">
                 <h1
@@ -84,7 +85,7 @@ export function BoardHeader({board}) {
                 <button className="share"><RiUserSharedLine /> Share </button>
                 <span className="board-header-btn-divider"></span>
                 <button onClick={() => { setIsModalOpen(!isModalOpen)}}><BsThreeDots /></button>
-                {isModalOpen && <BoardMenu board={board} onCloseModal={onCloseModal} isModalOpen={isModalOpen}/>}
+                {isModalOpen && <BoardMenu board={board} onCloseModal={onCloseModal} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>}
             </div>
         </section>
     )
