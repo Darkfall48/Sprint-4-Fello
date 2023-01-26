@@ -25,7 +25,12 @@
         padding: 0;
 
         .modal-btn-full {
-          @include btn('modal-full', white, 6px 12px, $list-btn-bg-clr-modal-hover)
+          @include btn(
+            'modal-full',
+            white,
+            6px 12px,
+            $list-btn-bg-clr-modal-hover
+          );
         }
       }
 
@@ -46,7 +51,6 @@
       background-color: rgba(255, 255, 255, 0);
       color: $clr-txt;
     }
-
   }
 
   & .template-btn {
@@ -76,7 +80,7 @@
     border-radius: $border-radius;
     padding: 6px 8px 2px;
     box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
-    max-height: 87vh;
+    max-height: calc(100vh - 105px);
 
     .add-task-edit {
       padding: 9px 8px 2px 8px;
@@ -150,7 +154,6 @@
         }
       }
     }
-
   }
 }
 
@@ -177,7 +180,6 @@
     width: 264px;
     margin: 0;
   }
-
 }
 
 .add-item-wrapper {

@@ -3,20 +3,26 @@
   // background-blend-mode: normal, normal;
   color: $clr-white;
   padding: 0;
-  font-family: charlie-regular, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: charlie-regular, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
 
   @include for-mobile-layout {
-    background: url(../../img/home-page/wave-mobile.svg) center bottom -0.5px / 100% 24% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto no-repeat scroll padding-box border-box rgb(82, 67, 170);
+    background: url(../../img/home-page/wave-mobile.svg) center bottom -0.5px / 100%
+        24% no-repeat scroll padding-box border-box,
+      linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto
+        no-repeat scroll padding-box border-box rgb(82, 67, 170);
     background-blend-mode: normal, normal;
     color: rgb(255, 255, 255);
   }
 
   .wave-container {
     margin: 0;
-    background: url(../../img/home-page/wave.svg) center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    background: url(../../img/home-page/wave.svg) center bottom -0.5px / 100% 14%
+        no-repeat scroll padding-box border-box,
+      linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto
+        repeat scroll padding-box border-box rgb(82, 67, 170);
     background-blend-mode: normal, normal;
-
-
 
     img {
       margin-top: -90px;
@@ -38,7 +44,6 @@
         // flex-wrap: wrap;
         margin: 0;
         padding: 0;
-
       }
 
       .txt-container {
@@ -101,16 +106,19 @@
 
       .img-container {
         margin-top: 150px;
+        width: 100px;
+        height: 100px;
 
         @include for-mobile-layout {
           margin-top: 0;
         }
 
         @include for-narrow-layout {
-            margin: 0;
-          }
+          margin: 0;
+        }
 
         img {
+          width: 100%;
           transform: scaleX(1);
           padding: 0px 150px 0 10px;
 
@@ -136,7 +144,8 @@
   }
 
   .secondary-content-container {
-    background: linear-gradient(0deg, rgb(230, 252, 255), rgb(250, 251, 252)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
+    background: linear-gradient(0deg, rgb(230, 252, 255), rgb(250, 251, 252)) 0%
+      0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
     background-blend-mode: normal;
     color: rgb(9, 30, 66);
     // height: 100vh;
@@ -221,9 +230,8 @@
   }
 }
 
-
 // @include for-wide-layout {
-  
+
 //     .home-section {
 //       color: $clr-white;
 //       padding: 0;
@@ -289,8 +297,6 @@
 
 //       }
 
-
 //     }
 
-  
 // }

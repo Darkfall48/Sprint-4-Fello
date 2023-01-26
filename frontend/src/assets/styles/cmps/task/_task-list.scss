@@ -6,11 +6,12 @@
   gap: 8px;
   padding: 0px 4px;
   padding-bottom: 2px;
-  
+
   overflow-x: hidden;
   overflow-y: auto;
 
   &::-webkit-scrollbar {
+    display: flex;
     // height: 1px;
     width: 8px;
   }

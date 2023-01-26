@@ -33,6 +33,9 @@
   overflow-x: auto;
   overflow-y: hidden;
 
+  // scroll-margin-block: 0;
+  // scroll-behavior: smooth;
+
   &::-webkit-scrollbar {
     height: 12px;
     width: 12px;

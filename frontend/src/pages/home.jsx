@@ -4,6 +4,9 @@ import React from 'react'
 //? Assets
 import svg from '../assets/img/home-page.svg'
 import boardSvg from '../assets/img/TrelloImage-1.webp'
+//? Private Variables
+const heroImgUrl =
+  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716698/hero_vffzlz.webp'
 
 export function Home() {
   return (
@@ -18,10 +21,7 @@ export function Home() {
             </Link>
           </div>
           <div className="img-container">
-            <img
-              src={require(`../assets/img/home-page/hero.webp`)}
-              alt="Hero"
-            />
+            <img src={heroImgUrl} alt="Hero" />
           </div>
         </div>
 
