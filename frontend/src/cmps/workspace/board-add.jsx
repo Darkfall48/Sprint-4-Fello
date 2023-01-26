@@ -14,7 +14,7 @@ import { FastAverageColor } from 'fast-average-color'
 
 const fac = new FastAverageColor()
 
-export function BoardAdd({ onCloseModal, buttonRef }) {
+export function BoardAdd({ onCloseModal, buttonRef, modalRef }) {
   const [boardToAdd, setBoardToAdd] = useState(boardService.getEmptyBoard())
   const navigate = useNavigate()
 
@@ -73,7 +73,7 @@ export function BoardAdd({ onCloseModal, buttonRef }) {
         className="modal-content"
         onClick={(e) => e.stopPropagation()}
         style={{
-          left: utilService.getPosition(buttonRef).left + 'px',
+          left: utilService.getPosition(buttonRef).left + 'px' ,
           top: utilService.getPosition(buttonRef).top + 40 +'px',
         }}
       >
