@@ -38,7 +38,6 @@ export function TaskDetails() {
   const { boardId, groupId, taskId } = useParams()
   const buttonRef = useRef()
 
-
   const [group, setGroup] = useState([])
   const [task, setTask] = useState([])
   const [modalOpen, setModalOpen] = useState('')
@@ -156,26 +155,22 @@ export function TaskDetails() {
           <SetDescription task={task} />
           {task.attachments &&
             task.attachments.map((attachment, idx) => (
-              <>
-                <SetAttachment
-                  key={attachment.id + idx}
-                  task={task}
-                  attachment={attachment}
-                  group={group}
-                />
-              </>
+              <SetAttachment
+                key={attachment.id + idx}
+                task={task}
+                attachment={attachment}
+                group={group}
+              />
             ))}
           {/*! Grid SCSS Not Working*/}
           {task.checklists &&
             task.checklists.map((checklist, idx) => (
-              <>
-                <SetChecklist
-                  key={checklist.id + idx}
-                  task={task}
-                  checklist={checklist}
-                  group={group}
-                />
-              </>
+              <SetChecklist
+                key={checklist.id + idx}
+                task={task}
+                checklist={checklist}
+                group={group}
+              />
             ))}
           {board && <SetActivities board={board} taskId={taskId} />}
         </main>
@@ -219,7 +214,13 @@ export function TaskDetails() {
                   board={board}
                 />
               )}
-              <button title="I am Labels" onClick={() => { setModalOpen('labels') }} ref={buttonRef}>
+              <button
+                title="I am Labels"
+                onClick={() => {
+                  setModalOpen('labels')
+                }}
+                ref={buttonRef}
+              >
                 <TbTag /> <span>Labels</span>
               </button>
               {modalOpen === 'labels' && (
