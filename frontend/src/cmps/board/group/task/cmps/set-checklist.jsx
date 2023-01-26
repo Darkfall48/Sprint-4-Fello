@@ -5,6 +5,7 @@ import { updateTask } from '../../../../../store/actions/board.actions'
 import { TodoAdd } from './checklist/todo-add'
 
 import { TodoList } from './checklist/todo-list'
+import { TodoEdit } from './checklist/todo-edit'
 
 export function SetChecklist({ task, checklist, group }) {
   const contentRef = useRef(null)
@@ -47,13 +48,13 @@ export function SetChecklist({ task, checklist, group }) {
   }
 
   function onChangeTitle(ev) {
-    if (ev._reactName === "onSubmit")  {
+    if (ev._reactName === "onSubmit") {
       ev.preventDefault()
       // if (contentRef.current.value === '') return
       checklist.title = editChecklist.title
       updateTask(group, task)
       setIsEditOn(!isEditOn)
-    }   
+    }
 
     if (ev.key === 'Enter' && !ev.shiftKey) ev.target.blur()
     if (ev.key === 'Enter' || ev.type === 'blur') {
@@ -164,8 +165,13 @@ export function SetChecklist({ task, checklist, group }) {
         todos={checklist.todos}
         onRemoveTodo={onRemoveTodo}
         onDoneTodo={onDoneTodo}
-      // onEditTodo={onEditTodo}
+        task={task}
+        group={group}
+        checklist={checklist}
+        onEditTodo={onEditTodo}
       />
+
+      {/* {isModalOpen && <TodoEdit onCloseModal={onCloseModal} checklist={checklist} task={task} group={group} />} */}
 
       {!isModalOpen && (
         <button

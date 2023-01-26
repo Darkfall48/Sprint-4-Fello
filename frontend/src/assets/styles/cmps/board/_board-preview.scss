@@ -1,34 +1,25 @@
 a {
-
     list-style: none;
     text-decoration: none;
     line-height: 1;
 
-    //    position: relative;
-    //             z-index: 2;
 
     &:hover {
         text-decoration: none;
-        // background-color: rgba(0, 0, 0, 0.302);
         filter: contrast(80%);
 
         button {
-
             display: block;
-            // position: relative;
-            // z-index: 100;
-
         }
 
-        .hidden-btns {
-            .star {
-                opacity: 1;
-                transition: 0.5s;
-                // position: relative;
-                // z-index: 100;
+        .board-preview {
+            .hidden-btns {
+                .star {
+                    opacity: 1;
+                    transition: 0.5s;
+                }
 
             }
-
         }
 
 
@@ -39,7 +30,6 @@ a {
         background: $default-board-bg-clr;
         color: $clr-white ;
         padding: 10px;
-        // background-size: cover;
 
         border-radius: 3px;
         color: $clr-white;
@@ -47,23 +37,7 @@ a {
         height: rem(96px);
         min-width: rem(194px);
 
-
-        // filter: contrast(70%);
-
-
         position: relative;
-
-        // position: relative;
-        // z-index: 1;
-        // & .board-fade {
-        //     background-color: #00000026;
-        //     bottom: 0;
-        //     left: 0;
-        //     position: absolute;
-        //     right: 0;
-        //     top: 0;
-
-        // }
 
         .board-tile-fade {
             border-radius: 3px;
@@ -72,19 +46,6 @@ a {
         }
 
         &:hover {
-            // background-color: rgba(158, 176, 187, 0.425);
-            // background-color: #0000004d;
-
-
-            // & .board-tile-fade {
-            //     background-color: #00000026;
-            //     bottom: 0;
-            //     left: 0;
-            //     position: absolute;
-            //     right: 0;
-            //     top: 0;
-            // }
-
 
 
             button {
@@ -109,10 +70,8 @@ a {
             .board-tile-fade {
                 border-radius: 3px;
                 display: block;
-
             }
         }
-
 
 
         .board-preview-details {
@@ -122,7 +81,6 @@ a {
             height: 80px;
             justify-content: space-between;
             position: relative;
-
 
 
             h4 {
@@ -136,61 +94,9 @@ a {
                 // z-index: 5;
             }
 
-
-
-
-
         }
 
-        // & .hidden-btns {
-        //     display: flex;
-        //     flex-direction: row-reverse;
-
-        //     // position: relative;
-        //     // z-index: 100;
-
-        //     //try to fix z-index
-        //     & button {
-        //         background-color: transparent;
-        //         margin: 0;
-        //         padding: 0;
-        //         display: block;
-        //         position: relative;
-        //         z-index: 100;
-
-        //     }
-
-        //     & .star {
-        //         opacity: 0;
-        //         width: 15px;
-        //         height: 15px;
-        //         display: block;
-        //         position: relative;
-        //         z-index: 100;
-
-        //     }
-
-        //     & .starred {
-        //         width: 15px;
-        //         height: 15px;
-        //         fill: #f2d600;
-        //         display: block;
-        //         position: relative;
-        //         z-index: 5;
-
-        //     }
-        // }
-
-
-
-
     }
-
-
-
-
-
-
 
 
 }
@@ -218,63 +124,22 @@ a {
         color: $clr-white;
         width: 15px;
         height: 15px;
-        // display: block;
-        // position: relative;
-        // z-index: 100;
         position: relative;
-        // z-index: 100;
         top: -32px;
         left: -10px;
         cursor: pointer;
 
     }
-
-   
-    
-
-    // .star {
-    //     // opacity: 0;
-    //     color: $clr-white;
-    //     width: 15px;
-    //     height: 15px;
-    //     display: block;
-    //     // position: relative;
-    //     // z-index: 100;
-    //     position: relative;
-    //     // z-index: 100;
-    //     top: -18px;
-    //     left: -5px;
-    //     cursor: pointer;
-
-    // }
 
     .starred {
         width: 15px;
         height: 15px;
         fill: #f2d600;
-        // display: block;
-        // position: relative;
-        // z-index: 5;
         position: relative;
-        // z-index: 100;
         top: -32px;
         left: -10px;
         cursor: pointer;
     }
-
-    // .starred {
-    //     width: 15px;
-    //     height: 15px;
-    //     fill: #f2d600;
-    //     display: block;
-    //     // position: relative;
-    //     // z-index: 5;
-    //     position: relative;
-    //     // z-index: 100;
-    //     top: -18px;
-    //     left: -5px;
-    //     cursor: pointer;
-    // }
 
     h4 {
         text-align: left;
@@ -290,8 +155,6 @@ a {
 
 .title-preview {
     position: relative;
-    // z-index: 5;
-
 }
 
 h4 {
@@ -304,7 +167,6 @@ h4 {
     position: absolute;
     top: -90px;
     left: 10px;
-    // z-index: 5;
     cursor: pointer;
     color: $clr-white ;
     height: 0.1px;

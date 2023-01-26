@@ -225,9 +225,11 @@ function animateCSS(el, animation) {
   })
 }
 
-function getPosition(ref){
+function getPosition(ref) {
   const position = ref.current.getBoundingClientRect()
   console.log(ref.current.getBoundingClientRect());
+  if (position.y > 500)  position.y = 350
+  if (position.x > 500)  position.x = 800
   return position
 }
 

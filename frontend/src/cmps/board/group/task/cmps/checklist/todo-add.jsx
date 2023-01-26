@@ -26,6 +26,7 @@ export function TodoAdd({ group, task, checklist, onCloseModal }) {
       todos.push(todoToAdd)
       updateTask(group, task)
       inputRef.current.value = ''
+      setTodoToAdd('')
     }
 
     if (ev.key === 'Enter' && !ev.shiftKey) ev.target.blur()
@@ -34,7 +35,9 @@ export function TodoAdd({ group, task, checklist, onCloseModal }) {
       todos.push(todoToAdd)
       updateTask(group, task)
       inputRef.current.value = ''
+      setTodoToAdd('')
     }
+
   }
 
   return (

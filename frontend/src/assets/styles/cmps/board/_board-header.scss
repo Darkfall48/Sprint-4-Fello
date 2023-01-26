@@ -6,12 +6,9 @@
   padding: 0;
   padding-left: 24px;
   padding-right: 4px;
-  //transition
+  transition: 0.5s;
   //
 
-  & .open {
-    margin-right: 301px;
-  }
 
   .btns-container {
     display: flex;
@@ -24,7 +21,7 @@
     }
 
     button {
-      display: flex;
+      // display: flex;
       align-items: center;
       gap: 5px;
     }
@@ -147,4 +144,8 @@
   .light {
     color: black;
   }
+}
+
+ .open {
+  margin-right: 301px;
 }

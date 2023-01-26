@@ -8,6 +8,7 @@
     transition-duration: .12s;
     transition-property: transform, opacity;
     transition-timing-function: ease-in;
+
     // width: 100%;
     // height: 100vh;
     position: fixed;
@@ -35,6 +36,10 @@
 
     button {
         color: black;
+        margin: auto;
+        width: 100%;
+        text-align: center;
+        display: block;
     }
 
     .board-menu-header-content {
@@ -72,10 +77,11 @@
         gap: 8px;
         grid-template-columns: 1fr 1fr;
         height: 124px;
-        padding-left: 16px;
+        padding-left: 10px;
         padding-right: 10px;
         padding-top: 12px;
         width: 100%;
+
     }
 
     .colors-btn {
@@ -99,4 +105,28 @@
 
     }
 
+}
+
+.btns-container-change{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+    padding-right: 15px;
+
+
+    .btn-change{
+        height: 96px;
+        box-sizing: border-box;
+        cursor: pointer;
+        float: left;
+        padding: 0 4px;
+        position: relative;
+        text-align: center;
+
+        background-size: cover;
+        border-radius: 8px;
+        height: 96px;
+        width: 100%;
+    
+    }
 }

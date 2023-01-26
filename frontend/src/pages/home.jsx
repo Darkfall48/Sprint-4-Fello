@@ -5,8 +5,7 @@ import React from 'react'
 import svg from '../assets/img/home-page.svg'
 import boardSvg from '../assets/img/TrelloImage-1.webp'
 //? Private Variables
-const heroImgUrl =
-  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716698/hero_vffzlz.webp'
+const heroImgUrl = 'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716698/hero_vffzlz.webp'
 
 export function Home() {
   return (

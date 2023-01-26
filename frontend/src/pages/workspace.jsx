@@ -12,9 +12,14 @@ export function Workspace() {
 
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const starredBoard = boards.filter((board) => board.isStarred)
-  // const day = 1000 * 60 * 60 * 24
-  const recentlyViewedBoard = boards.filter((board) => board.lastViewed).sort((b1, b2) => b1.lastViewed - b2.lastViewed)
-
+  const recentlyViewedBoard = boards.filter((board) => {
+    console.log('board.lastViewed', board.lastViewed);
+    return board.lastViewed
+  })
+  // .sort((a, b) => a.lastViewed - b.lastViewed)
+console.log('recentlyViewedBoard', recentlyViewedBoard);
+const view = recentlyViewedBoard.sort((a, b) => a.lastViewed - b.lastViewed)
+console.log('view', view);
 
   useEffect(() => {
     onLoadBoards()
@@ -55,13 +60,13 @@ export function Workspace() {
         onRemoveBoard={onRemoveBoard}
       />
     </div>
-    {/* <div className="starred-boards-container">
+    <div className="starred-boards-container">
       <h1><AiOutlineClockCircle className="workspace-icons" /> Recently viewed</h1>
       <BoardList
         boards={recentlyViewedBoard}
         onRemoveBoard={onRemoveBoard}
       />
-    </div> */}
+    </div>
     <div className="starred-boards-container">
       <h3>Your workspaces</h3>
       <BoardList

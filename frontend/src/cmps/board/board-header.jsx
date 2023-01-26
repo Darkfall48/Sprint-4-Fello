@@ -45,10 +45,8 @@ export function BoardHeader({ board }) {
     // <section className={board?.style?.bgColor?.islight? "board-header light" : "board-header light"} style={isModalOpen && {marginRight: 301 + 'px'}}>
     <section
       className={
-        board?.style?.bgColor?.islight
-          ? 'board-header light'
-          : 'board-header light'
-      }
+        // board?.style?.bgColor?.islight ? 'board-header light' : 'board-header light'}
+        isModalOpen ? 'board-header open' : 'board-header'}
     >
       <div className="title-container btn-color">
         <h1

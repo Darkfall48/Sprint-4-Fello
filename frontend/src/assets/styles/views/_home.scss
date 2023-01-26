@@ -8,20 +8,16 @@
     sans-serif;
 
   @include for-mobile-layout {
-    background: url(../../img/home-page/wave-mobile.svg) center bottom -0.5px / 100%
-        24% no-repeat scroll padding-box border-box,
-      linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto
-        no-repeat scroll padding-box border-box rgb(82, 67, 170);
+    background: url(../../img/home-page/wave-mobile.svg) center bottom -0.5px / 100% 24% no-repeat scroll padding-box border-box,
+      linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto no-repeat scroll padding-box border-box rgb(82, 67, 170);
     background-blend-mode: normal, normal;
     color: rgb(255, 255, 255);
   }
 
   .wave-container {
     margin: 0;
-    background: url(../../img/home-page/wave.svg) center bottom -0.5px / 100% 14%
-        no-repeat scroll padding-box border-box,
-      linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto
-        repeat scroll padding-box border-box rgb(82, 67, 170);
+    background: url(../../img/home-page/wave.svg) center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box,
+      linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
     background-blend-mode: normal, normal;
 
     img {
@@ -34,10 +30,11 @@
     }
 
     .content-container {
-      display: flex;
-      justify-content: space-around;
-      margin: 0 100px;
-      padding: 0 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      // justify-content: space-around;
+      // margin: 0 100px;
+      padding: 100px;
 
       @include for-mobile-layout {
         flex-direction: column;
@@ -53,6 +50,7 @@
         width: 50%;
         margin-bottom: 0px;
         padding: 60px 10px 0 150px;
+
 
         @include for-mobile-layout {
           padding: 4rem 1rem 1rem;
@@ -75,6 +73,7 @@
         h1 {
           font-size: 3rem;
           line-height: 1.25;
+          text-align: left;
 
           @include for-mobile-layout {
             font-weight: 600;
@@ -105,12 +104,12 @@
       }
 
       .img-container {
-        margin-top: 150px;
-        width: 100px;
-        height: 100px;
+        // margin-top: 150px;
+        width: 500px;
 
         @include for-mobile-layout {
           margin-top: 0;
+
         }
 
         @include for-narrow-layout {
@@ -118,10 +117,9 @@
         }
 
         img {
-          width: 100%;
           transform: scaleX(1);
-          padding: 0px 150px 0 10px;
-          width: 500px;
+          // padding: 0px 150px 0 10px;
+          padding-top: 4rem;
 
           @include for-mobile-layout {
             padding: 0;
@@ -129,30 +127,24 @@
             max-width: 100%;
             height: auto;
             margin-bottom: -150px;
+            width: 500px;
           }
 
-          // @include for-mobile-layout {
-          //   padding: 0;
-          //   padding-top: 4rem;
-          //   max-width: 100%;
-          //   height: auto;
-          //   margin-bottom: -150px;
-          //   width: 50px;
-          // }
+
         }
       }
     }
   }
 
   .secondary-content-container {
-    background: linear-gradient(0deg, rgb(230, 252, 255), rgb(250, 251, 252)) 0%
-      0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
+    background: linear-gradient(0deg, rgb(230, 252, 255), rgb(250, 251, 252)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
     background-blend-mode: normal;
     color: rgb(9, 30, 66);
     // height: 100vh;
     text-align: center;
     padding: 100px;
     padding-top: 0;
+
     // margin-top: -20px;
     @include for-mobile-layout {
       padding: 0;
@@ -179,7 +171,7 @@
       line-height: 30px;
       margin: 0;
       margin-bottom: 24px;
-      padding: 0 400px;
+      // padding: 0 400px;
       line-height: 1.5;
 
       @include for-mobile-layout {
