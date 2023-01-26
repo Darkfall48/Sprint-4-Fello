@@ -46,7 +46,8 @@ export function SetLabels({
 
     case 'preview-detailed':
       if (!labelIds || !labelIds?.length)
-        return <article className="task-preview-detailed-labels"></article>
+      return
+        // return <article className="task-preview-detailed-labels"></article>
       return (
         <article className="task-preview-detailed-labels">
           <div className="task-preview-detailed-labels-container">
