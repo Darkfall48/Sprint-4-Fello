@@ -22,6 +22,7 @@ export function Home() {
           </div>
           <div className="img-container">
             <img src={heroImgUrl} alt="Hero" />
+            {/* <img src='frontend/src/assets/img/home-page/hero.webp' alt="Hero" /> */}
           </div>
         </div>
 

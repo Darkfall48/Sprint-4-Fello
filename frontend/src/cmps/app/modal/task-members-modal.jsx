@@ -11,7 +11,7 @@ export function TaskMembersModal({ task, group, board }) {
 
     function checkIfMember(member) {
         if (task.memberIds.includes(member._id))
-            return <span><FiCheck /></span>
+            return <span style={{fontSize: '0.9em', paddingLeft: '5px' }}><FiCheck /></span>
         else return <span>{''}</span>
     }
 

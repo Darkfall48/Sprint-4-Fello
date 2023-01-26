@@ -224,7 +224,7 @@ console.log('board.labels', board)
           onClick={()=>selectLabelColor('')}
           >
             {' '}
-            <span>
+            <span style={{margin: '4px 3px 0 0'}}>
               <CgClose />
             </span>{' '}
             Remove color
