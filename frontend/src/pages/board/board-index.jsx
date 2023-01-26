@@ -1,7 +1,6 @@
 //? Libraries
 import { useEffect, useState } from 'react'
 import { Outlet, useNavigate, useParams } from 'react-router-dom'
-
 import { useSelector } from 'react-redux'
 //? Services
 //? Store
@@ -27,7 +26,7 @@ export function BoardIndex() {
   if (!board) return <Loader />
   return (
     <section
-      className="group-index-section"
+      className="board-index-section"
       style={
         (board?.style?.backgroundImg && {
           background: `url(${board.style.backgroundImg}) center center / cover`,

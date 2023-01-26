@@ -1,47 +1,45 @@
 .board-list {
-    padding: 0;
+  padding: 0;
 
-    .board-list-btn {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        background-color: $board-list-btn;
-        color: $clr2;
-        padding: 20px;
-        border-radius: 3px;
-        height: rem(96px);
-        width: rem(194px);
-        margin: 0;
-        font-weight: 400;
-        margin-bottom: 29px;
+  .board-list-btn {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+      sans-serif;
+    background-color: $board-list-btn;
+    color: $clr2;
+    padding: 20px;
+    border-radius: 3px;
+    height: rem(96px);
+    width: rem(194px);
+    margin: 0;
+    font-weight: 400;
+    margin-bottom: 29px;
 
-        &:hover {
-            transition: 0.1s;
-            background-color: $board-list-btn-hover;
-        }
+    &:hover {
+      transition: 0.1s;
+      background-color: $board-list-btn-hover;
     }
+  }
 
-    ul {
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        // justify-content: center;
-        gap: 17px;
-        // padding: 0 0 11px;
-        padding: 0 0 0;
-        margin: 0;
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    // justify-content: center;
+    gap: 17px;
+    // padding: 0 0 11px;
+    padding: 0 0 0;
+    margin: 0;
+  }
 
-      
-    }
+  .board-add {
+    position: absolute;
+  }
 
-    
-    .board-add{
-        position: absolute;
-    }
-
-    // .modal-content{
-    //     position:absolute;
-    //     top: 315px;
-    //     left: 350px;
-    // }
-
+  // .modal-content{
+  //     position:absolute;
+  //     top: 315px;
+  //     left: 350px;
+  // }
 }
