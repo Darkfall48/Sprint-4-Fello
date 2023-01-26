@@ -165,9 +165,9 @@ export function GroupPreview({
                 <HiOutlinePlus className="plus" />
                 <span>Add a card</span>
               </button>
-              <button name="template" className="template-btn">
+              {/* <button name="template" className="template-btn">
                 <TbTemplate />
-              </button>
+              </button> */}
             </div>
           )}
         </section>

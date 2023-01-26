@@ -3,17 +3,19 @@ import { useState } from 'react'
 //? Icons
 import { HiOutlineArchive } from 'react-icons/hi'
 import { VscEdit } from 'react-icons/vsc'
+import { TaskQuickAction } from '../task-quick-action'
 
 export function SetEditBtn({ onArchiveTask, task }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   function closeMenu(ev) {
+    ev.stopPropagation()
     setIsMenuOpen(false)
   }
 
   function onTaskPreviewEdit(ev) {
     ev.stopPropagation()
-    setIsMenuOpen(true)
+    setIsMenuOpen(!isMenuOpen)
     console.log('isMenuOpen', isMenuOpen)
   }
 
@@ -35,6 +37,7 @@ export function SetEditBtn({ onArchiveTask, task }) {
             <span>Archive</span>
           </button>
         </div>
+        // <TaskQuickAction task={task} onArchiveTask={onArchiveTask} closeMenu={closeMenu}/>
   )
 }
     </article >

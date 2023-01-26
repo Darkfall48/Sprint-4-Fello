@@ -28,26 +28,27 @@
         position: relative;
         left: 25px;
 
-        #task-preview-edit-menu-btn {
-          position: relative;
-          background: #0009;
-          border-radius: 3px;
-          clear: both;
-          color: #c7d1db;
-          float: left;
-          margin: 0 0 4px 8px; //left should be 15 px but can't click because of hover
-          padding: 6px 12px 6px 8px;
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 20px;
-          transition: transform 85ms ease-in;
-          width: 100px;
-          z-index: 10000;
-        }
       }
     }
   }
-
+  #task-preview-edit-menu-btn {
+    position: relative;
+    left:0;
+    background: #0009;
+    border-radius: 3px;
+    clear: both;
+    color: #c7d1db;
+    float: left;
+    margin: 0 0 4px 8px; //left should be 15 px but can't click because of hover
+    padding: 6px 12px 6px 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    transition: transform 85ms ease-in;
+    width: 100px;
+    z-index: 10000;
+  }
+  
   img {
     grid-area: cover;
   }

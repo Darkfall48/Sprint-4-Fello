@@ -50,11 +50,11 @@
         .members-modal-content-wrapper {
 
             input {
-                padding: 12px 12px 12px 12px;
+                padding: 11px 12px;
             }
 
             p {
-                margin-bottom: 12px;
+                margin-bottom: 7px;
             }
 
             // .board-members-check{
@@ -66,8 +66,8 @@
                 @include btn('modal-full', white, 6px 0, $list-btn-bg-clr-modal-hover);
                 display: grid;
                 grid-template-columns: 1fr 5fr 1fr;
-                justify-content: space-between;
-                margin: 0 0 5px 5px;
+                justify-items: start;
+                margin: 0 0 0 5px;
                 font-size: 1em;
             }
 
@@ -75,7 +75,7 @@
                 @include btn('modal-full', $list-btn-bg-clr-modal-hover, 6px 12px, $task-details-btn-bg-clr-hover);
                 margin: 4px 0 0 0;
                 text-align: center;
-               
+                display: block;
             }
 
             .no-member-msg {
@@ -139,13 +139,16 @@
     height: 36px;
 
     span {
-        margin:0;
-        margin-left:3px;
-        padding:8px 8px 4px;
+        margin: 0;
+        margin-left: 3px;
+        padding: 8px 8px 4px;
         border-radius: $border-radius;
-        svg{
-            margin-bottom: 2px;;
+
+        svg {
+            margin-bottom: 2px;
+            ;
         }
+
         &:hover {
             cursor: pointer;
             background-color: rgba(9, 30, 66, 0.08);
@@ -194,6 +197,11 @@
     .btn-label-color {
         height: 28px;
         width: 48.8px;
+
+        &:focus {
+            outline: 2px solid #0079BF;
+            border: 2px solid white
+        }
     }
 }
 
