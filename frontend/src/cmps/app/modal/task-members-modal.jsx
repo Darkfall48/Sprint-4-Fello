@@ -43,10 +43,10 @@ export function TaskMembersModal({ task, group, board }) {
     return <section className='modal-content-container'>
         <div className="members-modal-content-wrapper">
             <input type="text" value={memberName} onChange={handleChange} placeholder="Search members" />
-            {!!filteredMembers.length &&
+            {!!filteredMembers?.length &&
                 <div>
                     <p>Board members</p>
-                    {filteredMembers.map((member, idx) => {
+                    {filteredMembers?.map((member, idx) => {
                         return <div className="board-members-check" key={member._id + idx}>
                             <a className='modal-btn-full-members' onClick={() => toggleTaskMember(member._id)} >
                                 <img key={1 + idx} className="task-details-main-members-container-img"
@@ -64,7 +64,7 @@ export function TaskMembersModal({ task, group, board }) {
             }
         </div>
 
-        {!filteredMembers.length && <div className="no-member-msg">Looks like that person isn't a member yet.
+        {!filteredMembers?.length && <div className="no-member-msg">Looks like that person isn't a member yet.
             Enter their email address to add them to the card and board.</div>}
     </section>
 }

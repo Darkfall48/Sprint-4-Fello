@@ -137,17 +137,32 @@
     align-items: baseline;
     height: 36px;
 
+    span {
+        margin:0;
+        padding:7px 5px;
+        border-radius: $border-radius;
+        svg{
+            margin-bottom: 4px;;
+        }
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(9, 30, 66, 0.08);
+        }
+    }
+
     h2 {
         text-align: left;
     }
 
     label {
         color: $default-board-bg-clr;
-        font-size: 22px;
+        font-size: 21px;
+        padding-top: 1px;
     }
 
-    .black-checkbox {
+    .blank-checkbox {
         color: #dfe1e6;
+        font-size: 21px;
     }
 
 }
@@ -198,6 +213,7 @@
     @include btn('modal-full', $list-btn-bg-clr-modal-hover, 6px 12px, $task-details-btn-bg-clr-hover);
     justify-content: center;
     border-radius: $border-radius;
+    margin-top: 6px;
 }
 
 #delete-btn {
@@ -227,14 +243,15 @@
     background-color: #F4F5F7;
     padding: 32px;
     margin: 12px 0 0 0;
-    
+
 }
 
-.return-btn{
+.return-btn {
     position: absolute;
-    left:10px;
-    top:9px;
-    &:hover{
+    left: 10px;
+    top: 9px;
+
+    &:hover {
         cursor: pointer;
     }
 }
