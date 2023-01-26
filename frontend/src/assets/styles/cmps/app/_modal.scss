@@ -75,13 +75,6 @@
                 @include btn('modal-full', $list-btn-bg-clr-modal-hover, 6px 12px, $task-details-btn-bg-clr-hover);
                 margin: 4px 0 0 0;
                 text-align: center;
-
-                .upload-preview{
-                    background-color: transparent;
-                    & label{
-                        background-color: transparent;
-                    }
-                }
                
             }
 
