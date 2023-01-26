@@ -137,7 +137,7 @@ console.log('board.labels', board)
                     )}
                   </label>
 
-                  <div
+                  {label?.title && <div
                     className="task-details-main-labels-container-label"
                     id="color-pick"
                     key={label.id}
@@ -153,9 +153,9 @@ console.log('board.labels', board)
                       // key={idx}
                       className="task-details-main-labels-container-title"
                     >
-                      {label?.title ? label?.title : 'None'}
+                      {label?.title}
                     </span>
-                  </div>
+                  </div>}
                   <span
                     // key={idx}
                     onClick={() => {
