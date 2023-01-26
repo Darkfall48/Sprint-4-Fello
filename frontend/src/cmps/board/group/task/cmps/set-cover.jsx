@@ -5,7 +5,7 @@ export function SetCover({ task }) {
     return (
       <img
         className="task-preview-cover-img"
-        src={style.bgImg}
+        src={style?.bgImg}
         alt="Card Image"
       />
     )
