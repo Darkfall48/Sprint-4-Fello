@@ -1,5 +1,5 @@
 //? Libraries
-const cookieParser = require('cookie-parser')
+// const cookieParser = require('cookie-parser')
 const express = require('express')
 const cors = require('cors')
 //? Middleware
@@ -18,7 +18,7 @@ const path = require('path')
 const SERVER_PORT = process.env.PORT || 3030
 
 //* Express App Config
-app.use(cookieParser())
+// app.use(cookieParser())
 app.use(express.json())
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.resolve(__dirname, 'public')))
