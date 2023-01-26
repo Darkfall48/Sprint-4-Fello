@@ -48,13 +48,17 @@ export function GroupPreview({
     setEditMode(false)
   }
 
-  function onSubmitTask(ev) {
+  async function onSubmitTask(ev) {
     console.log('newTask', newTask)
     if (newTask.title === '') return
     ev.preventDefault()
-    addTask(group, newTask)
-    setNewTask(boardService.getEmptyTask(''))
-    setEditMode(false)
+    try{
+      await addTask(group, newTask)
+      setNewTask(boardService.getEmptyTask(''))
+      setEditMode(false)
+    } catch(err){
+      console.log('Failed to add Task', err)
+    }
   }
 
   function onArchiveTask(taskId) {

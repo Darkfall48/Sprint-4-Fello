@@ -1,5 +1,5 @@
 //? Libraries
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 //? Store
@@ -17,6 +17,8 @@ import { MdOutlineContentCopy } from 'react-icons/md'
 import { TbTemplate } from 'react-icons/tb'
 import { TiArchive } from 'react-icons/ti'
 import { HiOutlineShare } from 'react-icons/hi'
+import { MdOutlineLaptop } from 'react-icons/md'
+
 //? Components
 import { SetActivities } from './cmps/set-activities'
 import { SetCloseBtn } from './cmps/set-close-btn'
@@ -34,6 +36,8 @@ import { SetAttachment } from './cmps/set-attachment'
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const { boardId, groupId, taskId } = useParams()
+  const buttonRef = useRef()
+
 
   const [group, setGroup] = useState([])
   const [task, setTask] = useState([])
@@ -117,7 +121,9 @@ export function TaskDetails() {
           className="task-details-header"
           onClick={(ev) => ev.stopPropagation()}
         >
-          {(task?.style?.bgColor || task?.style?.bgImg) && <SetHeader task={task} group={group} />}
+          {(task?.style?.bgColor || task?.style?.bgImg) && (
+            <SetHeader task={task} group={group} />
+          )}
         </header>
 
         <SetTitle
@@ -134,14 +140,17 @@ export function TaskDetails() {
             {task.memberIds && (
               <SetMembers board={board} task={task} group={group} />
             )}
-            {task.labelIds && <SetLabels  
-            board={board} 
-            task={task} 
-            setModalOpen={setModalOpen} 
-            modalOpen={modalOpen}
-            onCloseModal={onCloseModal}
-            group={group}
-            onEditLabels={onEditLabels}/>}
+            {task.labelIds && (
+              <SetLabels
+                board={board}
+                task={task}
+                setModalOpen={setModalOpen}
+                modalOpen={modalOpen}
+                onCloseModal={onCloseModal}
+                group={group}
+                onEditLabels={onEditLabels}
+              />
+            )}
           </article>
 
           <SetDescription task={task} />
@@ -210,7 +219,7 @@ export function TaskDetails() {
                   board={board}
                 />
               )}
-              <button title="I am Labels" onClick={() => { setModalOpen('labels') }}>
+              <button title="I am Labels" onClick={() => { setModalOpen('labels') }} ref={buttonRef}>
                 <TbTag /> <span>Labels</span>
               </button>
               {modalOpen === 'labels' && (
@@ -222,6 +231,7 @@ export function TaskDetails() {
                   group={group}
                   board={board}
                   onEditLabels={onEditLabels}
+                  buttonRef={buttonRef}
                 />
               )}
               <button
@@ -246,7 +256,8 @@ export function TaskDetails() {
                 title="I am Date"
                 onClick={() => {
                   setModalOpen('date')
-                }}>
+                }}
+              >
                 <FiClock /> <span>Dates</span>
               </button>
               {modalOpen === 'date' && (
@@ -274,6 +285,28 @@ export function TaskDetails() {
                   group={group}
                   task={task}
                 />
+              )}
+
+              {!task.style?.bgImg && !task.style?.bgColor && (
+                <>
+                  <button
+                    title="I am Cover"
+                    onClick={() => {
+                      setModalOpen('cover')
+                    }}
+                  >
+                    <MdOutlineLaptop /> <span>Cover</span>
+                  </button>
+                  {modalOpen === 'cover' && (
+                    <Modal
+                      type="task-cover"
+                      modalTitle="Change Cover"
+                      onCloseModal={onCloseModal}
+                      group={group}
+                      task={task}
+                    />
+                  )}
+                </>
               )}
             </div>
           </article>

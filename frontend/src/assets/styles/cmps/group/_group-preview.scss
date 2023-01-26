@@ -121,6 +121,7 @@
       padding: 0 3px;
 
       &:focus {
+        margin-left: 0;
         background-color: $clr-white;
         padding: 3px 0 3px 7px;
       }

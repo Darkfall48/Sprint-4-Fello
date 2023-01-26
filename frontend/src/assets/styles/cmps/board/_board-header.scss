@@ -12,122 +12,114 @@
         margin-right: 301px;
     }
 
-    .btns-container {
-        display: flex;
+  .btns-container {
+    display: flex;
 
-        .board-header-btn-divider {
-            border-left: 2px solid rgba(255, 255, 255, 0.31);
-            float: left;
-            height: 20px;
-            margin: 11px 8px 10px 4px;
-        }
-
-        button {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-
-        }
-    }
-
-    .members-container {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        margin-right: 11px;
-
-        .member-img {
-            height: rem(28px);
-            margin-right: rem(-3px);
-            object-fit: cover;
-            width: rem(28px);
-
-            & img {
-                width: 100%;
-                border-radius: 50%;
-                // border-left: #767676 1px solid;
-                box-shadow: -1px 0px 1px 0px rgb(255, 255, 255);
-            }
-        }
-
-    }
-
-    .title-container {
-        display: flex;
-        align-items: center;
-        justify-items: center;
-    }
-
-    h1 {
-        font-size: rem(18px);
-        font-weight: 700;
-        line-height: 32px;
-        padding: 0 12px;
-        margin: 0;
-        color: $clr-white ;
-        overflow: hidden;
-        padding-right: 12px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-
-        &:hover {
-            cursor: pointer;
-            background-color: rgba(226, 226, 226, 0.538);
-            border-radius: 0.15625rem;
-        }
-
-        &:focus {
-            background-color: transparent;
-        }
-
+    .board-header-btn-divider {
+      border-left: 2px solid rgba(255, 255, 255, 0.31);
+      float: left;
+      height: 20px;
+      margin: 11px 8px 10px 4px;
     }
 
     button {
-        background-color: rgba(255, 255, 255, 0.164);
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        line-height: 20px;
-        font-weight: 400;
-        display: inline-flex;
-        border-radius: rem(2.5px);
-        cursor: pointer;
-        padding: 6px 12px;
-        // color: $clr2;
-        // content: attr(data-content);
-        // filter: hue-rotate(60deg);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
 
-        transition-property: background-color;
-        transition-duration: 85ms;
-        transition-timing-function: ease;
+  .members-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-right: 11px;
 
-        &:hover {
-            background-color: rgba(226, 226, 226, 0.538);
+    .member-img {
+      height: rem(28px);
+      margin-right: rem(-3px);
+      object-fit: cover;
+      width: rem(28px);
 
-            & .star {
-                fill: yellow;
-                font-size: rem(20px);
-            }
-        }
+      & img {
+        width: 100%;
+        border-radius: 50%;
+        // border-left: #767676 1px solid;
+        box-shadow: -1px 0px 1px 0px rgb(255, 255, 255);
+      }
+    }
+  }
 
-        .star {
-            width: 20px;
-            height: 20px;
+  .title-container {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+  }
 
-        }
+  h1 {
+    font-size: rem(18px);
+    font-weight: 700;
+    line-height: 32px;
+    padding: 0 12px;
+    margin: 0;
+    color: $clr-white;
+    overflow: hidden;
+    padding-right: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
-        .starred {
-            fill: yellow;
-            width: 20px;
-            height: 20px;
-        }
-
-        
-
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(226, 226, 226, 0.538);
+      border-radius: 0.15625rem;
     }
 
-    .light{
-        color: black;
+    &:focus {
+      background-color: transparent;
+    }
+  }
+
+  button {
+    background-color: rgba(255, 255, 255, 0.164);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    display: inline-flex;
+    border-radius: rem(2.5px);
+    cursor: pointer;
+    padding: 6px 12px;
+    // color: $clr2;
+    // content: attr(data-content);
+    // filter: hue-rotate(60deg);
+
+    transition-property: background-color;
+    transition-duration: 85ms;
+    transition-timing-function: ease;
+
+    &:hover {
+      background-color: rgba(226, 226, 226, 0.538);
+
+      & .star {
+        fill: yellow;
+        font-size: rem(20px);
+      }
     }
 
+    .star {
+      width: 20px;
+      height: 20px;
+    }
+
+    .starred {
+      fill: yellow;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .light {
+    color: black;
+  }
 }
-

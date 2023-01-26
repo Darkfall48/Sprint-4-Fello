@@ -46,7 +46,8 @@ export function SetLabels({
 
     case 'preview-detailed':
       if (!labelIds || !labelIds?.length)
-        return <article className="task-preview-detailed-labels"></article>
+      return
+        // return <article className="task-preview-detailed-labels"></article>
       return (
         <article className="task-preview-detailed-labels">
           <div className="task-preview-detailed-labels-container">
@@ -113,12 +114,12 @@ export function SetLabels({
               className="task-details-main-labels-add-btn"
               title="Add Label"
               onClick={() => {
-                setModalOpen('labels')
+                setModalOpen('labels-preview')
               }}
             >
               <AiOutlinePlus />
             </button>
-            {modalOpen === 'labels' && (
+            {modalOpen === 'labels-preview' && (
               <Modal
                 type="task-labels"
                 modalTitle="Labels"
