@@ -20,7 +20,7 @@ export function TaskLabelsModal({
   mode,
   onToggleMode
 }) {
-  const [filteredLabels, setFilteredLabels] = useState(board?.labels||[])
+  const [filteredLabels, setFilteredLabels] = useState(board?.labels || [])
   const [inputLabel, setInputLabel] = useState('')
   // const [mode, setMode] = useState('select-label')
   const [labelTitle, setLabelTitle] = useState('')
@@ -28,7 +28,7 @@ export function TaskLabelsModal({
   const [editExisiting, setEditExisting] = useState(false)
   const [active, setActive] = useState(false)
   const [editLabel, setEditLabel] = useState(null)
-console.log('board.labels', board)
+  console.log('board.labels', board)
 
   async function onToggleLabel(label) {
     const { id } = label
@@ -60,14 +60,13 @@ console.log('board.labels', board)
 
   function selectLabelColor(color) {
     setLabelColor(color)
-    setActive(!active)
     console.log('color', color)
   }
 
   function handleLabelTitleChange({ target }) {
     const { value } = target
     console.log('value', value)
-    setLabelTitle(value)
+    setEditLabel((preEditLabel) => ({ ...preEditLabel, title: value }))
   }
 
   function createNewLabel() {
@@ -76,7 +75,7 @@ console.log('board.labels', board)
       title: labelTitle,
       color: labelColor,
     }
-    const updatedLabels =  board?.labels?.concat(newLabel)
+    const updatedLabels = board?.labels?.concat(newLabel)
     updateLabelstoBoard(updatedLabels)
     setFilteredLabels(updatedLabels)
   }
@@ -122,7 +121,7 @@ console.log('board.labels', board)
             {filteredLabels?.map((label, idx) => {
               return (
                 <div key={idx} id="labels-container-modal"
-                onClick={() => onToggleLabel(label)}>
+                  onClick={() => onToggleLabel(label)}>
                   <label
                     key={idx}
                   >
@@ -134,14 +133,14 @@ console.log('board.labels', board)
 
                   {label?.title && <div
                     className="task-details-main-labels-container-label"
-                    style={{ backgroundColor: label?.color + '66'  }}
+                    style={{ backgroundColor: label?.color + '66' }}
                     title={label?.title ? label?.title : ''}
-                    >
+                  >
                     <div
                       className="task-details-main-labels-container-circle"
                       style={{ backgroundColor: label?.color }}
-                      // key={idx}
-                      ></div>
+                    // key={idx}
+                    ></div>
                     <span
                       // key={idx}
                       className="task-details-main-labels-container-title"
@@ -182,29 +181,28 @@ console.log('board.labels', board)
             <div
               className="task-details-main-labels-container-label"
               id="color-pick"
-              style={{ backgroundColor: labelColor + '66' }}
+              style={{ backgroundColor: editLabel.color + '66' }}
               title={labelTitle}
             >
               <div
                 className="task-details-main-labels-container-circle"
-                style={{ backgroundColor: labelColor }}
+                style={{ backgroundColor: editLabel.color }}
               ></div>
               <span className="task-details-main-labels-container-title">
-                {labelTitle}
+                {editLabel.title}
               </span>
             </div>
           </div>
           <p>Title</p>
           <input
             type="text"
-            value={labelTitle}
+            value={editLabel.title}
             placeholder={editLabel.title}
             onChange={handleLabelTitleChange}
           />
           <p>Select a color</p>
           <div className="label-color-selection-container">
             {boardService.getLabelColors().map((color, idx) => {
-              const active = editLabel?.color === color ? true : false
               return (
                 <button
                   key={idx}
@@ -214,17 +212,16 @@ console.log('board.labels', board)
                     backgroundColor: color,
                     borderWidth: '1px',
                     borderStyle: 'solid',
-                    border: active ? 'grey' : '',
                   }}
                 ></button>
               )
             })}
           </div>
           <button id="modal-btn-full-grey"
-          onClick={()=>selectLabelColor('')}
+            onClick={() => selectLabelColor('')}
           >
             {' '}
-            <span style={{margin: '4px 3px 0 0'}}>
+            <span style={{ margin: '4px 3px 0 0' }}>
               <CgClose />
             </span>{' '}
             Remove color

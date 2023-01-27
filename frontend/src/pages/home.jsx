@@ -4,11 +4,14 @@ import React from 'react'
 //? Assets
 import svg from '../assets/img/home-page.svg'
 import boardSvg from '../assets/img/TrelloImage-1.webp'
+import { AppHeader } from '../cmps/app/app-header'
 //? Private Variables
 const heroImgUrl = 'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716698/hero_vffzlz.webp'
 
 export function Home() {
   return (
+    <>
+    <AppHeader type={'home'} />
     <section className="home-section main-container main-layout">
       <div className="wave-container full">
         <div className="content-container">
@@ -42,5 +45,6 @@ export function Home() {
         <img src={boardSvg} alt="boardSvg" />
       </div>
     </section>
+    </>
   )
 }

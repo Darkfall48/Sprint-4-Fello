@@ -1,4 +1,4 @@
-import { React, useState} from 'react';
+import { React, useState } from 'react';
 import { CgClose } from 'react-icons/cg'
 import { IoIosArrowBack } from 'react-icons/io'
 
@@ -13,7 +13,7 @@ import { TaskMembersModal } from './modal/task-members-modal';
 import { utilService } from '../../services/util.service';
 
 
-export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task , board , onEditLabels, buttonRef}) {
+export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task, board, onEditLabels, buttonRef }) {
     // const [isReturnClick, setIsReturnClick] = useState(false)
     const [mode, setMode] = useState('select-label')
 
@@ -24,24 +24,24 @@ export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task ,
     function onToggleMode(mode) {
         console.log('mode', mode)
         setMode(mode)
-      }
-      const isReturnBtn = mode==='create-new' ? true : false
+    }
+    const isReturnBtn = mode === 'create-new' ? true : false
 
-    return <div 
-    className={`modal-content modal-${type}`} 
-    onClick={(e) => e.stopPropagation()} 
-    onBlur={()=>onCloseModal}
+    return <div
+        className={`modal-content modal-${type}`}
+        onClick={(e) => e.stopPropagation()}
+        onBlur={() => onCloseModal}
+        style={{
+            left: utilService.getPosition(buttonRef).left + 0+'px',
+            top: utilService.getPosition(buttonRef).top + -100+'px',
+          }}
 
     >
         <div className="form-container" id="modal-form-container"
-    // style={{
-    //     left: utilService.getPosition(buttonRef).left +10+ 'px',
-    //     top: utilService.getPosition(buttonRef).top + 100+'px',
-    //   }}
-      >
+        >
 
             <div id="modal-header">
-                {isReturnBtn && <button className='return-btn' onClick={()=>onToggleMode('select-label')}><IoIosArrowBack/></button> }
+                {isReturnBtn && <button className='return-btn' onClick={() => onToggleMode('select-label')}><IoIosArrowBack /></button>}
                 <h6>{modalTitle} </h6>
                 <button id='close-btn' onClick={onCloseModal}><CgClose /></button>
             </div>
@@ -52,17 +52,17 @@ export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task ,
                     case 'group-actions':
                         return <GroupActionsModal group={group} onCloseModal={onCloseModal} onAddTask={onAddTask} />
                     case 'task-members':
-                        return <TaskMembersModal task={task} group={group}  board={board} onCloseModal={onCloseModal} onAddTask={onAddTask} />
+                        return <TaskMembersModal task={task} group={group} board={board} onCloseModal={onCloseModal} onAddTask={onAddTask} />
                     case 'task-labels':
-                        return <TaskLabelsModal task={task} group={group} board={board} onCloseModal={onCloseModal} onEditLabels={onEditLabels} mode={mode} onToggleMode={onToggleMode}  />
+                        return <TaskLabelsModal task={task} group={group} board={board} onCloseModal={onCloseModal} onEditLabels={onEditLabels} mode={mode} onToggleMode={onToggleMode} />
                     case 'task-checklist':
                         return <TaskChecklistModal onCloseModal={onCloseModal} board={board} task={task} group={group} />
                     case 'task-cover':
-                        return <TaskCoverModal  task={task} group={group} onCloseModal={onCloseModal}/>
+                        return <TaskCoverModal task={task} group={group} onCloseModal={onCloseModal} />
                     case 'task-attachment':
-                        return <TaskAttachmentModal onCloseModal={onCloseModal} task={task} group={group}/>
+                        return <TaskAttachmentModal onCloseModal={onCloseModal} task={task} group={group} />
                     case 'task-date':
-                        return <TaskDatesModal onCloseModal={onCloseModal} task={task} group={group}/>
+                        return <TaskDatesModal onCloseModal={onCloseModal} task={task} group={group} />
                     default:
                         console.log(`Cannot load component type: ${type}.`);
                 }
