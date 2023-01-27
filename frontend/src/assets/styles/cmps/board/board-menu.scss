@@ -84,15 +84,25 @@
             }
         }
 
-        input{
-            padding: 10px;
-            width: 100%;
+        form{
+            width: 300px;
+
+            input{
+                padding: 10px;
+                width: 300px;
+            }
+
+            button{
+                background: transparent;
+            }
         }
 
+       
+
         .search-icon{
-            position: absolute;
-            top: 0;
-            left: 150px;
+            position: relative;
+            top: -40px;
+            left: 130px;
         }
 
     }
@@ -174,7 +184,8 @@
     display: grid;
     grid-template-columns: 50% 50%;
     gap: 10px;
-    padding-right: 15px;
+    padding-left: 0;
+    padding-right: 20px;
 
 
     .btn-change {
