@@ -32,8 +32,8 @@ export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task, 
         onClick={(e) => e.stopPropagation()}
         onBlur={() => onCloseModal}
         style={{
-            left: utilService.getPosition(buttonRef).left + 0+'px',
-            top: utilService.getPosition(buttonRef).top + -100+'px',
+            // top: utilService.getPosition(buttonRef).top -150+'px',
+            left: utilService.getPosition(buttonRef).left + 150+'px',
           }}
 
     >

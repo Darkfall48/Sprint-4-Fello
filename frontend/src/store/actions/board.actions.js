@@ -92,9 +92,10 @@ export async function addBoard(board) {
 
 export async function updateBoard(board) {
   try {
+    console.log('board before saving to back', board)
     const savedBoard = await boardService.save(board)
     // console.log('savedBoard:', savedBoard)
-    console.log('Updated Board:', savedBoard)
+    console.log('Updated Board after saving in back:', savedBoard)
     store.dispatch(getActionUpdateBoard(savedBoard))
     return savedBoard
   } catch (err) {
@@ -128,7 +129,7 @@ export async function addTask(group, task) {
   // console.log('group:', group)
   // console.log('task:', task)
   const updatedTasks = [...group.tasks, task]
-// console.log('updatedTasks:', updatedTasks)
+  // console.log('updatedTasks:', updatedTasks)
   const updatedGroup = { ...group, tasks: updatedTasks }
   // console.log('updatedGroup:', updatedGroup)
   try {
@@ -150,6 +151,33 @@ export async function updateTask(group, task) {
   } catch (err) {
     console.log(`Cannot update task id ${task.id}`, err)
     throw err
+  }
+}
+
+export async function removeLabelFromAllTasks(board, labelId) {
+  console.log('labelId', labelId)
+  let { groups } = board
+  // let updatedGroup = []
+  // for (let i = 0; i < groups.length; i++) {
+  //   let updatedTasks = []
+  //   for (let j = 0; j < groups[i].tasks.length; j++) {
+  //     if (groups[i].tasks[j]!==  )
+  //   }
+  // }
+  const updatedGroups = groups.map((group) => {
+    return {...group, tasks: group.tasks.map((task) => {
+        return {...task, labelIds: task.labelIds.filter((lblId) => lblId !== labelId)}
+      })
+    }
+  })
+  console.log('updatedGroups', updatedGroups)
+  const updatedBoard = { ...board, groups: updatedGroups }
+  console.log('updatedBoard', updatedBoard)
+  try {
+    await updateBoard(updatedBoard)
+    loadBoard(board._id)
+  } catch (err) {
+    console.log('Failed to remove label', labelId, 'from all tasks', err)
   }
 }
 

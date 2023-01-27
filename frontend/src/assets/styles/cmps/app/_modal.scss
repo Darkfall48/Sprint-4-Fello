@@ -150,10 +150,6 @@
             ;
         }
 
-        &:hover {
-            cursor: pointer;
-            background-color: rgba(9, 30, 66, 0.08);
-        }
     }
 
     h2 {
@@ -198,6 +194,7 @@
     .btn-label-color {
         height: 28px;
         width: 48.8px;
+        border:none;
 
         &:focus {
             outline: 2px solid #0079BF;
@@ -286,4 +283,8 @@
         top:0;
         left:0;
     }
+}
+
+.modal-member-header{
+    background-color: #0079be;
 }
