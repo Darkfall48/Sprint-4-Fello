@@ -8,13 +8,12 @@ const KEY = "photos"
 const photos = _loadFromStorage(KEY) || null
 
 async function getPhotos(searchWords) {
-    // Defining our variables
+
     if (!searchWords && photos) return photos
     const ACCESS_KEY = "aw6VX_wvUo_n8mWH08jT64mrURJJEobEGtuZo6Ypwds"
     let URL = `https://api.unsplash.com/photos/random?count=30${
         searchWords ? `&query=${searchWords}` : ""
     }&client_id=${ACCESS_KEY}`
-    // let URL = `https://api.unsplash.com/search/photos?page=1&per_page=30${searchWords ?`&query=${searchWords}`: ''}&client_id=${ACCESS_KEY}`
     try {
         const response = await axios.get(URL)
         const { data } = response
