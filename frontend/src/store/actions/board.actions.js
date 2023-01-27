@@ -157,25 +157,18 @@ export async function updateTask(group, task) {
 export async function removeLabelFromAllTasks(board, labelId) {
   console.log('labelId', labelId)
   let { groups } = board
-  // let updatedGroup = []
-  // for (let i = 0; i < groups.length; i++) {
-  //   let updatedTasks = []
-  //   for (let j = 0; j < groups[i].tasks.length; j++) {
-  //     if (groups[i].tasks[j]!==  )
-  //   }
-  // }
   const updatedGroups = groups.map((group) => {
     return {...group, tasks: group.tasks.map((task) => {
         return {...task, labelIds: task.labelIds.filter((lblId) => lblId !== labelId)}
       })
     }
   })
-  console.log('updatedGroups', updatedGroups)
+  console.log('updatedGroups - remove label', updatedGroups)
   const updatedBoard = { ...board, groups: updatedGroups }
-  console.log('updatedBoard', updatedBoard)
+  console.log('updatedBoard -before update board', updatedBoard)
   try {
     await updateBoard(updatedBoard)
-    loadBoard(board._id)
+    // loadBoard(board._id)
   } catch (err) {
     console.log('Failed to remove label', labelId, 'from all tasks', err)
   }
