@@ -66,7 +66,7 @@ export function TaskDetails() {
   //? Update Task - CRUDL
   async function onUpdateTask(field, { value }) {
     console.log('Valuueee', value)
-    if (!value || !value.length) return
+    // if (!value || !value.length) return
     const updatedTask = { ...task, [field]: value }
     try {
       setTask(updatedTask)
