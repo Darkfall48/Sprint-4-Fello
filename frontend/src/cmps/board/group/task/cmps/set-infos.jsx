@@ -15,7 +15,7 @@ export function SetInfos({ task }) {
     return (
       <article
         className="task-preview-infos-follow"
-        title="You are following this card."
+        title="You are receiving notifications for updates on this card"
       >
         <AiOutlineEye />
       </article>

@@ -1,0 +1,49 @@
+//* Follow
+.task-details-main-follow {
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-start;
+  &-title {
+    align-self: flex-start;
+    align-items: flex-start;
+    color: #5e6c84;
+    font-size: 12px;
+    font-weight: 600;
+    // padding-left: 8px;
+  }
+  &-btn {
+    align-items: flex-start;
+    @include btn(
+      'task-edit',
+      $list-btn-bg-clr-modal-hover,
+      6px 12px,
+      $task-details-btn-bg-clr-hover
+    );
+    display: flex;
+    gap: 6px;
+    margin: 0;
+    width: fit-content;
+
+    &.followed {
+      width: 138px;
+      padding-right: 4px;
+      & span {
+        padding-right: 10px;
+      }
+    }
+    &-check {
+      display: flex;
+      justify-self: flex-end;
+      place-items: center;
+      place-content: center;
+      background-color: #48536b;
+      color: white;
+      border-radius: 3px;
+      font-size: 16px;
+      font-weight: 700;
+      height: 24px;
+      width: 28px;
+      padding: 2px 4px;
+    }
+  }
+}

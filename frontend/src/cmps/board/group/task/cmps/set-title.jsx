@@ -3,6 +3,9 @@ import { AiOutlineEye } from 'react-icons/ai'
 import { BsReverseLayoutTextWindowReverse } from 'react-icons/bs'
 
 export function SetTitle({ onUpdateTask, type, group, task }) {
+  function onUpdateTitle({ value }) {
+    onUpdateTask('title', value)
+  }
   switch (type) {
     //* Task Preview
     case 'preview':
@@ -28,7 +31,7 @@ export function SetTitle({ onUpdateTask, type, group, task }) {
             id="task-title"
             placeholder="Enter a name for the task.."
             onKeyDown={(ev) =>
-              ev.key === 'Enter' ? onUpdateTask('title', ev.target) : ev
+              ev.key === 'Enter' ? onUpdateTitle(ev.target) : ev
             }
             defaultValue={task.title}
             // onChange={onUpdateTask}
@@ -47,7 +50,7 @@ export function SetTitle({ onUpdateTask, type, group, task }) {
             </a>
             {task.priority === 'high' && (
               <AiOutlineEye
-                title="Followed"
+                title="You are receiving notifications for updates on this card"
                 className="task-details-title-description-icon"
               />
             )}

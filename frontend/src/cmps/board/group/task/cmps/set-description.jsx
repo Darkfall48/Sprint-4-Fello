@@ -11,9 +11,9 @@ export function SetDescription({ onUpdateTask, task }) {
   // console.log('Description:', description)
   // console.log('Is Description ?', isDescription)
 
-  function onUpdateDescription(target) {
-    onUpdateTask('description', target)
-    if (!target.value || !target.value?.length) setIsDescription(false)
+  function onUpdateDescription({ value }) {
+    onUpdateTask('description', value)
+    if (!value || !value?.length) setIsDescription(false)
   }
 
   //? Private Components
