@@ -6,6 +6,7 @@ import { CgClose } from 'react-icons/cg'
 //?Services:
 import {
   loadBoard,
+  removeLabelFromAllTasks,
   updateBoard,
   updateTask,
 } from '../../../store/actions/board.actions'
@@ -22,12 +23,10 @@ export function TaskLabelsModal({
 }) {
   const [filteredLabels, setFilteredLabels] = useState(board?.labels || [])
   const [inputLabel, setInputLabel] = useState('')
-  // const [mode, setMode] = useState('select-label')
   const [labelTitle, setLabelTitle] = useState('')
   const [labelColor, setLabelColor] = useState('')
   const [editExisiting, setEditExisting] = useState(false)
-  const [active, setActive] = useState(false)
-  const [editLabel, setEditLabel] = useState(null)
+  const [editLabel, setEditLabel] = useState({ color: '#DFE1E6', title: '' })
   console.log('board.labels', board)
 
   async function onToggleLabel(label) {
@@ -59,7 +58,8 @@ export function TaskLabelsModal({
   }
 
   function selectLabelColor(color) {
-    setLabelColor(color)
+    setEditLabel((prevEditLabel) => ({ ...prevEditLabel, color }))
+    // setLabelColor(color)
     console.log('color', color)
   }
 
@@ -72,15 +72,15 @@ export function TaskLabelsModal({
   function createNewLabel() {
     const newLabel = {
       id: utilService.makeId(),
-      title: labelTitle,
-      color: labelColor,
+      title: editLabel.title,
+      color: editLabel.color,
     }
+    console.log('newLabel', newLabel)
     const updatedLabels = board?.labels?.concat(newLabel)
+    console.log('updatedLabels', updatedLabels)
     updateLabelstoBoard(updatedLabels)
     setFilteredLabels(updatedLabels)
   }
-
-
 
   async function updateLabelstoBoard(updatedLabels) {
     board = { ...board, labels: updatedLabels }
@@ -96,14 +96,22 @@ export function TaskLabelsModal({
     }
   }
 
-  function deleteLabel() {
+  async function deleteLabel() {
     setEditExisting(false)
     const updatedLabels = board.labels.filter(
-      (label) => label.id !== editLabel.id
-    )
-    setEditLabel(null)
-    updateLabelstoBoard(updatedLabels)
-    setFilteredLabels(updatedLabels)
+      (label) => label.id !== editLabel.id)
+    const updatedLabelIds = task.labelIds.filter(
+      (labelId) => labelId !== editLabel.id)
+    task = { ...task, labelIds: updatedLabelIds }
+    try {
+      // await updateTask(group, task)
+      await removeLabelFromAllTasks (board, editLabel.id)
+      await updateLabelstoBoard(updatedLabels)
+      setEditLabel(null)
+      setFilteredLabels(updatedLabels)
+    } catch(err){
+      console.log('Failed to remove label', err)
+    }
   }
 
   switch (mode) {
@@ -151,7 +159,8 @@ export function TaskLabelsModal({
                   </div>}
                   <span
                     // key={idx}
-                    onClick={() => {
+                    onClick={(ev) => {
+                      ev.stopPropagation()
                       onToggleMode('create-new')
                       setEditExisting(true)
                       setEditLabel(label)
@@ -165,7 +174,8 @@ export function TaskLabelsModal({
           </div>
           <button
             id="modal-btn-full-grey"
-            onClick={() => {
+            onClick={(ev) => {
+              ev.stopPropagation()
               onToggleMode('create-new')
             }}
           >
@@ -181,15 +191,15 @@ export function TaskLabelsModal({
             <div
               className="task-details-main-labels-container-label"
               id="color-pick"
-              style={{ backgroundColor: editLabel.color + '66' }}
-              title={labelTitle}
+              style={{ backgroundColor: editLabel.color ? editLabel.color + '66' : 'grey' }}
+              title={editLabel?.title}
             >
               <div
                 className="task-details-main-labels-container-circle"
-                style={{ backgroundColor: editLabel.color }}
+                style={{ backgroundColor: editLabel.color ? editLabel.color : 'grey' }}
               ></div>
               <span className="task-details-main-labels-container-title">
-                {editLabel.title}
+                {editLabel?.title || ''}
               </span>
             </div>
           </div>
@@ -197,7 +207,7 @@ export function TaskLabelsModal({
           <input
             type="text"
             value={editLabel.title}
-            placeholder={editLabel.title}
+            placeholder={editLabel?.title || ''}
             onChange={handleLabelTitleChange}
           />
           <p>Select a color</p>
@@ -210,8 +220,6 @@ export function TaskLabelsModal({
                   className="btn-label-color"
                   style={{
                     backgroundColor: color,
-                    borderWidth: '1px',
-                    borderStyle: 'solid',
                   }}
                 ></button>
               )

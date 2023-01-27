@@ -1,5 +1,5 @@
 //? Icons
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import { MdOutlineLaptop } from 'react-icons/md'
 import { FastAverageColor } from 'fast-average-color'
@@ -11,6 +11,7 @@ export function SetHeader({ task, group }) {
   const { style } = task
   const [modalOpen, setModalOpen] = useState(false)
   const [averageColor, setAverageColor] = useState('')
+  const buttonRef = useRef()
 
   useEffect(() => {
     getAverageColor()
@@ -48,7 +49,8 @@ export function SetHeader({ task, group }) {
       }
     >
       {/* <img src={style.bgImg} alt="" /> */}
-      <button title="Change cover" onClick={() => setModalOpen(true)}>
+      <button title="Change cover" onClick={() => setModalOpen(true)}
+      ref={buttonRef}>
         <MdOutlineLaptop /> Cover
       </button>
       {modalOpen && (
@@ -58,6 +60,7 @@ export function SetHeader({ task, group }) {
           task={task}
           onCloseModal={onCloseModal}
           group={group}
+          buttonRef={buttonRef}
         />
       )}
     </div>
