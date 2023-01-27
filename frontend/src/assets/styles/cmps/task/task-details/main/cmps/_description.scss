@@ -27,16 +27,38 @@
     font-weight: 600;
     color: #172b4d;
   }
+  &-no-description-btn {
+    grid-area: input;
+    justify-self: flex-start;
+    text-align: start;
+    background-color: #091e420a;
+    color: #172b4d;
+    border-radius: 3px;
+    min-height: 40px;
+    padding: 8px 12px;
+    width: 100%;
+    height: 56px;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+      background-color: #091e4214;
+    }
+    &:active {
+      background-color: #e4f0f6;
+      color: #0079bf;
+    }
+  }
   &-input {
     grid-area: input;
     justify-self: flex-start;
     padding: 8px 12px;
     width: 100%;
+    height: 56px;
     border: none;
     overflow: hidden;
     overflow-wrap: break-word;
+    background-color: transparent;
     resize: none;
-    background-color: #091e420a;
     border-radius: 3px;
     color: #172b4d;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
@@ -45,6 +67,7 @@
     font-weight: 400;
     outline: none;
     &:focus {
+      background-color: #091e420a;
       box-shadow: 0 0 0 1px inset #dfe1e6;
     }
   }

@@ -6,8 +6,8 @@ import { RxActivityLog } from 'react-icons/rx'
 import { taskService } from '../../../../../services/board/task.service'
 
 export function SetActivities({ board, taskId }) {
-  console.log('!Board', board)
-  console.log('!Task', taskId)
+  // console.log('!Board', board)
+  // console.log('!Task', taskId)
 
   const [activities, setActivities] = useState(
     taskService.getActivitiesByTaskId(board, taskId)

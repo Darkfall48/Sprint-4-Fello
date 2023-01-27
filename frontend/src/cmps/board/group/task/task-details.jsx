@@ -51,21 +51,23 @@ export function TaskDetails() {
     setTask(group?.tasks?.filter((task) => task.id === taskId)[0])
   }, [board, group, task])
 
-  console.log(
-    'Hello from board:',
-    boardId,
-    'in list:',
-    groupId,
-    'as task:',
-    taskId
-  )
+  // console.log(
+  //   'Hello from board:',
+  //   boardId,
+  //   'in list:',
+  //   groupId,
+  //   'as task:',
+  //   taskId
+  // )
   // console.log('Taskkyyyy', task)
   // console.log('Grouppyyyy', group)
   // console.log('Boardyyyy', board)
 
   //? Update Task - CRUDL
-  async function onUpdateTaskTitle({ value }) {
-    const updatedTask = { ...task, title: value }
+  async function onUpdateTask(field, { value }) {
+    console.log('Valuueee', value)
+    if (!value || !value.length) return
+    const updatedTask = { ...task, [field]: value }
     try {
       setTask(updatedTask)
       await updateTask(group, updatedTask)
@@ -107,7 +109,8 @@ export function TaskDetails() {
     console.log('edit labels')
   }
 
-  if (!board || !group || !task) return <Loader />
+  // if (!board || !group || !task) return <Loader />
+  if (!board || !group || !task) return
   return (
     <section
       className="task-details-modal-overlay"
@@ -125,11 +128,7 @@ export function TaskDetails() {
           )}
         </header>
 
-        <SetTitle
-          onUpdateTaskTitle={onUpdateTaskTitle}
-          group={group}
-          task={task}
-        />
+        <SetTitle onUpdateTask={onUpdateTask} group={group} task={task} />
 
         <main
           className="task-details-main"
@@ -152,7 +151,7 @@ export function TaskDetails() {
             )}
           </article>
 
-          <SetDescription task={task} />
+          <SetDescription onUpdateTask={onUpdateTask} task={task} />
           {task.attachments &&
             task.attachments.map((attachment, idx) => (
               <SetAttachment

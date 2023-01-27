@@ -43,8 +43,8 @@
 // Task Preview
 @import 'cmps/task/task-preview/task-preview';
 // Task Preview: Components
-@import 'cmps/task/task-preview/cmps/cover';
 @import 'cmps/task/task-preview/cmps/edit-btn';
+@import 'cmps/task/task-preview/cmps/cover';
 @import 'cmps/task/task-preview/cmps/infos';
 @import 'cmps/task/task-preview/cmps/labels';
 @import 'cmps/task/task-preview/cmps/members';
@@ -53,6 +53,7 @@
 @import 'cmps/task/task-details/task-details';
 // Task Details: Header
 @import 'cmps/task/task-details/header/task-details-header';
+@import 'cmps/task/task-details/header/cmps/cover';
 // Task Details: Main
 @import 'cmps/task/task-details/main/task-details-main';
 @import 'cmps/task/task-details/main/cmps/activities';
@@ -60,7 +61,6 @@
 @import 'cmps/task/task-details/main/cmps/description';
 @import 'cmps/task/task-details/main/cmps/labels';
 @import 'cmps/task/task-details/main/cmps/members';
-@import 'cmps/task/task-details/main/cmps/cover';
 @import 'cmps/task/task-details/main/cmps/attachments';
 // Task Details: Aside
 @import 'cmps/task/task-details/aside/task-details-aside';

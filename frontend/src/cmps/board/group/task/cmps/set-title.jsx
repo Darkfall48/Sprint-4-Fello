@@ -2,7 +2,7 @@
 import { AiOutlineEye } from 'react-icons/ai'
 import { BsReverseLayoutTextWindowReverse } from 'react-icons/bs'
 
-export function SetTitle({ onUpdateTaskTitle, type, group, task }) {
+export function SetTitle({ onUpdateTask, type, group, task }) {
   switch (type) {
     //* Task Preview
     case 'preview':
@@ -28,10 +28,10 @@ export function SetTitle({ onUpdateTaskTitle, type, group, task }) {
             id="task-title"
             placeholder="Enter a name for the task.."
             onKeyDown={(ev) =>
-              ev.key === 'Enter' ? onUpdateTaskTitle(ev.target) : ev
+              ev.key === 'Enter' ? onUpdateTask('title', ev.target) : ev
             }
             defaultValue={task.title}
-            // onChange={onUpdateTaskTitle}
+            // onChange={onUpdateTask}
           />
 
           <div className="task-details-title-description">

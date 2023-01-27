@@ -25,7 +25,7 @@ export function SetHeader({ task, group }) {
   function onCloseModal() {
     setModalOpen(false)
   }
-  console.log('style', style)
+  // console.log('style', style)
   if (!style?.bgColor && !style?.bgImg)
     return (
       <div className="task-details-header-cover">

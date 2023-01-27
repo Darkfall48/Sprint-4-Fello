@@ -1,28 +1,24 @@
 //? Icons
+import { useState } from 'react'
 import { GrTextAlignFull } from 'react-icons/gr'
 
-export function SetDescription({ task }) {
+export function SetDescription({ onUpdateTask, task }) {
   const { description } = task
+  const [isDescription, setIsDescription] = useState(
+    !(!description || description === '\n')
+  )
 
-  if (!description || !description.length)
+  // console.log('Description:', description)
+  // console.log('Is Description ?', isDescription)
+
+  function onUpdateDescription(target) {
+    if (!target.value || !target.value?.length) return setIsDescription(false)
+    onUpdateTask('description', target)
+  }
+
+  //? Private Components
+  function DescriptionInputArea() {
     return (
-      <section className="task-details-main-description">
-        <GrTextAlignFull className="task-details-main-description-icon" />
-        <h2 className="task-details-main-description-title">Description</h2>
-        <textarea
-          className="task-details-main-description-input"
-          type="text"
-          name="task-description"
-          id="task-description"
-          placeholder="Add a more detailed description.."
-          defaultValue={description}
-        />
-      </section>
-    )
-  return (
-    <section className="task-details-main-description">
-      <GrTextAlignFull className="task-details-main-description-icon" />
-      <h2 className="task-details-main-description-title">Description</h2>
       <textarea
         className="task-details-main-description-input"
         type="text"
@@ -30,7 +26,36 @@ export function SetDescription({ task }) {
         id="task-description"
         placeholder="Add a more detailed description.."
         defaultValue={description}
+        onKeyDown={(ev) =>
+          ev.key === 'Enter' ? onUpdateDescription(ev.target) : ev
+        }
+        onBlur={(ev) => onUpdateDescription(ev.target)}
       />
-    </section>
-  )
+    )
+  }
+
+  switch (isDescription) {
+    case true:
+      return (
+        <section className="task-details-main-description">
+          <GrTextAlignFull className="task-details-main-description-icon" />
+          <h2 className="task-details-main-description-title">Description</h2>
+          <DescriptionInputArea />
+        </section>
+      )
+
+    default:
+      return (
+        <section className="task-details-main-description">
+          <GrTextAlignFull className="task-details-main-description-icon" />
+          <h2 className="task-details-main-description-title">Description</h2>
+          <div
+            onClick={() => setIsDescription(true)}
+            className="task-details-main-description-no-description-btn"
+          >
+            Add a more detailed description
+          </div>
+        </section>
+      )
+  }
 }
