@@ -92,7 +92,7 @@ export function TaskDetails() {
   async function getUrl() {
     try {
       const { pathname } = location
-      const websiteUrl = '`https://link.com'
+      const websiteUrl = 'https://team-fello.onrender.com'
       const url = websiteUrl + pathname
       await navigator.clipboard.writeText(url)
       console.log('URL was copied to clipboard:', url)
