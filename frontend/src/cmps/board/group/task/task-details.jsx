@@ -33,6 +33,7 @@ import { SetMembers } from './cmps/set-members'
 import { SetTitle } from './cmps/set-title'
 import { Loader } from '../../../helpers/loader'
 import { Modal } from '../../../app/modal'
+import { SetJoinBtn } from './cmps/set-join-btn'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -183,9 +184,11 @@ export function TaskDetails() {
             </h2>
             <div className="task-details-aside-suggested-action-button">
               {/* <button title="Settings">Setting</button> */}
-              <button title="Add members">
-                <HiOutlineUser /> Join
-              </button>
+              <SetJoinBtn
+                onUpdateTask={onUpdateTask}
+                task={task}
+                board={board}
+              />
             </div>
           </article>
 
