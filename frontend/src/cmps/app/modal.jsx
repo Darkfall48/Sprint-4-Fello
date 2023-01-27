@@ -30,12 +30,11 @@ export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task, 
     return <div
         className={`modal-content modal-${type}`}
         onClick={(e) => e.stopPropagation()}
-        onBlur={() => onCloseModal}
+        onBlur={() => onCloseModal}    
         style={{
             // top: utilService.getPosition(buttonRef).top -150+'px',
-            left: utilService.getPosition(buttonRef).left + 150+'px',
+            left: utilService.getPosition(buttonRef).left - 98+'px',
           }}
-
     >
         <div className="form-container" id="modal-form-container"
         >
