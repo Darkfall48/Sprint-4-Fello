@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { boardService } from '../../../../../../services/board/board.service'
+import { taskService } from '../../../../../../services/board/task.service'
 import { updateTask } from '../../../../../../store/actions/board.actions'
 
 export function TodoAdd({ group, task, checklist, onCloseModal }) {
-  const [todoToAdd, setTodoToAdd] = useState(boardService.getEmptyTodo())
+  const [todoToAdd, setTodoToAdd] = useState(taskService.getEmptyTodo())
   const inputRef = useRef(null)
 
   useEffect(() => {

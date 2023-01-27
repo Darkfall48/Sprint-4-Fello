@@ -4,9 +4,9 @@ import {
   showErrorMsg,
   showSuccessMsg,
 } from '../../../services/connection/event-bus.service'
-import { boardService } from '../../../services/board/board.service'
 import { addBoard, updateTask } from '../../../store/actions/board.actions'
 import { ImgUploader } from '../../helpers/img-uploader'
+import { taskService } from '../../../services/board/task.service'
 
 export function TaskCoverModal({ task, group, onCloseModal }) {
   const [updatedTask, onupdatedTask] = useState(task)
@@ -60,7 +60,7 @@ export function TaskCoverModal({ task, group, onCloseModal }) {
 
       <p>Colors</p>
       <div className="btns-cover-color">
-        {boardService.getCoverColors().map((color, idx) => {
+        {taskService.getCoverColors().map((color, idx) => {
           return (
             <button
               key={idx}

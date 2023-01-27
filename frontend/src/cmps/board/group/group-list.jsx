@@ -8,6 +8,7 @@ import {
   showSuccessMsg,
   showErrorMsg,
 } from '../../../services/connection/event-bus.service'
+import { groupService } from '../../../services/board/group.service'
 import { boardService } from '../../../services/board/board.service'
 import {
   updateBoard,
@@ -18,6 +19,7 @@ import {
 import { GroupPreview } from './group-preview.jsx'
 import { Loader } from '../../helpers/loader'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
+import { dndService } from '../../../services/dnd.service'
 
 export function GroupList({ board }) {
   const [labelsPreview, setLabelsPreview] = useState('preview-simple')
@@ -47,10 +49,10 @@ export function GroupList({ board }) {
     setNewGroupTitle(value)
   }
 
-  async function onAddGroup(ev=null) {
+  async function onAddGroup(ev = null) {
     console.log('ev', ev.key)
-    if (ev.key !== 'Enter' && ev.key!== null) return
-    const newGroup = boardService.getEmptyGroup(newGroupTitle)
+    if (ev.key !== 'Enter' && ev.key !== null) return
+    const newGroup = groupService.getEmptyGroup(newGroupTitle)
     const groups = board.groups.concat(newGroup)
     const updatedBoard = { ...board, groups }
     try {
@@ -82,19 +84,19 @@ export function GroupList({ board }) {
     const { droppableId: sourceId, index: sourceIdx } = source
 
     if (type === 'task') {
-      const sourceGroups = boardService.getGroupById(board, destinationId)
+      const sourceGroups = groupService.getGroupById(board, destinationId)
       console.log('sourceGroups', sourceGroups)
-      const destinationGroups = boardService.getGroupById(board, sourceId)
+      const destinationGroups = groupService.getGroupById(board, sourceId)
       const tasks = sourceGroups.tasks
 
       if (sourceId === destinationId) {
-        sourceGroups.tasks = boardService.reorder(
+        sourceGroups.tasks = dndService.reorder(
           tasks,
           sourceIdx,
           destinationIdx
         )
       } else {
-        sourceGroups.tasks = boardService.swapItemBetweenLists(
+        sourceGroups.tasks = dndService.swapItemBetweenLists(
           destinationGroups,
           sourceGroups,
           sourceIdx,
@@ -102,11 +104,7 @@ export function GroupList({ board }) {
         )
       }
     } else if (type === 'group') {
-      board.groups = boardService.reorder(
-        board.groups,
-        sourceIdx,
-        destinationIdx
-      )
+      board.groups = dndService.reorder(board.groups, sourceIdx, destinationIdx)
     }
     updateBoard(board)
   }
@@ -176,7 +174,10 @@ export function GroupList({ board }) {
             onKeyUp={(ev) => onAddGroup(ev, newGroupTitle)}
           />
           <div className="add-item-wrapper">
-            <button className="new-item-add-btn" onClick={(ev)=>onAddGroup(ev)}>
+            <button
+              className="new-item-add-btn"
+              onClick={(ev) => onAddGroup(ev)}
+            >
               Add list
             </button>
             <button className="close-add-item" onClick={exitEditMode}>

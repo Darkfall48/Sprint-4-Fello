@@ -2,7 +2,7 @@
 import { AiOutlineEye } from 'react-icons/ai'
 import { BsReverseLayoutTextWindowReverse } from 'react-icons/bs'
 
-export function SetTitle({ onUpdateTask, type, group, task }) {
+export function SetTitle({ onUpdateTask, type, group, task, mode }) {
   function onUpdateTitle({ value }) {
     onUpdateTask('title', value)
   }
@@ -11,7 +11,10 @@ export function SetTitle({ onUpdateTask, type, group, task }) {
     case 'preview':
       return (
         <article className="task-preview-title">
-          <p>{task.title}</p>
+          {mode!=='quick-edit' &&<p>{task.title}</p>}
+          {mode==='quick-edit'&& 
+        <input className='task-preview-quick-edit-title' type="text-area" value={task.title}/>
+        }
         </article>
       )
       break

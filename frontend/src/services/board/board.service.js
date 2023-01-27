@@ -1,5 +1,5 @@
 //? Services
-import { utilService } from '../util.service'
+
 import { httpService } from '../connection/http.service'
 //? Private Variables
 const imgUrlMember1 =
@@ -20,18 +20,8 @@ export const boardService = {
   getDefaultPage,
   getFromSearchParams,
   getEmptyBoard,
-  getEmptyGroup,
-  getEmptyTask,
   getImages,
   getColors,
-  getEmptyTodo,
-  getEmptyChecklist,
-  getCoverColors,
-  getLabelColors,
-  getEmptyAttachment,
-  getGroupById,
-  swapItemBetweenLists,
-  reorder,
 }
 
 //? Query - List/Filtering/Sorting/Paging
@@ -135,10 +125,6 @@ function getFromSearchParams(searchParams) {
   return { filter, sort, page }
 }
 
-function getGroupById(board, groupId) {
-  return board.groups.find((group) => group.id === groupId)
-}
-
 function getEmptyBoard() {
   return {
     title: '',
@@ -202,83 +188,6 @@ function getEmptyBoard() {
   }
 }
 
-function getEmptyGroup(groupTitle) {
-  return {
-    id: utilService.makeId(),
-    title: groupTitle,
-    archivedAt: Date.now(),
-    tasks: [],
-    style: {},
-  }
-}
-
-function getEmptyTask(taskTitle) {
-  return {
-    id: utilService.makeId(),
-    title: taskTitle,
-    archivedAt: Date.now(),
-    style: {},
-    priority: 'low',
-    description: '',
-    comments: [],
-    checklists: [],
-    memberIds: [],
-    labelIds: [],
-    attachments: [],
-    dueDate: null,
-    byMember: {},
-    style: {},
-  }
-}
-
-function getEmptyChecklist() {
-  return {
-    id: utilService.makeId(5),
-    title: 'Checklist',
-    todos: [],
-  }
-}
-
-function getEmptyTodo() {
-  return {
-    id: utilService.makeId(5),
-    title: '',
-    isDone: false,
-  }
-}
-
-function getEmptyAttachment() {
-  return {
-    id: utilService.makeId(5),
-    title: '',
-    img: '',
-    createdAt: Date.now(),
-    comment: [],
-  }
-}
-
-function swapItemBetweenLists(
-  sourceList,
-  destinationList,
-  sourceIdx,
-  destinationIdx
-) {
-  const deletedItem = sourceList.tasks.splice(sourceIdx, 1)
-  destinationList.tasks.push(...deletedItem)
-  return reorder(
-    destinationList.tasks,
-    destinationList.tasks.length - 1,
-    destinationIdx
-  )
-}
-
-function reorder(arr, startIdx, endIdx) {
-  const orderedArr = [...arr]
-  const [removed] = orderedArr.splice(startIdx, 1)
-  orderedArr.splice(endIdx, 0, removed)
-  return orderedArr
-}
-
 function getImages() {
   return [
     'https://images.unsplash.com/photo-1671894618012-b1f9d305a97f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80',
@@ -292,55 +201,4 @@ function getImages() {
 
 function getColors() {
   return ['#0079bf', '#d29034', '#519839', '#b04632', '#89609e']
-  // return ['#5ba4cf', '#f5dd29', '#7bc86c', '#ef7564', '#cd8de5']
-}
-
-function getCoverColors() {
-  return [
-    '#7BC86C',
-    '#F5DD29',
-    '#FFAF3F',
-    '#EF7564',
-    '#CD8DE5',
-    '#5BA4CF',
-    '#29CCE5',
-    '#6DECA9',
-    '#FF8ED4',
-    '#172B4D',
-  ]
-}
-
-function getLabelColors() {
-  return [
-    '#B7DDB0',
-    '#F5EA92',
-    '#FAD29C',
-    '#EFB3AB',
-    '#DFC0EB',
-    '#7BC86C',
-    '#F5DD29',
-    '#FFAF3F',
-    '#EF7564',
-    '#CD8DE5',
-    '#5AAC44',
-    '#E6C60D',
-    '#E79217',
-    '#CF513D',
-    '#A86CC1',
-    '#8BBDD9',
-    '#8FDFEB',
-    '#B3F1D0',
-    '#F9C2E4',
-    '#172b4d',
-    '#5BA4CF',
-    '#29CCE5',
-    '#6DECA9',
-    '#FF8ED4',
-    '#344563',
-    '#026AA7',
-    '#00AECC',
-    '#4ED583',
-    '#e568af',
-    '#505f79',
-  ]
 }

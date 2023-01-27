@@ -38,7 +38,7 @@ export function TaskPreview({
           task={task}
         />
       )}
-      {task.title && <SetTitle type="preview" task={task} />}
+      {task.title && <SetTitle type="preview" task={task} mode={mode} />}
       {mode!=='quick-edit'&&
       <SetEditBtn
         onArchiveTask={onArchiveTask}
