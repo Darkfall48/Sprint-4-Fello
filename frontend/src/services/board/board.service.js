@@ -22,8 +22,6 @@ export const boardService = {
   getEmptyBoard,
   getImages,
   getColors,
-  swapItemBetweenLists,
-  reorder,
 }
 
 //? Query - List/Filtering/Sorting/Paging
@@ -190,28 +188,6 @@ function getEmptyBoard() {
   }
 }
 
-function swapItemBetweenLists(
-  sourceList,
-  destinationList,
-  sourceIdx,
-  destinationIdx
-) {
-  const deletedItem = sourceList.tasks.splice(sourceIdx, 1)
-  destinationList.tasks.push(...deletedItem)
-  return reorder(
-    destinationList.tasks,
-    destinationList.tasks.length - 1,
-    destinationIdx
-  )
-}
-
-function reorder(arr, startIdx, endIdx) {
-  const orderedArr = [...arr]
-  const [removed] = orderedArr.splice(startIdx, 1)
-  orderedArr.splice(endIdx, 0, removed)
-  return orderedArr
-}
-
 function getImages() {
   return [
     'https://images.unsplash.com/photo-1671894618012-b1f9d305a97f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80',
@@ -226,5 +202,3 @@ function getImages() {
 function getColors() {
   return ['#0079bf', '#d29034', '#519839', '#b04632', '#89609e']
 }
-
-
