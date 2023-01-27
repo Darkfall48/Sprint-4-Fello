@@ -14,10 +14,9 @@ export function BoardPreview({ board, onRemoveBoard }) {
   }
 
   function recentlyViewedBoard() {
-    const recentlyViewed = Date.now()
-    board.lastViewed = recentlyViewed
+    board.lastViewed = Date.now()
     console.log('board.lastViewed from preview', board.lastViewed);
-    // updateBoard(board)
+    updateBoard(board)
     // console.log('last viewed', board);
   }
 

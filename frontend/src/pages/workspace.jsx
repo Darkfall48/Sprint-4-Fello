@@ -12,14 +12,10 @@ export function Workspace() {
 
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const starredBoard = boards.filter((board) => board.isStarred)
-  const recentlyViewedBoard = boards.filter((board) => {
-    console.log('board.lastViewed', board.lastViewed);
-    return board.lastViewed
-  })
-  // .sort((a, b) => a.lastViewed - b.lastViewed)
-console.log('recentlyViewedBoard', recentlyViewedBoard);
-const view = recentlyViewedBoard.sort((a, b) => a.lastViewed - b.lastViewed)
-console.log('view', view);
+  const day = 1000 * 60 * 60 * 24
+  const recentlyViewedBoard = boards.filter((board) => Date.now() - board.lastViewed < day)
+// .sort((a, b) => a.lastViewed - b.lastViewed)
+
 
   useEffect(() => {
     onLoadBoards()

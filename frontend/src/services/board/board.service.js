@@ -143,7 +143,6 @@ function getEmptyBoard() {
     title: '',
     archivedAt: Date.now(),
     createdAt: Date.now(),
-    lastViewed: Date.now(),
     isStarred: false,
     style: {
       bgColor: '#0079bf',
