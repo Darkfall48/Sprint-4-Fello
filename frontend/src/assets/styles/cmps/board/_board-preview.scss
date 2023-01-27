@@ -1,153 +1,82 @@
 a {
-    list-style: none;
+  list-style: none;
+  text-decoration: none;
+  line-height: 1;
+
+  &:hover {
     text-decoration: none;
-    line-height: 1;
+    filter: contrast(80%);
 
-
-    &:hover {
-        text-decoration: none;
-        filter: contrast(80%);
-
-        button {
-            display: block;
-        }
-
-        .board-preview {
-            .hidden-btns {
-                .star {
-                    opacity: 1;
-                    transition: 0.5s;
-                }
-
-            }
-        }
-
-
+    button {
+      display: block;
     }
-
 
     .board-preview {
-        background: $default-board-bg-clr;
-        color: $clr-white ;
-        padding: 10px;
-
-        border-radius: 3px;
-        color: $clr-white;
-        font-size: .8547em;
-        height: rem(96px);
-        min-width: rem(194px);
-
-        position: relative;
-
-        @include for-mobile-layout {
-            min-width: 160px;
-            padding: 0;
+      .hidden-btns {
+        .star {
+          opacity: 1;
+          transition: 0.5s;
         }
-
-
-        .board-tile-fade {
-            border-radius: 3px;
-            display: block;
-
-        }
-
-        &:hover {
-
-
-            button {
-                display: block;
-                position: relative;
-                z-index: 100;
-
-            }
-
-            .hidden-btns {
-                .star {
-                    opacity: 1;
-                    transition: 0.5s;
-                    position: relative;
-                    z-index: 100;
-                    top: -30px;
-                    left: -10px;
-                }
-
-            }
-
-            .board-tile-fade {
-                border-radius: 3px;
-                display: block;
-            }
-        }
-
-
-        .board-preview-details {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            height: 80px;
-            justify-content: space-between;
-            position: relative;
-
-
-            h4 {
-                text-align: left;
-                word-wrap: break-word;
-                font-size: rem(16px);
-                font-weight: 700;
-                text-decoration: none;
-
-                position: absolute;
-                // z-index: 5;
-            }
-
-        }
-
+      }
     }
+  }
 
+  .board-preview {
+    background: $default-board-bg-clr;
+    color: $clr-white;
+    padding: 10px;
 
-}
-
-.hidden-btns {
-    display: flex;
-    flex-direction: row-reverse;
+    border-radius: 3px;
+    color: $clr-white;
+    font-size: 0.8547em;
+    height: rem(96px);
+    min-width: rem(194px);
 
     position: relative;
 
-    // z-index: 100;
+    @include for-mobile-layout {
+      min-width: 160px;
+      padding: 0;
+    }
 
-    //try to fix z-index
-    button {
-        background-color: transparent;
-        margin: 0;
-        padding: 0;
+    .board-tile-fade {
+      border-radius: 3px;
+      display: block;
+    }
+
+    &:hover {
+      button {
         display: block;
-
-
-    }
-
-    .star {
-        opacity: 1;
-        color: $clr-white;
-        width: 15px;
-        height: 15px;
         position: relative;
-        top: -32px;
-        left: -10px;
-        cursor: pointer;
+        z-index: 100;
+      }
 
+      .hidden-btns {
+        .star {
+          opacity: 1;
+          transition: 0.5s;
+          position: relative;
+          z-index: 100;
+          top: -30px;
+          left: -10px;
+        }
+      }
+
+      .board-tile-fade {
+        border-radius: 3px;
+        display: block;
+      }
     }
 
-    .starred {
-        width: 15px;
-        height: 15px;
-        fill: #f2d600;
-        position: relative;
-        top: -32px;
-        left: -10px;
-        cursor: pointer;
-    }
+    .board-preview-details {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 80px;
+      justify-content: space-between;
+      position: relative;
 
-    h4 {
+      h4 {
         text-align: left;
         word-wrap: break-word;
         font-size: rem(16px);
@@ -155,15 +84,50 @@ a {
         text-decoration: none;
 
         position: absolute;
-        z-index: 5;
+        // z-index: 5;
+      }
     }
+  }
 }
 
-.title-preview {
+.hidden-btns {
+  display: flex;
+  flex-direction: row-reverse;
+
+  position: relative;
+
+  // z-index: 100;
+
+  //try to fix z-index
+  button {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+  .star {
+    opacity: 1;
+    color: $clr-white;
+    width: 15px;
+    height: 15px;
     position: relative;
-}
+    top: -32px;
+    left: -10px;
+    cursor: pointer;
+  }
 
-h4 {
+  .starred {
+    width: 15px;
+    height: 15px;
+    fill: #f2d600;
+    position: relative;
+    top: -32px;
+    left: -10px;
+    cursor: pointer;
+  }
+
+  h4 {
     text-align: left;
     word-wrap: break-word;
     font-size: rem(16px);
@@ -171,14 +135,48 @@ h4 {
     text-decoration: none;
 
     position: absolute;
-    top: -90px;
-    left: 10px;
-    cursor: pointer;
-    color: $clr-white ;
-    height: 0.1px;
-
+    z-index: 5;
+  }
 }
 
+.title-preview {
+  position: relative;
+}
+
+// h4 {
+//   text-align: left;
+//   word-wrap: break-word;
+//   font-size: rem(16px);
+//   font-weight: 700;
+//   text-decoration: none;
+
+//   position: absolute;
+//   top: -90px;
+//   left: 10px;
+//   cursor: pointer;
+//   color: $clr-white;
+//   height: 0.1px;
+// }
+
 .boards-page-board-section-list-item:nth-of-type(4n) {
-    margin-right: 0;
+  margin-right: 0;
+}
+
+// Changes from Sidney
+li {
+  position: relative !important;
+  .hidden-btns {
+    position: absolute !important;
+    right: 0 !important;
+  }
+}
+
+li:hover {
+  .star {
+    display: flex !important;
+  }
+}
+
+.star {
+  display: none !important;
 }

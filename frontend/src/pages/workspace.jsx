@@ -1,21 +1,24 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { BoardList } from "../cmps/workspace/board-list";
-import { showErrorMsg, showSuccessMsg } from "../services/connection/event-bus.service";
-import { AiOutlineStar } from "react-icons/ai";
-import { AiOutlineClockCircle } from "react-icons/ai";
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { BoardList } from '../cmps/workspace/board-list'
+import {
+  showErrorMsg,
+  showSuccessMsg,
+} from '../services/connection/event-bus.service'
+import { AiOutlineStar } from 'react-icons/ai'
+import { AiOutlineClockCircle } from 'react-icons/ai'
 
-import { loadBoards, removeBoard } from "../store/actions/board.actions";
-import { Loader } from "../cmps/helpers/loader";
+import { loadBoards, removeBoard } from '../store/actions/board.actions'
+import { Loader } from '../cmps/helpers/loader'
 
 export function Workspace() {
-
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const starredBoard = boards.filter((board) => board.isStarred)
   const day = 1000 * 60 * 60 * 24
-  const recentlyViewedBoard = boards.filter((board) => Date.now() - board.lastViewed < day)
-// .sort((a, b) => a.lastViewed - b.lastViewed)
-
+  const recentlyViewedBoard = boards.filter(
+    (board) => Date.now() - board.lastViewed < day
+  )
+  // .sort((a, b) => a.lastViewed - b.lastViewed)
 
   useEffect(() => {
     onLoadBoards()
@@ -24,7 +27,7 @@ export function Workspace() {
   async function onLoadBoards() {
     try {
       await loadBoards()
-      console.log('loaded boards');
+      console.log('loaded boards')
       showSuccessMsg('Boards loaded')
     } catch (err) {
       showErrorMsg('Cannot load boards')
@@ -34,7 +37,7 @@ export function Workspace() {
   async function onRemoveBoard(boardId) {
     await removeBoard(boardId)
     try {
-      console.log(boardId, 'removed');
+      console.log(boardId, 'removed')
       showSuccessMsg('Board removed')
     } catch (err) {
       showErrorMsg('Cannot remove board')
@@ -43,35 +46,35 @@ export function Workspace() {
 
   function onStarredBoard() {
     if (!starredBoard.length) return
-    else return <h1><AiOutlineStar className="workspace-icons" /> Starred boards</h1>
+    else
+      return (
+        <h1>
+          <AiOutlineStar className="workspace-icons" /> Starred boards
+        </h1>
+      )
   }
 
   if (!boards) return <Loader />
-  return <section className="workspace-section" >
-
-    <div className="starred-boards-container">
-      {onStarredBoard()}
-      <BoardList
-        boards={starredBoard}
-        onRemoveBoard={onRemoveBoard}
-      />
-    </div>
-    <div className="recently-viewed-boards-container">
-      <h1><AiOutlineClockCircle className="workspace-icons" /> Recently viewed</h1>
-      <BoardList
-        boards={recentlyViewedBoard}
-        onRemoveBoard={onRemoveBoard}
-      />
-    </div>
-    <div className="your-workspace-boards-container">
-      <h3>Your workspaces</h3>
-      <BoardList
-        boards={boards}
-        onRemoveBoard={onRemoveBoard}
-        createBoardPlaceholder={true}
-      />
-    </div>
-
-
-  </section>
+  return (
+    <section className="workspace-section">
+      <div className="starred-boards-container">
+        {onStarredBoard()}
+        <BoardList boards={starredBoard} onRemoveBoard={onRemoveBoard} />
+      </div>
+      <div className="recently-viewed-boards-container">
+        <h1>
+          <AiOutlineClockCircle className="workspace-icons" /> Recently viewed
+        </h1>
+        <BoardList boards={recentlyViewedBoard} onRemoveBoard={onRemoveBoard} />
+      </div>
+      <div className="your-workspace-boards-container">
+        <h3>Your workspaces</h3>
+        <BoardList
+          boards={boards}
+          onRemoveBoard={onRemoveBoard}
+          createBoardPlaceholder={true}
+        />
+      </div>
+    </section>
+  )
 }
