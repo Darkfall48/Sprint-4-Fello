@@ -6,7 +6,6 @@ import { boardReducer } from './reducers/board.reducer.js'
 
 // User
 import { userReducer } from './reducers/user.reducer.js'
-import { reviewReducer } from './reducers/review.reducer'
 // App
 import { systemReducer } from './reducers/system.reducer'
 
@@ -14,7 +13,6 @@ const rootReducer = combineReducers({
   boardModule: boardReducer,
   userModule: userReducer,
   systemModule: systemReducer,
-  reviewModule: reviewReducer,
 })
 
 const middleware = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
