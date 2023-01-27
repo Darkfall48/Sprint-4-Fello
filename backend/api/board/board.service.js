@@ -63,6 +63,7 @@ async function update(board) {
       groups,
       activities,
       isStarred,
+      lastViewed,
     } = board
     const boardToSave = {
       title,
@@ -75,6 +76,7 @@ async function update(board) {
       groups,
       activities,
       isStarred,
+      lastViewed,
     }
     const collection = await dbService.getCollection(BOARDS_DB)
     await collection.updateOne(

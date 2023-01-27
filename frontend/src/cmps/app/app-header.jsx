@@ -10,6 +10,7 @@ import { useState } from 'react'
 import { BoardAdd } from '../workspace/board-add'
 import { FastAverageColor } from 'fast-average-color'
 import { useRef } from 'react'
+import blueLogo from '../../assets/img/header/trello-logo-blue.png'
 
 export function AppHeader({ type }) {
   const fac = new FastAverageColor()
@@ -59,12 +60,18 @@ export function AppHeader({ type }) {
       break
     case 'home':
       return (<header
-        className="app-header-section full"
+        className="app-header-home-section full"
         style={{ background: "white" }}
       >
-        <Link to="/">
-          <CgMenuGridR className="header-links" />
-        </Link>
+        <div className="logo-section">
+        <img src={blueLogo} alt="logo" />
+        <h2
+            className="logo-name"
+            style={{ fontFamily: 'charlie-regular', margin: 0}}
+          >
+            Fello
+          </h2>
+        </div>
         <Link to="/login">Login</Link>
       </header>)
       break

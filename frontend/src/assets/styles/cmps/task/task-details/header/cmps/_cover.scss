@@ -26,6 +26,12 @@
         width: 50px;
         height: 32px;
         cursor: pointer;
+
+        
+        &:focus {
+            outline: 2px solid #0079BF;
+            border: 2px solid white;
+        }
     }
 }
 

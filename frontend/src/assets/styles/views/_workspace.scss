@@ -9,6 +9,10 @@
     min-height: calc(100vh - 44px);
     padding: 47px 0 40px;
 
+    @include for-normal-layout {
+        padding: 50px 0 50px;
+    }
+
     h1 {
         color: $clr2;
         text-align: left;
@@ -27,7 +31,7 @@
 
     }
 
-    h3{
+    h3 {
         align-items: center;
         color: #5e6c84;
         display: flex;
@@ -49,7 +53,7 @@
     // @include for-narrow-layout {
     //     background-color: $clr2;
     // }
-    
+
     // @include for-normal-layout {
     //     background-color: $clr3;
     //     max-width: 900px;
@@ -59,6 +63,6 @@
     //     background-color: $clr4;
     //     max-width: 1038px;
     // }
-    
+
 
 }
