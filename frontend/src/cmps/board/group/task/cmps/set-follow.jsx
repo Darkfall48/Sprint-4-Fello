@@ -12,29 +12,29 @@ export function SetFollow({ onUpdateTask, task }) {
       case 'high':
         return (
           <button
-            className="task-details-main-follow-btn"
-            title="Watch to get notifications for updates on this card"
-            onClick={() => {
-              onUpdateFollow('low')
-            }}
-          >
-            <AiOutlineEye /> Watch
-          </button>
-        )
-
-      default:
-        return (
-          <button
             className="task-details-main-follow-btn followed"
             title="You are receiving notifications for updates on this card (click to stop watching)"
             onClick={() => {
-              onUpdateFollow('high')
+              onUpdateFollow('low')
             }}
           >
             <AiOutlineEye /> <span>Watching</span>
             <div className="task-details-main-follow-btn-check">
               <BsCheck />
             </div>
+          </button>
+        )
+
+      default:
+        return (
+          <button
+            className="task-details-main-follow-btn"
+            title="Watch to get notifications for updates on this card"
+            onClick={() => {
+              onUpdateFollow('high')
+            }}
+          >
+            <AiOutlineEye /> Watch
           </button>
         )
     }
