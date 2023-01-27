@@ -1,44 +1,64 @@
-import { useEffect, useRef, useState } from "react"
+import {useState } from "react"
 import { AiOutlineClose } from "react-icons/ai"
 import { updateTask } from "../../../../../../store/actions/board.actions"
 
 
-export function TodoEdit({  onCloseModal, group, task, checklist }) {
-console.log('checklist', checklist);
-    const [editChecklist, onEditChecklist] = useState(checklist)
-    const inputRef = useRef(null)
+export function TodoEdit({ onCloseModal, group, task, todo }) {
 
-    useEffect(() => {
-        // inputRef.current.focus()
-    }, [])
+    const [editTodo, onEditTodo] = useState(todo)
+    const [isEditOn, setIsEditOn] = useState(false)
 
     function handleChange({ target }) {
         let { value, name: field } = target
-        onEditChecklist((prevTitle) => {
+        onEditTodo((prevTitle) => {
             return { ...prevTitle, [field]: value }
         })
+        console.log('editTodo', editTodo);
+    }
+
+    function onChangeTitle(ev) {
+        if (ev._reactName === "onSubmit") {
+            ev.preventDefault()
+            todo.title = editTodo.title
+            updateTask(group, task)
+            setIsEditOn(!isEditOn)
+            onCloseModal()
+        }
+
+        if (ev.key === 'Enter' && !ev.shiftKey) ev.target.blur()
+        if (ev.key === 'Enter' || ev.type === 'blur') {
+            ev.preventDefault()
+            todo.title = editTodo.title
+            updateTask(group, task)
+            setIsEditOn(!isEditOn)
+            onCloseModal()
+        }
+
     }
 
     return <section className="todo-edit-section">
+        <form
 
-        <textarea
-            name="title"
-            id="title"
-            cols="30"
-            rows="10"
-            // placeholder={todo.title}
-            value={editChecklist.title}
-            onChange={handleChange}
-            // ref={inputRef}
-            // onBlur={() => onCloseModal()}
-            style={{ overflow: 'hidden', overflowWrap: 'break-word', height: '56px' }}
+            onSubmit={(ev) => onChangeTitle(ev)}
+            onKeyDown={(ev) => onChangeTitle(ev)}
+            className="task-details-main-checklist-title-input"
         >
-        </textarea>
+            <textarea
+                name="title"
+                id="title"
+                cols="30"
+                rows="10"
+                value={editTodo.title}
+                onChange={handleChange}
+                style={{ overflow: 'hidden', overflowWrap: 'break-word', height: '56px', width: 500 + 'px' }}
+            >
+            </textarea>
 
-        <div className="todo-btns">
-            <button className="todo-btn">Save</button>
-            <button className="cancel-btn" onClick={() => (onCloseModal())}><AiOutlineClose /></button>
-        </div>
+            <div className="todo-btns">
+                <button className="todo-btn">Save</button>
+                <button className="cancel-btn" onClick={() => (onCloseModal())}><AiOutlineClose /></button>
+            </div>
+        </form>
     </section>
 
 }

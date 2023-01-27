@@ -37,6 +37,7 @@
       padding: 100px;
 
       @include for-mobile-layout {
+        display: flex;
         flex-direction: column;
         // flex-wrap: wrap;
         margin: 0;
@@ -81,6 +82,7 @@
             margin-top: 0px;
             font-size: 2rem;
             line-height: 1.25;
+            text-align: center;
           }
 
           // @include for-narrow-layout {
@@ -109,6 +111,7 @@
 
         @include for-mobile-layout {
           margin-top: 0;
+          margin: auto;
 
         }
 
@@ -127,7 +130,7 @@
             max-width: 100%;
             height: auto;
             margin-bottom: -150px;
-            width: 500px;
+            width: 300px;
           }
 
 

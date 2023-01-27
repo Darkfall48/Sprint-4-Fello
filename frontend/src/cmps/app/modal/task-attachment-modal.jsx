@@ -35,8 +35,8 @@ export function TaskAttachmentModal({ onCloseModal, group, task }) {
         {' '}
         <ImgUploader onUploaded={onUploaded} />
       </button>
-      <button id="modal-btn-full">Trello</button>
-      <button id="modal-btn-full"> Google Drive </button>
+      {/* <button id="modal-btn-full">Trello</button> */}
+      {/* <button id="modal-btn-full"> Google Drive </button> */}
       <hr />
       <p>Attach a link</p>
       <input type="text" placeholder="Paste any link here..." />

@@ -14,7 +14,7 @@
     position: fixed;
     top: 43px;
     height: calc(100vh - 43px);
-    z-index: 222;
+    z-index: 4;
     right: 0;
     width: 351px;
     // transform: translate(50%);
@@ -33,6 +33,26 @@
     //     width: 100%;
 
     // }
+
+    .side-menu-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        button {
+            color: $clr-txt-btn;
+            font-size: 1em;
+            // padding-top: 7px;
+            background-color: transparent;
+            color: #6e6e6e;
+            width: fit-content;
+            margin: 0;
+        }
+
+        h6{
+            margin: 0;
+        }
+    }
 
     button {
         color: black;
@@ -107,14 +127,14 @@
 
 }
 
-.btns-container-change{
+.btns-container-change {
     display: grid;
     grid-template-columns: 50% 50%;
     gap: 10px;
     padding-right: 15px;
 
 
-    .btn-change{
+    .btn-change {
         height: 96px;
         box-sizing: border-box;
         cursor: pointer;
@@ -127,6 +147,6 @@
         border-radius: 8px;
         height: 96px;
         width: 100%;
-    
+
     }
 }

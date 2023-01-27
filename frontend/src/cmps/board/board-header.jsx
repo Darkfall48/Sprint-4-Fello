@@ -5,7 +5,7 @@ import { BsFilter } from 'react-icons/bs'
 import { RiUserSharedLine } from 'react-icons/ri'
 import { BsThreeDots } from 'react-icons/bs'
 import { loadBoard, updateBoard } from '../../store/actions/board.actions'
-import { BoardMenu } from './board-menu'
+import { BoardMenu } from './side-menu/board-menu'
 import { Loader } from '../helpers/loader'
 
 export function BoardHeader({ board }) {

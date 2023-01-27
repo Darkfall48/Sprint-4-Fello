@@ -3,9 +3,7 @@ import { BsCheck2Square } from 'react-icons/bs'
 import { AiOutlineClose } from 'react-icons/ai'
 import { updateTask } from '../../../../../store/actions/board.actions'
 import { TodoAdd } from './checklist/todo-add'
-
 import { TodoList } from './checklist/todo-list'
-import { TodoEdit } from './checklist/todo-edit'
 
 export function SetChecklist({ task, checklist, group }) {
   const contentRef = useRef(null)
@@ -64,24 +62,6 @@ export function SetChecklist({ task, checklist, group }) {
       setIsEditOn(!isEditOn)
     }
 
-  }
-
-  function onEditTodo(ev) {
-    ev.preventDefault()
-
-    // const { checklists } = task
-
-    // const checklist = checklists.find(checklist => {
-    //     const checklistId = checklist.id
-    //     if (checklistId === checklist.id) return checklist
-    // })
-
-    // const { todos } = checklist
-
-    // const updatedTask = { ...task, ...checklists, ...todos, todo: todoToAdd }
-    // console.log('updatedTask', task);
-    // updateTask(group, task)
-    // inputRef.current.value = ''
   }
 
   function onRemoveChecklist(checklistId) {
@@ -167,11 +147,7 @@ export function SetChecklist({ task, checklist, group }) {
         onDoneTodo={onDoneTodo}
         task={task}
         group={group}
-        checklist={checklist}
-        onEditTodo={onEditTodo}
       />
-
-      {/* {isModalOpen && <TodoEdit onCloseModal={onCloseModal} checklist={checklist} task={task} group={group} />} */}
 
       {!isModalOpen && (
         <button
