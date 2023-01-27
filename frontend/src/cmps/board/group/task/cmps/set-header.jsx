@@ -23,10 +23,8 @@ export function SetHeader({ task, group }) {
       const color = await fac.getColorAsync(style?.bgImg)
       setAverageColor(color.rgba)
     } catch (err) {
-      console.log(
-        'Unable to get an average color for the following reason:',
-        err
-      )
+      console.warn('Cannot get an average color on a solid color', err)
+      // throw err
     }
   }
 
