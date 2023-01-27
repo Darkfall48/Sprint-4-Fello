@@ -5,13 +5,13 @@ import { TaskPreview } from './task-preview'
 export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, handleLabelClick, labelsPreview, buttonRef, contentRef }) {
     console.log('buttonRef', buttonRef)
     return <section
-        // className="task-details-modal-overlay" 
+        className="task-details-action-modal-overlay" 
         onBlur={(ev) => { closeMenu(ev) }}
         // className="modal-content task-details-modal-overlay"
         onClick={(e) => e.stopPropagation()}
     >
         <div
-            ref={contentRef}
+            // ref={contentRef}
             className="quick-action-modal"
             style={{
                 left: utilService.getPosition(buttonRef).left -220 + 'px',
@@ -27,6 +27,7 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, handl
                 onArchiveTask={onArchiveTask}
                 mode={'quick-edit'}
             />
+            <div className='quick-action-btns'>
             <button
                 id="task-preview-edit-menu-btn"
                 onClick={(ev) => {
@@ -37,6 +38,7 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, handl
                 <HiOutlineArchive />
                 <span>Archive</span>
             </button>
+            </div>
         </div>
     </section>
 }
