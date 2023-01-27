@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { boardService } from '../../../services/board/board.service'
+import { taskService } from '../../../services/board/task.service'
 import { updateTask } from '../../../store/actions/board.actions'
 import { ImgUploader } from '../../helpers/img-uploader'
 
 export function TaskAttachmentModal({ onCloseModal, group, task }) {
   const [attachmentToAdd, setAttachmentToAdd] = useState(
-    boardService.getEmptyAttachment()
+    taskService.getEmptyAttachment()
   )
 
   const onUploaded = (bgImg, imgUrl) => {

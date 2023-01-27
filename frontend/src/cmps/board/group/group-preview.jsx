@@ -8,6 +8,7 @@ import { CgClose } from 'react-icons/cg'
 import { useSelector } from 'react-redux'
 //?Services
 import { boardService } from '../../../services/board/board.service'
+import { taskService } from '../../../services/board/task.service'
 import {
   removeTask,
   addTask,
@@ -31,7 +32,7 @@ export function GroupPreview({
 
 
   const [editMode, setEditMode] = useState(false)
-  const [newTask, setNewTask] = useState(boardService.getEmptyTask(''))
+  const [newTask, setNewTask] = useState(taskService.getEmptyTask(''))
   const [isGroupMenuOpen, setIsGroupMenuOpen] = useState(false)
 
   function onAddTask() {
@@ -56,7 +57,7 @@ export function GroupPreview({
     ev.preventDefault()
     try{
       await addTask(group, newTask)
-      setNewTask(boardService.getEmptyTask(''))
+      setNewTask(taskService.getEmptyTask(''))
       setEditMode(false)
     } catch(err){
       console.log('Failed to add Task', err)

@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react'
-import { boardService } from '../../../services/board/board.service'
+import { taskService } from '../../../services/board/task.service'
 import { updateTask } from '../../../store/actions/board.actions'
 
 export function TaskChecklistModal({ board, onCloseModal, group, task }) {
   const [checklistToAdd, setChecklistToAdd] = useState(
-    boardService.getEmptyChecklist()
+    taskService.getEmptyChecklist()
   )
   const inputRef = useRef(null)
 

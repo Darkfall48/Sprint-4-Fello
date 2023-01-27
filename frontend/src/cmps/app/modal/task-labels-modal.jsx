@@ -10,9 +10,9 @@ import {
   updateBoard,
   updateTask,
 } from '../../../store/actions/board.actions'
-import { boardService } from '../../../services/board/board.service'
 import { utilService } from '../../../services/util.service'
 import { useEffect, useState } from 'react'
+import { taskService } from '../../../services/board/task.service'
 
 export function TaskLabelsModal({
   task,
@@ -90,7 +90,7 @@ export function TaskLabelsModal({
     try {
       await updateBoard(board)
       console.log('board._id', board._id)
-      loadBoard(board._id)
+      await loadBoard(board._id)
     } catch (err) {
       console.log('Failed to update board', err)
     }
@@ -214,7 +214,7 @@ export function TaskLabelsModal({
           />
           <p>Select a color</p>
           <div id="label-color-selection-container">
-            {boardService.getLabelColors().map((color, idx) => {
+            {taskService.getLabelColors().map((color, idx) => {
               return (
                 <button
                   key={idx}

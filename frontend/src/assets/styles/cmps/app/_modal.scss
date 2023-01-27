@@ -321,6 +321,18 @@
     }
 }
 
+.task-preview-quick-edit-title{
+    display: block;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    resize: none;
+    height: 90px;
+    width: 100%;
+    background-color: initial;
+    border:none;
+    text-align: start;
+}
+
 .modal-member-header {
     background-color: #0079be;
 }

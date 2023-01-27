@@ -73,8 +73,8 @@ export function BoardAdd({ onCloseModal, buttonRef, modalRef }) {
         className="modal-content"
         onClick={(e) => e.stopPropagation()}
         style={{
-          left: utilService.getPosition(buttonRef).left + 'px' ,
-          top: utilService.getPosition(buttonRef).top + 40 +'px',
+          left: utilService.getPositionAddBoard(buttonRef).left + 'px' ,
+          top: utilService.getPositionAddBoard(buttonRef).top + 40 +'px',
         }}
       >
         <div className="form-container">

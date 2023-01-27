@@ -8,6 +8,7 @@ import {
   showSuccessMsg,
   showErrorMsg,
 } from '../../../services/connection/event-bus.service'
+import { groupService } from '../../../services/board/group.service'
 import { boardService } from '../../../services/board/board.service'
 import {
   updateBoard,
@@ -50,7 +51,7 @@ export function GroupList({ board }) {
   async function onAddGroup(ev=null) {
     console.log('ev', ev.key)
     if (ev.key !== 'Enter' && ev.key!== null) return
-    const newGroup = boardService.getEmptyGroup(newGroupTitle)
+    const newGroup = groupService.getEmptyGroup(newGroupTitle)
     const groups = board.groups.concat(newGroup)
     const updatedBoard = { ...board, groups }
     try {
@@ -82,9 +83,9 @@ export function GroupList({ board }) {
     const { droppableId: sourceId, index: sourceIdx } = source
 
     if (type === 'task') {
-      const sourceGroups = boardService.getGroupById(board, destinationId)
+      const sourceGroups = groupService.getGroupById(board, destinationId)
       console.log('sourceGroups', sourceGroups)
-      const destinationGroups = boardService.getGroupById(board, sourceId)
+      const destinationGroups = groupService.getGroupById(board, sourceId)
       const tasks = sourceGroups.tasks
 
       if (sourceId === destinationId) {
