@@ -119,6 +119,10 @@
   padding: 10px 100px;
   justify-content: space-between;
 
+  @include for-mobile-layout {
+    padding: 10px;
+  }
+
   .logo-section {
     display: flex;
     align-items: center;

@@ -49,9 +49,52 @@
             margin: 0;
         }
 
-        h6{
+        h6 {
             margin: 0;
         }
+    }
+
+    .content-section {
+        height: 100vh;
+
+        .side-menu-photos {
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: 100%;
+
+            &::-webkit-scrollbar {
+                display: flex;
+                // height: 1px;
+                width: 8px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: rgba(0, 0, 0, 0.2);
+                // height: 12px;
+                border-radius: 0.2rem;
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: #dbdbe2;
+                color: #c2c4cd;
+                // margin: 50px;
+                // height: 12px;
+                border-bottom: 10px solid transparent;
+                border-radius: 0.2rem;
+            }
+        }
+
+        input{
+            padding: 10px;
+            width: 100%;
+        }
+
+        .search-icon{
+            position: absolute;
+            top: 0;
+            left: 150px;
+        }
+
     }
 
     button {

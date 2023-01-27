@@ -111,7 +111,8 @@
 
         @include for-mobile-layout {
           margin-top: 0;
-          margin: auto;
+          // margin-left: -50px;
+          width: 370px;
 
         }
 

@@ -15,6 +15,11 @@
     font-weight: 400;
     margin-bottom: 29px;
 
+    @include for-mobile-layout {
+      width: 160px;
+      padding: 0;
+    }
+
     &:hover {
       transition: 0.1s;
       background-color: $board-list-btn-hover;
@@ -33,10 +38,25 @@
     margin: 0;
 
     @include for-mobile-layout {
+      padding: 0 20px;
       display: grid;
-      grid-template-columns: minmax(1fr, 1fr);
-      padding: 0;
+      grid-template-columns: 1fr 1fr;
+      width: 20px;
+      // gap: 10px;
     }
+
+    // @mixin for-narrow-layout {
+    //   display: grid;
+    //   padding: 0 0 0;
+    //   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    // }
+
+    // @include for-normal-layout {
+    //   display: grid;
+    //   gap: 30px;
+    //   padding: 0 0 0;
+    //   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    // }
   }
 
   .board-add {
@@ -48,4 +68,15 @@
   //     top: 315px;
   //     left: 350px;
   // }
+}
+
+.your-workspace-boards-container {
+
+  h3 {
+    @include for-mobile-layout {
+      padding: 0 20px;
+    }
+  }
+
+
 }

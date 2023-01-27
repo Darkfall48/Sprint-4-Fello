@@ -39,6 +39,12 @@ a {
 
         position: relative;
 
+        @include for-mobile-layout {
+            min-width: 160px;
+            padding: 0;
+        }
+
+
         .board-tile-fade {
             border-radius: 3px;
             display: block;
