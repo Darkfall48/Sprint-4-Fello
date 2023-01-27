@@ -50,6 +50,7 @@ async function add(board) {
 
 //? Update - Edit
 async function update(board) {
+  // console.log('board.groups',board.groups[0].tasks)
   try {
     const {
       title,

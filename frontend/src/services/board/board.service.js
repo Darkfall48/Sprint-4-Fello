@@ -87,6 +87,7 @@ async function get(boardId) {
 async function save(board) {
   const { _id: boardId } = board
   try {
+    console.log('board', board)
     if (boardId) return await httpService.put(BASE_URL + boardId, board)
     return await httpService.post(BASE_URL, board)
   } catch (err) {

@@ -1,5 +1,5 @@
 //? Icon
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { Modal } from '../../../../app/modal'
 import { MemberDetailsModal } from '../../../../app/modal/member-details-modal'
@@ -8,6 +8,8 @@ export function SetMembers({ type, board, task, group }) {
   const members = board?.members
   const [modalOpen, setModalOpen] = useState('')
   const [currMember, setCurrMember] = useState([])
+  const buttonRef=useRef()
+  const imgRef=useRef()
 
   const { memberIds } = task
 
@@ -28,6 +30,7 @@ export function SetMembers({ type, board, task, group }) {
             return (
               <img
                 key={(_id, idx)}
+                ref={imgRef}
                 className="task-preview-members-img"
                 src={imgUrl}
                 alt={fullname}
@@ -45,6 +48,7 @@ export function SetMembers({ type, board, task, group }) {
               onCloseModal={onCloseModal}
               board={board}
               member={currMember}
+              imgRef={imgRef}
             />
           )}
         </article>
@@ -68,13 +72,28 @@ export function SetMembers({ type, board, task, group }) {
                   src={member?.imgUrl}
                   alt={member?.fullname}
                   title={member?.fullname}
-                />
+                  onClick={(ev) => {
+                    ev.stopPropagation()
+                    setCurrMember(member)
+                    setModalOpen('member-details')
+                  }}
+                  ref={imgRef}
+                /> 
               )
             })}
+            {modalOpen === 'member-details' && (
+              <MemberDetailsModal
+                onCloseModal={onCloseModal}
+                board={board}
+                member={currMember}
+                imgRef={imgRef}
+              />
+            )}
             <button
               className="task-details-main-members-add-btn"
               title="Add Members"
               onClick={() => setModalOpen('members')}
+              ref={buttonRef}
             >
               <AiOutlinePlus />
             </button>
@@ -86,6 +105,7 @@ export function SetMembers({ type, board, task, group }) {
                 task={task}
                 group={group}
                 board={board}
+                buttonRef={buttonRef}
               />
             )}
           </div>

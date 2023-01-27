@@ -63,7 +63,7 @@ export function SetInfos({ task }) {
     <article className="task-preview-infos">
       <SetFollow />
       <SetTodos />
-      <SetDescription />
+      {task?.description && <SetDescription />}
       <SetComments />
     </article>
   )
