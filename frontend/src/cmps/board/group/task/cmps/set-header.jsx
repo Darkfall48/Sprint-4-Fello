@@ -18,9 +18,14 @@ export function SetHeader({ task, group }) {
   }, [])
 
   async function getAverageColor() {
-    const fac = new FastAverageColor()
-    const color = await fac.getColorAsync(style?.bgImg)
-    setAverageColor(color.rgba)
+    try {
+      const fac = new FastAverageColor()
+      const color = await fac.getColorAsync(style?.bgImg)
+      setAverageColor(color.rgba)
+    } catch (err) {
+      console.warn('Cannot get an average color on a solid color', err)
+      // throw err
+    }
   }
 
   function onCloseModal() {
@@ -49,8 +54,11 @@ export function SetHeader({ task, group }) {
       }
     >
       {/* <img src={style.bgImg} alt="" /> */}
-      <button title="Change cover" onClick={() => setModalOpen(true)}
-      ref={buttonRef}>
+      <button
+        title="Change cover"
+        onClick={() => setModalOpen(true)}
+        ref={buttonRef}
+      >
         <MdOutlineLaptop /> Cover
       </button>
       {modalOpen && (

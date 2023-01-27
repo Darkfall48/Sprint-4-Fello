@@ -26,7 +26,7 @@ export function TaskLabelsModal({
   const [labelTitle, setLabelTitle] = useState('')
   const [labelColor, setLabelColor] = useState('')
   const [editExisiting, setEditExisting] = useState(false)
-  const [editLabel, setEditLabel] = useState({ color: '#DFE1E6', title: '' })
+  const [editLabel, setEditLabel] = useState({ color: '#f3f5f7', title: '' })
   console.log('board.labels', board)
 
   async function onToggleLabel(label) {
@@ -191,12 +191,14 @@ export function TaskLabelsModal({
             <div
               className="task-details-main-labels-container-label"
               id="color-pick"
-              style={{ backgroundColor: editLabel.color ? editLabel.color + '66' : 'grey' }}
+              style={{ backgroundColor: editLabel.color ? editLabel.color + '66' : '#dfe1e6',
+              pointerEvents:'none' 
+            }}
               title={editLabel?.title}
             >
               <div
                 className="task-details-main-labels-container-circle"
-                style={{ backgroundColor: editLabel.color ? editLabel.color : 'grey' }}
+                style={{ backgroundColor: editLabel.color ? editLabel.color : '' }}
               ></div>
               <span className="task-details-main-labels-container-title">
                 {editLabel?.title || ''}
@@ -211,7 +213,7 @@ export function TaskLabelsModal({
             onChange={handleLabelTitleChange}
           />
           <p>Select a color</p>
-          <div className="label-color-selection-container">
+          <div id="label-color-selection-container">
             {boardService.getLabelColors().map((color, idx) => {
               return (
                 <button

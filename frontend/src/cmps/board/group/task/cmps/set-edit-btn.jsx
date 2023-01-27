@@ -8,18 +8,8 @@ import { TaskQuickAction } from '../task-quick-action'
 export function SetEditBtn({ onArchiveTask, task, groupId, handleLabelClick, labelsPreview }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const buttonRef = useRef()
-  const contentRef = useRef(null)
 
-
-
-  function closeMenu(ev) {
-    if (ev.key === 'Enter' && !ev.shiftKey) ev.target.blur()
-    if (ev.key === 'Enter' || ev.type === 'blur') {
-      ev.preventDefault()
-      // updateBoard(board)
-      contentRef.current.contentEditable = false
-    }
-    contentRef.current.contentEditable = true
+  function closeMenu() {
     setIsMenuOpen(false)
   }
 
@@ -57,7 +47,6 @@ export function SetEditBtn({ onArchiveTask, task, groupId, handleLabelClick, lab
           handleLabelClick={handleLabelClick}
           labelsPreview={labelsPreview}
           buttonRef={buttonRef}
-          contentRef={contentRef}
            />
       )
       }

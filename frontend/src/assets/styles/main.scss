@@ -57,11 +57,12 @@
 // Task Details: Main
 @import 'cmps/task/task-details/main/task-details-main';
 @import 'cmps/task/task-details/main/cmps/activities';
+@import 'cmps/task/task-details/main/cmps/attachments';
 @import 'cmps/task/task-details/main/cmps/checklist';
 @import 'cmps/task/task-details/main/cmps/description';
+@import 'cmps/task/task-details/main/cmps/follow';
 @import 'cmps/task/task-details/main/cmps/labels';
 @import 'cmps/task/task-details/main/cmps/members';
-@import 'cmps/task/task-details/main/cmps/attachments';
 // Task Details: Aside
 @import 'cmps/task/task-details/aside/task-details-aside';
 @import 'cmps/task/task-details/aside/segments/suggested-action';

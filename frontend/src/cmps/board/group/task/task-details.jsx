@@ -5,6 +5,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 //? Store
 import { removeTask, updateTask } from '../../../../store/actions/board.actions'
 //? Icons
+import { BsCheck2Square } from 'react-icons/bs'
 import { GrTextAlignFull } from 'react-icons/gr'
 import { HiOutlineUser } from 'react-icons/hi'
 import { RxActivityLog } from 'react-icons/rx'
@@ -21,17 +22,17 @@ import { MdOutlineLaptop } from 'react-icons/md'
 
 //? Components
 import { SetActivities } from './cmps/set-activities'
+import { SetAttachment } from './cmps/set-attachment'
 import { SetCloseBtn } from './cmps/set-close-btn'
 import { SetChecklist } from './cmps/set-checklist'
 import { SetDescription } from './cmps/set-description'
+import { SetFollow } from './cmps/set-follow'
 import { SetHeader } from './cmps/set-header'
 import { SetLabels } from './cmps/set-labels'
 import { SetMembers } from './cmps/set-members'
 import { SetTitle } from './cmps/set-title'
 import { Loader } from '../../../helpers/loader'
-import { BsCheck2Square } from 'react-icons/bs'
 import { Modal } from '../../../app/modal'
-import { SetAttachment } from './cmps/set-attachment'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -59,13 +60,13 @@ export function TaskDetails() {
   //   'as task:',
   //   taskId
   // )
-  // console.log('Taskkyyyy', task)
+  console.log('Taskkyyyy', task)
   // console.log('Grouppyyyy', group)
   // console.log('Boardyyyy', board)
 
   //? Update Task - CRUDL
-  async function onUpdateTask(field, { value }) {
-    console.log('Valuueee', value)
+  async function onUpdateTask(field, value) {
+    console.log('Task updated by Field', field, 'with Value:', value)
     // if (!value || !value.length) return
     const updatedTask = { ...task, [field]: value }
     try {
@@ -149,6 +150,7 @@ export function TaskDetails() {
                 onEditLabels={onEditLabels}
               />
             )}
+            <SetFollow onUpdateTask={onUpdateTask} task={task} />
           </article>
 
           <SetDescription onUpdateTask={onUpdateTask} task={task} />
@@ -161,7 +163,6 @@ export function TaskDetails() {
                 group={group}
               />
             ))}
-          {/*! Grid SCSS Not Working*/}
           {task.checklists &&
             task.checklists.map((checklist, idx) => (
               <SetChecklist
