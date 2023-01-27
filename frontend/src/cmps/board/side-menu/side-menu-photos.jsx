@@ -11,10 +11,10 @@ export function SideMenuPhotos({ changeBoard }) {
     async function getPhotos() {
         try {
             const photos = await unsplashService.getPhotos(search)
-            console.log('photos', photos);
+            console.log('photos', photos)
             setPhotos(photos)
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
 
     }
@@ -61,15 +61,6 @@ export function SideMenuPhotos({ changeBoard }) {
                 </section>
                 : <Loader />
         }
-
-        {/* { photos ? photos.map(photo => {
-           return  <div
-             key={photo.background}
-             className="display hover-darker"
-             style={{ background: `url('${photo.thumbnail}') center center / cover` , width: 50 + 'px'}}>
-         </div>
-
-        }) : <Loader />} */}
 
     </section>
 

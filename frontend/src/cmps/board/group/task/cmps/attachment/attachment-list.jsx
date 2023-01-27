@@ -1,7 +1,4 @@
-import { useState } from 'react'
-import { attachmentEdit } from './attachment-edit.jsx'
-import { attachmentPreview } from './attachment-preview.jsx'
-import { AiOutlineClose } from 'react-icons/ai'
+import { utilService } from '../../../../../../services/util.service.js'
 
 export function AttachmentList({ attachments, onRemoveAttachment }) {
 
@@ -17,16 +14,16 @@ export function AttachmentList({ attachments, onRemoveAttachment }) {
             <a href={attachment.img} target="_blank">
               <img src={attachment.img} alt="" />
             </a>
-            <h3 className="attachment-title">
-              {attachment.title}
-            </h3>
           </div>
-
-          {/* <div className="task-details-main-checklist-attachments-list-attachment-btn-container"> */}
+          <h3 className="attachment-title">
+            {/* {attachment.img.substring(attachment.img.lastIndexOf('/')+1)} */}
+            {attachment.img.replace(/^.*[\\\/]/, '')}
+          </h3>
+          <p>{utilService.formatTime(attachment.createdAt)}</p>
           <button className="attachment-remove-btn" onClick={() => onRemoveAttachment(attachment.id)}>
             Delete
           </button>
-             {/* </div> */}
+
         </li>
       ))}
     </ul>

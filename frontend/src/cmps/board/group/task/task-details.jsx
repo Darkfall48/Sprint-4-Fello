@@ -155,14 +155,12 @@ export function TaskDetails() {
 
           <SetDescription onUpdateTask={onUpdateTask} task={task} />
           {task.attachments &&
-            task.attachments.map((attachment, idx) => (
               <SetAttachment
-                key={attachment.id + idx}
                 task={task}
-                attachment={attachment}
+                attachments={task.attachments}
                 group={group}
               />
-            ))}
+            }
           {task.checklists &&
             task.checklists.map((checklist, idx) => (
               <SetChecklist

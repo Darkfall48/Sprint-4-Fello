@@ -50,7 +50,9 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
 
     return <section className='board-menu-section'>
         <div className="side-menu-header">
-            {<button className='side-menu-return-btn' onClick={() => { setIsModalOpen(!isModalOpen) }} ><IoIosArrowBack /></button>}
+            {!isMenuOpen && !isBgMenuOpen && <button className='side-menu-return-btn' onClick={() => { setIsModalOpen(!isModalOpen) }} ><IoIosArrowBack /></button>}
+            {isMenuOpen && <button className='side-menu-return-btn' onClick={() => { setIsMenuOpen(!isMenuOpen) }} ><IoIosArrowBack /></button>}
+            {isBgMenuOpen && <button className='side-menu-return-btn' onClick={() => { setIsBgMenuOpen(!isBgMenuOpen) }} ><IoIosArrowBack /></button>}
             {!isMenuOpen && <h6>Menu </h6>}
             {setBackground === 'change-bg' && <h6>Change Background </h6>}
             {setBackground === 'colors' && <h6>Colors </h6>}
