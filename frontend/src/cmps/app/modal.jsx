@@ -13,32 +13,28 @@ import { TaskMembersModal } from './modal/task-members-modal';
 import { utilService } from '../../services/util.service';
 
 
-export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task, board, onEditLabels, buttonRef }) {
-    // const [isReturnClick, setIsReturnClick] = useState(false)
+export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task, board, onEditLabels, buttonRef, isQuickEdit }) {
     const [mode, setMode] = useState('select-label')
 
-    // function onReturnClick(isClicked){
-    //     setIsReturnClick(true)
-    // }
-
     function onToggleMode(mode) {
-        console.log('mode', mode)
         setMode(mode)
     }
+
     const isReturnBtn = mode === 'create-new' ? true : false
 
     return <div
         className={`modal-content modal-${type}`}
         onClick={(e) => {
             e.stopPropagation()
-            onCloseModal()}}  
+            onCloseModal()
+        }}
         style={{
-            // top: utilService.getPosition(buttonRef).top -150+'px',
-            left: utilService.getPosition(buttonRef).left +0+'px',
-          }}
+            left: utilService.getPosition(buttonRef).left + 0 + 'px',
+            top: isQuickEdit? utilService.getPosition(buttonRef).top +36+'px' : ''
+        }}
     >
         <div className="form-container" id="modal-form-container"
-        onClick={e => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
         >
 
             <div id="modal-header">

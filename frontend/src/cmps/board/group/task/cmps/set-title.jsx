@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import { groupService } from '../../../../../services/board/group.service'
 import { useNavigate } from 'react-router-dom'
 
-export function SetTitle({ onUpdateTask,group, type, groupId, task, mode, closeMenu }) {
+export function SetTitle({ onUpdateTask, group, type, groupId, task, mode, closeMenu }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const navigate = useNavigate()
 
@@ -47,10 +47,10 @@ export function SetTitle({ onUpdateTask,group, type, groupId, task, mode, closeM
           onClick={ev => ev.stopPropagation()}
         >
           {mode !== 'quick-edit' && <p
-                onClick={(ev) => {
-                  ev.stopPropagation()
-                  navigate(`/board/${board._id}/group/${group.id}/task/${task.id}`)
-                }}
+            onClick={(ev) => {
+              ev.stopPropagation()
+              navigate(`/board/${board._id}/group/${group.id}/task/${task.id}`)
+            }}
           >{task.title}</p>}
           {mode === 'quick-edit' &&
             <form onSubmit={onSubmitTask} onBlur={(ev) => onSubmitTask(ev)}>

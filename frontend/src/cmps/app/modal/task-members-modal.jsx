@@ -48,7 +48,7 @@ export function TaskMembersModal({ task, group, board }) {
                     <p>Board members</p>
                     {filteredMembers?.map((member, idx) => {
                         return <div className="board-members-check" key={member._id + idx}>
-                            <a className='modal-btn-full-members' onClick={() => toggleTaskMember(member._id)} >
+                            <a id='modal-btn-full-members' onClick={() => toggleTaskMember(member._id)} >
                                 <img key={1 + idx} className="task-details-main-members-container-img"
                                     src={`${member.imgUrl}`} alt="" />
                                 <span key={member._id + idx}>{member.fullname}</span>

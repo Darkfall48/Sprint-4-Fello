@@ -141,8 +141,12 @@ export async function addTask(group, task) {
 }
 
 export async function updateTask(group, task) {
+  console.log('group', group)
+  console.log('task', task)
   let { tasks } = group
+  console.log('tasks', tasks)
   const taskIdx = tasks.findIndex((tsk) => tsk.id === task.id)
+  console.log('taskIdx', taskIdx)
   tasks.splice(taskIdx, 1, task)
   const updatedGroup = { ...group, tasks }
   try {
@@ -157,16 +161,18 @@ export async function updateTask(group, task) {
 export async function removeLabelFromAllTasks(board, labelId) {
   console.log('labelId', labelId)
   let { groups } = board
-  const updatedGroups = groups.map((group) => {
-    return {...group, tasks: group.tasks.map((task) => {
-        return {...task, labelIds: task.labelIds.filter((lblId) => lblId !== labelId)}
-      })
-    }
-  })
-  console.log('updatedGroups - remove label', updatedGroups)
-  const updatedBoard = { ...board, groups: updatedGroups }
-  console.log('updatedBoard -before update board', updatedBoard)
   try {
+    const updatedGroups = await groups.map((group) => {
+      return {
+        ...group, tasks: group.tasks.map((task) => {
+          task = { ...task, labelIds: task.labelIds.filter((lblId) => lblId !== labelId) }
+          return updateTask(group, task)
+        })
+      }
+    })
+    console.log('updatedGroups - remove label', updatedGroups)
+    const updatedBoard = { ...board, groups: updatedGroups }
+    console.log('updatedBoard -before update board', updatedBoard)
     await updateBoard(updatedBoard)
     // loadBoard(board._id)
   } catch (err) {

@@ -5,7 +5,7 @@ import { HiOutlineArchive } from 'react-icons/hi'
 import { VscEdit } from 'react-icons/vsc'
 import { TaskQuickAction } from '../task-quick-action'
 
-export function SetEditBtn({ onArchiveTask, task, groupId, handleLabelClick, labelsPreview }) {
+export function SetEditBtn({ onArchiveTask, task, groupId, handleLabelClick, labelsPreview, boardId }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const buttonRef = useRef()
 
@@ -31,6 +31,7 @@ export function SetEditBtn({ onArchiveTask, task, groupId, handleLabelClick, lab
           onArchiveTask={onArchiveTask}
           closeMenu={closeMenu}
           groupId={groupId}
+          boardId={boardId}
           handleLabelClick={handleLabelClick}
           labelsPreview={labelsPreview}
           buttonRef={buttonRef}
