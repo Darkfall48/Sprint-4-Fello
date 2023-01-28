@@ -7,6 +7,8 @@ import { utilService } from '../../../../services/util.service'
 import { groupService } from '../../../../services/board/group.service'
 import { Modal } from '../../../app/modal'
 import { TaskPreview } from './task-preview'
+import { MdOutlineLaptop } from 'react-icons/md'
+import { useEffect } from 'react'
 
 export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, boardId, handleLabelClick, labelsPreview, buttonRef, isMenuOpen }) {
     const board = useSelector((storeState) => storeState.boardModule.board)
@@ -14,6 +16,8 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, board
     const navigate = useNavigate()
     const [modalOpen, setModalOpen] = useState('')
     const [group, setGroup] = useState(groupService.getGroupById(board, groupId))
+
+    useEffect(() => { onCloseModal() }, [])
 
     function onCloseModal() {
         setModalOpen('')
@@ -66,7 +70,7 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, board
                     ref={quickButtonRef}
                 >
                     <HiOutlineUser />
-                    <span className='quick-edit-btn-title'>Change Members</span>
+                    <span className='quick-edit-btn-title'>Change members</span>
                 </button>
                 {modalOpen === 'members' && (
                     <Modal
@@ -78,6 +82,28 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, board
                         board={board}
                         buttonRef={quickButtonRef}
                         isQuickEdit={true}
+                    />
+                )}
+                <button
+                    id="task-preview-edit-menu-btn"
+                    onClick={(ev) => {
+                        ev.stopPropagation()
+                        // closeMenu()
+                        setModalOpen('cover')
+                    }}
+                    ref={quickButtonRef}
+                >
+                    <MdOutlineLaptop />
+                    <span className='quick-edit-btn-title'>Change cover</span>
+                </button>
+                {modalOpen === 'cover' && (
+                    <Modal
+                        type="task-cover"
+                        modalTitle="Change Cover"
+                        onCloseModal={onCloseModal}
+                        group={group}
+                        task={task}
+                        buttonRef={quickButtonRef}
                     />
                 )}
                 <button
