@@ -11,6 +11,7 @@ import { TaskDatesModal } from './modal/task-dates-modal';
 import { TaskLabelsModal } from './modal/task-labels-modal';
 import { TaskMembersModal } from './modal/task-members-modal';
 import { utilService } from '../../services/util.service';
+import { TaskShareModal } from './modal/task-share-modal';
 
 
 export function MainModal({ type, modalTitle, onCloseModal, group, onAddTask, task, board, onEditLabels, buttonRef, isQuickEdit }) {
@@ -60,6 +61,8 @@ export function MainModal({ type, modalTitle, onCloseModal, group, onAddTask, ta
                         return <TaskAttachmentModal onCloseModal={onCloseModal} task={task} group={group} />
                     case 'task-date':
                         return <TaskDatesModal onCloseModal={onCloseModal} task={task} group={group} />
+                    case 'task-share':
+                        return <TaskShareModal onCloseModal={onCloseModal} />
                     default:
                         console.log(`Cannot load component type: ${type}.`);
                 }
