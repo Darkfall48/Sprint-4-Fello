@@ -5,13 +5,17 @@ import React from 'react'
 import svg from '../assets/img/home-page.svg'
 import boardSvg from '../assets/img/TrelloImage-1.webp'
 import { AppHeader } from '../cmps/app/app-header'
+import { useSelector } from 'react-redux'
 //? Private Variables
 const heroImgUrl = 'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716698/hero_vffzlz.webp'
 
 export function Home() {
+
+  const user = useSelector((storeState => storeState.userModule.user))
+
   return (
     <>
-    <AppHeader type={'home'} />
+    {!user && <AppHeader type={'home'} />}
     <section className="home-section main-container main-layout">
       <div className="wave-container full">
         <div className="content-container">

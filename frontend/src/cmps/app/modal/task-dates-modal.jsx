@@ -17,6 +17,7 @@ export function TaskDatesModal({ task, group, onCloseModal }) {
 
   return <div>
     <Calendar onChange={onChange} onClickDay={changeDueDate} onFocus value={value}/>
+  <p>Due date: {value.toLocaleDateString()}</p>
   </div>
 }
 

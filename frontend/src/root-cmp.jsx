@@ -12,13 +12,17 @@ import { Home } from './pages/home'
 //? Routes
 import routes from './routes'
 import { LoginSignup } from './cmps/user/login-signup'
+import { useSelector } from 'react-redux'
 
 export function RootCmp() {
+  const user = useSelector((storeState => storeState.userModule.user))
+
   const location = useLocation()
   const background = location.state && location.state.background
   return (
     <div className="main-layout app">
-      <AppHeader type={'main'} />
+      {/* {user && <AppHeader type={'main'} />} */}
+      { <AppHeader type={'main'} />}
       <main>
         <Routes location={background || location}>
           <Route element={<Home />} path="/" />

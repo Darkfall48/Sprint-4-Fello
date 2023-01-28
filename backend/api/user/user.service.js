@@ -78,7 +78,7 @@ async function add(user) {
         },
       ],
     }
-    const collection = await dbService.getCollection('user')
+    const collection = await dbService.getCollection(USERS_DB)
     await collection.insertOne(userToAdd)
     return userToAdd
   } catch (err) {

@@ -48,7 +48,8 @@ async function updateUser(req, res) {
     logger.debug('Updating User..', user._id)
     const savedUser = await userService.update(user)
     logger.debug('User updated successfully!', user._id)
-    res.json(savedUser)
+    // res.json(savedUser)
+    res.send(savedUser)
   } catch (err) {
     logger.error('Failed to update user', err)
     res.status(500).send({ err: 'Failed to update user' })
