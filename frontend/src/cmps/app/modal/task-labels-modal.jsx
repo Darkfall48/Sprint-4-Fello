@@ -81,6 +81,13 @@ export function TaskLabelsModal({
     updateLabelstoBoard(updatedLabels)
     setFilteredLabels(updatedLabels)
   }
+  function updateExisitingLabel() {
+    const labelIdx = board.labels.findIndex(label=> label.id ===editLabel.id)
+    let {labels} = board
+    labels?.splice(labelIdx,1,editLabel)
+    updateLabelstoBoard(labels)
+    setFilteredLabels(labels)
+  }
 
   async function updateLabelstoBoard(updatedLabels) {
     board = { ...board, labels: updatedLabels }
@@ -103,8 +110,10 @@ export function TaskLabelsModal({
     const updatedLabelIds = task.labelIds.filter(
       (labelId) => labelId !== editLabel.id)
     task = { ...task, labelIds: updatedLabelIds }
+    console.log('task', task)
+    console.log('group', group)
     try {
-      // await updateTask(group, task)
+      await updateTask(group, task)
       await removeLabelFromAllTasks (board, editLabel.id)
       await updateLabelstoBoard(updatedLabels)
       setEditLabel(null)
@@ -128,10 +137,10 @@ export function TaskLabelsModal({
             <p>Labels</p>
             {filteredLabels?.map((label, idx) => {
               return (
-                <div key={idx} id="labels-container-modal"
+                <div key={label.id+idx} id="labels-container-modal"
                   onClick={() => onToggleLabel(label)}>
                   <label
-                    key={idx}
+                    // key={idx}
                   >
                     {task.labelIds.includes(label.id) && <IoMdCheckbox />}
                     {!task.labelIds.includes(label.id) && (
@@ -140,6 +149,7 @@ export function TaskLabelsModal({
                   </label>
 
                   {label?.title && <div
+                  // key={idx}
                     className="task-details-main-labels-container-label"
                     style={{ backgroundColor: label?.color + '66' }}
                     title={label?.title ? label?.title : ''}
@@ -198,7 +208,7 @@ export function TaskLabelsModal({
             >
               <div
                 className="task-details-main-labels-container-circle"
-                style={{ backgroundColor: editLabel.color ? editLabel.color : '' }}
+                style={{ backgroundColor: editLabel.color ? editLabel.color : '#dfe1e6' }}
               ></div>
               <span className="task-details-main-labels-container-title">
                 {editLabel?.title || ''}
@@ -217,7 +227,7 @@ export function TaskLabelsModal({
             {taskService.getLabelColors().map((color, idx) => {
               return (
                 <button
-                  key={idx}
+                  key={color+idx}
                   onClick={() => selectLabelColor(color)}
                   className="btn-label-color"
                   style={{
@@ -238,9 +248,10 @@ export function TaskLabelsModal({
           </button>
           <hr />
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <button id="save-btn" onClick={() => createNewLabel()}>
-              Create
-            </button>
+            
+            {!editExisiting && (<button id="save-btn" onClick={() => createNewLabel()}>Create</button>)}
+            {editExisiting && (<button id="save-btn" onClick={() => updateExisitingLabel()}>Save</button>)}
+            
             {editExisiting && (
               <button id="delete-btn" onClick={() => deleteLabel()}>
                 Delete

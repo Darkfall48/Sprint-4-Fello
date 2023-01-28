@@ -49,6 +49,7 @@ export function TaskPreview({
         handleLabelClick={handleLabelClick}
         key={task.id}
         groupId={group.id}
+        boardId={board._id}
         labelsPreview={labelsPreview} />
       }
       <SetInfos task={task} />
