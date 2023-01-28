@@ -17,7 +17,7 @@ export function SetAttachment({ task, attachments, group }) {
     updateTask(group, task)
   }
 
-  function onCloseModal(){
+  function onCloseModal() {
     setIsModalOpen(!isModalOpen)
   }
 
@@ -34,9 +34,8 @@ export function SetAttachment({ task, attachments, group }) {
 
       <AttachmentList attachments={attachments} onRemoveAttachment={onRemoveAttachment} onMakeCover={onMakeCover} />
 
-
-      <button 
-      ref={buttonRef}
+      <button
+        ref={buttonRef}
         className="attachment-add-btn"
         onClick={() => setIsModalOpen(!isModalOpen)}
       >
@@ -44,13 +43,13 @@ export function SetAttachment({ task, attachments, group }) {
       </button>
 
       {isModalOpen && <MainModal
-                  type="task-attachment"
-                  modalTitle="Attach from…"
-                  onCloseModal={onCloseModal}
-                  group={group}
-                  task={task}
-                  buttonRef={buttonRef}
-                />}
+        type="task-attachment"
+        modalTitle="Attach from…"
+        onCloseModal={onCloseModal}
+        group={group}
+        task={task}
+        buttonRef={buttonRef}
+      />}
 
     </section>
   )

@@ -97,7 +97,7 @@ async function remove(boardId) {
 }
 
 function getDefaultFilter() {
-  return { name: '', maxPrice: '', inStock: '', labels: '' }
+  return { title: '', labels: '' }
 }
 
 function getDefaultSort() {

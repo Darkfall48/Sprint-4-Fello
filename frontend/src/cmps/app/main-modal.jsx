@@ -29,8 +29,8 @@ export function MainModal({ type, modalTitle, onCloseModal, group, onAddTask, ta
             onCloseModal()
         }}
         style={{
-            left: utilService.getPosition(buttonRef).left + 0 + 'px',
-            top: isQuickEdit? utilService.getPosition(buttonRef).top +36+'px' : ''
+            left: utilService.getPosition(buttonRef)?.left + 0 + 'px',
+            top: isQuickEdit? utilService.getPosition(buttonRef)?.top +36+'px' : ''
         }}
     >
         <div className="form-container" id="modal-form-container"

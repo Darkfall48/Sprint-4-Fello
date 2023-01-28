@@ -23,8 +23,8 @@ export function UserDetails() {
         isOpen={isOpen}
         onRequestClose={toggleModal}
         contentLabel="My dialog"
-        className="quick-action-modal"
-        overlayClassName="task-details-action-modal-overlay"
+        className="mymodal"
+        overlayClassName="myoverlay"
         closeTimeoutMS={500}
       >
         <div>My modal dialog.</div>

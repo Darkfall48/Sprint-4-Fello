@@ -26,7 +26,7 @@ export function TaskLabelsModal({
   const [labelTitle, setLabelTitle] = useState('')
   const [labelColor, setLabelColor] = useState('')
   const [editExisiting, setEditExisting] = useState(false)
-  const [editLabel, setEditLabel] = useState({ color: '#f3f5f7', title: '' })
+  const [editLabel, setEditLabel] = useState({ id:utilService.makeId(),color: '#f3f5f7', title: '' })
   console.log('board.labels', board)
 
   async function onToggleLabel(label) {
@@ -105,18 +105,18 @@ export function TaskLabelsModal({
 
   async function deleteLabel() {
     setEditExisting(false)
-    const updatedLabels = board.labels.filter(
-      (label) => label.id !== editLabel.id)
-    const updatedLabelIds = task.labelIds.filter(
-      (labelId) => labelId !== editLabel.id)
+    const updatedLabels = board?.labels.filter(
+      (label) => label.id !== editLabel?.id)
+    const updatedLabelIds = task.labelIds?.filter(
+      (labelId) => labelId !== editLabel?.id)
     task = { ...task, labelIds: updatedLabelIds }
     console.log('task', task)
     console.log('group', group)
     try {
       await updateTask(group, task)
-      await removeLabelFromAllTasks (board, editLabel.id)
+      await removeLabelFromAllTasks (board, editLabel?.id)
       await updateLabelstoBoard(updatedLabels)
-      setEditLabel(null)
+      setEditLabel({id:utilService.makeId(), color: '#f3f5f7', title: '' })
       setFilteredLabels(updatedLabels)
     } catch(err){
       console.log('Failed to remove label', err)
