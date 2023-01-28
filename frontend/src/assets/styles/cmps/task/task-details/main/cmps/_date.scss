@@ -1,0 +1,65 @@
+//* Due Date
+.task-details-main-date {
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-start;
+  &-title {
+    align-self: flex-start;
+    align-items: flex-start;
+    color: #5e6c84;
+    font-size: 12px;
+    font-weight: 600;
+    // padding-left: 8px;
+  }
+  &-btn-container {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    &-checkbox {
+      align-self: center;
+      justify-self: flex-start;
+      height: 16px;
+      width: 16px;
+      margin: 0;
+      //   padding: 0;
+    }
+    &-date-btn {
+      align-items: flex-start;
+      @include btn(
+        'task-edit',
+        $list-btn-bg-clr-modal-hover,
+        6px 12px,
+        $task-details-btn-bg-clr-hover
+      );
+      display: flex;
+      gap: 6px;
+      margin: 0;
+      width: fit-content;
+    }
+    &-status {
+      &-late {
+        font-size: 12px;
+        padding: 0 4px;
+        border-radius: 2px;
+        color: white;
+        background-color: #eb5a46;
+      }
+
+      &-done {
+        font-size: 12px;
+        padding: 0 4px;
+        border-radius: 2px;
+        color: white;
+        background-color: #61bd4f;
+      }
+
+      &-soon {
+        font-size: 12px;
+        padding: 0 4px;
+        border-radius: 2px;
+        color: #172b4d;
+        background-color: #f2d600;
+      }
+    }
+  }
+}

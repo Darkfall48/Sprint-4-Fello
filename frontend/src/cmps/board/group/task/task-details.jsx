@@ -25,15 +25,16 @@ import { SetActivities } from './cmps/set-activities'
 import { SetAttachment } from './cmps/set-attachment'
 import { SetCloseBtn } from './cmps/set-close-btn'
 import { SetChecklist } from './cmps/set-checklist'
+import { SetDate } from './cmps/set-date'
 import { SetDescription } from './cmps/set-description'
 import { SetFollow } from './cmps/set-follow'
 import { SetHeader } from './cmps/set-header'
 import { SetLabels } from './cmps/set-labels'
+import { SetJoinBtn } from './cmps/set-join-btn'
 import { SetMembers } from './cmps/set-members'
 import { SetTitle } from './cmps/set-title'
 import { Loader } from '../../../helpers/loader'
 import { Modal } from '../../../app/modal'
-import { SetJoinBtn } from './cmps/set-join-btn'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -152,16 +153,19 @@ export function TaskDetails() {
               />
             )}
             <SetFollow onUpdateTask={onUpdateTask} task={task} />
+            {task.dueDate && (
+              <SetDate onUpdateTask={onUpdateTask} task={task} />
+            )}
           </article>
 
           <SetDescription onUpdateTask={onUpdateTask} task={task} />
-          {task.attachments &&
-              <SetAttachment
-                task={task}
-                attachments={task.attachments}
-                group={group}
-              />
-            }
+          {task.attachments && (
+            <SetAttachment
+              task={task}
+              attachments={task.attachments}
+              group={group}
+            />
+          )}
           {task.checklists &&
             task.checklists.map((checklist, idx) => (
               <SetChecklist

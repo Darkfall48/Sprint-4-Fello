@@ -43,7 +43,6 @@ function getActivitiesByTaskId(board, taskId) {
   return board?.activities?.filter((activity) => activity?.task?.id === taskId)
 }
 
-
 function getEmptyTask(taskTitle) {
   return {
     id: utilService.makeId(),
@@ -57,6 +56,7 @@ function getEmptyTask(taskTitle) {
     memberIds: [],
     labelIds: [],
     attachments: [],
+    dueDateStatus: null,
     dueDate: null,
     byMember: {},
     style: {},

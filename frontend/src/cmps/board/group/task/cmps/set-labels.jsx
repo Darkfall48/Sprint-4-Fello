@@ -23,8 +23,8 @@ export function SetLabels({
   switch (type) {
     //* Task Preview
     case 'preview-simple':
-      if (!labelIds || !labelIds.length)
-        return <article className="task-preview-simple-no-labels"></article>
+      if (!labelIds || !labelIds.length) return
+      // <article className="task-preview-simple-no-labels"></article>
       return (
         <article className="task-preview-simple-labels">
           {labelIds.map((labelId, idx) => {
@@ -47,9 +47,8 @@ export function SetLabels({
       break
 
     case 'preview-detailed':
-      if (!labelIds || !labelIds?.length)
-      return
-        // return <article className="task-preview-detailed-labels"></article>
+      if (!labelIds || !labelIds?.length) return
+      // return <article className="task-preview-detailed-labels"></article>
       return (
         <article className="task-preview-detailed-labels">
           <div className="task-preview-detailed-labels-container">
@@ -87,8 +86,8 @@ export function SetLabels({
 
     default:
       //* Task Details
-      if (!labelIds || !labelIds?.length)
-        return <article className="task-details-main-labels"></article>
+      if (!labelIds || !labelIds?.length) return
+      // <article className="task-details-main-labels"></article>
       return (
         <article className="task-details-main-labels">
           <h2 className="task-details-main-labels-title">Labels</h2>
