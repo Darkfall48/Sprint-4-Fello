@@ -7,22 +7,31 @@ export function TaskAttachmentModal({ onCloseModal, group, task }) {
   const [attachmentToAdd, setAttachmentToAdd] = useState(
     taskService.getEmptyAttachment()
   )
+  const [selectedFile, setSelectedFile] = useState()
+  const [file, setFile] = useState()
 
-  const onUploaded = (bgImg, imgUrl) => {
-    console.log('imgUrl', imgUrl)
-    attachmentToAdd.img = imgUrl
-    // attachmentToAdd.title = imgUrl
+  function handleChange(event) {
+    console.log('event.target.files[0]', event.target.files[0]);
+    setSelectedFile(event.target.files[0]);
 
-    // console.log('attachmentToAdd', attachmentToAdd);
-    // setAttachmentToAdd((prevTask) => ({ ...prevTask, img: imgUrl }))
-    // updateTask(group, task)
-    // console.log('task added ', task);
+    attachmentToAdd.title = event.target.files[0].name
+    attachmentToAdd.type = event.target.files[0].type
+    setFile(URL.createObjectURL(event.target.files[0]));
+    attachmentToAdd.img = URL.createObjectURL(event.target.files[0])
+
+    console.log('attachmentToAdd', attachmentToAdd);
+
     onAddAttachment()
   }
 
+  // const onUploaded = (bgImg, imgUrl) => {
+  //   console.log('imgUrl', imgUrl)
+  //   attachmentToAdd.img = imgUrl
+
+  //   onAddAttachment()
+  // }
+
   function onAddAttachment() {
-    // ev.preventDefault()
-    // if (inputRef.current.value === '') return
     task.attachments.push(attachmentToAdd)
 
     updateTask(group, task)
@@ -31,10 +40,14 @@ export function TaskAttachmentModal({ onCloseModal, group, task }) {
 
   return (
     <div className="task-attachment-modal-content">
-      <button id="modal-btn-full">
+      {/* <button id="modal-btn-full">
         {' '}
         <ImgUploader onUploaded={onUploaded} />
-      </button>
+      </button> */}
+      {/* <form> */}
+      <label htmlFor="file">Computer</label>
+        <input type="file" name="file" className='attachment-input' id='file' onChange={handleChange} style={{display: 'none'}}/>
+      {/* </form> */}
       {/* <button id="modal-btn-full">Trello</button> */}
       {/* <button id="modal-btn-full"> Google Drive </button> */}
       <hr />

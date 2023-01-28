@@ -103,3 +103,25 @@
         border-radius: rem(3px);
     }
 }
+
+.task-attachment-modal-content{
+    label{
+        cursor: pointer;
+        font-size: 23px;
+        height: 32px;
+        width: 100%;
+        font-size: 14px;
+        color: #172b4d;
+        display: block;
+        font-weight: 400;
+        margin: 0;
+        padding: 6px 0px 6px 12px;
+        position: relative;
+        text-decoration: none;
+
+        &:hover{
+            background-color: #091e420a;
+        }
+
+    }
+}
