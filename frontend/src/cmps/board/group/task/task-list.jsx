@@ -34,6 +34,7 @@ export function TaskList({
                 group={group}
                 task={task}
                 onArchiveTask={onArchiveTask}
+                mode={'task-list'}
               />
             </div>
           )}

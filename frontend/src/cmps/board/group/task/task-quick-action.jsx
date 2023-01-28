@@ -2,7 +2,7 @@ import { HiOutlineArchive } from 'react-icons/hi'
 import { utilService } from '../../../../services/util.service'
 import { TaskPreview } from './task-preview'
 
-export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, handleLabelClick, labelsPreview, buttonRef }) {
+export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, handleLabelClick, labelsPreview, buttonRef, isMenuOpen }) {
     console.log('buttonRef', buttonRef)
     return <section
         className="task-details-action-modal-overlay" 
@@ -27,6 +27,7 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, handl
                 task={task}
                 onArchiveTask={onArchiveTask}
                 mode={'quick-edit'}
+                isMenuOpen={isMenuOpen}
                 closeMenu={closeMenu}
             />
             <div className='quick-action-btns'>

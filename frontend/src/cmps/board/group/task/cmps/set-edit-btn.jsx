@@ -34,6 +34,7 @@ export function SetEditBtn({ onArchiveTask, task, groupId, handleLabelClick, lab
           handleLabelClick={handleLabelClick}
           labelsPreview={labelsPreview}
           buttonRef={buttonRef}
+          isMenuOpen={isMenuOpen}
            />
       )
       }

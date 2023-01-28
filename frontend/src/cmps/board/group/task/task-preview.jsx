@@ -17,8 +17,9 @@ export function TaskPreview({
   onArchiveTask,
   handleLabelClick,
   labelsPreview,
-  mode,
-  closeMenu
+  closeMenu,
+  isMenuOpen,
+  mode
 }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const navigate = useNavigate()
@@ -28,7 +29,7 @@ export function TaskPreview({
       className="task-preview-section"
       onClick={(ev) => {
         ev.stopPropagation()
-        {mode!=='quick-edit' && navigate(`/board/${board._id}/group/${group.id}/task/${task.id}`)}
+        {!isMenuOpen && navigate(`/board/${board._id}/group/${group.id}/task/${task.id}`)}
       }}
     >
       {task.style && <SetCover task={task} />}
@@ -41,7 +42,7 @@ export function TaskPreview({
         />
       )}
       {task.title && <SetTitle type="preview" groupId={groupId} group={group} task={task} mode={mode} closeMenu={closeMenu}/>}
-      {mode!=='quick-edit'&&
+      {!isMenuOpen&&
       <SetEditBtn
         onArchiveTask={onArchiveTask}
         task={task}
