@@ -12,11 +12,13 @@ import { useRef } from 'react'
 
 export function TaskPreview({
   groupId,
+  group,
   task,
   onArchiveTask,
   handleLabelClick,
   labelsPreview,
-  mode
+  mode,
+  closeMenu
 }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const navigate = useNavigate()
@@ -26,7 +28,7 @@ export function TaskPreview({
       className="task-preview-section"
       onClick={(ev) => {
         ev.stopPropagation()
-        navigate(`/board/${board._id}/group/${groupId}/task/${task.id}`)
+        {mode!=='quick-edit' && navigate(`/board/${board._id}/group/${group.id}/task/${task.id}`)}
       }}
     >
       {task.style && <SetCover task={task} />}
@@ -38,14 +40,14 @@ export function TaskPreview({
           task={task}
         />
       )}
-      {task.title && <SetTitle type="preview" task={task} mode={mode} />}
+      {task.title && <SetTitle type="preview" groupId={groupId} group={group} task={task} mode={mode} closeMenu={closeMenu}/>}
       {mode!=='quick-edit'&&
       <SetEditBtn
         onArchiveTask={onArchiveTask}
         task={task}
         handleLabelClick={handleLabelClick}
         key={task.id}
-        groupId={groupId}
+        groupId={group.id}
         labelsPreview={labelsPreview} />
       }
       <SetInfos task={task} />

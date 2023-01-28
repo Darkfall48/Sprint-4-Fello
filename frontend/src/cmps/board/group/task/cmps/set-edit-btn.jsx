@@ -16,7 +16,6 @@ export function SetEditBtn({ onArchiveTask, task, groupId, handleLabelClick, lab
   function onTaskPreviewEdit(ev) {
     ev.stopPropagation()
     setIsMenuOpen(!isMenuOpen)
-    console.log('isMenuOpen', isMenuOpen)
   }
 
   return (
@@ -27,18 +26,6 @@ export function SetEditBtn({ onArchiveTask, task, groupId, handleLabelClick, lab
         <VscEdit />
       </button>
       {isMenuOpen && (
-        // <div className="task-preview-edit-menu" onBlur={(ev) => closeMenu(ev)}>
-        //   <button
-        //     className="task-preview-edit-menu-btn"
-        //     onClick={(ev) => {
-        //       ev.stopPropagation()
-        //       onArchiveTask(task.id)
-        //     }}
-        //   >
-        //     <HiOutlineArchive />
-        //     <span>Archive</span>
-        //   </button>
-        // </div>
         <TaskQuickAction
           task={task}
           onArchiveTask={onArchiveTask}

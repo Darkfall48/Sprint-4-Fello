@@ -31,6 +31,7 @@ export function TaskList({
                 handleLabelClick={handleLabelClick}
                 key={task.id}
                 groupId={groupId}
+                group={group}
                 task={task}
                 onArchiveTask={onArchiveTask}
               />

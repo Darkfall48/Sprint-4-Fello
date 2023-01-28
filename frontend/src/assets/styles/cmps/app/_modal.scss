@@ -276,9 +276,11 @@
     cursor: pointer;
     top: 0;
     left: 0;
+    right:0;
+    bottom:0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
     z-index: 4;
     background: rgba(0, 0, 0, 0.5);
     display: grid;
@@ -292,7 +294,7 @@
         border-radius: $border-radius;
         box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
         box-sizing: border-box;
-        width: 256px;
+        width: 248px;
         // outline: 0;   
         .quick-action-btns {
             position: absolute;
@@ -301,7 +303,11 @@
             height: fit-content;
             width: 240px;
             #task-preview-edit-menu-btn {
-                position: relative;
+                transform: translateX(0);
+                &:hover{
+                    transition: opacity 85ms ease-in,transform 85ms ease-in;
+                }
+                position: absolute;
                 left:0;
                 background: #0009;
                 border-radius: 3px;
@@ -331,6 +337,7 @@
     background-color: initial;
     border:none;
     text-align: start;
+    outline: none;
 }
 
 .modal-member-header {
