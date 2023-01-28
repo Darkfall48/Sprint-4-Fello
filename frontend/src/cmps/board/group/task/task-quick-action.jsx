@@ -2,7 +2,7 @@ import { HiOutlineArchive } from 'react-icons/hi'
 import { utilService } from '../../../../services/util.service'
 import { TaskPreview } from './task-preview'
 
-export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, handleLabelClick, labelsPreview, buttonRef }) {
+export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, handleLabelClick, labelsPreview, buttonRef, isMenuOpen }) {
     console.log('buttonRef', buttonRef)
     return <section
         className="task-details-action-modal-overlay" 
@@ -15,8 +15,8 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, handl
             onClick={e => e.stopPropagation()}
             className="quick-action-modal"
             style={{
-                left: utilService.getPosition(buttonRef).left -220 + 'px',
-                top: utilService.getPosition(buttonRef).top + 0 + 'px',
+                left: utilService.getPosition(buttonRef).left -217 + 'px',
+                top: utilService.getPosition(buttonRef).top -3 + 'px',
             }}
         >
             <TaskPreview
@@ -27,6 +27,8 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, handl
                 task={task}
                 onArchiveTask={onArchiveTask}
                 mode={'quick-edit'}
+                isMenuOpen={isMenuOpen}
+                closeMenu={closeMenu}
             />
             <div className='quick-action-btns'>
             <button
@@ -34,6 +36,7 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, handl
                 onClick={(ev) => {
                     ev.stopPropagation()
                     onArchiveTask(task.id)
+                    closeMenu()
                 }}
             >
                 <HiOutlineArchive />

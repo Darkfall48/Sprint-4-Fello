@@ -34,7 +34,7 @@ export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task, 
             onCloseModal()}}  
         style={{
             // top: utilService.getPosition(buttonRef).top -150+'px',
-            left: utilService.getPosition(buttonRef).left - 98+'px',
+            left: utilService.getPosition(buttonRef).left +0+'px',
           }}
     >
         <div className="form-container" id="modal-form-container"
