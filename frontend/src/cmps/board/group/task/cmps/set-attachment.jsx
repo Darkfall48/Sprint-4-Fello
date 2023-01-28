@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { ImAttachment } from 'react-icons/im'
 import { updateTask } from '../../../../../store/actions/board.actions'
-import { Modal } from '../../../../app/modal'
+import { MainModal } from '../../../../app/main-modal'
 import { TaskAttachmentModal } from '../../../../app/modal/task-attachment-modal'
 
 import { AttachmentList } from './attachment/attachment-list'
@@ -43,7 +43,7 @@ export function SetAttachment({ task, attachments, group }) {
         Add an Attachment
       </button>
 
-      {isModalOpen && <Modal
+      {isModalOpen && <MainModal
                   type="task-attachment"
                   modalTitle="Attach from…"
                   onCloseModal={onCloseModal}
