@@ -9,11 +9,15 @@
     min-height: calc(100vh - 44px);
     padding: 47px 0 40px;
 
+    @include for-mobile-layout {
+        padding: 20px 0 40px;
+    }
+
     @mixin for-narrow-layout {
         // max-width: 900px;
-      }
+    }
 
-      
+
 
     h1 {
         color: $clr2;
@@ -27,7 +31,7 @@
 
         @include for-mobile-layout {
             padding: 0 15px;
-          }
+        }
 
         & .workspace-icons {
             height: 23px;

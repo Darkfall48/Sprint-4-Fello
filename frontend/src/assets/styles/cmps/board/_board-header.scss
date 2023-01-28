@@ -71,7 +71,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      .board-header-star {
+        fill: $clr-white;
+        cursor: pointer;
+      }
+      
+      .board-header-starred {
+        fill: #f2d600;
+        cursor: pointer;
+      }
     }
+
+    
   }
 
   h1 {

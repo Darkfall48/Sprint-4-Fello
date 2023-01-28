@@ -34,7 +34,7 @@ export function LoginSignup({ setUser }) {
 
     return funcs[method](credentials)
       .then((user) => {
-        navigate('/')
+        navigate('/board')
       })
       .catch(err => {
         console.log(err);

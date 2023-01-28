@@ -112,8 +112,8 @@ a {
     width: 15px;
     height: 15px;
     position: relative;
-    top: -32px;
-    left: -10px;
+    top: -21px;
+    left: -6px;
     cursor: pointer;
   }
 
@@ -122,8 +122,8 @@ a {
     height: 15px;
     fill: #f2d600;
     position: relative;
-    top: -32px;
-    left: -10px;
+    top: -21px;
+    left: -6px;
     cursor: pointer;
   }
 
@@ -143,20 +143,20 @@ a {
   position: relative;
 }
 
-// h4 {
-//   text-align: left;
-//   word-wrap: break-word;
-//   font-size: rem(16px);
-//   font-weight: 700;
-//   text-decoration: none;
+.title-preview {
+  text-align: left;
+  word-wrap: break-word;
+  font-size: rem(16px);
+  font-weight: 700;
+  text-decoration: none;
 
-//   position: absolute;
-//   top: -90px;
-//   left: 10px;
-//   cursor: pointer;
-//   color: $clr-white;
-//   height: 0.1px;
-// }
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  cursor: pointer;
+  color: $clr-white;
+  height: 0.1px;
+}
 
 .boards-page-board-section-list-item:nth-of-type(4n) {
   margin-right: 0;
@@ -180,3 +180,4 @@ li:hover {
 .star {
   display: none !important;
 }
+

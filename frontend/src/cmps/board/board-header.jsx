@@ -63,9 +63,9 @@ export function BoardHeader({ board }) {
         {
           <button onClick={onStarredBoard}>
             {board.isStarred ? (
-              <AiFillStar className="starred" />
+              <AiFillStar className="board-header-starred" />
             ) : (
-              <AiOutlineStar className="star" />
+              <AiOutlineStar className="board-header-star" />
             )}
           </button>
         }

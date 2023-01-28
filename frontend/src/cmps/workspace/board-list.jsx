@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { Modal } from "../app/modal";
+import { Loader } from "../helpers/loader";
 import { BoardAdd } from "./board-add";
 
 import { BoardPreview } from "./board-preview";
@@ -12,6 +13,7 @@ export function BoardList({ boards, onEditBoard, onRemoveBoard, createBoardPlace
         setIsModalOpen(!isModalOpen)
     }
 
+    if (!boards) return <Loader />
     return <section className="board-list">
         <ul>
             {boards.map((board, index) =>
@@ -29,6 +31,6 @@ export function BoardList({ boards, onEditBoard, onRemoveBoard, createBoardPlace
         </ul>
 
         {/* {isModalOpen &&  <Modal type={'add-board'} modalTitle={'Create board'} onCloseModal={onCloseModal}/> } */}
-        {isModalOpen && <BoardAdd onCloseModal={onCloseModal} buttonRef={buttonRef}/>}
+        {isModalOpen && <BoardAdd onCloseModal={onCloseModal} buttonRef={buttonRef} />}
     </section>
 }

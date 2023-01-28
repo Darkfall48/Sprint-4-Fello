@@ -230,7 +230,7 @@ function animateCSS(el, animation) {
 function getPositionAddBoard(ref) {
   const position = ref.current.getBoundingClientRect()
   console.log(ref.current.getBoundingClientRect());
-  if (position.y > 500) position.y = 350
+  if (position.y > 200) position.y = 200
   if (position.x > 500) position.x = 800
   return position
 }
@@ -242,26 +242,26 @@ function getPosition(ref) {
 
 function formatTime(sentAt) {
   const formatter = new Intl.RelativeTimeFormat(undefined, {
-      numeric: 'auto',
+    numeric: 'auto',
   })
 
   const DIVISIONS = [
-      { amount: 60, name: 'seconds' },
-      { amount: 60, name: 'minutes' },
-      { amount: 24, name: 'hours' },
-      { amount: 7, name: 'days' },
-      { amount: 4.34524, name: 'weeks' },
-      { amount: 12, name: 'months' },
-      { amount: Number.POSITIVE_INFINITY, name: 'years' },
+    { amount: 60, name: 'seconds' },
+    { amount: 60, name: 'minutes' },
+    { amount: 24, name: 'hours' },
+    { amount: 7, name: 'days' },
+    { amount: 4.34524, name: 'weeks' },
+    { amount: 12, name: 'months' },
+    { amount: Number.POSITIVE_INFINITY, name: 'years' },
   ]
 
   let duration = (sentAt - new Date()) / 1000
 
   for (let i = 0; i <= DIVISIONS.length; i++) {
-      const division = DIVISIONS[i]
-      if (Math.abs(duration) < division.amount) {
-          return formatter.format(Math.round(duration), division.name)
-      }
-      duration /= division.amount
+    const division = DIVISIONS[i]
+    if (Math.abs(duration) < division.amount) {
+      return formatter.format(Math.round(duration), division.name)
+    }
+    duration /= division.amount
   }
 }

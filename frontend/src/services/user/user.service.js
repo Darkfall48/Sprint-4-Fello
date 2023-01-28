@@ -55,7 +55,7 @@ async function login(userCred) {
   }
 }
 async function signup(userCred) {
-  userCred.score = 10000
+  // userCred.score = 10000
   if (!userCred.imgUrl)
     userCred.imgUrl =
       'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
@@ -83,7 +83,7 @@ function saveLocalUser(user) {
     _id: user._id,
     fullname: user.fullname,
     imgUrl: user.imgUrl,
-    score: user.score,
+    // score: user.score,
   }
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
   return user
