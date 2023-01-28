@@ -170,13 +170,12 @@ export async function removeLabelFromAllTasks(board, labelId) {
         })
       }
     })
-    console.log('updatedGroups - remove label', updatedGroups)
     const updatedBoard = { ...board, groups: updatedGroups }
-    console.log('updatedBoard -before update board', updatedBoard)
     await updateBoard(updatedBoard)
     // loadBoard(board._id)
   } catch (err) {
     console.log('Failed to remove label', labelId, 'from all tasks', err)
+    throw(err)
   }
 }
 
