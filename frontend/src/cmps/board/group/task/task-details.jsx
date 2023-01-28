@@ -34,7 +34,8 @@ import { SetJoinBtn } from './cmps/set-join-btn'
 import { SetMembers } from './cmps/set-members'
 import { SetTitle } from './cmps/set-title'
 import { Loader } from '../../../helpers/loader'
-import { Modal } from '../../../app/modal'
+import { SetJoinBtn } from './cmps/set-join-btn'
+import { MainModal } from '../../../app/main-modal'
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -108,9 +109,6 @@ export function TaskDetails() {
     setModalOpen('')
   }
 
-  function onEditLabels() {
-    console.log('edit labels')
-  }
 
   // if (!board || !group || !task) return <Loader />
   if (!board || !group || !task) return
@@ -149,7 +147,6 @@ export function TaskDetails() {
                 modalOpen={modalOpen}
                 onCloseModal={onCloseModal}
                 group={group}
-                onEditLabels={onEditLabels}
               />
             )}
             <SetFollow onUpdateTask={onUpdateTask} task={task} />
@@ -211,7 +208,7 @@ export function TaskDetails() {
                 <HiOutlineUser /> <span>Members</span>
               </button>
               {modalOpen === 'members' && (
-                <Modal
+                <MainModal
                   type="task-members"
                   modalTitle="Members"
                   onCloseModal={onCloseModal}
@@ -231,14 +228,13 @@ export function TaskDetails() {
                 <TbTag /> <span>Labels</span>
               </button>
               {modalOpen === 'labels' && (
-                <Modal
+                <MainModal
                   type="task-labels"
                   modalTitle="Labels"
                   onCloseModal={onCloseModal}
                   task={task}
                   group={group}
                   board={board}
-                  onEditLabels={onEditLabels}
                   buttonRef={buttonRef}
                 />
               )}
@@ -252,7 +248,7 @@ export function TaskDetails() {
                 <IoMdCheckboxOutline /> <span>Checklist</span>
               </button>
               {modalOpen === 'checklist' && (
-                <Modal
+                <MainModal
                   type="task-checklist"
                   modalTitle="Add checklist"
                   onCloseModal={onCloseModal}
@@ -272,7 +268,7 @@ export function TaskDetails() {
                 <FiClock /> <span>Dates</span>
               </button>
               {modalOpen === 'date' && (
-                <Modal
+                <MainModal
                   type="task-date"
                   modalTitle="Dates"
                   onCloseModal={onCloseModal}
@@ -291,7 +287,7 @@ export function TaskDetails() {
                 <ImAttachment /> <span>Attachment</span>
               </button>
               {modalOpen === 'attachment' && (
-                <Modal
+                <MainModal
                   type="task-attachment"
                   modalTitle="Attach from…"
                   onCloseModal={onCloseModal}
@@ -313,7 +309,7 @@ export function TaskDetails() {
                     <MdOutlineLaptop /> <span>Cover</span>
                   </button>
                   {modalOpen === 'cover' && (
-                    <Modal
+                    <MainModal
                       type="task-cover"
                       modalTitle="Change Cover"
                       onCloseModal={onCloseModal}

@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react'
 import { HiOutlineArchive, HiOutlineUser } from 'react-icons/hi'
-import { TbCreditCard } from 'react-icons/tb'
+import { TbCreditCard, TbTag } from 'react-icons/tb'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { utilService } from '../../../../services/util.service'
 import { groupService } from '../../../../services/board/group.service'
-import { Modal } from '../../../app/modal'
+import { MainModal } from '../../../app/main-modal'
 import { TaskPreview } from './task-preview'
 import { MdOutlineLaptop } from 'react-icons/md'
 import { useEffect } from 'react'
@@ -24,7 +24,7 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, board
     }
 
     return <section
-        className="task-details-action-modal-overlay"
+        className="quick-action-modal-overlay"
         onClick={(e) => {
             e.stopPropagation()
             closeMenu()
@@ -60,6 +60,31 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, board
                     <TbCreditCard />
                     <span className='quick-edit-btn-title'>Open card</span>
                 </button>
+
+                <button
+                    id="task-preview-edit-menu-btn"
+                    onClick={(ev) => {
+                        ev.stopPropagation()
+                        // closeMenu()
+                        setModalOpen('labels')
+                    }}
+                    ref={quickButtonRef}
+                >
+                    <TbTag/>
+                    <span className='quick-edit-btn-title'>Edit Labels</span>
+                </button>
+                {modalOpen === 'labels' && (
+                    <MainModal
+                        type="task-labels"
+                        modalTitle="Labels"
+                        onCloseModal={onCloseModal}
+                        task={task}
+                        group={group}
+                        board={board}
+                        buttonRef={quickButtonRef}
+                        isQuickEdit={true}
+                    />
+                )}
                 <button
                     id="task-preview-edit-menu-btn"
                     onClick={(ev) => {
@@ -73,7 +98,7 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, board
                     <span className='quick-edit-btn-title'>Change members</span>
                 </button>
                 {modalOpen === 'members' && (
-                    <Modal
+                    <MainModal
                         type="task-members"
                         modalTitle="Members"
                         onCloseModal={onCloseModal}
@@ -97,13 +122,14 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, board
                     <span className='quick-edit-btn-title'>Change cover</span>
                 </button>
                 {modalOpen === 'cover' && (
-                    <Modal
+                    <MainModal
                         type="task-cover"
                         modalTitle="Change Cover"
                         onCloseModal={onCloseModal}
                         group={group}
                         task={task}
                         buttonRef={quickButtonRef}
+                        isQuickEdit={true}
                     />
                 )}
                 <button

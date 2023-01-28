@@ -1,0 +1,28 @@
+.members-modal-content-wrapper {
+
+    input {
+        padding: 11px 12px;
+    }
+
+    p {
+        margin-bottom: 7px;
+    }
+
+    .no-member-msg {
+        background-color: $list-btn-bg-clr-modal-hover;
+        color: $clr-txt-btn;
+        padding: 24px 6px;
+        // height: fit-content;
+    }
+}
+
+.board-members-check {
+    #modal-btn-full-members {
+        @include btn('modal-full', white, 6px 0, $list-btn-bg-clr-modal-hover);
+        display: grid;
+        grid-template-columns: 1fr 5fr 1fr !important;
+        justify-items: start;
+        margin: 0 0 0 5px;
+        font-size: 1em;
+    }
+}

@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { Modal } from "../app/modal";
 import { Loader } from "../helpers/loader";
 import { BoardAdd } from "./board-add";
 

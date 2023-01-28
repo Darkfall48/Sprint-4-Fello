@@ -2,7 +2,7 @@
 import { useRef } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BsBrightnessAltHigh } from 'react-icons/bs'
-import { Modal } from '../../../../app/modal'
+import { MainModal } from '../../../../app/main-modal'
 
 export function SetLabels({
   type,
@@ -14,7 +14,6 @@ export function SetLabels({
   setModalOpen,
   modalOpen,
   onCloseModal,
-  onEditLabels,
 }) {
   const labels = board?.labels
   const { labelIds } = task
@@ -122,14 +121,13 @@ export function SetLabels({
               <AiOutlinePlus />
             </button>
             {modalOpen === 'labels-preview' && (
-              <Modal
+              <MainModal
                 type="task-labels"
                 modalTitle="Labels"
                 onCloseModal={onCloseModal}
                 task={task}
                 group={group}
                 board={board}
-                onEditLabels={onEditLabels}
                 buttonRef={buttonRef}
               />
             )}

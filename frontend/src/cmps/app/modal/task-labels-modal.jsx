@@ -186,6 +186,7 @@ export function TaskLabelsModal({
             id="modal-btn-full-grey"
             onClick={(ev) => {
               ev.stopPropagation()
+              setEditExisting(false)
               onToggleMode('create-new')
             }}
           >

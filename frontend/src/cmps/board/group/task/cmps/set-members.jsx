@@ -1,7 +1,7 @@
 //? Icon
 import { useRef, useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
-import { Modal } from '../../../../app/modal'
+import { MainModal } from '../../../../app/main-modal'
 import { MemberDetailsModal } from '../../../../app/modal/member-details-modal'
 
 export function SetMembers({ type, board, task, group }) {
@@ -98,7 +98,7 @@ export function SetMembers({ type, board, task, group }) {
               <AiOutlinePlus />
             </button>
             {modalOpen === 'members' && (
-              <Modal
+              <MainModal
                 type="task-members"
                 modalTitle="Members"
                 onCloseModal={onCloseModal}

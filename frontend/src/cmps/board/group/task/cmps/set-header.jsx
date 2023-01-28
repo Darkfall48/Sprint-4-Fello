@@ -4,8 +4,8 @@ import { useEffect } from 'react'
 import { MdOutlineLaptop } from 'react-icons/md'
 import { FastAverageColor } from 'fast-average-color'
 //? Components
-import { Modal } from '../../../../app/modal'
 import { SetCloseBtn } from './set-close-btn'
+import { MainModal } from '../../../../app/main-modal'
 
 export function SetHeader({ task, group }) {
   const { style } = task
@@ -62,7 +62,7 @@ export function SetHeader({ task, group }) {
         <MdOutlineLaptop /> Cover
       </button>
       {modalOpen && (
-        <Modal
+        <MainModal
           type={'task-cover'}
           modalTitle={'Cover'}
           task={task}

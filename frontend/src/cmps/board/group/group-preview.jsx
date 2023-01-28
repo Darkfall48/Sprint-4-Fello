@@ -15,8 +15,8 @@ import {
   updateBoard,
 } from '../../../store/actions/board.actions'
 //?Componenets
-import { Modal } from '../../app/modal'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
+import { MainModal } from '../../app/main-modal'
 
 export function GroupPreview({
   group,
@@ -116,7 +116,7 @@ export function GroupPreview({
               <BsThreeDots />
             </button>
             {isGroupMenuOpen && (
-              <Modal
+              <MainModal
                 type="group-actions"
                 modalTitle="List Actions"
                 onCloseModal={onCloseModal}

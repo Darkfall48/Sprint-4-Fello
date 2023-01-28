@@ -57,7 +57,7 @@ export function TaskMembersModal({ task, group, board }) {
                         </div>
                     })}
 
-                    <button className='modal-btn-full' >
+                    <button id='modal-btn-full-grey' >
                         Show other workspace members
                     </button>
                 </div>

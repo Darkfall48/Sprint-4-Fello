@@ -13,7 +13,7 @@ import { TaskMembersModal } from './modal/task-members-modal';
 import { utilService } from '../../services/util.service';
 
 
-export function Modal({ type, modalTitle, onCloseModal, group, onAddTask, task, board, onEditLabels, buttonRef, isQuickEdit }) {
+export function MainModal({ type, modalTitle, onCloseModal, group, onAddTask, task, board, onEditLabels, buttonRef, isQuickEdit }) {
     const [mode, setMode] = useState('select-label')
 
     function onToggleMode(mode) {
