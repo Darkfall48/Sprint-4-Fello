@@ -228,15 +228,15 @@ function animateCSS(el, animation) {
 }
 
 function getPositionAddBoard(ref) {
-  const position = ref.current.getBoundingClientRect()
-  console.log(ref.current.getBoundingClientRect());
+  const position = ref?.current?.getBoundingClientRect()
+  console.log(ref?.current?.getBoundingClientRect());
   if (position.y > 200) position.y = 200
   if (position.x > 500) position.x = 800
   return position
 }
 function getPosition(ref) {
   if (!ref) return { bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 100, x: 0, y: 0 }
-  const position = ref.current.getBoundingClientRect()
+  const position = ref?.current?.getBoundingClientRect()
   // console.log(ref.current.getBoundingClientRect());
   return position
 }
