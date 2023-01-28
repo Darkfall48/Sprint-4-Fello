@@ -1,3 +1,7 @@
+.group-preview {
+  height: calc(100vh - 122px);
+}
+
 .group-preview-wrapper {
   max-height: 100%;
   margin: 0 4px;
@@ -25,12 +29,10 @@
         padding: 0;
 
         .modal-btn-full {
-          @include btn(
-            'modal-full',
+          @include btn('modal-full',
             white,
             6px 12px,
-            $list-btn-bg-clr-modal-hover
-          );
+            $list-btn-bg-clr-modal-hover );
         }
       }
 
