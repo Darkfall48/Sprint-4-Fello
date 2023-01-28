@@ -46,11 +46,14 @@ export function BoardAdd({ onCloseModal, buttonRef, modalRef }) {
     if (!boardToAdd.style.bgColor) {
       try {
         const color = await fac.getColorAsync(imgUrl)
+        console.log('color', color);
         boardToAdd.style.backgroundImg = imgUrl
         boardToAdd.style.bgColor = color.rgba
+        // boardToAdd.style.isDark = color.isDark
+        boardToAdd.style.isLight = color.isLight
         setBoardToAdd((prevBoard) => ({
           ...prevBoard,
-          style: { backgroundImg: imgUrl, bgColor: boardToAdd.style.bgColor },
+          style: { backgroundImg: imgUrl, bgColor: boardToAdd.style.bgColor, isLight: color.isLight},
         }))
       } catch (err) {
         console.log(err)

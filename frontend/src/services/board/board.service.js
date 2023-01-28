@@ -134,6 +134,8 @@ function getEmptyBoard() {
     style: {
       bgColor: '#0079bf',
       backgroundImg: '',
+      isDark: false,
+      isLight: false,
     },
     groups: [],
     labels: [

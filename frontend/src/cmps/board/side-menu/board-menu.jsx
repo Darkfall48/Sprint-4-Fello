@@ -35,6 +35,8 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
                 const color = await fac.getColorAsync(imgUrl)
                 board.style.backgroundImg = imgUrl
                 board.style.bgColor = color.rgba
+                board.style.isLight = color.isLight
+                // board.style.isDark = color.isDark
                 updateBoard(board)
             } catch (err) {
                 console.log(err)
@@ -55,8 +57,8 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
             {open && <button className='side-menu-return-btn' onClick={() => {  onSetBackground('') }} ><IoIosArrowBack /></button>}
             {!isMenuOpen && <h6>Menu </h6>}
             {setBackground === 'change-bg' && <h6>Change Background </h6>}
-            {setBackground === 'colors' && <h6>Colors </h6>}
-            {setBackground === 'imgs' && <h6>Photos </h6>}
+            {setBackground === 'colors' && <h6 style={{marginLeft: 140 + 'px'}}>Colors </h6>}
+            {setBackground === 'imgs' && <h6 style={{marginLeft: 140 + 'px'}}>Photos </h6>}
             <button className='side-menu-close-btn' onClick={() => { setIsModalOpen(!isModalOpen) }}><CgClose /></button>
         </div>
         <hr />
