@@ -344,9 +344,22 @@ export function TaskDetails() {
                 <TiArchive />
                 <span>Archive</span>
               </button>
-              <button title="Share" onClick={getUrl}>
+              <button title="Share" onClick={() => {
+                setModalOpen('share')
+                getUrl()
+              }
+              }
+                ref={buttonRef}>
                 <HiOutlineShare /> <span>Share</span>
               </button>
+              {modalOpen === 'share' && (
+                <MainModal
+                  type="task-share"
+                  modalTitle="Share and more…"
+                  onCloseModal={onCloseModal}
+                  buttonRef={buttonRef}
+                />
+              )}
             </div>
           </article>
         </aside>
