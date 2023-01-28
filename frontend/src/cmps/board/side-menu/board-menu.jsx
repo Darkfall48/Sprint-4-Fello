@@ -15,7 +15,7 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isBgMenuOpen, setIsBgMenuOpen] = useState(false)
-    // const [isModalOpen, setIsModalOpen] = useState('')
+    const [open, isOpen] = useState(false)
     const [setBackground, onSetBackground] = useState('')
 
     function onCloseMenu() {
@@ -50,9 +50,9 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
 
     return <section className='board-menu-section'>
         <div className="side-menu-header">
-            {!isMenuOpen && !isBgMenuOpen && <button className='side-menu-return-btn' onClick={() => { setIsModalOpen(!isModalOpen) }} ><IoIosArrowBack /></button>}
-            {isMenuOpen && <button className='side-menu-return-btn' onClick={() => { setIsMenuOpen(!isMenuOpen) }} ><IoIosArrowBack /></button>}
-            {isBgMenuOpen && <button className='side-menu-return-btn' onClick={() => { setIsBgMenuOpen(!isBgMenuOpen) }} ><IoIosArrowBack /></button>}
+            {!open && !isMenuOpen && !isBgMenuOpen && <button className='side-menu-return-btn' onClick={() => { setIsModalOpen(!isModalOpen) }} ><IoIosArrowBack /></button>}
+            {!open && isMenuOpen && !isBgMenuOpen && !setBackground &&<button className='side-menu-return-btn' onClick={() => { setIsMenuOpen(!isMenuOpen); isOpen(!open) }} ><IoIosArrowBack /></button>}
+            {open && <button className='side-menu-return-btn' onClick={() => {  onSetBackground('') }} ><IoIosArrowBack /></button>}
             {!isMenuOpen && <h6>Menu </h6>}
             {setBackground === 'change-bg' && <h6>Change Background </h6>}
             {setBackground === 'colors' && <h6>Colors </h6>}
@@ -63,12 +63,6 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
 
         <div className="content-section">
             {!isMenuOpen && <button onClick={() => { onSetIsMenuOpen(); }}> Change background</button>}
-
-            {/* {isMenuOpen && <div className="board-menu-header-content">
-            <button onClick={() => { setIsMenuOpen(!isMenuOpen); onSetBackground(!setBackground) }} title="Go back."><MdArrowBackIosNew /></button>
-            <h3>Change Background</h3>
-            <button onClick={() => { setIsModalOpen(!isModalOpen) }} title="Close the board menu."><GrClose /></button>
-        </div>} */}
 
             {isMenuOpen && <div className="btns-container" style={setBackground ? { display: 'none' } : { display: 'grid' }}>
                 {!setBackground && <div className="background-color-btns">
@@ -98,19 +92,6 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
                 })}
             </div>}
 
-            {/* {setBackground === 'imgs' &&
-            <div className="btns-container-change">
-                {boardService.getImages().map((image, idx) => {
-                    return (
-                        <button
-                            key={idx}
-                            onClick={() => changeBoard(image, '')}
-                            className="btn-change"
-                            style={{ backgroundImage: `url(${image})` }}
-                        ></button>
-                    )
-                })}
-            </div>} */}
             {setBackground === 'imgs' && <SideMenuPhotos changeBoard={changeBoard} />}
 
         </div>

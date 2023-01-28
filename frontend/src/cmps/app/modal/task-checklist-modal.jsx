@@ -54,7 +54,7 @@ export function TaskChecklistModal({ board, onCloseModal, group, task }) {
           })
         })}
       </select>
-      <button onClick={(ev) => onAddChecklist(ev)}>Add</button>
+      <button className='checklist-add-btn' onClick={(ev) => onAddChecklist(ev)}>Add</button>
     </div>
   )
 }

@@ -25,8 +25,8 @@ export function TaskCoverModal({ task, group, onCloseModal }) {
 
   return (
     <div className="task-cover">
-      <p>Size</p>
-      <div className="cover-size-container">
+      {/* <p>Size</p> */}
+      {/* <div className="cover-size-container">
         <div
           role="button"
           className="cover-size"
@@ -55,7 +55,7 @@ export function TaskCoverModal({ task, group, onCloseModal }) {
             })
           }
         ></div>
-      </div>
+      </div> */}
       {/* <button>Remove cover</button> */}
 
       <p>Colors</p>

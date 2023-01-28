@@ -72,9 +72,17 @@
       align-items: center;
       justify-content: center;
 
+      &:hover{
+        .board-header-star{
+          fill: #f2d600;
+        }
+     
+      }
+
       .board-header-star {
         fill: $clr-white;
         cursor: pointer;
+
       }
       
       .board-header-starred {

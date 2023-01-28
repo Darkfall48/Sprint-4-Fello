@@ -266,12 +266,12 @@ form {
   flex-direction: column;
 
   textarea {
-    -webkit-appearance: none;
+    // -webkit-appearance: none;
     background-color: #fafbfc;
     border: none;
     border-radius: 3px;
     box-shadow: inset 0 0 0 2px #dfe1e6;
-    box-sizing: border-box;
+    // box-sizing: border-box;
     display: block;
     line-height: 20px;
     outline: none;
@@ -281,7 +281,7 @@ form {
     transition-timing-function: ease;
     background-color: $clr-white;
     box-shadow: inset 0 0 0 2px #0079bf;
-    color: var(--ds-text, #172b4d);
+    color:  #172b4d;
     cursor: text;
     float: none;
     resize: vertical;
@@ -333,13 +333,12 @@ form {
 
 .todo-btn {
   align-items: center;
-  background-color: var(--ds-background-neutral, #091e420a);
+  background-color: #091e420a;
   border: none;
   border-radius: 3px;
   box-shadow: none;
   box-sizing: border-box;
-  color: var(--ds-text, #172b4d);
-  color: var(--ds-text, inherit);
+  color:  #172b4d;
   cursor: pointer;
   display: inline-flex;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
@@ -388,6 +387,7 @@ form {
 .add-todo-btn {
   display: block;
 }
+
 
 // .check-todo {
 //   display: flex;

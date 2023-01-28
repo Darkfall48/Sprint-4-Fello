@@ -1,6 +1,6 @@
 import { utilService } from '../../../../../../services/util.service.js'
 
-export function AttachmentList({ attachments, onRemoveAttachment }) {
+export function AttachmentList({ attachments, onRemoveAttachment, onMakeCover }) {
 
   return (
 
@@ -12,6 +12,7 @@ export function AttachmentList({ attachments, onRemoveAttachment }) {
         >
           <div className="task-details-main-attachment-preview">
             <a href={attachment.img} target="_blank">
+             {/* {<img src={attachment.img} alt="" />} */}
              {attachment.type === 'image/png' && <img src={attachment.img} alt="" />}
              {attachment.type === 'video/mp4' &&  <iframe className="video-container" src={attachment.img} controls> </iframe>}
              {/* {attachment.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' &&  <iframe className="video-container" src={attachment.img}> </iframe>} */}
@@ -25,6 +26,9 @@ export function AttachmentList({ attachments, onRemoveAttachment }) {
           <p>{utilService.formatTime(attachment.createdAt)}</p>
           <button className="attachment-remove-btn" onClick={() => onRemoveAttachment(attachment.id)}>
             Delete
+          </button>
+          <button className="attachment-remove-btn" onClick={() => onMakeCover(attachment.img)}>
+            Make cover
           </button>
 
         </li>

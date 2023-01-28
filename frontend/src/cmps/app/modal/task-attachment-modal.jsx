@@ -24,12 +24,12 @@ export function TaskAttachmentModal({ onCloseModal, group, task }) {
     onAddAttachment()
   }
 
-  // const onUploaded = (bgImg, imgUrl) => {
-  //   console.log('imgUrl', imgUrl)
-  //   attachmentToAdd.img = imgUrl
+  const onUploaded = (bgImg, imgUrl) => {
+    console.log('imgUrl', imgUrl)
+    attachmentToAdd.img = imgUrl
 
-  //   onAddAttachment()
-  // }
+    onAddAttachment()
+  }
 
   function onAddAttachment() {
     task.attachments.push(attachmentToAdd)
