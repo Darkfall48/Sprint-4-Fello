@@ -1,15 +1,23 @@
 
 import React, { Component, useState } from 'react'
 import Calendar from 'react-calendar';
-
+import { updateTask } from '../../../store/actions/board.actions';
 
 export function TaskDatesModal({ task, group, onCloseModal }) {
-    const [value, onChange] = useState(new Date());
 
-    
-    return <div>
-      <Calendar onChange={onChange} value={value}  />
-    </div>
+  const [value, onChange] = useState(new Date());
+
+  function changeDueDate() {
+    task.dueDate = value
+    task.dueDate = task.dueDate.getTime()
+    console.log('task.dueDate', task.dueDate);
+    updateTask(group, task)
+    console.log('task.dueDate', task.dueDate);
+  }
+
+  return <div>
+    <Calendar onChange={onChange} onClickDay={changeDueDate} onFocus value={value}/>
+  </div>
 }
 
 
