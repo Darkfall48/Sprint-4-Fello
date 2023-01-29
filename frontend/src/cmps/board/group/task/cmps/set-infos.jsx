@@ -14,7 +14,7 @@ export function SetInfos({ task }) {
 
   //? Private Components
   function SetFollow() {
-    if (!task.priority || task.priority !== 'high')
+    if (!task?.priority || task?.priority !== 'high')
       // return <article className="task-preview-infos-no-follow"></article>
       return
     return (
@@ -28,7 +28,7 @@ export function SetInfos({ task }) {
   }
 
   function SetDate() {
-    if (!task.dueDate) return
+    if (!task?.dueDate) return
     return (
       <article
         className={`task-preview-infos-date ${task?.dueDateStatus}`}
@@ -41,7 +41,7 @@ export function SetInfos({ task }) {
   }
 
   function SetDescription() {
-    if (!task.description)
+    if (!task?.description)
       // return <article className="task-preview-infos-no-description"></article>
       return
     return (
@@ -49,7 +49,7 @@ export function SetInfos({ task }) {
         className="task-preview-infos-description"
         title="This card contain a description."
       >
-        {task.description && <GrTextAlignFull />}
+        {task?.description && <GrTextAlignFull />}
       </article>
     )
   }
@@ -79,13 +79,12 @@ export function SetInfos({ task }) {
     )
   }
 
-  const isDoneCount = +taskService.countIsDone(task)
-  const todosCount = +taskService.countTodos(task)
-
   function SetTodos() {
+    const isDoneCount = +taskService.countIsDone(task)
+    const todosCount = +taskService.countTodos(task)
     const isComplete = isDoneCount === todosCount ? true : false
 
-    if (!task.checklists || !task.checklists.length || !todosCount)
+    if (!task?.checklists || !task?.checklists?.length || !todosCount)
       // return <article className="task-preview-infos-no-todo"></article>
       return
     return (
@@ -110,7 +109,7 @@ export function SetInfos({ task }) {
     (!task?.comments?.length && !task?.attachments) ||
     (!task?.attachments?.length && !task.checklists) ||
     !task.checklists.length ||
-    !todosCount
+    !taskService.countTodos(task)
   )
     return
   return (
