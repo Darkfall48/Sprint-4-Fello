@@ -55,7 +55,7 @@ export function TodoEdit({ onCloseModal, group, task, todo }) {
             </textarea>
 
             <div className="todo-btns">
-                <button className="todo-btn">Save</button>
+                <button className="todo-btn save">Save</button>
                 <button className="cancel-btn" onClick={() => (onCloseModal())}><AiOutlineClose /></button>
             </div>
         </form>

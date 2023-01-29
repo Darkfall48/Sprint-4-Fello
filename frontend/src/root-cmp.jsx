@@ -21,8 +21,8 @@ export function RootCmp() {
   const background = location.state && location.state.background
   return (
     <div className="main-layout app">
-      {/* {user && <AppHeader type={'main'} />} */}
-      { <AppHeader type={'main'} />}
+      {user && <AppHeader type={'main'} />}
+      {/* { <AppHeader type={'main'} />} */}
       <main>
         <Routes location={background || location}>
           <Route element={<Home />} path="/" />

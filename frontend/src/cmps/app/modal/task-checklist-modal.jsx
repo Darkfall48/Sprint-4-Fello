@@ -39,21 +39,21 @@ export function TaskChecklistModal({ board, onCloseModal, group, task }) {
           ref={inputRef}
         />
       </form>
-      <p>Copy items from...</p>
-      <select name="copy-items-from" className="copy-items-from">
+      {/* <p>Copy items from...</p> */}
+      {/* <select name="copy-items-from" className="copy-items-from">
         <option value="none">(none)</option>
         {board.groups.map((group) => {
           group.tasks.map((task) => {
             return (
               <optgroup key={task.id} label={task.title}>
-                {/* {task?.checklists?.map(checklist => {
+                {task?.checklists?.map(checklist => {
                         return <option key={checklist.id} value={checklist.title}>{checklist.title}</option>
-                    })} */}
+                    })}
               </optgroup>
             )
           })
         })}
-      </select>
+      </select> */}
       <button className='checklist-add-btn' onClick={(ev) => onAddChecklist(ev)}>Add</button>
     </div>
   )

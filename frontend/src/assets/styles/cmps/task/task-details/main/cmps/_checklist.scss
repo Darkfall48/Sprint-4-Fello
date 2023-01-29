@@ -113,8 +113,8 @@
         background-color: #f4f5f7;
 
           & button {
-            padding: 10px;
             opacity: 1;
+
           }
         
       }
@@ -388,6 +388,23 @@ form {
   display: block;
 }
 
+.task-checklist{
+  .checklist-add-btn{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.todo-edit-section{
+  textarea{
+    background: var(--ds-background-input,#091e420a);
+    border-color: var(--ds-border-input,#091e4221);
+    box-shadow: inset 0 0 0 1px var(--ds-border-input,#091e4221);
+    margin-bottom: 4px;
+  }
+  
+}
 
 // .check-todo {
 //   display: flex;
@@ -406,3 +423,4 @@ form {
 .done {
   text-decoration: line-through;
 }
+
