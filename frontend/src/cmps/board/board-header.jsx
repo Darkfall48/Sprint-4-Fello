@@ -73,10 +73,10 @@ export function BoardHeader({ board }) {
       </div>
 
       <div className="btns-container">
-        <button style={board?.style?.isLight ? { color: '#172B4D ' } : { color: 'white' }}>
+        {/* <button style={board?.style?.isLight ? { color: '#172B4D ' } : { color: 'white' }}>
           <BsFilter /> Filter
-        </button>
-        <span className="board-header-btn-divider"></span>
+        </button> */}
+        {/* <span className="board-header-btn-divider"></span> */}
         <div className="members-container">
           {board.members?.map((member, index) => {
             return (
@@ -91,9 +91,9 @@ export function BoardHeader({ board }) {
           })}
         </div>
 
-        <button style={board?.style?.isLight ? { color: '#172B4D ' } : { color: 'white' }} className="share">
+        {/* <button style={board?.style?.isLight ? { color: '#172B4D ' } : { color: 'white' }} className="share">
           <RiUserSharedLine /> Share{' '}
-        </button>
+        </button> */}
         <span className="board-header-btn-divider"></span>
         <button
           style={board?.style?.isLight ? { color: '#172B4D ' } : { color: 'white' }}

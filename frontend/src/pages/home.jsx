@@ -15,7 +15,8 @@ export function Home() {
 
   return (
     <>
-    {!user && <AppHeader type={'home'} />}
+    { <AppHeader type={'home'} />}
+    {/* {!user && <AppHeader type={'home'} />} */}
     <section className="home-section main-container main-layout">
       <div className="wave-container full">
         <div className="content-container">
