@@ -92,22 +92,21 @@ export function TaskDetails() {
   }
 
   //? Aside Private Functions
-  async function getUrl() {
-    try {
-      const { pathname } = location
-      const websiteUrl = 'https://team-fello.onrender.com'
-      const url = websiteUrl + pathname
-      await navigator.clipboard.writeText(url)
-      console.log('URL was copied to clipboard:', url)
-    } catch (err) {
-      console.error('Failed to copy text: ', err)
-    }
-  }
+  // async function getUrl() {
+  //   try {
+  //     const { pathname } = location
+  //     const websiteUrl = 'https://team-fello.onrender.com'
+  //     const url = websiteUrl + pathname
+  //     await navigator.clipboard.writeText(url)
+  //     console.log('URL was copied to clipboard:', url)
+  //   } catch (err) {
+  //     console.error('Failed to copy text: ', err)
+  //   }
+  // }
 
   function onCloseModal() {
     setModalOpen('')
   }
-
 
   // if (!board || !group || !task) return <Loader />
   if (!board || !group || !task) return
@@ -344,12 +343,14 @@ export function TaskDetails() {
                 <TiArchive />
                 <span>Archive</span>
               </button>
-              <button title="Share" onClick={() => {
-                setModalOpen('share')
-                getUrl()
-              }
-              }
-                ref={buttonRef}>
+              <button
+                title="Share"
+                onClick={() => {
+                  setModalOpen('share')
+                  // getUrl()
+                }}
+                ref={buttonRef}
+              >
                 <HiOutlineShare /> <span>Share</span>
               </button>
               {modalOpen === 'share' && (
