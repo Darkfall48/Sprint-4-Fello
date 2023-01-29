@@ -6,6 +6,7 @@ export const taskService = {
   getMemberById,
   getMemberInitials,
   getActivitiesByTaskId,
+  setShowedDueDateStatus,
   getEmptyTask,
   getEmptyTodo,
   getEmptyChecklist,
@@ -41,6 +42,24 @@ function getMemberInitials(fullname = 'John Smith') {
 
 function getActivitiesByTaskId(board, taskId) {
   return board?.activities?.filter((activity) => activity?.task?.id === taskId)
+}
+
+function setShowedDueDateStatus(type = 'none', task) {
+  switch (task?.dueDateStatus) {
+    case 'soon':
+      if (type === 'title')
+        return 'This card is due in less than twenty-four hours.'
+      return 'due soon'
+    case 'late':
+      if (type === 'title') return 'This card is past due.'
+      return 'overdue'
+    case 'done':
+      if (type === 'title') return 'This card is complete.'
+      return 'complete'
+    default:
+      if (type === 'title') return 'This card is due later.'
+      return
+  }
 }
 
 function getEmptyTask(taskTitle) {

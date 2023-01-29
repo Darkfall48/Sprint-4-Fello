@@ -72,7 +72,7 @@ export function GroupList({ board }) {
       await loadBoard(board._id)
       showSuccessMsg('Boards loaded')
     } catch (err) {
-      navigate('/board') //TODO: Ask Roi why it's not working
+      navigate('/board') //! Not working !
       console.log('Board failed to load', err)
       showErrorMsg('Cannot load boards')
     }
@@ -153,8 +153,23 @@ export function GroupList({ board }) {
         {!editMode && (
           <div className="add-new-group">
             <button className="add-group-btn" onClick={onNewGroupSelect}>
-              <BsPlus className="plus" />
-              <span> Add another list </span>
+              <BsPlus
+                className="plus"
+                style={
+                  board?.style?.isLight
+                    ? { color: '#172B4D ' }
+                    : { color: 'white' }
+                }
+              />
+              <span
+                style={
+                  board?.style?.isLight
+                    ? { color: '#172B4D ' }
+                    : { color: 'white' }
+                }
+              >
+                Add another list
+              </span>
             </button>
           </div>
         )}

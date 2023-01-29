@@ -4,12 +4,15 @@ import { BsCheck2Square } from 'react-icons/bs'
 import { FaRegComment } from 'react-icons/fa'
 import { GrTextAlignFull } from 'react-icons/gr'
 import { ImAttachment } from 'react-icons/im'
+import { IoMdTime } from 'react-icons/io'
 //? Services
+import { utilService } from '../../../../../services/util.service'
 import { taskService } from '../../../../../services/board/task.service'
 
 export function SetInfos({ task }) {
   //   console.log('Taskousssyyyy', task)
 
+  //? Private Components
   function SetFollow() {
     if (!task.priority || task.priority !== 'high')
       // return <article className="task-preview-infos-no-follow"></article>
@@ -20,6 +23,20 @@ export function SetInfos({ task }) {
         title="You are receiving notifications for updates on this card"
       >
         <AiOutlineEye />
+      </article>
+    )
+  }
+
+  //! Known Issue: Date is not updated correctly on first launch
+  function SetDate() {
+    if (!task.dueDate) return
+    return (
+      <article
+        className={`task-preview-infos-date ${task?.dueDateStatus}`}
+        title={taskService.setShowedDueDateStatus('title', task)}
+      >
+        <IoMdTime />
+        <span>{utilService.formatTime(task?.dueDate)}</span>
       </article>
     )
   }
@@ -63,9 +80,10 @@ export function SetInfos({ task }) {
     )
   }
 
+  const isDoneCount = +taskService.countIsDone(task)
+  const todosCount = +taskService.countTodos(task)
+
   function SetTodos() {
-    const isDoneCount = +taskService.countIsDone(task)
-    const todosCount = +taskService.countTodos(task)
     const isComplete = isDoneCount === todosCount ? true : false
 
     if (!task.checklists || !task.checklists.length || !todosCount)
@@ -84,10 +102,22 @@ export function SetInfos({ task }) {
     )
   }
 
+  if (
+    !task.priority ||
+    (task.priority !== 'high' &&
+      !task.dueDate &&
+      !task.description &&
+      !task?.comments) ||
+    (!task?.comments?.length && !task?.attachments) ||
+    (!task?.attachments?.length && !task.checklists) ||
+    !task.checklists.length ||
+    !todosCount
+  )
+    return
   return (
     <article className="task-preview-infos">
       <SetFollow />
-      {/* Dates */}
+      <SetDate />
       <SetDescription />
       <SetComments />
       <SetAttachments />

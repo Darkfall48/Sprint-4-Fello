@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
+import { taskService } from '../../../../../services/board/task.service'
 import { utilService } from '../../../../../services/util.service'
 
 export function SetDate({ task, onUpdateTask }) {
   const [isChecked, setIsChecked] = useState(task?.dueDateStatus === 'done')
 
+  //! Known Issue: Date is not updated correctly on first launch
   useEffect(() => {
     if (isChecked) {
       onUpdateTask('dueDateStatus', 'done')
@@ -11,6 +13,10 @@ export function SetDate({ task, onUpdateTask }) {
       determineDueDateStatus()
     }
   }, [isChecked])
+
+  function handleCheckboxChange() {
+    setIsChecked(!isChecked)
+  }
 
   function determineDueDateStatus() {
     const now = new Date()
@@ -26,28 +32,6 @@ export function SetDate({ task, onUpdateTask }) {
     }
   }
 
-  function handleCheckboxChange() {
-    setIsChecked(!isChecked)
-  }
-
-  function getShowedStatus(type = 'none') {
-    switch (task?.dueDateStatus) {
-      case 'soon':
-        if (type === 'title')
-          return 'This card is due in less than twenty-four hours.'
-        return 'due soon'
-      case 'late':
-        if (type === 'title') return 'This card is past due.'
-        return 'overdue'
-      case 'done':
-        if (type === 'title') return 'This card is complete.'
-        return 'complete'
-      default:
-        if (type === 'title') return 'This card is due later.'
-        return
-    }
-  }
-
   return (
     <article className="task-details-main-date">
       <h2 className="task-details-main-date-title">Due date</h2>
@@ -60,14 +44,14 @@ export function SetDate({ task, onUpdateTask }) {
         />
         <button
           className="task-details-main-date-btn-container-date-btn"
-          title={getShowedStatus('title')}
+          title={taskService.setShowedDueDateStatus('title', task)}
         >
           {utilService.formatTimeForSetDate(task?.dueDate)}
           {task?.dueDateStatus && (
             <span
-              className={`task-details-main-date-btn-container-status-${task.dueDateStatus.toLowerCase()}`}
+              className={`task-details-main-date-btn-container-status-${task?.dueDateStatus.toLowerCase()}`}
             >
-              {getShowedStatus()}
+              {taskService.setShowedDueDateStatus('', task)}
             </span>
           )}
         </button>
