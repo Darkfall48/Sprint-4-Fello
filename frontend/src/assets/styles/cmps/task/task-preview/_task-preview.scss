@@ -15,7 +15,20 @@
     'cover cover'
     'labels      labels'
     'title      title'
-    'infos       members';
+    // 'infos members';
+    'footer       footer';
+
+  &-footer {
+    grid-area: footer;
+    display: grid;
+    // grid-template-columns: 2fr 1fr;
+    // grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    // grid-template-rows: auto;
+    grid-template-areas: 'infos members';
+    justify-content: space-between;
+    flex-wrap: wrap;
+    // gap: 8px;
+  }
 
   &:hover {
     background-color: #f4f5f7;
@@ -27,12 +40,10 @@
       .task-preview-edit-menu {
         position: relative;
         left: 25px;
-
       }
     }
   }
 
-  
   img {
     grid-area: cover;
   }

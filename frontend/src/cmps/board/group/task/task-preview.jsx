@@ -65,8 +65,11 @@ export function TaskPreview({
           labelsPreview={labelsPreview}
         />
       )}
-      <SetInfos task={task} />
-      <SetMembers type={'preview'} board={board} task={task} />
+
+      <div className="task-preview-section-footer">
+        <SetInfos task={task} />
+        <SetMembers type={'preview'} board={board} task={task} />
+      </div>
     </section>
   )
 }

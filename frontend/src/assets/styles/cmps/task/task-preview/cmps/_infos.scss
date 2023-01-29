@@ -6,8 +6,9 @@
     margin-top: 4px;
     margin-bottom: 6px;
     display: flex;
+    flex-wrap: wrap;
     place-items: center;
-    gap: 8px;
+    gap: 4px 8px;
     font-size: 12px;
     color: #6b778c;
     //* Is Following
@@ -15,6 +16,51 @@
       font-size: 16px;
       padding-top: 3px;
       margin-right: 2px;
+      // & svg {
+      //   font-size: 14px;
+      // }
+    }
+
+    //* Date
+    &-date {
+      // padding-top: 3px;
+      display: flex;
+      place-items: center;
+      width: max-content;
+      gap: 4px;
+      margin-right: 2px;
+      & svg {
+        font-size: 16px;
+      }
+      & span {
+        font-size: 12px;
+      }
+      &.late {
+        padding: 6px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-radius: 3px;
+        color: white;
+        background-color: #eb5a46;
+      }
+
+      &.done {
+        padding: 6px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-radius: 2px;
+        color: white;
+        background-color: #61bd4f;
+      }
+
+      &.soon {
+        padding: 6px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-radius: 2px;
+        color: #172b4d;
+        background-color: #f2d600;
+      }
     }
 
     //* Description
