@@ -5,6 +5,7 @@ import { utilService } from '../../../../../services/util.service'
 export function SetDate({ task, onUpdateTask }) {
   const [isChecked, setIsChecked] = useState(task?.dueDateStatus === 'done')
 
+  //! Known Issue: Date is not updated correctly on first launch
   useEffect(() => {
     if (isChecked) {
       onUpdateTask('dueDateStatus', 'done')

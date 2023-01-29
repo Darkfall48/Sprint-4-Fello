@@ -27,6 +27,7 @@ export function SetInfos({ task }) {
     )
   }
 
+  //! Known Issue: Date is not updated correctly on first launch
   function SetDate() {
     if (!task.dueDate) return
     return (
