@@ -325,17 +325,17 @@ export function TaskDetails() {
           <article className="task-details-aside-group-action">
             <h2 className="task-details-aside-group-action-title">Actions</h2>
             <div className="task-details-aside-group-action-button">
-              <button title="Move">
+              {/* <button title="Move">
                 <HiOutlineArrowRight />
                 <span>Move</span>
-              </button>
+              </button> */}
               <button title="Copy">
                 <MdOutlineContentCopy /> <span>Copy</span>
               </button>
-              <button title="Make template">
+              {/* <button title="Make template">
                 <TbTemplate />
                 <span>Make template</span>
-              </button>
+              </button> */}
               <hr />
               <button
                 title="Archive"

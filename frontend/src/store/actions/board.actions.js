@@ -141,12 +141,12 @@ export async function addTask(group, task) {
 }
 
 export async function updateTask(group, task) {
-  console.log('group', group)
-  console.log('task', task)
-  let { tasks } = group
-  console.log('tasks', tasks)
+  // console.log('group', group)
+  // console.log('task', task)
+  const { tasks } = group
+  // console.log('tasks', tasks)
   const taskIdx = tasks.findIndex((tsk) => tsk.id === task.id)
-  console.log('taskIdx', taskIdx)
+  // console.log('taskIdx', taskIdx)
   tasks.splice(taskIdx, 1, task)
   const updatedGroup = { ...group, tasks }
   try {
@@ -160,7 +160,7 @@ export async function updateTask(group, task) {
 
 export async function removeLabelFromAllTasks(board, labelId) {
   console.log('labelId', labelId)
-  let { groups } = board
+  const { groups } = board
   try {
     const updatedGroups = await groups.map((group) => {
       return {

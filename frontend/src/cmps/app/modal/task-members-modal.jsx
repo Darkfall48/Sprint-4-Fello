@@ -39,8 +39,8 @@ export function TaskMembersModal({ task, group, board }) {
         }
     }
 
-    return <section className='modal-content-container'>
-        <div className="members-modal-content-wrapper">
+    return <section className='modal-content-container' >
+        <div className="members-modal-content-wrapper" >
             <input type="text" value={memberName} onChange={handleChange} placeholder="Search members" />
             {!!filteredMembers?.length &&
                 <div>
@@ -56,9 +56,9 @@ export function TaskMembersModal({ task, group, board }) {
                         </div>
                     })}
 
-                    <button id='modal-btn-full-grey' >
+                    {/* <button id='modal-btn-full-grey' >
                         Show other workspace members
-                    </button>
+                    </button> */}
                 </div>
             }
         </div>

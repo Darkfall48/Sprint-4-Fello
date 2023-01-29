@@ -50,7 +50,7 @@ export function MainModal({ type, modalTitle, onCloseModal, group, onAddTask, ta
                     case 'group-actions':
                         return <GroupActionsModal group={group} onCloseModal={onCloseModal} onAddTask={onAddTask} />
                     case 'task-members':
-                        return <TaskMembersModal task={task} group={group} board={board} onCloseModal={onCloseModal} onAddTask={onAddTask} />
+                        return <TaskMembersModal task={task} group={group} board={board} />
                     case 'task-labels':
                         return <TaskLabelsModal task={task} group={group} board={board} onCloseModal={onCloseModal} onEditLabels={onEditLabels} mode={mode} onToggleMode={onToggleMode} />
                     case 'task-checklist':
