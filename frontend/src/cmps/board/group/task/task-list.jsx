@@ -22,7 +22,7 @@ export function TaskList({
       )
     }
 
-    handleScroll() // Call handleScroll function when the component loads
+    handleScroll()
 
     taskListRef.current.addEventListener('scroll', handleScroll)
 
