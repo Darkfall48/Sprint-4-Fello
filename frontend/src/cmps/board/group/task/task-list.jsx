@@ -23,7 +23,8 @@ export function TaskList({
     }
     taskListRef.current.addEventListener('scroll', handleScroll)
     return () => {
-      taskListRef.current.removeEventListener('scroll', handleScroll)
+      if (taskListRef.current)
+        taskListRef.current.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
