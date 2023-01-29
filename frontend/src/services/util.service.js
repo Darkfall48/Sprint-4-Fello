@@ -16,7 +16,8 @@ export const utilService = {
   getRandomChosenImg,
   getPosition,
   getPositionAddBoard,
-  formatTime
+  formatTime,
+  formatTimeForSetDate,
 }
 
 function makeId(length = 10) {
@@ -229,13 +230,23 @@ function animateCSS(el, animation) {
 
 function getPositionAddBoard(ref) {
   const position = ref?.current?.getBoundingClientRect()
-  console.log(ref?.current?.getBoundingClientRect());
+  console.log(ref?.current?.getBoundingClientRect())
   if (position.y > 200) position.y = 200
   if (position.x > 500) position.x = 800
   return position
 }
 function getPosition(ref) {
-  if (!ref) return { bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 100, x: 0, y: 0 }
+  if (!ref)
+    return {
+      bottom: 0,
+      height: 0,
+      left: 0,
+      right: 0,
+      top: 0,
+      width: 100,
+      x: 0,
+      y: 0,
+    }
   const position = ref?.current?.getBoundingClientRect()
   // console.log(ref.current.getBoundingClientRect());
   return position
@@ -265,4 +276,61 @@ function formatTime(sentAt) {
     }
     duration /= division.amount
   }
+}
+
+function formatTimeForSetDate(sentAt) {
+  const date = new Date(sentAt)
+  const now = new Date()
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+  }
+  const relativeFormatter = new Intl.RelativeTimeFormat(undefined, {
+    numeric: 'auto',
+  })
+
+  let time = ''
+  const diffInMs = date.getTime() - now.getTime()
+  if (diffInMs >= 0) {
+    if (diffInMs < 24 * 60 * 60 * 1000) {
+      time = relativeFormatter.format(0, 'day') + ' at '
+    } else if (diffInMs < 2 * 24 * 60 * 60 * 1000) {
+      time = relativeFormatter.format(1, 'day') + ' at '
+    } else if (diffInMs < 7 * 24 * 60 * 60 * 1000) {
+      time =
+        relativeFormatter.format(
+          Math.round(diffInMs / (24 * 60 * 60 * 1000)),
+          'day'
+        ) + ' at '
+    }
+  } else {
+    if (diffInMs > -24 * 60 * 60 * 1000) {
+      time = relativeFormatter.format(-1, 'day') + ' at '
+    } else if (diffInMs > -2 * 24 * 60 * 60 * 1000) {
+      time = relativeFormatter.format(-2, 'day') + ' at '
+    } else if (diffInMs > -7 * 24 * 60 * 60 * 1000) {
+      time =
+        relativeFormatter.format(
+          Math.round(diffInMs / (24 * 60 * 60 * 1000)),
+          'day'
+        ) + ' at '
+    }
+  }
+
+  if (date.getFullYear() !== now.getFullYear()) {
+    options.year = 'numeric'
+    options.month = 'long'
+    options.day = 'numeric'
+  } else if (
+    Math.abs(date.getTime() - now.getTime()) >
+    6 * 24 * 60 * 60 * 1000
+  ) {
+    options.month = 'long'
+    options.day = 'numeric'
+  }
+  if (date.getDay() !== now.getDay()) {
+    options.weekday = 'long'
+  }
+  const formatter = new Intl.DateTimeFormat(undefined, options)
+  return time + formatter.format(date)
 }

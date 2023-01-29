@@ -14,13 +14,15 @@ export function SetDate({ task, onUpdateTask }) {
 
   function determineDueDateStatus() {
     const now = new Date()
-    const soon = new Date()
-    soon.setDate(now.getDate() + 7)
     const dueDate = new Date(task?.dueDate)
+    const difference = dueDate - now
+    const hoursDifference = difference / 1000 / 60 / 60
     if (dueDate < now) {
       onUpdateTask('dueDateStatus', 'late')
-    } else if (dueDate > soon) {
+    } else if (hoursDifference < 24) {
       onUpdateTask('dueDateStatus', 'soon')
+    } else {
+      onUpdateTask('dueDateStatus', 'later')
     }
   }
 
@@ -28,9 +30,27 @@ export function SetDate({ task, onUpdateTask }) {
     setIsChecked(!isChecked)
   }
 
+  function getShowedStatus(type = 'none') {
+    switch (task?.dueDateStatus) {
+      case 'soon':
+        if (type === 'title')
+          return 'This card is due in less than twenty-four hours.'
+        return 'due soon'
+      case 'late':
+        if (type === 'title') return 'This card is past due.'
+        return 'overdue'
+      case 'done':
+        if (type === 'title') return 'This card is complete.'
+        return 'complete'
+      default:
+        if (type === 'title') return 'This card is due later.'
+        return
+    }
+  }
+
   return (
     <article className="task-details-main-date">
-      <h2 className="task-details-main-date-title">Due Date</h2>
+      <h2 className="task-details-main-date-title">Due date</h2>
       <div className="task-details-main-date-btn-container">
         <input
           className="task-details-main-date-btn-container-checkbox"
@@ -40,22 +60,14 @@ export function SetDate({ task, onUpdateTask }) {
         />
         <button
           className="task-details-main-date-btn-container-date-btn"
-          title={
-            task?.dueDateStatus === 'done'
-              ? 'Task is done'
-              : task?.dueDateStatus === 'late'
-              ? 'Task is late'
-              : task?.dueDateStatus === 'soon'
-              ? 'Task is soon'
-              : 'No status'
-          }
+          title={getShowedStatus('title')}
         >
-          {utilService.formatTime(task?.dueDate)}
+          {utilService.formatTimeForSetDate(task?.dueDate)}
           {task?.dueDateStatus && (
             <span
               className={`task-details-main-date-btn-container-status-${task.dueDateStatus.toLowerCase()}`}
             >
-              {task?.dueDateStatus}
+              {getShowedStatus()}
             </span>
           )}
         </button>
