@@ -20,7 +20,7 @@ export function TaskList({
       setIsScrolling(taskListRef.current.scrollHeight)
     }
 
-    handleScroll() // Call handleScroll function when the component loads
+    handleScroll()
 
     taskListRef.current.addEventListener('scroll', handleScroll)
 
