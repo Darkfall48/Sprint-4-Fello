@@ -7,7 +7,7 @@ const imgUrlMember1 =
 const imgUrlMember2 =
   'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716611/member2_cjjxdg.png'
 const imgUrlMember3 =
-  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674983579/keren_b8wtda.jpg'
+  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1675009409/fotor_2023-1-29_18_22_36_ux4d5h.jpg'
 const imgUrlMember4 =
   'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674983579/tomi_dlw150.jpg'
 const imgUrlMember5 =
