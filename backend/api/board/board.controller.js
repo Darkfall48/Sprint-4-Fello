@@ -1,5 +1,6 @@
 //? Services
 const boardService = require('./board.service')
+const socketService = require('../../services/socket.service')
 const logger = require('../../services/logger.service')
 
 module.exports = {
@@ -30,6 +31,7 @@ async function getBoards(req, res) {
 async function getBoardById(req, res) {
   try {
     const boardId = req.params.id
+    // socketService.emitTo({ type: 'board-watch', data: board, label: board._id })
     logger.debug('Getting Board..', boardId)
     const board = await boardService.getById(boardId)
     logger.debug('Board got successfully!', boardId)
@@ -42,10 +44,10 @@ async function getBoardById(req, res) {
 
 //? Create - Save
 async function addBoard(req, res) {
-  //   const { loggedinUser } = req
+  //   const { loggedinboard } = req
   try {
     const board = req.body
-    // board.owner = loggedinUser
+    // board.owner = loggedinboard
     logger.debug('Adding Board..')
     const addedBoard = await boardService.add(board)
     logger.debug('Board added successfully!')
@@ -64,7 +66,11 @@ async function updateBoard(req, res) {
     logger.debug('Updating Board..', boardId)
     const updatedBoard = await boardService.update(board)
     logger.debug('Board updated successfully!', boardId)
+
+    socketService.emitTo({ type: 'board-updated', data: board, label: board._id })
+
     res.json(updatedBoard)
+    // res.send(updatedBoard)
   } catch (err) {
     logger.error('Had issues while updating board', err)
     res.status(500).send({ err: 'Had issues while updating board' })
@@ -86,12 +92,12 @@ async function removeBoard(req, res) {
 }
 
 async function addBoardMsg(req, res) {
-  const { loggedinUser } = req
+  const { loggedinboard } = req
   try {
     const boardId = req.params.id
     const msg = {
       txt: req.body.txt,
-      by: loggedinUser,
+      by: loggedinboard,
     }
     const savedMsg = await boardService.addBoardMsg(boardId, msg)
     res.json(savedMsg)
@@ -102,7 +108,7 @@ async function addBoardMsg(req, res) {
 }
 
 async function removeBoardMsg(req, res) {
-  const { loggedinUser } = req
+  const { loggedinboard } = req
   try {
     const boardId = req.params.id
     const { msgId } = req.params

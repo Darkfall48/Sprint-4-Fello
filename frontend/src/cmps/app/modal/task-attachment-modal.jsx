@@ -40,13 +40,13 @@ export function TaskAttachmentModal({ onCloseModal, group, task }) {
 
   return (
     <div className="task-attachment-modal-content">
-      {/* <button id="modal-btn-full">
+      <button id="modal-btn-full">
         {' '}
         <ImgUploader onUploaded={onUploaded} />
-      </button> */}
+      </button>
       {/* <form> */}
-      <label htmlFor="file">Computer</label>
-        <input type="file" name="file" className='attachment-input' id='file' onChange={handleChange} style={{display: 'none'}}/>
+      {/* <label htmlFor="file">Computer</label>
+        <input type="file" name="file" className='attachment-input' id='file' onChange={handleChange} style={{display: 'none'}}/> */}
       {/* </form> */}
       {/* <button id="modal-btn-full">Trello</button> */}
       {/* <button id="modal-btn-full"> Google Drive </button> */}

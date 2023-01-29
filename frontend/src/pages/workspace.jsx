@@ -10,6 +10,9 @@ import { AiOutlineClockCircle } from 'react-icons/ai'
 
 import { loadBoards } from '../store/actions/board.actions'
 import { Loader } from '../cmps/helpers/loader'
+import { SET_BOARD, SET_BOARDS } from '../store/reducers/board.reducer'
+import { socketService, SOCKET_EMIT_BOARD_WATCH } from '../services/connection/socket.service'
+import { useDispatch } from 'react-redux'
 
 export function Workspace() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -19,6 +22,16 @@ export function Workspace() {
     (board) => Date.now() - board.lastViewed < day
   )
   // .sort((a, b) => a.lastViewed - b.lastViewed)
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    socketService.on(SOCKET_EMIT_BOARD_WATCH, socketBoardWatch)
+  }, [])
+
+  function socketBoardWatch(boardId) {
+    dispatch({ type: SET_BOARD, board: boardId })
+  }
 
   useEffect(() => {
     onLoadBoards()

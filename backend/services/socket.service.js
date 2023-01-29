@@ -8,8 +8,8 @@ module.exports = {
   setupSocketAPI,
   // emit to everyone / everyone in a specific room (label)
   emitTo,
-  // emit to a specific user (if currently active in system)
-  emitToUser,
+  // emit to a specific board (if currently active in system)
+  emitToBoard,
   // Send to all sockets BUT not the current socket - if found
   // (otherwise broadcast to a room / to all)
   broadcast,
@@ -46,22 +46,26 @@ function setupSocketAPI(http) {
       // emits only to sockets in the same room
       gIo.to(socket.myTopic).emit('chat-add-msg', msg)
     })
-    socket.on('user-watch', (userId) => {
+    socket.on('board-watch', (boardId) => {
       logger.info(
-        `user-watch from socket [id: ${socket.id}], on user ${userId}`
+        `board-watch from socket [id: ${socket.id}], on board ${boardId}`
       )
-      socket.join('watching:' + userId)
+      socket.join('watching:' + boardId)
     })
-    socket.on('set-user-socket', (userId) => {
+    socket.on('set-board-socket', (boardId) => {
       logger.info(
-        `Setting socket.userId = ${userId} for socket [id: ${socket.id}]`
+        `Setting socket.boardId = ${boardId} for socket [id: ${socket.id}]`
       )
-      socket.userId = userId
+      socket.boardId = boardId
     })
-    socket.on('unset-user-socket', () => {
-      logger.info(`Removing socket.userId for socket [id: ${socket.id}]`)
-      delete socket.userId
+    socket.on('unset-board-socket', () => {
+      logger.info(`Removing socket.boardId for socket [id: ${socket.id}]`)
+      delete socket.boardId
     })
+      socket.on('board-updated', (board) => {
+      console.log('Server got board: ' + board)
+      })
+
   })
 }
 
@@ -70,33 +74,33 @@ function emitTo({ type, data, label }) {
   else gIo.emit(type, data)
 }
 
-async function emitToUser({ type, data, userId }) {
-  userId = userId.toString()
-  const socket = await _getUserSocket(userId)
+async function emitToBoard({ type, data, boardId }) {
+  boardId = boardId.toString()
+  const socket = await _getBoardSocket(boardId)
 
   if (socket) {
     logger.info(
-      `Emiting event: ${type} to user: ${userId} socket [id: ${socket.id}]`
+      `Emiting event: ${type} to board: ${boardId} socket [id: ${socket.id}]`
     )
     socket.emit(type, data)
   } else {
-    logger.info(`No active socket for user: ${userId}`)
+    logger.info(`No active socket for board: ${boardId}`)
     // _printSockets()
   }
 }
 
 // If possible, send to all sockets BUT not the current socket
 // Optionally, broadcast to a room / to all
-async function broadcast({ type, data, room = null, userId }) {
-  userId = userId.toString()
+async function broadcast({ type, data, room = null, boardId }) {
+  boardId = boardId.toString()
 
   logger.info(`Broadcasting event: ${type}`)
-  const excludedSocket = await _getUserSocket(userId)
+  const excludedSocket = await _getBoardSocket(boardId)
   if (room && excludedSocket) {
-    logger.info(`Broadcast to room ${room} excluding user: ${userId}`)
+    logger.info(`Broadcast to room ${room} excluding board: ${boardId}`)
     excludedSocket.broadcast.to(room).emit(type, data)
   } else if (excludedSocket) {
-    logger.info(`Broadcast to all excluding user: ${userId}`)
+    logger.info(`Broadcast to all excluding board: ${boardId}`)
     excludedSocket.broadcast.emit(type, data)
   } else if (room) {
     logger.info(`Emit to room: ${room}`)
@@ -107,9 +111,9 @@ async function broadcast({ type, data, room = null, userId }) {
   }
 }
 
-async function _getUserSocket(userId) {
+async function _getBoardSocket(boardId) {
   const sockets = await _getAllSockets()
-  const socket = sockets.find((s) => s.userId === userId)
+  const socket = sockets.find((s) => s.boardId === boardId)
   return socket
 }
 async function _getAllSockets() {
@@ -124,5 +128,5 @@ async function _printSockets() {
   sockets.forEach(_printSocket)
 }
 function _printSocket(socket) {
-  console.log(`Socket - socketId: ${socket.id} userId: ${socket.userId}`)
+  console.log(`Socket - socketId: ${socket.id} boardId: ${socket.boardId}`)
 }

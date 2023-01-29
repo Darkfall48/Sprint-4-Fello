@@ -14,17 +14,17 @@ export function AttachmentList({
         >
           <div className="task-details-main-attachments-list-attachment-media-container">
             <a href={attachment.img} target="_blank">
-              {/* {<img src={attachment.img} alt="" />} */}
-              {attachment.type === 'image/png' && (
+              {<img src={attachment.img} alt="" />}
+              {/* {attachment.type === 'image/png' && (
                 <img src={attachment.img} alt={attachment.title} />
-              )}
-              {attachment.type === 'video/mp4' && (
+              )} */}
+              {/* {attachment.type === 'video/mp4' && (
                 <iframe
                   className="video-container"
                   src={attachment.img}
                   controls
                 ></iframe>
-              )}
+              )} */}
               {/* {attachment.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' &&  <iframe className="video-container" src={attachment.img}> </iframe>} */}
             </a>
           </div>
@@ -32,7 +32,7 @@ export function AttachmentList({
           <div className="task-details-main-attachments-list-attachment-content-container">
             <h3 className="task-details-main-attachments-list-attachment-content-container-title">
               {/* {attachment.img.substring(attachment.img.lastIndexOf('/')+1)} */}
-              {/* {attachment.img.replace(/^.*[\\\/]/, '')} */}
+              {attachment.img.replace(/^.*[\\\/]/, '')}
               {attachment.title}
             </h3>
             <p className="task-details-main-attachments-list-attachment-content-container-date">

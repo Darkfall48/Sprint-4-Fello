@@ -1,6 +1,9 @@
 //? Services
 
+import { getActionUpdateBoard } from '../../store/actions/board.actions'
+import { store } from '../../store/store'
 import { httpService } from '../connection/http.service'
+import { socketService, SOCKET_EMIT_BOARD_WATCH, SOCKET_EVENT_BOARD_UPDATED } from '../connection/socket.service'
 //? Private Variables
 const imgUrlMember1 =
   'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716783/member1_pf7spp.png'
@@ -70,6 +73,8 @@ async function query({
 //? Get - Read
 async function get(boardId) {
   try {
+    socketService.emit(SOCKET_EMIT_BOARD_WATCH, boardId)
+    socketService.emit(SOCKET_EVENT_BOARD_UPDATED, save)
     return await httpService.get(BASE_URL + boardId)
   } catch (err) {
     console.log('Cannot find board', err)

@@ -6,15 +6,16 @@ export function ImgUploader({ onUploaded = null }) {
     imgUrl: null,
     height: 500,
     width: 500,
+    name: '',
   })
   const [isUploading, setIsUploading] = useState(false)
 
   async function uploadImg(ev) {
     setIsUploading(true)
-    const { secure_url, height, width } = await uploadService.uploadImg(ev)
-    setImgData({ imgUrl: secure_url, width, height })
+    const { secure_url, height, width, name } = await uploadService.uploadImg(ev)
+    setImgData({ imgUrl: secure_url, width, height, title: name })
     setIsUploading(false)
-    onUploaded && onUploaded('bgImg',secure_url)
+    onUploaded && onUploaded('bgImg', secure_url)
   }
 
   function getUploadLabel() {
@@ -31,7 +32,7 @@ export function ImgUploader({ onUploaded = null }) {
         />
       )} */}
       <label htmlFor="imgUpload" className=''>{getUploadLabel()}</label>
-      <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" style={{display: 'none'}}/>
+      <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" style={{ display: 'none' }} />
     </div>
   )
 }

@@ -8,6 +8,7 @@ import { AttachmentList } from './attachment/attachment-list'
 
 export function SetAttachment({ task, attachments, group }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  // const [setCover, onSetCover] = useState(task.style)
   const buttonRef = useRef()
 
   function onRemoveAttachment(attachmentId) {
@@ -23,8 +24,9 @@ export function SetAttachment({ task, attachments, group }) {
   }
 
   function onMakeCover(imgUrl) {
-    // task.style.bgImg = imgUrl
-    // console.log('task new task', task);
+    // setCover.bgImg = imgUrl
+    // onSetCover((prevStyle) => ({ ...prevStyle, imgUrl }))
+    // console.log('setCover', setCover);
     // updateTask(group, task)
   }
 
@@ -39,13 +41,13 @@ export function SetAttachment({ task, attachments, group }) {
         onMakeCover={onMakeCover}
       />
 
-      <button
+     {!(attachments.length === 0) && <button
         ref={buttonRef}
         className="task-details-main-attachments-add-btn"
         onClick={() => setIsModalOpen(!isModalOpen)}
       >
         Add an Attachment
-      </button>
+      </button>}
 
       {isModalOpen && (
         <MainModal
