@@ -18,15 +18,20 @@ export function TaskList({
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolling(
-        taskListRef.current.scrollHeight > taskListRef.current.clientHeight
+        taskListRef.current.scrollHeight > taskListRef.current.offsetHeight
       )
     }
+
+    handleScroll()
+
     taskListRef.current.addEventListener('scroll', handleScroll)
+
     return () => {
-      if (taskListRef.current)
+      if (taskListRef.current) {
         taskListRef.current.removeEventListener('scroll', handleScroll)
+      }
     }
-  }, [])
+  }, [taskListRef])
 
   return (
     <div
