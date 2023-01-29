@@ -7,11 +7,11 @@ const imgUrlMember1 =
 const imgUrlMember2 =
   'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716611/member2_cjjxdg.png'
 const imgUrlMember3 =
-  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716621/keren.jpg'
+  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674983579/keren_b8wtda.jpg'
 const imgUrlMember4 =
-  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716621/tomi.jpg'
+  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674983579/tomi_dlw150.jpg'
 const imgUrlMember5 =
-  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716621/roi.jpg'
+  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1675002237/roi1_ixjvze.jpg'
 const BASE_URL = 'board/'
 
 export const boardService = {
