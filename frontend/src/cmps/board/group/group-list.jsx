@@ -153,8 +153,24 @@ export function GroupList({ board }) {
         {!editMode && (
           <div className="add-new-group">
             <button className="add-group-btn" onClick={onNewGroupSelect}>
-              <BsPlus className="plus" />
-              <span> Add another list </span>
+              <BsPlus
+                className="plus"
+                style={
+                  board?.style?.isLight
+                    ? { color: '#172B4D ' }
+                    : { color: 'white' }
+                }
+              />
+              <span
+                style={
+                  board?.style?.isLight
+                    ? { color: '#172B4D ' }
+                    : { color: 'white' }
+                }
+              >
+                {' '}
+                Add another list{' '}
+              </span>
             </button>
           </div>
         )}
