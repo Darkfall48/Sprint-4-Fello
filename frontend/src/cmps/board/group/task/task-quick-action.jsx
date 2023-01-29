@@ -30,11 +30,12 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, board
             closeMenu()
         }}
     >
+
         <div
             onClick={e => e.stopPropagation()}
             className="quick-action-modal"
             style={{
-                left: utilService.getPosition(buttonRef).left - 217 + 'px',
+                left: utilService.getPosition(buttonRef).left - 222 + 'px',
                 top: utilService.getPosition(buttonRef).top - 3 + 'px',
             }}
         >
@@ -70,7 +71,7 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, board
                     }}
                     ref={quickButtonRef}
                 >
-                    <TbTag/>
+                    <TbTag />
                     <span className='quick-edit-btn-title'>Edit Labels</span>
                 </button>
                 {modalOpen === 'labels' && (
@@ -145,5 +146,5 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, board
                 </button>
             </div>
         </div>
-    </section>
+     </section>
 }

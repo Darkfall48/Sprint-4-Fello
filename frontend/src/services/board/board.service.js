@@ -7,7 +7,11 @@ const imgUrlMember1 =
 const imgUrlMember2 =
   'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716611/member2_cjjxdg.png'
 const imgUrlMember3 =
-  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716621/member3_ickw2k.jpg'
+  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716621/keren.jpg'
+const imgUrlMember4 =
+  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716621/tomi.jpg'
+const imgUrlMember5 =
+  'https://res.cloudinary.com/dqbvyn6b2/image/upload/v1674716621/roi.jpg'
 const BASE_URL = 'board/'
 
 export const boardService = {
@@ -185,6 +189,16 @@ function getEmptyBoard() {
         _id: 'u103',
         fullname: 'Keren Siebner',
         imgUrl: imgUrlMember3,
+      },
+      {
+        _id: 'u104',
+        fullname: 'Tomi Irma',
+        imgUrl: imgUrlMember4,
+      },
+      {
+        _id: 'u105',
+        fullname: 'Roi Yotvat',
+        imgUrl: imgUrlMember5,
       },
     ],
   }
