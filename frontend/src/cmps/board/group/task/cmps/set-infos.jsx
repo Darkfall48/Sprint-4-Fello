@@ -1,8 +1,9 @@
 //? Icon
 import { AiOutlineEye } from 'react-icons/ai'
 import { BsCheck2Square } from 'react-icons/bs'
-import { GrTextAlignFull } from 'react-icons/gr'
 import { FaRegComment } from 'react-icons/fa'
+import { GrTextAlignFull } from 'react-icons/gr'
+import { ImAttachment } from 'react-icons/im'
 //? Services
 import { taskService } from '../../../../../services/board/task.service'
 
@@ -11,7 +12,8 @@ export function SetInfos({ task }) {
 
   function SetFollow() {
     if (!task.priority || task.priority !== 'high')
-      return <article className="task-preview-infos-no-follow"></article>
+      // return <article className="task-preview-infos-no-follow"></article>
+      return
     return (
       <article
         className="task-preview-infos-follow"
@@ -22,22 +24,10 @@ export function SetInfos({ task }) {
     )
   }
 
-  function SetTodos() {
-    if (!task.checklists || !task.checklists.length)
-      return <article className="task-preview-infos-no-todo"></article>
-    return (
-      <article className="task-preview-infos-todo" title="Element of checklist">
-        <BsCheck2Square />
-        <span>
-          {taskService.countIsDone(task)}/{taskService.countTodos(task)}
-        </span>
-      </article>
-    )
-  }
-
   function SetDescription() {
     if (!task.description)
-      return <article className="task-preview-infos-no-description"></article>
+      // return <article className="task-preview-infos-no-description"></article>
+      return
     return (
       <article
         className="task-preview-infos-description"
@@ -49,12 +39,47 @@ export function SetInfos({ task }) {
   }
 
   function SetComments() {
-    if (!task.comments || !task.comments.length)
-      return <article className="task-preview-infos-no-comment"></article>
+    if (!task?.comments || !task?.comments?.length) return
+    const countComments = task?.comments?.length
     return (
       <article className="task-preview-infos-comment" title="Comments">
         <FaRegComment />
-        <span>{task.comments.length}</span>
+        <span>{countComments}</span>
+      </article>
+    )
+  }
+
+  function SetAttachments() {
+    if (!task?.attachments || !task?.attachments?.length) return
+    const countAttachments = task?.attachments?.length
+    return (
+      <article
+        className="task-preview-infos-attachments"
+        title="Element of attachments"
+      >
+        <ImAttachment />
+        <span>{countAttachments}</span>
+      </article>
+    )
+  }
+
+  function SetTodos() {
+    const isDoneCount = +taskService.countIsDone(task)
+    const todosCount = +taskService.countTodos(task)
+    const isComplete = isDoneCount === todosCount ? true : false
+
+    if (!task.checklists || !task.checklists.length || !todosCount)
+      // return <article className="task-preview-infos-no-todo"></article>
+      return
+    return (
+      <article
+        className={`task-preview-infos-todo${isComplete ? ' complete' : ''}`}
+        title="Element of checklist"
+      >
+        <BsCheck2Square />
+        <span>
+          {isDoneCount}/{todosCount}
+        </span>
       </article>
     )
   }
@@ -62,9 +87,11 @@ export function SetInfos({ task }) {
   return (
     <article className="task-preview-infos">
       <SetFollow />
-      <SetTodos />
-      {task?.description && <SetDescription />}
+      {/* Dates */}
+      <SetDescription />
       <SetComments />
+      <SetAttachments />
+      <SetTodos />
     </article>
   )
 }

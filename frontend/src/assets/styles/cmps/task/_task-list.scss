@@ -5,7 +5,7 @@
   // place-items: center;
   gap: 8px;
   // padding: 0px 4px;
-  padding-right: 8px; // TODO: When scroll appear
+  // padding-right: 8px; // TODO: When scroll appear
   padding-bottom: 2px;
 
   overflow-x: hidden;
@@ -29,5 +29,12 @@
     // height: 12px;
     border-bottom: 10px solid transparent;
     border-radius: 0.2rem;
+  }
+}
+
+.task-list-section.scrolling {
+  padding-right: 8px;
+  & + form {
+    padding-right: 16px;
   }
 }

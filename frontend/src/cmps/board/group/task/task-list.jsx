@@ -1,11 +1,8 @@
+//? Libraries
+import { useRef, useState, useEffect } from 'react'
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 //? Components
 import { TaskPreview } from './task-preview'
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
-import { useSelector } from 'react-redux'
-import { saveGroup } from '../../../../store/actions/board.actions'
-import { boardService } from '../../../../services/board/board.service'
-import { utilService } from '../../../../services/util.service'
-import { Loader } from '../../../helpers/loader'
 
 export function TaskList({
   groupId,
@@ -15,12 +12,28 @@ export function TaskList({
   labelsPreview,
   provided,
 }) {
-  // const board = useSelector((storeState) => storeState.boardModule.board)
-// if(!group || !group?.length) return <Loader/>
+  const taskListRef = useRef(null)
+  const [isScrolling, setIsScrolling] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolling(
+        taskListRef.current.scrollHeight > taskListRef.current.clientHeight
+      )
+    }
+    taskListRef.current.addEventListener('scroll', handleScroll)
+    return () => {
+      taskListRef.current.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
-    <div className="task-list-section">
+    <div
+      ref={taskListRef}
+      className={`task-list-section ${isScrolling ? 'scrolling' : ''}`}
+    >
       {group.tasks.map((task, index) => (
-        <Draggable key={index} draggableId={'s'+index} index={index}>
+        <Draggable key={index} draggableId={task.id} index={index}>
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}
@@ -45,18 +58,3 @@ export function TaskList({
     </div>
   )
 }
-
-// function getCurrTasks(){
-//   const tasksArray = []
-//   const currGroup = board.groups.map(group => group.tasks)
-//   console.log('currGroup', currGroup);
-//   const currTasks = currGroup.map(task => task)
-//   console.log('currTasks', currTasks);
-//   const currTask = currTasks.map(task => {
-//     task.map(item => {
-//       tasksArray.push(item)
-//     })
-
-//   })
-//   return tasksArray
-// }

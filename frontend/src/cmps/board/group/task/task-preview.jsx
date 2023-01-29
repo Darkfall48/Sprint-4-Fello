@@ -19,7 +19,7 @@ export function TaskPreview({
   labelsPreview,
   closeMenu,
   isMenuOpen,
-  mode
+  mode,
 }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const navigate = useNavigate()
@@ -29,11 +29,14 @@ export function TaskPreview({
       className="task-preview-section"
       onClick={(ev) => {
         ev.stopPropagation()
-        {!isMenuOpen && navigate(`/board/${board._id}/group/${group.id}/task/${task.id}`)}
+        {
+          !isMenuOpen &&
+            navigate(`/board/${board._id}/group/${group.id}/task/${task.id}`)
+        }
       }}
     >
-      {task.style && <SetCover task={task} />}
-      {task.labelIds && (
+      {task?.style && <SetCover task={task} />}
+      {task?.labelIds && (
         <SetLabels
           handleLabelClick={handleLabelClick}
           type={labelsPreview}
@@ -41,17 +44,27 @@ export function TaskPreview({
           task={task}
         />
       )}
-      {task.title && <SetTitle type="preview" groupId={groupId} group={group} task={task} mode={mode} closeMenu={closeMenu}/>}
-      {!isMenuOpen&&
-      <SetEditBtn
-        onArchiveTask={onArchiveTask}
-        task={task}
-        handleLabelClick={handleLabelClick}
-        key={task.id}
-        groupId={group.id}
-        boardId={board._id}
-        labelsPreview={labelsPreview} />
-      }
+      {task?.title && (
+        <SetTitle
+          type="preview"
+          groupId={groupId}
+          group={group}
+          task={task}
+          mode={mode}
+          closeMenu={closeMenu}
+        />
+      )}
+      {!isMenuOpen && (
+        <SetEditBtn
+          onArchiveTask={onArchiveTask}
+          task={task}
+          handleLabelClick={handleLabelClick}
+          key={task.id}
+          groupId={group.id}
+          boardId={board._id}
+          labelsPreview={labelsPreview}
+        />
+      )}
       <SetInfos task={task} />
       <SetMembers type={'preview'} board={board} task={task} />
     </section>

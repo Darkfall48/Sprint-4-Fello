@@ -7,27 +7,28 @@
     margin-bottom: 6px;
     display: flex;
     place-items: center;
-    gap: 4px;
+    gap: 8px;
     font-size: 12px;
     color: #6b778c;
     //* Is Following
-    &-no-follow {
-      display: none;
-    }
     &-follow {
       font-size: 16px;
       padding-top: 3px;
-      padding-right: 4px;
+      margin-right: 2px;
     }
-    //* Todos
-    &-no-todo {
-      display: none;
+
+    //* Description
+    &-description {
+      margin-right: 2px;
+      font-size: 14px;
+      padding-top: 3px;
     }
-    &-todo {
-      padding-right: 4px;
+    //* Comment
+    &-comment {
       display: flex;
       place-items: center;
       gap: 4px;
+      margin-right: 2px;
       & svg {
         font-size: 14px;
       }
@@ -35,24 +36,35 @@
         font-size: 12px;
       }
     }
-    //* Description
-    &-no-description {
-      display: none;
-    }
-    &-description {
-      padding-right: 4px;
-      font-size: 14px;
-      padding-top: 3px;
-    }
-    //* Comment
-    &-no-comment {
-      display: none;
-    }
-    &-comment {
-      padding-right: 4px;
+
+    //* Attachments
+    &-attachments {
       display: flex;
       place-items: center;
       gap: 4px;
+      margin-right: 2px;
+      & svg {
+        font-size: 14px;
+      }
+      & span {
+        font-size: 12px;
+      }
+    }
+
+    //* Todos
+    &-todo {
+      display: flex;
+      place-items: center;
+      gap: 4px;
+      margin-right: 2px;
+      &.complete {
+        background-color: #61bd4f;
+        color: white;
+        border-radius: 3px;
+        padding: 6px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
       & svg {
         font-size: 14px;
       }
