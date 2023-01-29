@@ -17,9 +17,7 @@ export function TaskList({
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolling(
-        taskListRef.current.scrollHeight > taskListRef.current.offsetHeight
-      )
+      setIsScrolling(taskListRef.current.scrollHeight)
     }
 
     handleScroll() // Call handleScroll function when the component loads
