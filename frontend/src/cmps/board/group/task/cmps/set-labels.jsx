@@ -27,7 +27,7 @@ export function SetLabels({
       return (
         <article className="task-preview-simple-labels">
           {labelIds.map((labelId, idx) => {
-            const label = labels.find((label) => label.id === labelId)
+            const label = labels.find((label) => label?.id === labelId)
             return (
               <span
                 className="task-preview-simple-labels-label"
@@ -52,7 +52,7 @@ export function SetLabels({
         <article className="task-preview-detailed-labels">
           <div className="task-preview-detailed-labels-container">
             {labelIds.map((labelId, idx) => {
-              const label = labels?.find((label) => label.id === labelId)
+              const label = labels?.find((label) => label?.id === labelId)
               return (
                 <span
                   className="task-preview-detailed-labels-container-label"
@@ -92,7 +92,7 @@ export function SetLabels({
           <h2 className="task-details-main-labels-title">Labels</h2>
           <div className="task-details-main-labels-container">
             {labelIds.map((labelId, idx) => {
-              const label = labels?.find((label) => label.id === labelId)
+              const label = labels?.find((label) => label?.id === labelId)
               return (
                 <span
                   className="task-details-main-labels-container-label"

@@ -1,127 +1,107 @@
-.task-details-main-attachment{
-    padding: 0;
-    display: grid;
-    grid-auto-columns: 56px 424px 88px;
-    grid-template-areas:
-      'icon title remove-btn'
-      'percentage advancement advancement'
-      'todos todos todos'
-      '. add-btn .';
-    margin-bottom: 24px;
+.task-details-main-attachments {
+  padding: 0;
+  display: grid;
+  grid-auto-columns: 56px 424px 88px;
+  grid-template-areas:
+    'icon title .'
+    'att att att'
+    '. add-btn .';
+  margin-bottom: 24px;
 
-    // border-radius: 3px;
-    // margin: 0 0 8px;
-    // min-height: 80px;
-    // overflow: hidden;
-    // position: relative;
-    // display: flex;
-    // flex-direction: column;
-
-    &-input {
-        grid-area: title;
-      }
-
-    button{
-        text-decoration: underline;
-        background-color: transparent;
-        color: #5e6c84;
-    }
-
-    &-thumbnail{
-        background-color: #091e420a;
-        background-position: 50%;
-        background-repeat: no-repeat;
-        background-size: contain;
-        border-radius: 3px;
-        height: 80px;
-        left: 0;
-        margin-top: -40px;
-        position: absolute;
-        text-align: center;
-        text-decoration: none;
-        top: 50%;
-        width: 112px;
-        z-index: 1;
-
-        a{
-            img{
-                border-radius: rem(3px);
-            }
-          
-        }
-
-        
-    }
-
-   
-}
-
-.task-details-main-attachment{
-
-    &-icon{
-        grid-area: icon;
+  &-icon {
+    grid-area: icon;
     justify-self: flex-start;
     margin-left: 22px;
-    color: #172b4dd6;
+    color: #172b4d;
     font-size: 20px;
-    }
+  }
 
-    &-list{
-        list-style: none;
-        padding: 0;
-        margin: 0;
+  &-title {
+    grid-area: title;
+    margin: 0;
+    justify-self: flex-start;
+    font-size: 16px;
+    font-weight: 600;
+    color: #172b4d;
+  }
 
-        &-attachment{
-            display: flex;
-            flex-direction: column;
-            // align-items: center;
-            justify-content: space-between;
-        }
- 
-       
-    }
-
-
-    &-preview{
-        background-color: #091e420a;
-        background-position: 50%;
-        background-repeat: no-repeat;
-        background-size: contain;
-        // border-radius: 3px;
-        height: 80px;
-        // left: 0;
-        // margin-top: -40px;
-        // position: absolute;
-        text-align: center;
-        text-decoration: none;
-        // top: 50%;
+  &-list {
+    grid-area: att;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    &-attachment {
+      margin-top: 13px;
+      display: flex;
+      flex-direction: row;
+      margin-left: 56px;
+      gap: 0px 16px;
+      align-items: center;
+      &-media-container {
+        // height: 80px;
         width: 112px;
-        z-index: 1;
-    }
+      }
 
-    img{
-        border-radius: rem(3px);
+      &-content-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        &-title {
+          font-weight: 700;
+          color: #172b4d;
+        }
+        &-date {
+          color: #172b4d;
+        }
+        &-remove-btn {
+          cursor: pointer;
+          text-decoration: underline;
+          color: #172b4d;
+        }
+        &-cover-btn {
+          cursor: pointer;
+          text-decoration: underline;
+          color: #172b4d;
+        }
+      }
     }
+  }
+
+  &-add-btn {
+    grid-area: add-btn;
+    justify-self: flex-start;
+    @include btn(
+      'task-edit',
+      $list-btn-bg-clr-modal-hover,
+      6px 12px,
+      $task-details-btn-bg-clr-hover
+    );
+    display: flex;
+    margin: 0;
+    margin-top: 16px;
+    width: fit-content;
+  }
 }
 
-.task-attachment-modal-content{
-    label{
-        cursor: pointer;
-        font-size: 23px;
-        height: 32px;
-        width: 100%;
-        font-size: 14px;
-        color: #172b4d;
-        display: block;
-        font-weight: 400;
-        margin: 0;
-        padding: 6px 0px 6px 6px;
-        position: relative;
-        text-decoration: none;
+.task-attachment-modal-content {
+  label {
+    cursor: pointer;
+    font-size: 23px;
+    height: 32px;
+    width: 100%;
+    font-size: 14px;
+    color: #172b4d;
+    display: block;
+    font-weight: 400;
+    margin: 0;
+    padding: 6px 0px 6px 6px;
+    position: relative;
+    text-decoration: none;
 
-        &:hover{
-            background-color: #091e420a;
-        }
-
+    &:hover {
+      background-color: #091e420a;
     }
+  }
 }
