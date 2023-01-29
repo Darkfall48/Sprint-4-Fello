@@ -72,7 +72,7 @@ export function GroupList({ board }) {
       await loadBoard(board._id)
       showSuccessMsg('Boards loaded')
     } catch (err) {
-      navigate('/board') //TODO: Ask Roi why it's not working
+      navigate('/board') //! Not working !
       console.log('Board failed to load', err)
       showErrorMsg('Cannot load boards')
     }
@@ -168,8 +168,7 @@ export function GroupList({ board }) {
                     : { color: 'white' }
                 }
               >
-                {' '}
-                Add another list{' '}
+                Add another list
               </span>
             </button>
           </div>
