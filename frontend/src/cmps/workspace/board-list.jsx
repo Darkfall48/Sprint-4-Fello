@@ -4,7 +4,7 @@ import { BoardAdd } from "./board-add";
 
 import { BoardPreview } from "./board-preview";
 
-export function BoardList({ boards, onEditBoard, onRemoveBoard, createBoardPlaceholder }) {
+export function BoardList({ boards, onEditBoard, createBoardPlaceholder }) {
     const buttonRef = useRef()
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -23,7 +23,6 @@ export function BoardList({ boards, onEditBoard, onRemoveBoard, createBoardPlace
                     <BoardPreview
                         board={board}
                         onEditBoard={onEditBoard}
-                        onRemoveBoard={onRemoveBoard}
                     />
                 </li>)}
             {createBoardPlaceholder && <button ref={buttonRef} className="board-list-btn" onClick={() => { setIsModalOpen(!isModalOpen) }}>Create new board</button>}

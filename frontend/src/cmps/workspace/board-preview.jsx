@@ -4,7 +4,7 @@ import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { updateBoard } from '../../store/actions/board.actions';
 
-export function BoardPreview({ board, onRemoveBoard }) {
+export function BoardPreview({ board }) {
 
   function onStarredBoard(ev) {
     ev.stopPropagation()

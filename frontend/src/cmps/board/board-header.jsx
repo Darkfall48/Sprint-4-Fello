@@ -8,7 +8,7 @@ import { loadBoard, updateBoard } from '../../store/actions/board.actions'
 import { BoardMenu } from './side-menu/board-menu'
 import { Loader } from '../helpers/loader'
 
-export function BoardHeader({ board }) {
+export function BoardHeader({ board}) {
   const contentRef = useRef(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isStarred, setIsStarred] = useState(board.isStarred)

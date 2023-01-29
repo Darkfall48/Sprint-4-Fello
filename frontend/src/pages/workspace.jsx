@@ -8,7 +8,7 @@ import {
 import { AiOutlineStar } from 'react-icons/ai'
 import { AiOutlineClockCircle } from 'react-icons/ai'
 
-import { loadBoards, removeBoard } from '../store/actions/board.actions'
+import { loadBoards } from '../store/actions/board.actions'
 import { Loader } from '../cmps/helpers/loader'
 
 export function Workspace() {
@@ -34,16 +34,6 @@ export function Workspace() {
     }
   }
 
-  async function onRemoveBoard(boardId) {
-    await removeBoard(boardId)
-    try {
-      console.log(boardId, 'removed')
-      showSuccessMsg('Board removed')
-    } catch (err) {
-      showErrorMsg('Cannot remove board')
-    }
-  }
-
   function onStarredBoard() {
     if (!starredBoard.length) return
     else
@@ -59,19 +49,18 @@ export function Workspace() {
     <section className="workspace-section">
       <div className="starred-boards-container">
         {onStarredBoard()}
-        <BoardList boards={starredBoard} onRemoveBoard={onRemoveBoard} />
+        <BoardList boards={starredBoard}/>
       </div>
       <div className="recently-viewed-boards-container">
         <h1>
           <AiOutlineClockCircle className="workspace-icons" /> Recently viewed
         </h1>
-        <BoardList boards={recentlyViewedBoard} onRemoveBoard={onRemoveBoard} />
+        <BoardList boards={recentlyViewedBoard} />
       </div>
       <div className="your-workspace-boards-container">
         <h3>Your workspaces</h3>
         <BoardList
           boards={boards}
-          onRemoveBoard={onRemoveBoard}
           createBoardPlaceholder={true}
         />
       </div>
