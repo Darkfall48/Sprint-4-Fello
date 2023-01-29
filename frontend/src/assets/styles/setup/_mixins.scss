@@ -110,7 +110,7 @@
     display: block;
     height: 32px;
     // margin-top: 8px;
-    max-width: 300px;
+    // max-width: 300px;
     overflow: hidden;
     position: relative;
     text-decoration: none;
@@ -124,9 +124,7 @@
     color: $clr-txt;
     padding: 6px 12px;
     width: 168px;
-  }
-
-  @else if $type == action{
+  } @else if $type == action {
     margin-left: 0;
     color: white;
     width: fit-content;

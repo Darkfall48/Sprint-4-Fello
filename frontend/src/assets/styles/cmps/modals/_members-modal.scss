@@ -21,6 +21,7 @@
         @include btn('modal-full', white, 6px 0, $list-btn-bg-clr-modal-hover);
         display: grid;
         grid-template-columns: 1fr 5fr 1fr !important;
+        // grid-template-columns: 40px 200px 40px !important;
         justify-items: start;
         margin: 0 0 0 5px;
         font-size: 1em;
