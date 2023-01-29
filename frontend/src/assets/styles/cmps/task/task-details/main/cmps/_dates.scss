@@ -1,12 +1,32 @@
-.react-calendar {}
+.react-calendar {
 
-.react-calendar__navigation button {
-    color: #8cbede;
-    min-width: 44px;
-    background: none;
-    font-size: 16px;
-    margin-top: 8px;
+    button {
+        background-color: aqua;
+    }
+    
 }
+
+// .due-date-btn{
+//     text-align: center;
+// }
+
+.react-calendar__navigation {
+    display: flex;
+    align-items: center;
+
+    button {
+        color: #8cbede;
+        min-width: 44px;
+        background: none;
+        font-size: 16px;
+        margin-top: 8px;
+        margin: auto !important;
+        display: block !important;
+        padding: 0 !important;
+    }
+}
+
+
 
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {

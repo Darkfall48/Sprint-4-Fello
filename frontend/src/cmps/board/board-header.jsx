@@ -66,7 +66,7 @@ export function BoardHeader({ board }) {
             {board.isStarred ? (
               <AiFillStar className="board-header-starred" />
             ) : (
-              <AiOutlineStar className="board-header-star" style={board?.style?.isLight ? { color: '#172B4D ' } : { color: 'white' }} />
+              <AiOutlineStar className="board-header-star" style={board?.style?.isLight ? { fiil: '#172B4D ' } : { fill: 'white' }} />
             )}
           </button>
         }
