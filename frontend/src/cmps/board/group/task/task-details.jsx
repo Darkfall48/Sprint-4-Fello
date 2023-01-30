@@ -170,7 +170,7 @@ export function TaskDetails() {
                 group={group}
               />
             ))}
-          {board && <SetActivities board={board} taskId={taskId} />}
+          {/* {board && <SetActivities board={board} taskId={taskId} />} */}
         </main>
 
         <aside
