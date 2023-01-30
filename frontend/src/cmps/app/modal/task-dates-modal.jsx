@@ -1,6 +1,7 @@
 
 import React, { Component, useState } from 'react'
 import Calendar from 'react-calendar';
+import Datepicker from 'react-calendar';
 import { updateTask } from '../../../store/actions/board.actions';
 
 export function TaskDatesModal({ task, group, onCloseModal }) {
@@ -16,8 +17,29 @@ export function TaskDatesModal({ task, group, onCloseModal }) {
   }
 
   return <div>
-    <Calendar onChange={onChange} onClickDay={changeDueDate} onFocus value={value}/>
-  <p className='due-date-btn'>Due date: {value.toLocaleDateString()}</p>
+    <Datepicker 
+    onChange={onChange} 
+    onClickDay={changeDueDate} 
+    onFocus 
+    value={value}
+    marked={[
+      { 
+          date: Date.now(), 
+          color: '#46c4f3'
+      }]}
+    // tileClassName={({ date}) => {
+    //   let today = date.getDate()
+    //   if(new Date===date){
+    //     console.log('date', date)
+    //    return  'highlight'
+    //   }
+    // }}
+    />
+  <p id='due-date-btn'>Due date</p>
+  <input type="text" className="due-date-input" defaultValue={value.toLocaleDateString()} contentEditable={false} 
+    autoFocus
+    onFocus={e => e.currentTarget.select()}
+  />
   </div>
 }
 

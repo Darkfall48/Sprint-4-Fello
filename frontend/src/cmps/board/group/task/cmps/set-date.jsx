@@ -11,7 +11,7 @@ export function SetDate({ task, onUpdateTask }) {
     } else {
       determineDueDateStatus()
     }
-  }, [isChecked, task.dueDate])
+  }, [isChecked, task?.dueDate])
 
   function handleCheckboxChange() {
     setIsChecked(!isChecked)
