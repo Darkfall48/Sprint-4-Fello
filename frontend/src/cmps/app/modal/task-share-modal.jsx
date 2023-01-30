@@ -72,7 +72,8 @@ export function TaskShareModal() {
         title={url}
         defaultValue={url}
         placeholder={url}
-        onFocus={handleFocus}        autoFocus
+        autoFocus
+        onFocus={e => e.currentTarget.select()}
       />
       <FiCopy title="Copy url to clipboard" onClick={getUrl} />
       <FiShare title={`Share this ${type}`} onClick={handleShare} />

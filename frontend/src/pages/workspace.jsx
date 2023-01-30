@@ -27,9 +27,9 @@ export function Workspace() {
 
   useEffect(() => {
     socketService.on(SOCKET_EVENT_BOARD_UPDATED, socketUpdateBoard)
-    return ()=>{
-      socketService.off(SOCKET_EVENT_BOARD_UPDATED, socketUpdateBoard)
-    }
+    // return ()=>{
+    //   socketService.off(SOCKET_EVENT_BOARD_UPDATED, socketUpdateBoard)
+    // }
   }, [])
 
   function socketUpdateBoard(updatedBoard) {

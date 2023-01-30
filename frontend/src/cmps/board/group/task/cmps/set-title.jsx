@@ -14,7 +14,7 @@ export function SetTitle({ onUpdateTask, group, type, groupId, task, mode, close
 
 
   const [updatedTask, setUpdatedTask] = useState(task)
-  console.log('groupId', groupId)
+  // console.log('groupId', groupId)
   function onUpdateTitle({ value }) {
     onUpdateTask('title', value)
   }
