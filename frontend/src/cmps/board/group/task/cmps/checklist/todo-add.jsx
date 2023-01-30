@@ -37,7 +37,6 @@ export function TodoAdd({ group, task, checklist, onCloseModal }) {
       inputRef.current.value = ''
       setTodoToAdd('')
     }
-
   }
 
   return (
@@ -47,6 +46,7 @@ export function TodoAdd({ group, task, checklist, onCloseModal }) {
       className="task-details-main-checklist-add-todo-input"
     >
       <textarea
+        className="task-details-main-checklist-add-todo-input-title"
         name="title"
         id="title"
         cols="30"
@@ -56,16 +56,16 @@ export function TodoAdd({ group, task, checklist, onCloseModal }) {
         onChange={handleChange}
         ref={inputRef}
         // onBlur={() => onCloseModal()}
-        style={{
-          overflow: 'hidden',
-          overflowWrap: 'break-word',
-          height: '56px',
-        }}
       ></textarea>
 
-      <div className="todo-btns">
-        <button className="todo-btn">Add</button>
-        <button className="cancel-btn" onClick={() => onCloseModal()}>
+      <div className="task-details-main-checklist-add-todo-input-btn-container">
+        <button className="task-details-main-checklist-add-todo-input-btn-container-add-btn">
+          Add
+        </button>
+        <button
+          className="task-details-main-checklist-add-todo-input-btn-container-cancel-btn"
+          onClick={() => onCloseModal()}
+        >
           Cancel
         </button>
       </div>
