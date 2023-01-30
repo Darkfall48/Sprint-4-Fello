@@ -30,7 +30,7 @@ export function SetAttachment({ task, attachments, group }) {
     // updateTask(group, task)
   }
 
-
+  if (attachments?.length === 0) return
   return (
     <section className="task-details-main-attachments">
       <ImAttachment className="task-details-main-attachments-icon" />
@@ -42,13 +42,15 @@ export function SetAttachment({ task, attachments, group }) {
         onMakeCover={onMakeCover}
       />
 
-      {!(attachments.length === 0) && <button
-        ref={buttonRef}
-        className="task-details-main-attachments-add-btn"
-        onClick={() => setIsModalOpen(!isModalOpen)}
-      >
-        Add an Attachment
-      </button>}
+      {!(attachments.length === 0) && (
+        <button
+          ref={buttonRef}
+          className="task-details-main-attachments-add-btn"
+          onClick={() => setIsModalOpen(!isModalOpen)}
+        >
+          Add an Attachment
+        </button>
+      )}
 
       {isModalOpen && (
         <MainModal
