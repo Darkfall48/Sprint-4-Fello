@@ -12,14 +12,17 @@
   //   '. add-btn .';
   margin-bottom: 24px;
   // gap: 12px 0px;
-
+  @include for-mobile-layout {
+    // grid-auto-columns: 56px 1fr 1fr;
+    // min-width: calc(100vw - 78px);
+    max-width: calc(100vw - 14px);
+  }
   &-header {
     display: flex;
     // grid-area: 'icon title remove-btn';
     flex-direction: row;
     margin: 0;
     margin-bottom: 9px;
-
     &-icon {
       grid-area: icon;
       justify-self: flex-start;
@@ -35,7 +38,6 @@
       flex-direction: row;
       justify-content: space-between;
       width: 100%;
-
       &-title {
         grid-area: title;
         margin: 0;
@@ -69,7 +71,6 @@
       width: 100%;
       margin-left: 18px;
       margin-right: 8px;
-
       &-title {
         width: 100%;
         height: 54px;
@@ -129,7 +130,6 @@
     // flex-direction: row;
     // grid-area: progress;
     margin-bottom: 6px;
-
     &-percentage {
       grid-area: percentage;
       font-size: 11px;
@@ -148,7 +148,11 @@
       // margin: 0 0 0 40px;
       overflow: hidden;
       position: relative;
-
+      @include for-mobile-layout {
+        // grid-auto-columns: 56px 1fr;
+        // min-width: calc(100vw - 56px);
+        max-width: calc(100vw - 78px);
+      }
       &-transition {
         transition: background 0.14s, width 0.2s;
         background: rgb(69, 185, 178);
@@ -283,7 +287,6 @@
       grid-area: title;
       margin-left: 56px;
       margin-right: 8px;
-
       &-title {
         min-width: 100%;
         max-height: 54px;

@@ -1,73 +1,65 @@
-.task-cover{
-
-    button{
-        width: 100%;
-        margin-left: 0;
-        text-align: center;
-        display: block;
-    }
+.task-cover {
+  button {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+    display: block;
+  }
 }
 
-.btns-cover-color{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
+.btns-cover-color {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
 
-
-    .btn-cover-color{
-        margin: 0;
-        border-radius: 3px;
-        height: 72px;
-        width: 100%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        box-shadow: none;
-        width: 50px;
-        height: 32px;
-        cursor: pointer;
-
-        
-        &:focus {
-            outline: 2px solid #0079BF;
-            border: 2px solid white;
-        }
+  .btn-cover-color {
+    margin: 0;
+    border-radius: 3px;
+    height: 72px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: none;
+    width: 50px;
+    height: 32px;
+    cursor: pointer;
+    &:focus {
+      outline: 2px solid #0079bf;
+      border: 2px solid white;
     }
+  }
 }
 
-.cover-size-container{
-    display: flex;
-    gap: 10px;
+.cover-size-container {
+  display: flex;
+  gap: 10px;
+  .cover-size {
+    margin: 0;
+    height: 72px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: none;
+    cursor: pointer;
+    background: var(--ds-surface-raised, #ffffff);
+    border-radius: 3px;
+    position: relative;
+    border: 1px solid var(--ds-border, rgba(9, 30, 66, 0.08));
 
-    .cover-size{
-        margin: 0;
-        height: 72px;
-        width: 100%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        box-shadow: none;
-        cursor: pointer;
-        background: var(--ds-surface-raised, #FFFFFF);
-        border-radius: 3px;
-        position: relative;
-        border: 1px solid var(--ds-border, rgba(9, 30, 66, 0.08));
+    .cover-lines {
+      position: absolute;
+      bottom: 4px;
 
-        .cover-lines{
-            position: absolute;
-            bottom: 4px;
-
-            .line-1{
-                width: 116px;
-            }
-        }
-
-        // & .active{
-        //     box-shadow: 0 0 0 2px var(--ds-border-inverse, #FFFFFF), 0 0 0 4px var(--ds-border-brand, #0079BF);
-        //     filter: none;
-        // }
+      .line-1 {
+        width: 116px;
+      }
     }
 
-
+    // & .active{
+    //     box-shadow: 0 0 0 2px var(--ds-border-inverse, #FFFFFF), 0 0 0 4px var(--ds-border-brand, #0079BF);
+    //     filter: none;
+    // }
+  }
 }
-

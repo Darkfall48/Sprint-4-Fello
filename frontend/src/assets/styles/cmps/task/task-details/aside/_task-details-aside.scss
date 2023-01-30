@@ -4,4 +4,7 @@
   padding-top: 6px;
   display: flex;
   flex-direction: column;
+  @include for-mobile-layout {
+    width: 100vw;
+  }
 }
