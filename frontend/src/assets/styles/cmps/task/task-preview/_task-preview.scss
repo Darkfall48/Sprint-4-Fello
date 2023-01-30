@@ -30,19 +30,19 @@
     // gap: 8px;
   }
 
-  &:hover {
-    background-color: #f4f5f7;
+  // &:hover {
+    // background-color: #f4f5f7;
 
     .task-preview-edit {
       display: block;
       position: fixed;
-
+    }
       .task-preview-edit-menu {
         position: relative;
         left: 25px;
       }
-    }
-  }
+    // }
+  // }
 
   img {
     grid-area: cover;

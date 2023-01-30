@@ -46,7 +46,7 @@ export function SetChecklist({ task, checklist, group }) {
   }
 
   function onChangeTitle(ev) {
-    if (ev._reactName === "onSubmit") {
+    if (ev._reactName === 'onSubmit') {
       ev.preventDefault()
       // if (contentRef.current.value === '') return
       checklist.title = editChecklist.title
@@ -61,84 +61,88 @@ export function SetChecklist({ task, checklist, group }) {
       updateTask(group, task)
       setIsEditOn(!isEditOn)
     }
-
   }
 
   function onRemoveChecklist(checklistId) {
     const { checklists } = task
-    const idx = checklists.findIndex(checklist => checklist.id === checklistId)
+    const idx = checklists.findIndex(
+      (checklist) => checklist.id === checklistId
+    )
     checklists.splice(idx, 1)
     updateTask(group, task)
   }
 
   return (
     <section className="task-details-main-checklist">
-      <BsCheck2Square className="task-details-main-checklist-icon" />
-      {!isEditOn && (
-        <>
-          <h3
-            ref={contentRef}
-            onClick={() => setIsEditOn(!isEditOn)}
-            className="task-details-main-checklist-title"
-          >
-            {checklist.title}
-          </h3>
-          <button
-            className="task-details-main-checklist-remove-btn"
-            onClick={() => onRemoveChecklist(checklist.id)}
-          >
-            Delete
-          </button>
-        </>
-      )}
-
-      {isEditOn && (
-        <form
-          // onKeyDown={(ev) => onChangeTitle(ev)}
-          onSubmit={(ev) => onChangeTitle(ev)}
-          onKeyDown={(ev) => onChangeTitle(ev)}
-          className="task-details-main-checklist-title-input"
-        >
-          <textarea
-            name="title"
-            id="title"
-            cols="30"
-            rows="10"
-            placeholder={checklist.title}
-            value={editChecklist.title}
-            onChange={handleChange}
-            // ref={inputRef}
-            // onBlur={() => onCloseModal()}
-            style={{
-              overflow: 'hidden',
-              overflowWrap: 'break-word',
-              height: '56px',
-            }}
-          ></textarea>
-
-          <div className="todo-btns">
-            <button className="todo-btn">Save</button>
-            <button
-              className="cancel-btn"
+      <div className="task-details-main-checklist-header">
+        <BsCheck2Square className="task-details-main-checklist-header-icon" />
+        {!isEditOn && (
+          <div className="task-details-main-checklist-header-container">
+            <h3
+              ref={contentRef}
               onClick={() => setIsEditOn(!isEditOn)}
+              className="task-details-main-checklist-header-container-title"
             >
-              <AiOutlineClose />
+              {checklist.title}
+            </h3>
+            <button
+              className="task-details-main-checklist-header-container-remove-btn"
+              onClick={() => onRemoveChecklist(checklist.id)}
+            >
+              Delete
             </button>
           </div>
-        </form>
-      )}
+        )}
 
-      <span className="task-details-main-checklist-progress-bar-percentage">
-        {getUserProgress() + '%'}
-      </span>
-      <div className="task-details-main-checklist-progress-bar-advancement">
-        <div className="task-details-main-checklist-progress-bar-advancement-transition"
-          style={{
-            height: 'inherit',
-            width: getUserProgress() + '%',
-            background: getUserProgress() === 100 ? '#61bd4f' : '#5ba4cf',
-          }}
-        ></div>
+        {isEditOn && (
+          <form
+            // onKeyDown={(ev) => onChangeTitle(ev)}
+            onSubmit={(ev) => onChangeTitle(ev)}
+            onKeyDown={(ev) => onChangeTitle(ev)}
+            className="task-details-main-checklist-header-input"
+          >
+            <textarea
+              className="task-details-main-checklist-header-input-title"
+              name="title"
+              id="title"
+              cols="30"
+              rows="10"
+              placeholder={checklist.title}
+              value={editChecklist.title}
+              onChange={handleChange}
+              // ref={inputRef}
+              // onBlur={() => onCloseModal()}
+            ></textarea>
+
+            <div className="task-details-main-checklist-header-input-btn-container">
+              <button className="task-details-main-checklist-header-input-btn-container-save-btn">
+                Save
+              </button>
+              <a
+                className="task-details-main-checklist-header-input-btn-container-cancel-btn"
+                onClick={() => setIsEditOn(!isEditOn)}
+              >
+                <AiOutlineClose />
+              </a>
+            </div>
+          </form>
+        )}
+      </div>
+
+      <div className="task-details-main-checklist-progress-bar">
+        <span className="task-details-main-checklist-progress-bar-percentage">
+          {getUserProgress() + '%'}
+        </span>
+        <div className="task-details-main-checklist-progress-bar-advancement">
+          <div
+            className="task-details-main-checklist-progress-bar-advancement-transition"
+            style={{
+              height: 'inherit',
+              width: getUserProgress() + '%',
+              background: getUserProgress() === 100 ? '#61bd4f' : '#5ba4cf',
+            }}
+          ></div>
+        </div>
       </div>
 
       <TodoList

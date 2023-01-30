@@ -5,15 +5,15 @@
     position: absolute !important;
     align-self: baseline;
     justify-self: end;
-    display: none;
     transition: all ease-in-out 0.3s;
-
+    display: none;
+    
     &-btn {
       position: absolute;
-      display: grid;
+      // display: grid;
       place-content: center;
       place-self: center;
-      opacity: 0.5;
+      opacity: 0;
       border-radius: 3px;
       right: 0px;
       top: 0px;
@@ -23,9 +23,12 @@
       background-color: #f4f5f7;
       margin-top: 2.4px;
       margin-right: 2.5px;
+      padding: 3px 1px 0 0 ;
 
       &:hover {
+        display: block;
         opacity: 0.8;
+        background-color: #f4f5f7;
       }
     }
   }

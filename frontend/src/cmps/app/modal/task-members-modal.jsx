@@ -11,7 +11,7 @@ export function TaskMembersModal({ task, group, board }) {
 
     function checkIfMember(member) {
         if (task?.memberIds?.includes(member?._id))
-            return <span style={{ fontSize: '0.9em', paddingLeft: '5px' }}><FiCheck /></span>
+            return <span className='member-check-mark' style={{ fontSize: '0.9em', paddingLeft: '5px' }}><FiCheck /></span>
         return
     }
 
@@ -40,7 +40,7 @@ export function TaskMembersModal({ task, group, board }) {
     }
 
     return <section className='modal-content-container' >
-        <div className="members-modal-content-wrapper" >
+       
             <input type="text" value={memberName} onChange={handleChange} placeholder="Search members" />
             {!!filteredMembers?.length &&
                 <div>
@@ -50,7 +50,7 @@ export function TaskMembersModal({ task, group, board }) {
                             <a id='modal-btn-full-members' onClick={() => toggleTaskMember(member?._id)} >
                                 <img className="task-details-main-members-container-img"
                                     src={`${member?.imgUrl}`} alt={`${member?.fullname}`} />
-                                <span>{member?.fullname}</span>
+                                <span className='member-fullname'>{member?.fullname}</span>
                                 {checkIfMember(member)}
                             </a>
                         </div>
@@ -61,7 +61,7 @@ export function TaskMembersModal({ task, group, board }) {
                     </button> */}
                 </div>
             }
-        </div>
+
 
         {!filteredMembers?.length && <div className="no-member-msg">Looks like that person isn't a member yet.
             Enter their email address to add them to the card and board.</div>}

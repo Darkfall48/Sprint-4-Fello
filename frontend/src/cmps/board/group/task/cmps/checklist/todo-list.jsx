@@ -1,15 +1,12 @@
-import { TodoPreview } from './todo-preview.jsx'
 import { AiOutlineClose } from 'react-icons/ai'
+import { GrFormClose } from 'react-icons/gr'
+import { TodoPreview } from './todo-preview.jsx'
 
 export function TodoList({ todos, onRemoveTodo, onDoneTodo, group, task }) {
-
   return (
     <ul className="task-details-main-checklist-todos-list">
       {todos.map((todo, index) => (
-        <li
-          className="task-details-main-checklist-todos-list-todo"
-          key={index}
-        >
+        <li className="task-details-main-checklist-todos-list-todo" key={index}>
           <input
             className="task-details-main-checklist-todos-list-todo-checkbox"
             defaultChecked={todo.isDone}
@@ -18,12 +15,24 @@ export function TodoList({ todos, onRemoveTodo, onDoneTodo, group, task }) {
             onClick={() => onDoneTodo(todo)}
           />
 
-          <TodoPreview todo={todo} onDoneTodo={onDoneTodo} task={task} group={group} />
+          <TodoPreview
+            todo={todo}
+            onDoneTodo={onDoneTodo}
+            task={task}
+            group={group}
+          />
 
           <div className="task-details-main-checklist-todos-list-todo-btn-container">
-           { <button
-              className="task-details-main-checklist-todos-list-todo-btn-container-remove-btn"
-              onClick={() => { onRemoveTodo(todo.id) }} ><AiOutlineClose /></button>}
+            {
+              <button
+                className="task-details-main-checklist-todos-list-todo-btn-container-remove-btn"
+                onClick={() => {
+                  onRemoveTodo(todo.id)
+                }}
+              >
+                <AiOutlineClose title="Remove" />
+              </button>
+            }
           </div>
         </li>
       ))}
