@@ -11,7 +11,7 @@
   //   'todos todos todos'
   //   '. add-btn .';
   margin-bottom: 24px;
-  // gap: 12px 0px; //TODO: Space between is not yet pixel perfect
+  // gap: 12px 0px;
 
   &-header {
     display: flex;
@@ -50,10 +50,12 @@
       &-remove-btn {
         grid-area: remove-btn;
         justify-self: flex-end;
-        @include btn('task-edit',
+        @include btn(
+          'task-edit',
           $list-btn-bg-clr-modal-hover,
           6px 12px,
-          $task-details-btn-bg-clr-hover );
+          $task-details-btn-bg-clr-hover
+        );
         display: flex;
         margin: 0;
         margin-right: 8px;
@@ -216,6 +218,8 @@
         min-width: 16px;
         max-height: 16px;
         max-width: 16px;
+        align-self: flex-start;
+        margin-top: 4px;
       }
 
       &-title {
@@ -237,12 +241,14 @@
         flex-direction: row-reverse;
 
         &-remove-btn {
-          @include btn('task-edit',
+          @include btn(
+            'task-edit',
             // $list-btn-bg-clr-modal-hover,
             transparent,
             6px 12px,
             // $task-details-btn-bg-clr-hover
-            transparent);
+            transparent
+          );
           margin: 0;
           // align-self: center;
           place-content: center;
@@ -261,10 +267,12 @@
     &-btn {
       grid-area: add-btn;
       justify-self: flex-start;
-      @include btn('task-edit',
+      @include btn(
+        'task-edit',
         $list-btn-bg-clr-modal-hover,
         6px 12px,
-        $task-details-btn-bg-clr-hover );
+        $task-details-btn-bg-clr-hover
+      );
       display: flex;
       margin: 0;
       margin-left: 56px;
@@ -376,6 +384,7 @@
 }
 
 form {
+  // TODO: Put inside a class, not in the code alone
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -468,11 +477,15 @@ form {
 }
 
 .todo-edit-section {
+  // padding-left: 0;
+  padding: 0;
+  width: 100%;
   textarea {
-    background:  #091e420a;
+    background: #091e420a;
     border-color: #091e4221;
     box-shadow: inset 0 0 0 1px #091e4221;
     margin-bottom: 4px;
+    min-width: 100%;
   }
 }
 
