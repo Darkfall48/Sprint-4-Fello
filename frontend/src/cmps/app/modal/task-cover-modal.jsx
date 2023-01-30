@@ -17,11 +17,11 @@ export function TaskCoverModal({ task, group, onCloseModal }) {
     updateTask(group, updatedTask)
   }
 
-  function onRemoverCover(key, value){
-      updatedTask.style = { [key]: value}
-      onupdatedTask((prevTask) => ({ ...prevTask, style: { [key]: value } }))
-      updateTask(group, updatedTask)
-  }
+  // function onRemoverCover(key, value){
+  //     updatedTask.style = { [key]: value}
+  //     onupdatedTask((prevTask) => ({ ...prevTask, style: { [key]: value } }))
+  //     updateTask(group, updatedTask)
+  // }
 
   return (
     <div className="task-cover">

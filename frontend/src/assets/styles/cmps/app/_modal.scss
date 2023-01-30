@@ -142,9 +142,30 @@
 .task-attachment-modal-content {
     margin-top: 10px;
 
+    #modal-btn-full{
+        padding-left: 3px;
+        .upload-preview{
+            &:hover{
+                background-color: transparent;
+            }
+
+            label{
+                padding: 10px 0;
+                height: 40px;
+                background-color: transparent;
+                width: 100%;
+
+                &:hover{
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+
     input {
         margin-bottom: 5px;
     }
+
 }
 
 .attachment-action-btns-container {}
@@ -276,8 +297,9 @@
         left: 100%;
         height: fit-content;
         width: 240px;
+
         @include for-mobile-layout {
-            position:static;
+            position: static;
             margin-top: 8px;
         }
 
@@ -396,8 +418,8 @@
 
     .url-to-share {
         &:focus {
-           outline: 2.5px solid #0079bf;
-           box-shadow: none;
+            outline: 2.5px solid #0079bf;
+            box-shadow: none;
         }
     }
 }

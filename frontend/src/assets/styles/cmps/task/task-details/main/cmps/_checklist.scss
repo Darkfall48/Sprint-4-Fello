@@ -19,6 +19,7 @@
     flex-direction: row;
     margin: 0;
     margin-bottom: 9px;
+
     &-icon {
       grid-area: icon;
       justify-self: flex-start;
@@ -34,6 +35,7 @@
       flex-direction: row;
       justify-content: space-between;
       width: 100%;
+
       &-title {
         grid-area: title;
         margin: 0;
@@ -48,12 +50,10 @@
       &-remove-btn {
         grid-area: remove-btn;
         justify-self: flex-end;
-        @include btn(
-          'task-edit',
+        @include btn('task-edit',
           $list-btn-bg-clr-modal-hover,
           6px 12px,
-          $task-details-btn-bg-clr-hover
-        );
+          $task-details-btn-bg-clr-hover );
         display: flex;
         margin: 0;
         margin-right: 8px;
@@ -67,6 +67,7 @@
       width: 100%;
       margin-left: 18px;
       margin-right: 8px;
+
       &-title {
         width: 100%;
         height: 54px;
@@ -85,6 +86,7 @@
         outline: none;
         resize: none;
       }
+
       &-btn-container {
         display: flex;
         flex-direction: row;
@@ -93,6 +95,7 @@
         gap: 4px;
         margin: 0;
         padding: 0;
+
         &-save-btn {
           @include btn('task-edit', #0079bf, 6px 12px, #026aa7);
           display: flex;
@@ -101,6 +104,7 @@
           align-self: center;
           color: white;
         }
+
         &-cancel-btn {
           cursor: pointer;
           display: flex;
@@ -123,6 +127,7 @@
     // flex-direction: row;
     // grid-area: progress;
     margin-bottom: 6px;
+
     &-percentage {
       grid-area: percentage;
       font-size: 11px;
@@ -232,14 +237,12 @@
         flex-direction: row-reverse;
 
         &-remove-btn {
-          @include btn(
-            'task-edit',
+          @include btn('task-edit',
             // $list-btn-bg-clr-modal-hover,
             transparent,
             6px 12px,
             // $task-details-btn-bg-clr-hover
-            transparent
-          );
+            transparent);
           margin: 0;
           // align-self: center;
           place-content: center;
@@ -258,12 +261,10 @@
     &-btn {
       grid-area: add-btn;
       justify-self: flex-start;
-      @include btn(
-        'task-edit',
+      @include btn('task-edit',
         $list-btn-bg-clr-modal-hover,
         6px 12px,
-        $task-details-btn-bg-clr-hover
-      );
+        $task-details-btn-bg-clr-hover );
       display: flex;
       margin: 0;
       margin-left: 56px;
@@ -274,6 +275,7 @@
       grid-area: title;
       margin-left: 56px;
       margin-right: 8px;
+
       &-title {
         min-width: 100%;
         max-height: 54px;
@@ -291,7 +293,16 @@
         overflow-wrap: break-word;
         outline: none;
         resize: none;
+
+        background-color: $clr-white;
+        box-shadow: inset 0 0 0 2px #0079bf;
+        color: #172b4d;
+        cursor: text;
+        float: none;
+        resize: vertical;
+        width: 100%;
       }
+
       &-btn-container {
         display: flex;
         flex-direction: row;
@@ -300,6 +311,7 @@
         gap: 4px;
         margin: 0;
         padding: 0;
+
         &-add-btn {
           @include btn('task-edit', #0079bf, 6px 12px, #026aa7);
           display: flex;
@@ -308,6 +320,7 @@
           align-self: center;
           color: white;
         }
+
         &-cancel-btn {
           @include btn('task-edit', transparent, 6px 12px, transparent);
           display: flex;
@@ -321,238 +334,150 @@
   }
 }
 
-// .task-details-main-checklist {
-//   h3 {
-//     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-//       Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-//       sans-serif;
-//     font-size: 16px;
-//     line-height: 20px;
-//     display: inline-block;
-//     margin: 0;
-//     min-height: 18px;
-//     min-width: 40px;
-//     width: auto;
-//     // margin: 6px 0;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-//     cursor: pointer;
-//     color: #172b4d;
+.todo-list-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-//     // padding: 0 100px 0 0;
-//     text-align: left;
-//   }
-// }
+.todo-list-preview {
+  border-radius: 4px;
+  clear: both;
+  // padding-left: 40px;
+  position: relative;
+  transform-origin: left bottom;
+  transition-duration: 0.3s;
+  transition-property: transform, opacity, height, padding, margin,
+    background-color;
+  transition-timing-function: ease-in;
 
-// // .todo-list {
-// //   list-style: none;
-// //   display: flex;
-// //   flex-direction: column;
-// //   padding: 0;
-// // }
-
-// .todo-list-preview {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-// }
-
-// .todo-list-preview {
-//   border-radius: 4px;
-//   clear: both;
-//   // padding-left: 40px;
-//   position: relative;
-//   transform-origin: left bottom;
-//   transition-duration: 0.3s;
-//   transition-property: transform, opacity, height, padding, margin,
-//     background-color;
-//   transition-timing-function: ease-in;
-
-//   p {
-//     align-self: center;
-//     flex: 1;
-//     margin-bottom: 0;
-//     min-height: 20px;
-//     cursor: pointer;
-//     color: #172b4d;
-//   }
-
-//   .delete {
-//     background-color: #091e420a;
-//     color: #172b4d;
-//     opacity: 0;
-//   }
-
-//   &:hover {
-//     background-color: #f4f5f7;
-
-//     .delete {
-//       opacity: 1;
-//     }
-//   }
-// }
-
-// // .add-todo-btn {
-// //   display: flex;
-// //   flex-direction: column;
-// // }
-
-// form {
-//   margin: 0;
-//   display: flex;
-//   flex-direction: column;
-
-//   textarea {
-//     // -webkit-appearance: none;
-//     background-color: #fafbfc;
-//     border: none;
-//     border-radius: 3px;
-//     box-shadow: inset 0 0 0 2px #dfe1e6;
-//     // box-sizing: border-box;
-//     display: block;
-//     line-height: 20px;
-//     outline: none;
-//     padding: 8px 12px;
-//     transition-duration: 85ms;
-//     transition-property: background-color, border-color, box-shadow;
-//     transition-timing-function: ease;
-//     background-color: $clr-white;
-//     box-shadow: inset 0 0 0 2px #0079bf;
-//     color: #172b4d;
-//     cursor: text;
-//     float: none;
-//     resize: vertical;
-//     // width: 100%;
-//     width: 512px;
-//     overflow: hidden;
-//     overflow-wrap: break-word;
-//     margin: 0;
-//     margin-bottom: 12px;
-//   }
-// }
-
-// .todo-btns {
-//   margin: 0;
-//   display: flex;
-// }
-
-// .cancel-btn {
-//   align-items: center;
-//   background-color: #091e420a;
-//   border: none;
-//   border-radius: 3px;
-//   box-shadow: none;
-//   box-sizing: border-box;
-//   cursor: pointer;
-//   display: inline-flex;
-//   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
-//     Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
-//   font-size: 14px;
-//   font-weight: 400;
-//   justify-content: center;
-//   line-height: 20px;
-//   padding: 6px 12px;
-//   text-decoration: none;
-//   transition-duration: 85ms;
-//   transition-property: background-color, border-color, box-shadow;
-//   transition-timing-function: ease;
-//   white-space: normal;
-//   background-color: initial;
-//   border: none;
-//   box-shadow: none;
-//   margin: 0;
-//   color: #172b4d;
-
-//   &:hover {
-//     background-color: #f4f5f7;
-//   }
-// }
-
-// .todo-btn {
-//   align-items: center;
-//   background-color: #091e420a;
-//   border: none;
-//   border-radius: 3px;
-//   box-shadow: none;
-//   box-sizing: border-box;
-//   color: #172b4d;
-//   cursor: pointer;
-//   display: inline-flex;
-//   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
-//     Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
-//   font-size: 14px;
-//   font-weight: 400;
-//   justify-content: center;
-//   line-height: 20px;
-//   padding: 6px 12px;
-//   text-decoration: none;
-//   transition-duration: 85ms;
-//   transition-property: background-color, border-color, box-shadow;
-//   transition-timing-function: ease;
-//   white-space: normal;
-//   background-color: #0079bf;
-//   border: none;
-//   box-shadow: none;
-//   color: $clr-white;
-//   margin: 0;
-// }
-
-// .todo-btns-btn {
-//   align-items: center;
-//   background-color: #091e420a;
-//   border: none;
-//   border-radius: 3px;
-//   box-shadow: none;
-//   box-sizing: border-box;
-//   cursor: pointer;
-//   display: inline-flex;
-//   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
-//     Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
-//   font-size: 14px;
-//   font-weight: 400;
-//   justify-content: center;
-//   line-height: 20px;
-//   padding: 6px 12px;
-//   text-decoration: none;
-//   transition-duration: 85ms;
-//   transition-property: background-color, border-color, box-shadow;
-//   transition-timing-function: ease;
-//   white-space: normal;
-//   color: #172b4d;
-// }
-
-// .add-todo-btn {
-//   display: block;
-// }
-
-// .task-checklist {
-//   .checklist-add-btn {
-//     width: 100%;
-//     align-items: center;
-//     justify-content: center;
-//   }
-// }
-
-// .todo-edit-section {
-//   textarea {
-//     background: var(--ds-background-input, #091e420a);
-//     border-color: var(--ds-border-input, #091e4221);
-//     box-shadow: inset 0 0 0 1px var(--ds-border-input, #091e4221);
-//     margin-bottom: 4px;
-//   }
-// }
-
-// .check-todo {
-//   display: flex;
-// }
-
-//? Until the cause is found, temporary reset with !important
-
-.task-details-main-checklist {
-  & button {
-    // margin: 0 !important;
-    // opacity: 0;
+  p {
+    align-self: center;
+    flex: 1;
+    margin-bottom: 0;
+    min-height: 20px;
+    cursor: pointer;
+    color: #172b4d;
   }
+
+  .delete {
+    background-color: #091e420a;
+    color: #172b4d;
+    opacity: 0;
+  }
+
+  &:hover {
+    background-color: #f4f5f7;
+
+    .delete {
+      opacity: 1;
+    }
+  }
+}
+
+form {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+    background-color: #fafbfc;
+    border: none;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 2px #dfe1e6;
+    display: block;
+    line-height: 20px;
+    outline: none;
+    padding: 8px 12px;
+    transition-duration: 85ms;
+    transition-property: background-color, border-color, box-shadow;
+    transition-timing-function: ease;
+    background-color: $clr-white;
+    box-shadow: inset 0 0 0 2px #0079bf;
+    color: #172b4d;
+    cursor: text;
+    float: none;
+    resize: vertical;
+    width: 512px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    margin: 0;
+    margin-bottom: 12px;
+  }
+}
+
+.todo-btns {
+  margin: 0;
+  display: flex;
+}
+
+.cancel-btn {
+  align-items: center;
+  background-color: #091e420a;
+  border: none;
+  border-radius: rem(3px);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
+    Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 6px 12px;
+  text-decoration: none;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
+  background-color: initial;
+  margin: 0;
+  color: #172b4d;
+
+  &:hover {
+    background-color: #f4f5f7;
+  }
+}
+
+.todo-btn {
+  background-color: #091e420a;
+  border-radius: rem(3px);
+  color: #172b4d;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
+    Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 6px 12px;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
+  background-color: #0079bf;
+  color: $clr-white;
+  margin: 0;
+}
+
+.add-todo-btn {
+  display: block;
+}
+
+.task-checklist {
+  .checklist-add-btn {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.todo-edit-section {
+  textarea {
+    background:  #091e420a;
+    border-color: #091e4221;
+    box-shadow: inset 0 0 0 1px #091e4221;
+    margin-bottom: 4px;
+  }
+}
+
+.check-todo {
+  display: flex;
 }
 
 //? Helpers

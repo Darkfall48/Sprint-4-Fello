@@ -50,7 +50,7 @@ export function TodoEdit({ onCloseModal, group, task, todo }) {
                 rows="10"
                 value={editTodo.title}
                 onChange={handleChange}
-                style={{ overflow: 'hidden', overflowWrap: 'break-word', height: '56px', width: 500 + 'px' }}
+                style={{ overflow: 'hidden', overflowWrap: 'break-word', height: '56px', width: 505 + 'px' }}
             >
             </textarea>
 

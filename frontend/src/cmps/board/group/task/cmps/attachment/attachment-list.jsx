@@ -43,13 +43,13 @@ export function AttachmentList({
               >
                 Delete
               </a>
-              <span> • </span>
-              <a
+              {/* <span> • </span> */}
+              {/* <a
                 className="task-details-main-attachments-list-attachment-content-container-cover-btn"
                 onClick={() => onMakeCover(attachment.img)}
               >
                 Make cover
-              </a>
+              </a> */}
             </p>
           </div>
         </li>
