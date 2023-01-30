@@ -1,4 +1,4 @@
-.members-modal-content-wrapper {
+
 
     input {
         padding: 11px 12px;
@@ -14,16 +14,37 @@
         padding: 24px 6px;
         // height: fit-content;
     }
-}
+
 
 .board-members-check {
+    border-radius: $border-radius;
+    width:100%;
+    margin-top: 3px;
+
     #modal-btn-full-members {
-        @include btn('modal-full', white, 6px 0, $list-btn-bg-clr-modal-hover);
-        display: grid;
-        grid-template-columns: 1fr 5fr 1fr !important;
+        @include btn('modal-full-members', white, 6px 0, $list-btn-bg-clr-modal-hover);
+        display: block;
+        padding: 4px 4px 0 4px;
+        text-align: left;
+        // grid-template-columns: 1fr 5fr 1fr !important;
         // grid-template-columns: 40px 200px 40px !important;
         justify-items: start;
-        margin: 0 0 0 5px;
+        // margin: 0 0 0 5px;
         font-size: 1em;
+
+        .member-fullname {
+            display: inline-block;
+            line-height: 32px;
+            margin-left: 10px;
+            // padding-bottom: 10px;
+            white-space: nowrap;
+            vertical-align:top;
+        }
+
+        .member-check-mark {
+            position: absolute;
+            right: 0;
+            padding: 11px;
+        }
     }
 }

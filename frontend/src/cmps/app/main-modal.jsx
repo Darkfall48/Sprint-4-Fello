@@ -31,7 +31,7 @@ export function MainModal({ type, modalTitle, onCloseModal, group, onAddTask, ta
         }}
         style={{
             left: utilService.getPosition(buttonRef)?.left + 0 + 'px',
-            top: isQuickEdit? utilService.getPositionAddBoard(buttonRef)?.top -800+'px' : ''
+            top: isQuickEdit? utilService.getPositionAddBoard(buttonRef)?.top -0+'px' : ''
         }}
     >
         <div className="form-container" id="modal-form-container"

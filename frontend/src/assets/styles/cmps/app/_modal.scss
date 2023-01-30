@@ -194,6 +194,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 4px;
+    padding-left: 2px;
     margin-bottom: 8px;
     line-height: 20px;
 
@@ -201,6 +202,24 @@
         height: 28px;
         width: 48.8px;
         border: none;
+        align-items: center;
+        border-radius: 3px;
+        box-shadow: none;
+        box-sizing: border-box;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        user-select: none;
+        white-space: nowrap;
+        line-height: 20px;
+        color: #172b4d;
+        padding: 6px 12px;
+        display: flex;
+        gap: 6px;
+        margin: 0;
+     
 
         &:focus {
             outline: 3px solid #0079BF;
