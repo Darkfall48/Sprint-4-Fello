@@ -29,6 +29,7 @@ if (process.env.NODE_ENV === 'production') {
       'http://localhost:8080',
       'http://127.0.0.1:3000',
       'http://localhost:3000',
+      'https://api.cloudinary.com/v1_1/cloud/image/upload'
     ],
     credentials: true,
   }
