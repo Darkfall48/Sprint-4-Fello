@@ -56,7 +56,7 @@ export function TaskCoverModal({ task, group, onCloseModal }) {
           }
         ></div>
       </div> */}
-      <button onClick={() => changeBoard('bgColor', '')}>Remove cover</button>
+      <button className='modal-btn-full' onClick={() => changeBoard('bgColor', '')}>Remove cover</button>
 
       <p>Colors</p>
       <div className="btns-cover-color">

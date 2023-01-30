@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FiCopy, FiDownload, FiPrinter, FiShare } from 'react-icons/fi'
+import { HiOutlineUsers } from 'react-icons/hi'
 import { useLocation } from 'react-router-dom'
 
 export function TaskShareModal() {
@@ -44,6 +45,10 @@ export function TaskShareModal() {
     window.print()
   }
 
+  function handleFocus(ev){
+    ev.target.select()
+  }
+
   //   function handleExport() {
   //     const jsonData = JSON.stringify(data)
   //     const blob = new Blob([jsonData], { type: 'application/json' })
@@ -55,18 +60,23 @@ export function TaskShareModal() {
   //   }
 
   return (
-    <div>
-      <p>Link to this card </p>
+    <div className='task-share-modal'>
+      <button id='print-btn' title={`Print this ${type}`} onClick={handlePrint}> Print...</button>
+      <hr style={{ width: 100 + '%' }} />
+      <p>Link to this card
+        <span style={{ color: '#f3d931' }}><HiOutlineUsers /></span>
+      </p>
       <input
+      className='url-to-share'
         type="text"
         title={url}
         defaultValue={url}
         placeholder={url}
-        autofocusvalue={url}
+        onFocus={handleFocus}        autoFocus
       />
       <FiCopy title="Copy url to clipboard" onClick={getUrl} />
       <FiShare title={`Share this ${type}`} onClick={handleShare} />
-      <FiPrinter title={`Print this ${type}`} onClick={handlePrint} />
+      {/* <FiPrinter title={`Print this ${type}`} onClick={handlePrint} /> */}
       {/* <FiDownload title={'Export as JSON'} onClick={handleExport} /> */}
     </div>
   )
