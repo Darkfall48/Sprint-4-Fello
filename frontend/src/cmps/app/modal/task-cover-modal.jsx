@@ -17,11 +17,11 @@ export function TaskCoverModal({ task, group, onCloseModal }) {
     updateTask(group, updatedTask)
   }
 
-  // function onRemoverCover(key, value){
-  //     updatedTask.style = { [key]: value}
-  //     onupdatedTask((prevTask) => ({ ...prevTask, style: { [key]: value } }))
-  //     updateTask(group, updatedTask)
-  // }
+  function onRemoverCover(key, value){
+      updatedTask.style = { [key]: value}
+      onupdatedTask((prevTask) => ({ ...prevTask, style: { [key]: value } }))
+      updateTask(group, updatedTask)
+  }
 
   return (
     <div className="task-cover">
@@ -56,7 +56,7 @@ export function TaskCoverModal({ task, group, onCloseModal }) {
           }
         ></div>
       </div> */}
-      {/* <button>Remove cover</button> */}
+      <button onClick={() => changeBoard('bgColor', '')}>Remove cover</button>
 
       <p>Colors</p>
       <div className="btns-cover-color">

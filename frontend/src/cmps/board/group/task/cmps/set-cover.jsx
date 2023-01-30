@@ -16,5 +16,5 @@ export function SetCover({ task }) {
         style={{ background: style.bgColor }}
       ></article>
     )
-  else return <div className="task-preview-no-cover"></div>
+  else if (!style?.bgColor && !style?.bgImg) return <div className="task-preview-no-cover"></div>
 }
