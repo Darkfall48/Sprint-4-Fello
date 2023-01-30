@@ -131,6 +131,7 @@
           color: #5e6c84;
         }
         &-link {
+          cursor: text !important; // TODO: Change to Pointer when Move To Modal available
           padding: 0;
           margin: 0;
           font-size: 14px;
