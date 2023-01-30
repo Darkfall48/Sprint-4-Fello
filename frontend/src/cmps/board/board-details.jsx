@@ -24,6 +24,7 @@ export function BoardDetails({ board }) {
   }, [])
 
   function socketUpdateBoard(updatedBoard) {
+    console.log('updatedBoard', updatedBoard)
     dispatch({ type: UPDATE_BOARD, board: updatedBoard })
   }
 

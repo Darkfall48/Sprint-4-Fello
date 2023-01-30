@@ -10,8 +10,8 @@ import { AiOutlineClockCircle } from 'react-icons/ai'
 
 import { loadBoards } from '../store/actions/board.actions'
 import { Loader } from '../cmps/helpers/loader'
-import { SET_BOARD, SET_BOARDS } from '../store/reducers/board.reducer'
-import { socketService, SOCKET_EMIT_BOARD_WATCH } from '../services/connection/socket.service'
+import { SET_BOARD, SET_BOARDS, UPDATE_BOARD } from '../store/reducers/board.reducer'
+import { socketService, SOCKET_EMIT_BOARD_WATCH, SOCKET_EVENT_BOARD_UPDATED } from '../services/connection/socket.service'
 import { useDispatch } from 'react-redux'
 
 export function Workspace() {
@@ -26,11 +26,12 @@ export function Workspace() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    socketService.on(SOCKET_EMIT_BOARD_WATCH, socketBoardWatch)
+    socketService.on(SOCKET_EVENT_BOARD_UPDATED, socketUpdateBoard)
   }, [])
 
-  function socketBoardWatch(boardId) {
-    dispatch({ type: SET_BOARD, board: boardId })
+  function socketUpdateBoard(updatedBoard) {
+    console.log('updatedBoard', updatedBoard)
+    dispatch({ type: UPDATE_BOARD, board: updatedBoard })
   }
 
   useEffect(() => {

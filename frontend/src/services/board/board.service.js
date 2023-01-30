@@ -74,7 +74,7 @@ async function query({
 async function get(boardId) {
   try {
     socketService.emit(SOCKET_EMIT_BOARD_WATCH, boardId)
-    socketService.emit(SOCKET_EVENT_BOARD_UPDATED, save)
+    // socketService.emit(SOCKET_EVENT_BOARD_UPDATED, save)
     // socketService.emit(SOCKET_EMIT_BOARD_WATCH, save)
     return await httpService.get(BASE_URL + boardId)
   } catch (err) {

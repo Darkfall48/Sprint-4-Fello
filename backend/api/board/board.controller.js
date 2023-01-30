@@ -67,7 +67,7 @@ async function updateBoard(req, res) {
     const updatedBoard = await boardService.update(board)
     logger.debug('Board updated successfully!', boardId)
 
-    socketService.emitTo({ type: 'board-updated', data: board, label: board._id })
+    socketService.emitTo({ type: 'board-updated', data: board })
 
     res.json(updatedBoard)
     // res.send(updatedBoard)
