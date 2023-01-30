@@ -30,6 +30,10 @@
         opacity: 0.8;
         background-color: #f4f5f7;
       }
+
+      @include for-mobile-layout {
+        opacity: 0.5;
+      }
     }
   }
 }

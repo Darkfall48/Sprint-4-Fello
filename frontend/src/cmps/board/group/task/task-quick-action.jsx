@@ -35,7 +35,7 @@ export function TaskQuickAction({ task, onArchiveTask, closeMenu, groupId, board
             onClick={e => e.stopPropagation()}
             className="quick-action-modal"
             style={{
-                left: utilService.getPosition(buttonRef).left - 222 + 'px',
+                left: utilService.getPosition(buttonRef).left - 225 + 'px',
                 top: utilService.getPosition(buttonRef).top - 3 + 'px',
             }}
         >

@@ -277,7 +277,8 @@
         height: fit-content;
         width: 240px;
         @include for-mobile-layout {
-            display: block;
+            position:static;
+            margin-top: 8px;
         }
 
         #task-preview-edit-menu-btn {
