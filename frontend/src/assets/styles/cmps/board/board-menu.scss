@@ -148,7 +148,7 @@
         grid-gap: 8px;
         display: grid;
         gap: 8px;
-        grid-template-columns: 1fr 1fr;
+        // grid-template-columns: 1fr 1fr;
         height: 124px;
         padding-left: 10px;
         padding-right: 10px;
@@ -162,7 +162,8 @@
         background-color: #dfe1e6;
         background-size: cover;
         border-radius: rem(8px);
-        height: 96px;
+        // height: 96px;
+        height: 165px;
         margin-bottom: 8px;
         width: 100%;
     }
@@ -172,7 +173,8 @@
         background-color: #dfe1e6;
         background-size: cover;
         border-radius: rem(8px);
-        height: 96px;
+        // height: 96px;
+        height: 165px;
         margin-bottom: 8px;
         width: 100%;
 

@@ -70,9 +70,9 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
 
     return <section className='board-menu-section'>
         <div className="side-menu-header">
-            {!open && !isMenuOpen && !isBgMenuOpen && <button className='side-menu-return-btn' onClick={() => { setIsModalOpen(!isModalOpen) }} ><IoIosArrowBack /></button>}
-            {!open && isMenuOpen && !isBgMenuOpen && !setBackground && <button className='side-menu-return-btn' onClick={() => { setIsMenuOpen(!isMenuOpen); isOpen(!open) }} ><IoIosArrowBack /></button>}
-            {open && <button className='side-menu-return-btn' onClick={() => { onSetBackground('') }} ><IoIosArrowBack /></button>}
+            {!open && !isMenuOpen && !isBgMenuOpen && <button className='side-menu-return-btn 1' onClick={() => { setIsModalOpen(!isModalOpen) }} ><IoIosArrowBack /></button>}
+            {!open && isMenuOpen && !isBgMenuOpen && !setBackground && <button className='side-menu-return-btn 2' onClick={() => { setIsMenuOpen(!isMenuOpen) }} ><IoIosArrowBack /></button>}
+            {/* {open && <button className='side-menu-return-btn 3' onClick={() => { onSetBackground('') }} ><IoIosArrowBack /></button>} */}
             {!isMenuOpen && <h6>Menu </h6>}
             {setBackground === 'change-bg' && <h6>Change Background </h6>}
             {setBackground === 'colors' && <h6 style={{ marginLeft: 140 + 'px' }}>Colors </h6>}
@@ -83,7 +83,7 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
 
         <div className="content-section">
             {!isMenuOpen && <button onClick={() => { onSetIsMenuOpen() }}> Change background</button>}
-            <hr />
+            {!isMenuOpen && <hr />}
             {!isMenuOpen && <button onClick={() => { onRemoveBoard(board._id) }}>Remove Board</button>}
 
             {isMenuOpen && <div className="btns-container" style={setBackground ? { display: 'none' } : { display: 'grid' }}>
