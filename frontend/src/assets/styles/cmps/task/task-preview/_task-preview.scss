@@ -20,13 +20,14 @@
 
   &-footer {
     grid-area: footer;
-    display: grid;
+    display: block;
     // grid-template-columns: 2fr 1fr;
     // grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     // grid-template-rows: auto;
-    grid-template-areas: 'infos members';
+    // grid-template-areas: 'infos members';
     justify-content: space-between;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
+    // flex-direction: row-reverse;
     // gap: 8px;
   }
 

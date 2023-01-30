@@ -104,8 +104,7 @@ export function TaskDetails() {
   //   }
   // }
 
-  function onCloseModal(ev) {
-    ev?.stopPropagation()
+  function onCloseModal() {
     setModalOpen('')
   }
 
