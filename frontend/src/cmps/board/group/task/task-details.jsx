@@ -105,7 +105,7 @@ export function TaskDetails() {
   // }
 
   function onCloseModal(ev) {
-    ev.stopPropagation()
+    ev?.stopPropagation()
     setModalOpen('')
   }
 
@@ -329,14 +329,14 @@ export function TaskDetails() {
                 <HiOutlineArrowRight />
                 <span>Move</span>
               </button> */}
-              <button title="Copy">
+              {/* <button title="Copy">
                 <MdOutlineContentCopy /> <span>Copy</span>
-              </button>
+              </button> */}
               {/* <button title="Make template">
                 <TbTemplate />
                 <span>Make template</span>
               </button> */}
-              <hr />
+              {/* <hr /> */}
               <button
                 title="Archive"
                 onClick={() => onRemoveTask(group, taskId)}
