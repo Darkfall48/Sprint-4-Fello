@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { Loader } from "../helpers/loader";
 import { BoardAdd } from "./board-add";
-
 import { BoardPreview } from "./board-preview";
 
 export function BoardList({ boards, onEditBoard, createBoardPlaceholder }) {
@@ -27,8 +26,6 @@ export function BoardList({ boards, onEditBoard, createBoardPlaceholder }) {
                 </li>)}
             {createBoardPlaceholder && <button ref={buttonRef} className="board-list-btn" onClick={() => { setIsModalOpen(!isModalOpen) }}>Create new board</button>}
         </ul>
-
-        {/* {isModalOpen &&  <Modal type={'add-board'} modalTitle={'Create board'} onCloseModal={onCloseModal}/> } */}
         {isModalOpen && <BoardAdd onCloseModal={onCloseModal} buttonRef={buttonRef} />}
     </section>
 }

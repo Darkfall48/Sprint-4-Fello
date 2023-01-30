@@ -2,7 +2,6 @@ import {useState } from "react"
 import { AiOutlineClose } from "react-icons/ai"
 import { updateTask } from "../../../../../../store/actions/board.actions"
 
-
 export function TodoEdit({ onCloseModal, group, task, todo }) {
 
     const [editTodo, onEditTodo] = useState(todo)
@@ -13,7 +12,6 @@ export function TodoEdit({ onCloseModal, group, task, todo }) {
         onEditTodo((prevTitle) => {
             return { ...prevTitle, [field]: value }
         })
-        console.log('editTodo', editTodo);
     }
 
     function onChangeTitle(ev) {
@@ -33,7 +31,6 @@ export function TodoEdit({ onCloseModal, group, task, todo }) {
             setIsEditOn(!isEditOn)
             onCloseModal()
         }
-
     }
 
     return <section className="todo-edit-section">

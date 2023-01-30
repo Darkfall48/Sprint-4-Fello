@@ -1,7 +1,4 @@
 import { useState } from "react"
-import { MdArrowBackIosNew } from 'react-icons/md'
-import { GrClose } from 'react-icons/gr'
-import { BoardHeader } from "../board-header"
 import { boardService } from "../../../services/board/board.service"
 import { removeBoard, updateBoard } from "../../../store/actions/board.actions"
 import { FastAverageColor } from "fast-average-color"
@@ -12,7 +9,7 @@ import { useNavigate } from "react-router-dom"
 
 const fac = new FastAverageColor()
 
-export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) {
+export function BoardMenu({ board, isModalOpen, setIsModalOpen }) {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isBgMenuOpen, setIsBgMenuOpen] = useState(false)
@@ -20,14 +17,9 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
     const [setBackground, onSetBackground] = useState('')
     const navigate = useNavigate()
 
-    function onCloseMenu() {
-        setIsMenuOpen(!isMenuOpen)
-    }
-
     function onSetIsMenuOpen() {
         setIsMenuOpen(!isMenuOpen)
     }
-
 
     async function onRemoveBoard(boardId) {
         const isSure = window.confirm('are you sure?')
@@ -39,9 +31,7 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
             } catch (err) {
                 console.log(err);
             }
-
         }
-
     }
 
     async function changeBoard(imgUrl, color) {
@@ -54,7 +44,6 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
                 board.style.backgroundImg = imgUrl
                 board.style.bgColor = color.rgba
                 board.style.isLight = color.isLight
-                // board.style.isDark = color.isDark
                 updateBoard(board)
             } catch (err) {
                 console.log(err)
@@ -66,7 +55,6 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
             updateBoard(board)
         }
     }
-
 
     return <section className='board-menu-section'>
         <div className="side-menu-header">
@@ -92,13 +80,10 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
                     <p>Color</p>
                 </div>}
 
-
                 {!setBackground && <div className="background-img-btns">
                     <button onClick={() => onSetBackground('imgs')} className="imgs-btn"></button>
                     <p>Photos</p>
                 </div>}
-
-
             </div>}
 
             {setBackground === 'colors' && <div className="btns-container-change">
@@ -113,10 +98,7 @@ export function BoardMenu({ board, onCloseModal, isModalOpen, setIsModalOpen }) 
                     )
                 })}
             </div>}
-
             {setBackground === 'imgs' && <SideMenuPhotos changeBoard={changeBoard} />}
-
         </div>
-
     </section>
 }

@@ -2,7 +2,6 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 //? Assets
-import svg from '../assets/img/home-page.svg'
 import boardSvg from '../assets/img/TrelloImage-1.webp'
 import { AppHeader } from '../cmps/app/app-header'
 import { useSelector } from 'react-redux'

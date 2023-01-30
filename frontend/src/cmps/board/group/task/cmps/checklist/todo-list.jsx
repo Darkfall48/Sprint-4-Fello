@@ -1,5 +1,4 @@
 import { AiOutlineClose } from 'react-icons/ai'
-import { GrFormClose } from 'react-icons/gr'
 import { TodoPreview } from './todo-preview.jsx'
 
 export function TodoList({ todos, onRemoveTodo, onDoneTodo, group, task }) {

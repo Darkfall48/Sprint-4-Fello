@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   showErrorMsg,
@@ -69,7 +69,6 @@ export function BoardAdd({ onCloseModal, buttonRef, modalRef }) {
     }
   }
 
-  // return <section className="board-add">
   return (
     <div className="modal" onClick={onCloseModal}>
       <div
@@ -165,5 +164,4 @@ export function BoardAdd({ onCloseModal, buttonRef, modalRef }) {
     </div>
   )
 
-  // </section >
 }

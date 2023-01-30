@@ -6,14 +6,15 @@ export function ImgUploader({ onUploaded = null }) {
     imgUrl: null,
     height: 500,
     width: 500,
-    name: '',
   })
   const [isUploading, setIsUploading] = useState(false)
 
   async function uploadImg(ev) {
     setIsUploading(true)
-    const { secure_url, height, width, name } = await uploadService.uploadImg(ev)
-    setImgData({ imgUrl: secure_url, width, height, title: name })
+    // const { secure_url, height, width, original_filename, format } = await uploadService.uploadImg(ev)
+    const { secure_url, height, width } = await uploadService.uploadImg(ev)
+    // setImgData({ imgUrl: secure_url, width, height, title: original_filename, fileType:format })
+    setImgData({ imgUrl: secure_url, width, height })
     setIsUploading(false)
     onUploaded && onUploaded('bgImg', secure_url)
   }
@@ -22,14 +23,18 @@ export function ImgUploader({ onUploaded = null }) {
     if (imgData.imgUrl) return 'Upload Another?'
     return isUploading ? 'Uploading....' : 'Upload Image'
   }
-
+  console.log('imgData', imgData);
   return (
     <div className="upload-preview">
       {/* {imgData.imgUrl && (
+        <>
+        <h1>{imgData.title}</h1>
         <img
           src={imgData.imgUrl}
           style={{ maxWidth: '200px', float: 'right' }}
+
         />
+        </>
       )} */}
       <label htmlFor="imgUpload" className=''>{getUploadLabel()}</label>
       <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" style={{ display: 'none' }} />

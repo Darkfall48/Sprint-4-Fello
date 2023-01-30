@@ -2,7 +2,6 @@ export const uploadService = {
   uploadImg,
 }
 function uploadImg(ev) {
-  console.log('ev.target.files[0].name:', ev.target.files[0].name)
   const CLOUD_NAME = 'dcwibf9o5'
   const UPLOAD_PRESET = 'vt0iqgff'
   const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
@@ -10,6 +9,7 @@ function uploadImg(ev) {
   const formData = new FormData()
   formData.append('upload_preset', UPLOAD_PRESET)
   formData.append('file', ev.target.files[0])
+  // formData.append('fileName', ev.target.files[0], __filename)
 
   return fetch(UPLOAD_URL, {
     method: 'POST',

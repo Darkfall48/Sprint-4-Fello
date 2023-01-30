@@ -48,7 +48,6 @@ export function SetChecklist({ task, checklist, group }) {
   function onChangeTitle(ev) {
     if (ev._reactName === 'onSubmit') {
       ev.preventDefault()
-      // if (contentRef.current.value === '') return
       checklist.title = editChecklist.title
       updateTask(group, task)
       setIsEditOn(!isEditOn)
@@ -96,7 +95,6 @@ export function SetChecklist({ task, checklist, group }) {
 
         {isEditOn && (
           <form
-            // onKeyDown={(ev) => onChangeTitle(ev)}
             onSubmit={(ev) => onChangeTitle(ev)}
             onKeyDown={(ev) => onChangeTitle(ev)}
             className="task-details-main-checklist-header-input"
@@ -110,8 +108,6 @@ export function SetChecklist({ task, checklist, group }) {
               placeholder={checklist.title}
               value={editChecklist.title}
               onChange={handleChange}
-              // ref={inputRef}
-              // onBlur={() => onCloseModal()}
             ></textarea>
 
             <div className="task-details-main-checklist-header-input-btn-container">

@@ -55,7 +55,6 @@ export function TodoAdd({ group, task, checklist, onCloseModal }) {
         value={todoToAdd.title}
         onChange={handleChange}
         ref={inputRef}
-        // onBlur={() => onCloseModal()}
       ></textarea>
 
       <div className="task-details-main-checklist-add-todo-input-btn-container">

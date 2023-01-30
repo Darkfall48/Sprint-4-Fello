@@ -6,6 +6,14 @@
         text-align: center;
         display: block;
     }
+
+    .modal-btn-full{
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        display: block;
+        margin-top: 5px;
+    }
 }
 
 .btns-cover-color{
@@ -34,40 +42,3 @@
         }
     }
 }
-
-.cover-size-container{
-    display: flex;
-    gap: 10px;
-
-    .cover-size{
-        margin: 0;
-        height: 72px;
-        width: 100%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        box-shadow: none;
-        cursor: pointer;
-        background: var(--ds-surface-raised, #FFFFFF);
-        border-radius: 3px;
-        position: relative;
-        border: 1px solid var(--ds-border, rgba(9, 30, 66, 0.08));
-
-        .cover-lines{
-            position: absolute;
-            bottom: 4px;
-
-            .line-1{
-                width: 116px;
-            }
-        }
-
-        // & .active{
-        //     box-shadow: 0 0 0 2px var(--ds-border-inverse, #FFFFFF), 0 0 0 4px var(--ds-border-brand, #0079BF);
-        //     filter: none;
-        // }
-    }
-
-
-}
-

@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { AiOutlineStar } from 'react-icons/ai'
 import { AiFillStar } from 'react-icons/ai'
-import { BsFilter } from 'react-icons/bs'
-import { RiUserSharedLine } from 'react-icons/ri'
 import { BsThreeDots } from 'react-icons/bs'
-import { loadBoard, updateBoard } from '../../store/actions/board.actions'
+import { updateBoard } from '../../store/actions/board.actions'
 import { BoardMenu } from './side-menu/board-menu'
-import { Loader } from '../helpers/loader'
 
 export function BoardHeader({ board}) {
   const contentRef = useRef(null)
@@ -14,14 +11,6 @@ export function BoardHeader({ board}) {
   const [isStarred, setIsStarred] = useState(board.isStarred)
 
   useEffect(() => { }, [board.isStarred, isStarred])
-
-  function onCloseModal() {
-    setIsModalOpen(!isModalOpen)
-  }
-
-  function onOpenModal() {
-    setIsModalOpen(!isModalOpen)
-  }
 
   function changeContent(ev) {
     board.title = contentRef.current.innerText
@@ -42,17 +31,14 @@ export function BoardHeader({ board}) {
   }
 
   return (
-    // <section className={board?.style?.bgColor?.islight? "board-header light" : "board-header light"} style={isModalOpen && {marginRight: 301 + 'px'}}>
     <section
       className={
-        // board?.style?.bgColor?.islight ? 'board-header light' : 'board-header light'}
         isModalOpen ? 'board-header open' : 'board-header'}
     >
       <div className="title-container btn-color" style={board?.style?.isLight ? { color: '#172B4D ' } : { color: 'white' }}>
         <h1
           style={board?.style?.isLight ? { color: '#172B4D ' } : { color: 'white' }}
           ref={contentRef}
-          // style={{ wordBreak: 'keep-all' }}
           onKeyDown={(ev) => changeContent(ev)}
           onBlur={(ev) => changeContent(ev)}
           contentEditable={true}
@@ -73,10 +59,6 @@ export function BoardHeader({ board}) {
       </div>
 
       <div className="btns-container">
-        {/* <button style={board?.style?.isLight ? { color: '#172B4D ' } : { color: 'white' }}>
-          <BsFilter /> Filter
-        </button> */}
-        {/* <span className="board-header-btn-divider"></span> */}
         <div className="members-container">
           {board.members?.map((member, index) => {
             return (
@@ -90,10 +72,6 @@ export function BoardHeader({ board}) {
             )
           })}
         </div>
-
-        {/* <button style={board?.style?.isLight ? { color: '#172B4D ' } : { color: 'white' }} className="share">
-          <RiUserSharedLine /> Share{' '}
-        </button> */}
         <span className="board-header-btn-divider"></span>
         <button
           style={board?.style?.isLight ? { color: '#172B4D ' } : { color: 'white' }}
@@ -107,7 +85,6 @@ export function BoardHeader({ board}) {
         {isModalOpen && (
           <BoardMenu
             board={board}
-            onCloseModal={onCloseModal}
             isModalOpen={isModalOpen}
             setIsModalOpen={setIsModalOpen}
           />

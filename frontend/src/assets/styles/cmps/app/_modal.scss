@@ -142,20 +142,21 @@
 .task-attachment-modal-content {
     margin-top: 10px;
 
-    #modal-btn-full{
+    #modal-btn-full {
         padding-left: 3px;
-        .upload-preview{
-            &:hover{
+
+        .upload-preview {
+            &:hover {
                 background-color: transparent;
             }
 
-            label{
+            label {
                 padding: 10px 0;
                 height: 40px;
                 background-color: transparent;
                 width: 100%;
 
-                &:hover{
+                &:hover {
                     background-color: transparent;
                 }
             }
@@ -201,7 +202,24 @@
 }
 
 #attach-btn {
+    padding: 6px 12px;
+    background-color: rgba(9, 30, 66, 0.0392156863);
+    line-height: 1.25;
+    font-size: 1em;
+    font-family: inherit;
+    font-weight: 400;
+    color: #172b4d;
+    border-radius: rem(3px);
+    cursor: pointer;
+    display: block;
+    height: 32px;
+    margin: 0;
     width: fit-content;
+
+    &:hover {
+        background-color: rgba(9, 30, 66, 0.0784313725);
+    }
+
 }
 
 .new-label-demo {

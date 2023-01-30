@@ -27,23 +27,22 @@ export function SideMenuPhotos({ changeBoard }) {
         }
     }, [])
 
-    function onSearchPhotos(ev){
+    function onSearchPhotos(ev) {
         ev.preventDefault()
         if (!search) return
         setPhotos(null)
         getPhotos(search)
     }
 
-    function handleChange({ target }){
+    function handleChange({ target }) {
         setSearch(target.value)
     }
-
 
     return <section className="side-menu-photos">
         <form onSubmit={(ev) => onSearchPhotos(ev)}>
             <div className="input-container">
                 <input placeholder="Photos" type="text" value={search} onChange={handleChange} />
-                
+
             </div>
             <button><AiOutlineSearch className="search-icon" /></button>
         </form>
@@ -61,7 +60,5 @@ export function SideMenuPhotos({ changeBoard }) {
                 </section>
                 : <Loader />
         }
-
     </section>
-
 }

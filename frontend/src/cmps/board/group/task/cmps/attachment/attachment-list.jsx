@@ -3,7 +3,6 @@ import { utilService } from '../../../../../../services/util.service.js'
 export function AttachmentList({
   attachments,
   onRemoveAttachment,
-  onMakeCover,
 }) {
   return (
     <ul className="task-details-main-attachments-list">

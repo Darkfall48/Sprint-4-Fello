@@ -10,14 +10,11 @@ export function BoardPreview({ board }) {
     ev.stopPropagation()
     board.isStarred = !board.isStarred
     updateBoard(board)
-    console.log('board', board);
   }
 
   function recentlyViewedBoard() {
     board.lastViewed = Date.now()
-    console.log('board.lastViewed from preview', board.lastViewed);
     updateBoard(board)
-    // console.log('last viewed', board);
   }
 
   return <>

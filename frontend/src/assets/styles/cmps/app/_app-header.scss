@@ -21,6 +21,7 @@
   .user-section {
     display: flex;
     align-items: center;
+    padding: 0 10px;
 
     img {
       margin-right: 10px;
@@ -94,6 +95,7 @@
       font-family: inherit;
       color: white;
       line-height: 32px;
+      font-weight: 500;
     }
 
     .down-arrow-nav {
