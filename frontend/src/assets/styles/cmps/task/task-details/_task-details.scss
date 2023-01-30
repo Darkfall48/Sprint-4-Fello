@@ -38,6 +38,14 @@
       'header header'
       'title title'
       'main aside';
+    @include for-mobile-layout {
+      width: 100%;
+      border-radius: 0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
     //* Close Button
     &-close-btn {
       &-with-header {
@@ -92,6 +100,9 @@
       // gap: 4px;
       margin-top: 20px;
       margin-bottom: 24px;
+      @include for-mobile-layout {
+        max-width: calc(100vw - 56px);
+      }
       &-icon {
         grid-area: t-icon;
         align-self: center;
@@ -131,6 +142,7 @@
           color: #5e6c84;
         }
         &-link {
+          cursor: text !important; // TODO: Change to Pointer when Move To Modal available
           padding: 0;
           margin: 0;
           font-size: 14px;

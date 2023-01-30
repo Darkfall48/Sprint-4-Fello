@@ -22,5 +22,8 @@
     gap: 16px;
     margin-bottom: 20px;
     max-width: 512px;
+    @include for-mobile-layout {
+      max-width: calc(100vw - 78px);
+    }
   }
 }

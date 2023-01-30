@@ -19,7 +19,7 @@ export function SetAttachment({ task, attachments, group }) {
   function onCloseModal() {
     setIsModalOpen(!isModalOpen)
   }
-
+  if (attachments?.length === 0) return
   return (
     <section className="task-details-main-attachments">
       <ImAttachment className="task-details-main-attachments-icon" />

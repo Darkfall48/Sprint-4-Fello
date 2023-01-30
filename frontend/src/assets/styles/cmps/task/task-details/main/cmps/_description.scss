@@ -10,6 +10,10 @@
     '. input';
   gap: 18px 0px;
   margin-bottom: 24px;
+  @include for-mobile-layout {
+    min-width: none;
+    max-width: calc(100vw - 56px);
+  }
   &-icon {
     grid-area: icon;
     justify-self: flex-start;
@@ -40,6 +44,10 @@
     height: 56px;
     font-size: 14px;
     cursor: pointer;
+    @include for-mobile-layout {
+      min-width: calc(100vw - 78px);
+      max-width: calc(100vw - 78px);
+    }
     &:hover {
       background-color: #091e4214;
     }
@@ -66,6 +74,10 @@
     font-size: 14px;
     font-weight: 400;
     outline: none;
+    @include for-mobile-layout {
+      min-width: calc(100vw - 78px);
+      max-width: calc(100vw - 78px);
+    }
     &:not(.task-details-main-description-input:focus) {
       padding-left: 0;
     }

@@ -84,7 +84,8 @@ export function GroupPreview({
     setIsGroupMenuOpen(true)
   }
 
-  function onCloseModal() {
+  function onCloseModal(ev) {
+    ev.stopPropogation()
     setIsGroupMenuOpen(false)
   }
 
@@ -101,7 +102,7 @@ export function GroupPreview({
               className="group-title"
               ref={contentRef}
               style={{ wordBreak: 'keep-all' }}
-              onKeyDown={(ev) => changeContent(ev)}
+              onKeyUp={(ev) => changeContent(ev)}
               onBlur={(ev) => changeContent(ev)}
               contentEditable={true}
               suppressContentEditableWarning={true}

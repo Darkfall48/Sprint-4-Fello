@@ -7,7 +7,11 @@
     'att att att'
     '. add-btn .';
   margin-bottom: 24px;
-
+  @include for-mobile-layout {
+    grid-auto-columns: 56px 1fr 1fr;
+    // min-width: calc(100vw - 78px);
+    max-width: calc(100vw - 56px);
+  }
   &-icon {
     grid-area: icon;
     justify-self: flex-start;
@@ -41,6 +45,8 @@
       align-items: center;
       &-media-container {
         // height: 80px;
+        // width: 100%;
+        min-width: 32px;
         width: 112px;
       }
 
@@ -99,6 +105,7 @@
     padding: 6px 0px 6px 6px;
     position: relative;
     text-decoration: none;
+    background-color: transparent;
 
     &:hover {
       background-color: #091e420a;

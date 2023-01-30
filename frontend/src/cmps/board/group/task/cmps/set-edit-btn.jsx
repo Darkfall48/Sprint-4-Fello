@@ -8,7 +8,7 @@ import { TaskQuickAction } from '../task-quick-action'
 export function SetEditBtn({ onArchiveTask, task, groupId, handleLabelClick, labelsPreview, boardId }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const buttonRef = useRef()
-console.log('isMenuOpen', isMenuOpen)
+// console.log('isMenuOpen', isMenuOpen)
   function closeMenu() {
     setIsMenuOpen(false)
   }
