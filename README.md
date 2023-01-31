@@ -15,6 +15,9 @@ The Board Page is where you can manage your tasks. You can organize your tasks i
 ![Fello - Task](https://user-images.githubusercontent.com/35638060/215624704-89b5ce0d-b14b-440c-becd-46dc3496a388.png)
 The Task Details Page provides a detailed view of each task, including its description, status, due date, and assigned team member. You can also add comments, attach files, and update the task status directly from this page.
 
+## Website
+Visit the live website at https://team-fello.onrender.com/ to see Fello in action and experience its powerful features for yourself.
+
 ## Team Credit
 - Sidney Sebban (@Darkfall48)
 - Keren Siebner (@KerenSiebner)
