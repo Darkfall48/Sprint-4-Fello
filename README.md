@@ -19,7 +19,8 @@ The Task Details Page provides a detailed view of each task, including its descr
 Visit the live website at https://team-fello.onrender.com/ to see Fello in action and experience its powerful features for yourself.
 
 ## Meet the Fello Team
-- Sidney Sebban (@Darkfall48)
-- Keren Siebner (@KerenSiebner)
-- Yael Tal (@Yael273)
+- Sidney Sebban: [LinkedIn](https://www.linkedin.com/in/sidneysebban/) | [GitHub](https://github.com/darkfall48)
+- Keren Siebner: [LinkedIn](https://www.linkedin.com/in/keren-siebner-b589a5a7/) | [GitHub](https://github.com/KerenSiebner)
+- Yael Tal: [GitHub](https://github.com/yael273)
+
 
