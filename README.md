@@ -21,6 +21,6 @@ Visit the live website at https://team-fello.onrender.com/ to see Fello in actio
 ## Meet the Fello Team
 - Sidney Sebban: [LinkedIn](https://www.linkedin.com/in/sidneysebban/) | [GitHub](https://github.com/darkfall48)
 - Keren Siebner: [LinkedIn](https://www.linkedin.com/in/keren-siebner-b589a5a7/) | [GitHub](https://github.com/KerenSiebner)
-- Yael Tal: [GitHub](https://github.com/yael273)
+- Yael Tal: [LinkedIn](https://www.linkedin.com/in/yael-tal-77283a249/) | [GitHub](https://github.com/yael273)
 
 
