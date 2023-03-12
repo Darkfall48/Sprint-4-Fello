@@ -36,10 +36,13 @@ export function TaskDatesModal({ task, group, onCloseModal }) {
     // }}
     />
   <p id='due-date-btn'>Due date</p>
-  <input type="text" className="due-date-input" defaultValue={value.toLocaleDateString()} contentEditable={false} 
+  {/* <input type="text" className="due-date-input" value={value.toLocaleDateString()} contentEditable={false} 
     autoFocus
     onFocus={e => e.currentTarget.select()}
-  />
+  /> */}
+  <div className="due-date-input">
+  {value.toLocaleDateString()}
+  </div>
   </div>
 }
 
