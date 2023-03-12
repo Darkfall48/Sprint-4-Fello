@@ -27,7 +27,7 @@
         gap: 10px;
 
         @include for-mobile-layout {
-            padding: 0 15px;
+            // padding: 0 15px;
         }
 
         & .workspace-icons {
@@ -53,23 +53,22 @@
         text-transform: uppercase;
     }
 
-    // @include for-mobile-layout {
-    //     background-color: $clr3;
-    // }
+    @include for-mobile-layout {
+        padding: 20px;
+    }
 
-    // @include for-narrow-layout {
-    //     background-color: $clr2;
-    // }
+    @include for-narrow-layout {
+        padding: 35px;
+    }
 
-    // @include for-normal-layout {
-    //     background-color: $clr3;
-    //     max-width: 900px;
-    // }
+    @include for-normal-layout {
+        // max-width: 900px;
+        // padding: 47px 0 40px;
+    }
 
-    // @include for-wide-layout {
-    //     background-color: $clr4;
-    //     max-width: 1038px;
-    // }
+    @include for-wide-layout {
+        padding: 47px 0 40px;
+    }
 
 
 }
