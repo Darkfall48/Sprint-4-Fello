@@ -84,8 +84,7 @@ export function GroupPreview({
     setIsGroupMenuOpen(true)
   }
 
-  function onCloseModal(ev) {
-    ev.stopPropogation()
+  function onCloseModal() {
     setIsGroupMenuOpen(false)
   }
 

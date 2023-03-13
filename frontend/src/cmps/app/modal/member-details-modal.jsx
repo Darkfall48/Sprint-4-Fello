@@ -21,7 +21,7 @@ export function MemberDetailsModal({ onCloseModal, board, member, imgRef }) {
           <CgClose style={{color:'white'}}/>
         </button>
       </div>
-      Member
+      Member 
     </div>
   )
 }
