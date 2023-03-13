@@ -55,11 +55,11 @@ export function GroupPreview({
     console.log('newTask', newTask)
     if (newTask.title === '') return
     ev.preventDefault()
-    try{
+    try {
       await addTask(group, newTask)
       setNewTask(taskService.getEmptyTask(''))
       setEditMode(false)
-    } catch(err){
+    } catch (err) {
       console.log('Failed to add Task', err)
     }
   }

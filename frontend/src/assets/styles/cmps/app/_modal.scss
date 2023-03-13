@@ -30,12 +30,10 @@
 }
 
 .modal-btn-full {
-  @include btn(
-    'modal-full',
+  @include btn('modal-full',
     $list-btn-bg-clr-modal-hover,
     6px 12px,
-    $task-details-btn-bg-clr-hover
-  );
+    $task-details-btn-bg-clr-hover );
   margin: 4px 0 0 0;
   text-align: center;
   display: block;
@@ -124,13 +122,12 @@
   .modal-content-container {
     .labels-selection-container {
       margin-bottom: 15px;
+
       button {
-        @include btn(
-          'modal-full',
+        @include btn('modal-full',
           $list-btn-bg-clr-modal-hover,
           6px 12px,
-          $task-details-btn-bg-clr-hover
-        );
+          $task-details-btn-bg-clr-hover );
       }
     }
   }
@@ -165,20 +162,17 @@
   }
 }
 
-.attachment-action-btns-container {
-}
+.attachment-action-btns-container {}
 
 #modal-btn-full {
   @include btn('modal-full', white, 6px 12px, $list-btn-bg-clr-modal-hover);
 }
 
 #modal-btn-full-grey {
-  @include btn(
-    'modal-full',
+  @include btn('modal-full',
     $list-btn-bg-clr-modal-hover,
     6px 12px,
-    $task-details-btn-bg-clr-hover
-  );
+    $task-details-btn-bg-clr-hover );
   justify-content: center;
   border-radius: $border-radius;
   margin-top: 6px;
@@ -373,8 +367,74 @@
   // padding-right: 0.4em;
 }
 
-.modal-member-header {
-  background-color: #0079be;
+.member-details-modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .modal-member-header {
+    // background-color: #0079be;
+    background: linear-gradient(to bottom, #0079be 80%, white 50% 80%);
+    height: 100px;
+    padding: 24px 0 0 14px;
+
+    span {
+      display: flex;
+
+      img {
+        display: absolute;
+        height: 86px;
+        width: 86px;
+        border-radius: 50%;
+        border: 1px solid white;
+        margin-right: 10px;
+      }
+
+      h6 {
+        color: white;
+        display: flex;
+        // line-height: 20px;
+        font-size: 16px;
+      }
+    }
+
+    #close-btn {
+      position: relative;
+      right: -110px;
+      top: -105px;
+      background-color: transparent;
+    }
+
+  }
+
+  .action-btns-container {
+    padding: 12px;
+
+    .action-btn {
+      color: #172b4d;
+      margin: auto;
+      width: 100%;
+      text-align: center;
+      display: block;
+      background-color: rgba(255, 255, 255, 0.164);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 400;
+      display: inline-flex;
+      border-radius: 0.15625rem;
+      cursor: pointer;
+      padding: 6px 12px;
+      margin: 0 -12px;
+      transition-property: background-color;
+      transition-duration: 85ms;
+      transition-timing-function: ease;
+
+      &:hover {
+        background-color: rgba(226, 226, 226, 0.538);
+      }
+    }
+  }
 }
 
 .color-pick {
