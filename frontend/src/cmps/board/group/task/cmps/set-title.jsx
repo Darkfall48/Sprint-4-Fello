@@ -15,7 +15,11 @@ export function SetTitle({ onUpdateTask, group, type, groupId, task, mode, close
 
   const [updatedTask, setUpdatedTask] = useState(task)
   // console.log('groupId', groupId)
-  function onUpdateTitle({ value }) {
+  function onUpdateTitle(ev) {
+    console.log('ev', ev)
+    ev.target.blur()
+    const {value} = ev.target
+    console.log('value', value)
     onUpdateTask('title', value)
   }
 
@@ -81,14 +85,14 @@ export function SetTitle({ onUpdateTask, group, type, groupId, task, mode, close
           onClick={(ev) => ev.stopPropagation()}
         >
           <BsReverseLayoutTextWindowReverse className="task-details-title-icon" />
-          <textarea
+          <input
             className="task-details-title-input"
             type="text"
             name="task-title"
             id="task-title"
             placeholder="Enter a name for the task.."
             onKeyDown={(ev) =>
-              ev.key === 'Enter' ? onUpdateTitle(ev.target) : ev
+              ev.key === 'Enter' ? onUpdateTitle(ev) : ev
             }
             defaultValue={task.title}
           // onChange={onUpdateTask}
