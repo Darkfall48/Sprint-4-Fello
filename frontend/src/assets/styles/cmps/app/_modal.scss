@@ -372,13 +372,13 @@
   flex-direction: column;
   justify-content: space-between;
 
-  .modal-member-header {
+  .modal-member-header-container {
     // background-color: #0079be;
     background: linear-gradient(to bottom, #0079be 80%, white 50% 80%);
     height: 100px;
     padding: 24px 0 0 14px;
 
-    span {
+    .modal-member-header {
       display: flex;
 
       img {
@@ -390,52 +390,65 @@
         margin-right: 10px;
       }
 
-      h6 {
+      h6,
+      p {
         color: white;
         display: flex;
-        // line-height: 20px;
+        line-height: 20px;
         font-size: 16px;
+        margin: 0;
       }
-    }
 
-    #close-btn {
-      position: relative;
-      right: -110px;
-      top: -105px;
-      background-color: transparent;
+      h6 {
+        padding-top: 5px;
+      }
+
+      p {
+        font-size: 12px;
+        font-weight: 200;
+      }
     }
 
   }
 
-  .action-btns-container {
-    padding: 12px;
+  #close-btn {
+    position: relative;
+    right: -110px;
+    top: -105px;
+    background-color: transparent;
+  }
 
-    .action-btn {
-      color: #172b4d;
-      margin: auto;
-      width: 100%;
-      text-align: center;
-      display: block;
-      background-color: rgba(255, 255, 255, 0.164);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
-      font-size: 14px;
-      line-height: 20px;
-      font-weight: 400;
-      display: inline-flex;
-      border-radius: 0.15625rem;
-      cursor: pointer;
-      padding: 6px 12px;
-      margin: 0 -12px;
-      transition-property: background-color;
-      transition-duration: 85ms;
-      transition-timing-function: ease;
+}
 
-      &:hover {
-        background-color: rgba(226, 226, 226, 0.538);
-      }
+.action-btns-container {
+  padding: 12px;
+
+  .action-btn {
+    color: #172b4d;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.164);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    display: inline-flex;
+    border-radius: 0.15625rem;
+    cursor: pointer;
+    padding: 6px 12px;
+    margin: 0 -12px;
+    transition-property: background-color;
+    transition-duration: 85ms;
+    transition-timing-function: ease;
+
+    &:hover {
+      background-color: rgba(226, 226, 226, 0.538);
     }
   }
 }
+
 
 .color-pick {
   pointer-events: none;

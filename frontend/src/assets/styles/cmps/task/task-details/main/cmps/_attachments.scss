@@ -7,17 +7,19 @@
     'att att att'
     '. add-btn .';
   margin-bottom: 24px;
+
   @include for-mobile-layout {
     grid-auto-columns: 56px 1fr 1fr;
     // min-width: calc(100vw - 78px);
     max-width: calc(100vw - 56px);
   }
+
   &-icon {
     grid-area: icon;
     justify-self: flex-start;
     margin-left: 22px;
     color: #172b4d;
-    font-size: 20px;
+    font-size: 18px;
   }
 
   &-title {
@@ -36,6 +38,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
+
     &-attachment {
       margin-top: 13px;
       display: flex;
@@ -43,29 +46,58 @@
       margin-left: 56px;
       gap: 0px 16px;
       align-items: center;
+
       &-media-container {
-        // height: 80px;
+        display: flex;
+        align-items: center;
+        background-color: $list-btn-bg-clr-modal-hover;
+        height: 80px;
         // width: 100%;
         min-width: 32px;
         width: 112px;
+        justify-content: space-around;
+
+        a {
+          display: inline-block;
+        }
+
+        a img {
+          display: block;
+        }
+
+        // img {
+        //   object-fit: contain;
+        //   // max-height: 100%;
+        //   // max-width: 100%;
+        // }
+
+        .attachments-icon {
+          margin: 0;
+        }
       }
 
       &-content-container {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-self: flex-start;
+        padding: 8px 0;
+
         &-title {
           font-weight: 700;
           color: #172b4d;
+          line-height: 1.4em;
         }
+
         &-date {
           color: #172b4d;
         }
+
         &-remove-btn {
           cursor: pointer;
           text-decoration: underline;
           color: #172b4d;
         }
+
         &-cover-btn {
           cursor: pointer;
           text-decoration: underline;
@@ -78,12 +110,10 @@
   &-add-btn {
     grid-area: add-btn;
     justify-self: flex-start;
-    @include btn(
-      'task-edit',
+    @include btn('task-edit',
       $list-btn-bg-clr-modal-hover,
       6px 12px,
-      $task-details-btn-bg-clr-hover
-    );
+      $task-details-btn-bg-clr-hover );
     display: flex;
     margin: 0;
     margin-top: 16px;

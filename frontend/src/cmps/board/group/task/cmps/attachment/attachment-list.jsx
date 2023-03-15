@@ -1,9 +1,15 @@
 import { utilService } from '../../../../../../services/util.service.js'
+import { ImAttachment } from 'react-icons/im'
 
-export function AttachmentList({
-  attachments,
-  onRemoveAttachment,
-}) {
+export function AttachmentList({ attachments, onRemoveAttachment, }) {
+  console.log('attachments', attachments)
+
+  function setLink(attachment) {
+    console.log('attachment', attachment)
+    if (attachment.img) return attachment.img
+    else if (attachment.url) return attachment.url
+    else return ''
+  }
   return (
     <ul className="task-details-main-attachments-list">
       {attachments.map((attachment, index) => (
@@ -12,8 +18,10 @@ export function AttachmentList({
           key={attachment.id + index}
         >
           <div className="task-details-main-attachments-list-attachment-media-container">
-            <a href={attachment.img} target="_blank">
-              {<img src={attachment.img} alt="" />}
+            <a href={setLink(attachment)} target="_blank">
+              {attachment.img && <img src={attachment.img} alt="" />}
+              {!attachment.img && <ImAttachment className="task-details-main-attachments-icon attachments-icon" />
+              }
               {/* {attachment.type === 'image/png' && (
                 <img src={attachment.img} alt={attachment.title} />
               )} */}
@@ -29,11 +37,14 @@ export function AttachmentList({
           </div>
 
           <div className="task-details-main-attachments-list-attachment-content-container">
-            <h3 className="task-details-main-attachments-list-attachment-content-container-title">
+            <a className="task-details-main-attachments-list-attachment-content-container-title"
+              href={setLink(attachment)}
+              target="_blank"
+            >
               {/* {attachment.img.substring(attachment.img.lastIndexOf('/')+1)} */}
               {attachment.img.replace(/^.*[\\\/]/, '')}
               {attachment.title}
-            </h3>
+            </a>
             <p className="task-details-main-attachments-list-attachment-content-container-date">
               {utilService.formatTime(attachment.createdAt)} <span> • </span>
               <a

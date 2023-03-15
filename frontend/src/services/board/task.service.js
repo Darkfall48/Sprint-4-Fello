@@ -105,6 +105,7 @@ function getEmptyAttachment() {
     img: '',
     createdAt: Date.now(),
     comment: [],
+    url:''
   }
 }
 

@@ -4,11 +4,10 @@ import { updateTask } from '../../../store/actions/board.actions'
 import { ImgUploader } from '../../helpers/img-uploader'
 
 export function TaskAttachmentModal({ onCloseModal, group, task }) {
-  const [attachmentToAdd, setAttachmentToAdd] = useState(
-    taskService.getEmptyAttachment()
-  )
+  const [attachmentToAdd, setAttachmentToAdd] = useState(taskService.getEmptyAttachment())
   const [selectedFile, setSelectedFile] = useState()
   const [file, setFile] = useState()
+  const [link, setLink] = useState('')
 
   function handleChange(event) {
     console.log('event.target.files[0]', event.target.files[0]);
@@ -27,15 +26,23 @@ export function TaskAttachmentModal({ onCloseModal, group, task }) {
   const onUploaded = (bgImg, imgUrl) => {
     console.log('imgUrl', imgUrl)
     attachmentToAdd.img = imgUrl
-
     onAddAttachment()
   }
 
   function onAddAttachment() {
     task.attachments.push(attachmentToAdd)
-
     updateTask(group, task)
     onCloseModal()
+  }
+
+  function handleChange({ target }) {
+    const { name: field, value } = target
+    setAttachmentToAdd((prevAttachment) => ({ ...prevAttachment, [field]: value, title: value }))
+  }
+
+  function handleSubmit(ev) {
+    ev.preventDefault()
+    onAddAttachment() 
   }
 
   return (
@@ -52,8 +59,10 @@ export function TaskAttachmentModal({ onCloseModal, group, task }) {
       {/* <button id="modal-btn-full"> Google Drive </button> */}
       <hr />
       <p>Attach a link</p>
-      <input type="text" placeholder="Paste any link here..." />
-      <button id="attach-btn">Attach</button>
+      <form action="submit" onSubmit={handleSubmit}>
+        <input type="text" placeholder="Paste any link here..." name='url' value={attachmentToAdd.url} onChange={handleChange} />
+        <button id="attach-btn" >Attach</button>
+      </form>
       <hr />
       <div>
         Tip: You can drag and drop files and links onto cards to upload them.
