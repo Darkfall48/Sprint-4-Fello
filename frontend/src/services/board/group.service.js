@@ -16,7 +16,5 @@ function getEmptyGroup(groupTitle) {
   }
 
   function getGroupById(board, groupId) {
-    console.log('board', board)
-    console.log('groupId', groupId)
     return board.groups.find((group) => group.id === groupId)
   }

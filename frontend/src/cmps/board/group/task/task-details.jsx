@@ -5,17 +5,11 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 //? Store
 import { removeTask, updateTask } from '../../../../store/actions/board.actions'
 //? Icons
-import { BsCheck2Square } from 'react-icons/bs'
-import { GrTextAlignFull } from 'react-icons/gr'
 import { HiOutlineUser } from 'react-icons/hi'
-import { RxActivityLog } from 'react-icons/rx'
 import { TbTag } from 'react-icons/tb'
 import { IoMdCheckboxOutline } from 'react-icons/io'
 import { FiClock } from 'react-icons/fi'
 import { ImAttachment } from 'react-icons/im'
-import { HiOutlineArrowRight } from 'react-icons/hi'
-import { MdOutlineContentCopy } from 'react-icons/md'
-import { TbTemplate } from 'react-icons/tb'
 import { TiArchive } from 'react-icons/ti'
 import { HiOutlineShare } from 'react-icons/hi'
 import { MdOutlineLaptop } from 'react-icons/md'
@@ -54,28 +48,17 @@ export function TaskDetails() {
     setTask(group?.tasks?.filter((task) => task.id === taskId)[0])
   }, [board, group, task])
 
-  // console.log(
-  //   'Hello from board:',
-  //   boardId,
-  //   'in list:',
-  //   groupId,
-  //   'as task:',
-  //   taskId
-  // )
-  console.log('Taskkyyyy', task)
-  // console.log('Grouppyyyy', group)
-  // console.log('Boardyyyy', board)
+
+  // console.log('Task', task)
 
   //? Update Task - CRUDL
   async function onUpdateTask(field, value) {
-    console.log('Task updated by Field', field, 'with Value:', value)
-    value= value.trim()
-    // if (!value || !value.length) return
+    value = value.trim()
     const updatedTask = { ...task, [field]: value }
     try {
       setTask(updatedTask)
       await updateTask(group, updatedTask)
-      console.log('Task:', taskId, 'updated successfully!')
+      // console.log('Task:', taskId, 'updated successfully!')
     } catch (err) {
       console.log('Cannot update Task', taskId, ':', err)
     }

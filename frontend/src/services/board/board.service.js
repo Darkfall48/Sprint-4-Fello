@@ -37,9 +37,6 @@ async function query({
   sort = getDefaultSort(),
   page = getDefaultPage(),
 } = {}) {
-  // console.log('Filter:', filter)
-  // console.log('Sort:', sort)
-  // console.log('Page', page)
   // Getting the values
   const {
     title,
@@ -74,8 +71,6 @@ async function query({
 async function get(boardId) {
   try {
     socketService.emit(SOCKET_EMIT_BOARD_WATCH, boardId)
-    // socketService.emit(SOCKET_EVENT_BOARD_UPDATED, save)
-    // socketService.emit(SOCKET_EMIT_BOARD_WATCH, save)
     return await httpService.get(BASE_URL + boardId)
   } catch (err) {
     console.log('Cannot find board', err)
@@ -87,7 +82,6 @@ async function get(boardId) {
 async function save(board) {
   const { _id: boardId } = board
   try {
-    console.log('board', board)
     if (boardId) return await httpService.put(BASE_URL + boardId, board)
     return await httpService.post(BASE_URL, board)
   } catch (err) {

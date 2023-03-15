@@ -5,7 +5,6 @@ const dbService = require('../../services/db.service')
 const ObjectId = require('mongodb').ObjectId
 //? Global Variables
 const BOARDS_DB = 'boards_col'
-// const PAGE_SIZE = 10
 
 module.exports = {
   query,
@@ -13,8 +12,6 @@ module.exports = {
   add,
   update,
   remove,
-  // addBoardMsg,
-  // removeBoardMsg,
 }
 
 //? Query - List/Filtering/Sorting/Paging
@@ -50,7 +47,6 @@ async function add(board) {
 
 //? Update - Edit
 async function update(board) {
-  // console.log('board.groups',board.groups[0].tasks)
   try {
     const {
       title,

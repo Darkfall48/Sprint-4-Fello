@@ -16,10 +16,8 @@ export function SetTitle({ onUpdateTask, group, type, groupId, task, mode, close
   const [updatedTask, setUpdatedTask] = useState(task)
   // console.log('groupId', groupId)
   function onUpdateTitle(ev) {
-    console.log('ev', ev)
     ev.target.blur()
     const {value} = ev.target
-    console.log('value', value)
     onUpdateTask('title', value)
   }
 
@@ -32,7 +30,6 @@ export function SetTitle({ onUpdateTask, group, type, groupId, task, mode, close
   }
 
   async function onSubmitTask(ev) {
-    console.log('updatedTask', updatedTask)
     try {
       const group = await groupService.getGroupById(board, groupId)
       await updateTask(group, updatedTask)

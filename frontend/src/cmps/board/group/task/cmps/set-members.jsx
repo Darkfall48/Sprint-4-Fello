@@ -46,9 +46,10 @@ export function SetMembers({ type, board, task, group }) {
           {modalOpen === 'member-details' && (
             <MemberDetailsModal
               onCloseModal={onCloseModal}
-              board={board}
               member={currMember}
               imgRef={imgRef}
+              task={task} 
+              group={group}
             />
           )}
         </article>
@@ -84,9 +85,10 @@ export function SetMembers({ type, board, task, group }) {
             {modalOpen === 'member-details' && (
               <MemberDetailsModal
                 onCloseModal={onCloseModal}
-                board={board}
                 member={currMember}
                 imgRef={imgRef}
+                task={task} 
+                group={group}
               />
             )}
             <button

@@ -24,11 +24,9 @@ function makeId(length = 10) {
   var txt = ''
   var possible =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-
   for (var i = 0; i < length; i++) {
     txt += possible.charAt(Math.floor(Math.random() * possible.length))
   }
-
   return txt
 }
 
@@ -230,7 +228,6 @@ function animateCSS(el, animation) {
 
 function getPositionAddBoard(ref) {
   const position = ref?.current?.getBoundingClientRect()
-  console.log(ref?.current?.getBoundingClientRect())
   if (position.y > 200) position.y = 200
   if (position.x > 500) position.x = 800
   return position
@@ -248,7 +245,6 @@ function getPosition(ref) {
       y: 0,
     }
   const position = ref?.current?.getBoundingClientRect()
-  // console.log(ref.current.getBoundingClientRect());
   return position
 }
 

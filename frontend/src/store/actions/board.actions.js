@@ -54,10 +54,8 @@ export async function loadBoards() {
 
 export async function loadBoard(boardId) {
   try {
-    console.log('boardId', boardId)
     await loadBoards()
     const board = await boardService.get(boardId)
-    // console.log('Board from DB:', board)
     store.dispatch({
       type: SET_BOARD,
       board,
@@ -92,10 +90,7 @@ export async function addBoard(board) {
 
 export async function updateBoard(board) {
   try {
-    console.log('board before saving to back', board)
     const savedBoard = await boardService.save(board)
-    // console.log('savedBoard:', savedBoard)
-    console.log('Updated Board after saving in back:', savedBoard)
     store.dispatch(getActionUpdateBoard(savedBoard))
     return savedBoard
   } catch (err) {
@@ -126,12 +121,8 @@ export async function saveGroup(group) {
 //? Task Actions:
 
 export async function addTask(group, task) {
-  // console.log('group:', group)
-  // console.log('task:', task)
   const updatedTasks = [...group.tasks, task]
-  // console.log('updatedTasks:', updatedTasks)
   const updatedGroup = { ...group, tasks: updatedTasks }
-  // console.log('updatedGroup:', updatedGroup)
   try {
     await saveGroup(updatedGroup)
   } catch (err) {
@@ -141,16 +132,11 @@ export async function addTask(group, task) {
 }
 
 export async function updateTask(group, task) {
-  // console.log('group', group)
-  // console.log('task', task)
   const { tasks } = group
-  // console.log('tasks', tasks)
   const taskIdx = tasks.findIndex((tsk) => tsk.id === task.id)
-  // console.log('taskIdx', taskIdx)
   tasks.splice(taskIdx, 1, task)
   const updatedGroup = { ...group, tasks }
   try {
-    console.log('Group Updated:', updatedGroup)
     await saveGroup(updatedGroup)
   } catch (err) {
     console.log(`Cannot update task id ${task.id}`, err)
@@ -159,7 +145,6 @@ export async function updateTask(group, task) {
 }
 
 export async function removeLabelFromAllTasks(board, labelId) {
-  console.log('labelId', labelId)
   const { groups } = board
   try {
     const updatedGroups = await groups.map((group) => {
@@ -175,7 +160,7 @@ export async function removeLabelFromAllTasks(board, labelId) {
     // loadBoard(board._id)
   } catch (err) {
     console.log('Failed to remove label', labelId, 'from all tasks', err)
-    throw(err)
+    throw (err)
   }
 }
 
@@ -190,16 +175,7 @@ export async function removeTask(group, taskId) {
   }
 }
 
-// export async function checkout(total) {
-//   try {
-//     const score = await userService.changeScore(-total)
-//     store.dispatch({ type: SET_SCORE, score })
-//     return score
-//   } catch (err) {
-//     console.log('BoardActions: err in checkout', err)
-//     throw err
-//   }
-// }
+
 
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)

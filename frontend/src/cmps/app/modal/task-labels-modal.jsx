@@ -4,30 +4,16 @@ import { MdOutlineCheckBoxOutlineBlank } from 'react-icons/md'
 import { RxPencil1 } from 'react-icons/rx'
 import { CgClose } from 'react-icons/cg'
 //?Services:
-import {
-  loadBoard,
-  removeLabelFromAllTasks,
-  updateBoard,
-  updateTask,
-} from '../../../store/actions/board.actions'
+import { loadBoard, removeLabelFromAllTasks, updateBoard, updateTask} from '../../../store/actions/board.actions'
 import { utilService } from '../../../services/util.service'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { taskService } from '../../../services/board/task.service'
 
-export function TaskLabelsModal({
-  task,
-  group,
-  board,
-  mode,
-  onToggleMode
-}) {
+export function TaskLabelsModal({ task, group, board, mode, onToggleMode }) {
   const [filteredLabels, setFilteredLabels] = useState(board?.labels || [])
   const [inputLabel, setInputLabel] = useState('')
-  const [labelTitle, setLabelTitle] = useState('')
-  const [labelColor, setLabelColor] = useState('')
   const [editExisiting, setEditExisting] = useState(false)
   const [editLabel, setEditLabel] = useState({ id: utilService.makeId(), color: '#f3f5f7', title: '' })
-  console.log('board.labels', board)
 
   async function onToggleLabel(label) {
     const { id } = label
@@ -53,23 +39,18 @@ export function TaskLabelsModal({
     const filteredLabels = board.labels.filter((label) =>
       regex.test(label.title)
     )
-    console.log('filteredLabels', filteredLabels)
     setFilteredLabels(filteredLabels)
   }
 
   function selectLabelColor(color) {
     setEditLabel((prevEditLabel) => ({ ...prevEditLabel, color }))
-    // setLabelColor(color)
-    console.log('color', color)
   }
 
   function handleLabelTitleChange(ev) {
-    console.log('ev', ev)
     const { value } = ev.target
-    console.log('value', value)
     setEditLabel((preEditLabel) => ({ ...preEditLabel, title: value }))
     if (ev.key === 'Enter') {
-      editExisiting ?  updateExisitingLabel() : createNewLabel()
+      editExisiting ? updateExisitingLabel() : createNewLabel()
     }
   }
 
@@ -79,9 +60,7 @@ export function TaskLabelsModal({
       title: editLabel.title,
       color: editLabel.color,
     }
-    console.log('newLabel', newLabel)
     const updatedLabels = board?.labels?.concat(newLabel)
-    console.log('updatedLabels', updatedLabels)
     updateLabelstoBoard(updatedLabels)
     setFilteredLabels(updatedLabels)
   }
@@ -96,11 +75,8 @@ export function TaskLabelsModal({
   async function updateLabelstoBoard(updatedLabels) {
     board = { ...board, labels: updatedLabels }
     onToggleMode('select-label')
-    setLabelColor('')
-    setLabelTitle('')
     try {
       await updateBoard(board)
-      console.log('board._id', board._id)
       await loadBoard(board._id)
     } catch (err) {
       console.log('Failed to update board', err)
@@ -114,8 +90,6 @@ export function TaskLabelsModal({
     const updatedLabelIds = task.labelIds?.filter(
       (labelId) => labelId !== editLabel?.id)
     task = { ...task, labelIds: updatedLabelIds }
-    console.log('task', task)
-    console.log('group', group)
     try {
       await updateTask(group, task)
       await removeLabelFromAllTasks(board, editLabel?.id)
