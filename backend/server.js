@@ -2,6 +2,8 @@
 const cookieParser = require('cookie-parser')
 const express = require('express')
 const cors = require('cors')
+require('dotenv').config()
+console.log(process.env)
 //? Middleware
 const setupAsyncLocalStorage = require('./middlewares/setupAls.middleware')
 //? Services
