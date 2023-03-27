@@ -11,7 +11,6 @@ export function SideMenuPhotos({ changeBoard }) {
     async function getPhotos() {
         try {
             const photos = await unsplashService.getPhotos(search)
-            console.log('photos', photos)
             setPhotos(photos)
         } catch (err) {
             console.log(err)

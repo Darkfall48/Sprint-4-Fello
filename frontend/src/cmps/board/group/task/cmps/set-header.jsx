@@ -21,7 +21,6 @@ export function SetHeader({ task, group }) {
     try {
       const fac = new FastAverageColor()
       const color = await fac.getColorAsync(style?.bgImg)
-      console.log('color from task header', color);
       setAverageColor(color.rgba)
     } catch (err) {
       console.warn('Cannot get an average color on a solid color', err)

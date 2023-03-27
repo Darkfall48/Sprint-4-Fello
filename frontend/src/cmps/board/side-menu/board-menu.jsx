@@ -26,7 +26,6 @@ export function BoardMenu({ board, isModalOpen, setIsModalOpen }) {
         if (isSure) {
             try {
                 await removeBoard(boardId)
-                console.log(boardId, 'removed')
                 navigate('/board')
             } catch (err) {
                 console.log(err);
