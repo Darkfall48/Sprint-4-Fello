@@ -2,8 +2,6 @@
 const cookieParser = require('cookie-parser')
 const express = require('express')
 const cors = require('cors')
-require('dotenv').config()
-console.log(process.env)
 //? Middleware
 const setupAsyncLocalStorage = require('./middlewares/setupAls.middleware')
 //? Services
@@ -31,7 +29,6 @@ if (process.env.NODE_ENV === 'production') {
       'http://localhost:8080',
       'http://127.0.0.1:3000',
       'http://localhost:3000',
-      'http://localhost:3002',
       'https://api.cloudinary.com/v1_1/cloud/image/upload'
     ],
     credentials: true,

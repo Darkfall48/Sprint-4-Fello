@@ -24,9 +24,9 @@ export function Workspace() {
 
   useEffect(() => {
     socketService.on(SOCKET_EVENT_BOARD_UPDATED, socketUpdateBoard)
-    // return ()=>{
-    //   socketService.off(SOCKET_EVENT_BOARD_UPDATED, socketUpdateBoard)
-    // }
+    return ()=>{
+      socketService.off(SOCKET_EVENT_BOARD_UPDATED, socketUpdateBoard)
+    }
   }, [])
 
   function socketUpdateBoard(updatedBoard) {
@@ -57,18 +57,25 @@ export function Workspace() {
         </h1>
       )
   }
+  function onRecentlyViewedBoard() {
+    if (!starredBoard.length) return
+    else
+      return (
+        <h1>
+          <AiOutlineClockCircle className="workspace-icons" /> Recently viewed
+        </h1>
+      )
+  }
 
   if (!boards) return <Loader />
   return (
     <section className="workspace-section">
       <div className="starred-boards-container">
         {onStarredBoard()}
-        <BoardList boards={starredBoard}/>
+        <BoardList boards={starredBoard} />
       </div>
       <div className="recently-viewed-boards-container">
-        <h1>
-          <AiOutlineClockCircle className="workspace-icons" /> Recently viewed
-        </h1>
+        {onRecentlyViewedBoard()}
         <BoardList boards={recentlyViewedBoard} />
       </div>
       <div className="your-workspace-boards-container">
