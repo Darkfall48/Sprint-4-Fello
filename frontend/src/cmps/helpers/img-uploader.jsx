@@ -23,7 +23,6 @@ export function ImgUploader({ onUploaded = null }) {
     if (imgData.imgUrl) return 'Upload Another?'
     return isUploading ? 'Uploading....' : 'Upload Image'
   }
-  console.log('imgData', imgData);
   return (
     <div className="upload-preview">
       {/* {imgData.imgUrl && (

@@ -5,7 +5,6 @@ export function AttachmentList({ attachments, onRemoveAttachment, }) {
   console.log('attachments', attachments)
 
   function setLink(attachment) {
-    console.log('attachment', attachment)
     if (attachment.img) return attachment.img
     else if (attachment.url) return attachment.url
     else return ''

@@ -30,7 +30,6 @@ export function Workspace() {
   }, [])
 
   function socketUpdateBoard(updatedBoard) {
-    console.log('updatedBoard', updatedBoard)
     dispatch({ type: UPDATE_BOARD, board: updatedBoard })
   }
 
@@ -41,7 +40,6 @@ export function Workspace() {
   async function onLoadBoards() {
     try {
       await loadBoards()
-      console.log('loaded boards')
       showSuccessMsg('Boards loaded')
     } catch (err) {
       showErrorMsg('Cannot load boards')
