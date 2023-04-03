@@ -31,8 +31,6 @@ if (process.env.NODE_ENV === 'production') {
       'http://localhost:3000',
       'http://localhost:3002',
       'http://localhost:3003',
-      'http://10.100.102.4:3000',
-      'https://sprint-4-fello.vercel.app',
       'https://api.cloudinary.com/v1_1/cloud/image/upload'
     ],
     credentials: true,
